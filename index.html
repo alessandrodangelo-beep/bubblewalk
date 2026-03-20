@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bubble Walk — Bristol</title>
+  <meta name="description" content="A weekly social walk in Bristol Harbourside. Walk, talk, share." />
+  <style>
+    :root{
+      --bg:#eef3f8;
+      --card:#fbfdff;
+      --card-2:#f5f8fc;
+      --line:#d7e0ea;
+      --text:#151515;
+      --muted:#66758c;
+      --navy:#27457a;
+      --detail:#1f365f;
+      --navy-2:#87a6d4;
+      --navy-1:#dce8f6;
+      --pill:#e6eef7;
+      --radius-xl:34px;
+      --radius-lg:24px;
+      --shadow:0 12px 30px rgba(22,35,58,0.05);
+      --max:1140px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .page{max-width:var(--max);margin:0 auto;padding:28px 22px 80px}
+    .nav{
+      display:flex;justify-content:space-between;align-items:center;gap:20px;
+      padding-bottom:14px;border-bottom:1px solid rgba(39,69,122,0.10);margin-bottom:48px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.05rem;
+      letter-spacing:-0.02em;color:var(--navy);
+    }
+    .bubbles{display:flex;align-items:center;gap:4px}
+    .bubble{
+      width:14px;height:14px;border-radius:50%;
+      box-shadow:inset 0 1px 1px rgba(255,255,255,0.85);
+    }
+    .b1{background:linear-gradient(180deg, #f0f6fc 0%, var(--navy-1) 100%)}
+    .b2{background:linear-gradient(180deg, #9bb4db 0%, var(--navy-2) 100%)}
+    .b3{background:linear-gradient(180deg, #3c5f9f 0%, var(--navy) 100%)}
+    .nav-links{display:flex;align-items:center;gap:30px;color:var(--muted);font-size:0.98rem}
+    .join-pill{
+      padding:14px 24px;border:1px solid rgba(39,69,122,0.16);border-radius:999px;
+      color:var(--navy);background:#fff;font-weight:600;
+    }
+    .hero-shell{
+      background:#fff;border:1px solid rgba(39,69,122,0.05);border-radius:var(--radius-xl);
+      box-shadow:var(--shadow);padding:34px;display:grid;grid-template-columns:1.12fr 0.88fr;
+      gap:34px;margin-bottom:52px;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;background:var(--pill);color:var(--navy);
+      border-radius:999px;padding:10px 16px;font-size:0.98rem;font-weight:600;margin-bottom:20px;
+    }
+    h1{
+      margin:0 0 20px;font-size:clamp(3.1rem, 6vw, 5.4rem);line-height:0.94;
+      letter-spacing:-0.07em;max-width:8ch;color:var(--navy);
+    }
+    .lead{color:var(--muted);font-size:1.08rem;line-height:1.6;max-width:58ch;margin:0 0 24px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:16px 26px;
+      font-weight:700;font-size:1rem;letter-spacing:-0.02em;border:none;cursor:pointer;transition:transform .15s ease;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:var(--navy);color:#fff}
+    .btn-secondary{background:#fff;color:var(--navy);border:1px solid rgba(39,69,122,0.18)}
+    .week-card{
+      border:1px solid var(--line);border-radius:28px;background:var(--card-2);padding:24px 24px 20px;
+      display:flex;flex-direction:column;justify-content:space-between;min-height:100%;
+    }
+    .week-label{
+      margin:0 0 14px;color:var(--muted);font-size:0.95rem;letter-spacing:0.12em;font-weight:700;text-transform:uppercase;
+    }
+    .week-title{
+      margin:0 0 10px;font-size:clamp(1.9rem, 3vw, 3rem);line-height:0.98;letter-spacing:-0.05em;
+      max-width:13ch;color:var(--navy);
+    }
+    .week-copy{color:var(--muted);font-size:1rem;line-height:1.55;margin:0 0 22px}
+    .meta{display:grid;gap:0;margin-bottom:22px}
+    .meta-row{
+      display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:start;padding:14px 0;
+      border-top:1px solid var(--line);color:var(--muted);font-size:1rem;
+    }
+    .meta-row:first-child{border-top:none}
+    .meta-row strong{
+      color:var(--detail);justify-self:end;text-align:right;line-height:1.35;font-size:1.04rem;font-weight:700;
+    }
+    .section{margin-top:46px}
+    .section-title{
+      margin:0 0 6px;font-size:clamp(2.2rem, 5vw, 3.5rem);line-height:0.95;letter-spacing:-0.06em;color:var(--navy);
+    }
+    .section-copy{margin:0 0 20px;color:var(--muted);font-size:1.05rem;line-height:1.55;max-width:72ch}
+    .cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px 22px 20px;box-shadow:var(--shadow);
+    }
+    .number{
+      width:36px;height:36px;border-radius:50%;background:var(--pill);color:var(--navy);display:flex;
+      align-items:center;justify-content:center;font-weight:700;margin-bottom:16px;
+    }
+    .card h3{margin:0 0 10px;font-size:1.15rem;letter-spacing:-0.03em;color:var(--navy)}
+    .card p{margin:0;color:var(--muted);line-height:1.55;font-size:0.98rem}
+    .split{display:grid;grid-template-columns:1.06fr 0.94fr;gap:18px;align-items:start;margin-top:18px}
+    .photo-card{
+      background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:18px;box-shadow:var(--shadow);
+    }
+    .photo-frame{
+      border-radius:18px;overflow:hidden;background:#e8eef7;border:1px solid rgba(39,69,122,0.12);aspect-ratio:16 / 10;
+      position:relative;display:flex;align-items:center;justify-content:center;
+    }
+    .photo-frame img{width:100%;height:100%;object-fit:cover}
+    .photo-note{margin:12px 0 0;color:var(--muted);font-size:0.94rem;line-height:1.5}
+    .meaning-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .meaning-dot{width:24px;height:24px;border-radius:50%;margin-bottom:14px}
+    .blue-card{
+      background:var(--navy-1);color:var(--navy);border:1px solid rgba(39,69,122,0.12);border-radius:28px;padding:28px;box-shadow:var(--shadow);
+    }
+    .blue-card .eyebrow-soft{
+      display:inline-flex;padding:10px 16px;border-radius:999px;background:#ffffff;color:var(--navy);font-weight:700;
+      margin-bottom:18px;border:1px solid rgba(39,69,122,0.12);
+    }
+    .blue-card h3{
+      margin:0 0 14px;font-size:clamp(2rem, 4vw, 3.4rem);line-height:0.96;letter-spacing:-0.06em;max-width:10ch;color:var(--navy);
+    }
+    .blue-card p{color:var(--muted);line-height:1.6;margin:0 0 20px;font-size:1rem}
+    .email-pill{
+      display:inline-flex;align-items:center;justify-content:center;padding:16px 20px;border-radius:999px;background:var(--navy);color:#fff;font-weight:700;margin-bottom:14px;
+    }
+    .small-note{color:var(--muted);font-size:0.92rem;line-height:1.5}
+    form{display:grid;gap:12px;margin-top:16px}
+    .input, .textarea{
+      width:100%;border:1px solid rgba(39,69,122,0.14);background:#fff;border-radius:16px;padding:15px 16px;font:inherit;color:var(--text);outline:none;
+    }
+    .textarea{min-height:120px;resize:vertical}
+    .faq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .footer{
+      display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:46px;padding-top:24px;border-top:1px solid rgba(39,69,122,0.10);color:var(--muted);font-size:0.98rem;
+    }
+    .footer strong{color:var(--navy)}
+    @media (max-width: 980px){
+      .hero-shell,.split,.cards-3,.meaning-grid,.faq-grid{grid-template-columns:1fr}
+      .nav{flex-direction:column;align-items:flex-start}
+      .nav-links{gap:18px;flex-wrap:wrap}
+      h1{max-width:none}
+      .week-title{max-width:none}
+    }
+    @media (max-width: 640px){
+      .page{padding:18px 14px 56px}
+      .hero-shell{padding:20px}
+      .card,.photo-card,.blue-card{padding:20px}
+      .hero-actions{flex-direction:column}
+      .btn{width:100%}
+      .meta-row{grid-template-columns:1fr;gap:6px}
+      .meta-row strong{justify-self:start;text-align:left}
+      .footer{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <div class="brand">
+        <div class="bubbles" aria-hidden="true">
+          <span class="bubble b1"></span>
+          <span class="bubble b2"></span>
+          <span class="bubble b3"></span>
+        </div>
+        <span>Bubble Walk</span>
+      </div>
+      <div class="nav-links">
+        <a href="#what-it-is">What it is</a>
+        <a href="#three-bubbles">Three bubbles</a>
+        <a href="#faq">FAQ</a>
+        <a class="join-pill" href="#join">Join</a>
+      </div>
+    </nav>
+
+    <section class="hero-shell">
+      <div>
+        <div class="eyebrow">Weekly walk • Bristol Harbourside</div>
+        <h1>Walk, talk, and get out of your own head.</h1>
+        <p class="lead">
+          A simple weekly walk around Bristol Harbourside. No agenda. No pressure.
+          Just a chance to show up, move a bit, and meet good people.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#join">Join this week’s walk</a>
+          <a class="btn btn-secondary" id="mapsBtnHero" href="#" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+        </div>
+      </div>
+
+      <aside class="week-card" id="next-walk">
+        <div>
+          <p class="week-label">This week’s Bubble Walk</p>
+          <h2 class="week-title" id="weeklyHeadline">This week’s Bubble Walk — Bristol, Thursday at 6:30pm</h2>
+          <p class="week-copy">The recurring phrase matters. Keep this block updated every week.</p>
+          <div class="meta">
+            <div class="meta-row"><span>Day</span><strong id="dayText">Thursday</strong></div>
+            <div class="meta-row"><span>Date</span><strong id="dateText">27 March 2026</strong></div>
+            <div class="meta-row"><span>Time</span><strong id="timeText">6:30pm</strong></div>
+            <div class="meta-row"><span>Meeting point</span><strong id="meetingText">Harbourside — exact meeting point shared before the walk</strong></div>
+          </div>
+        </div>
+        <div class="hero-actions" style="margin-top:8px;">
+          <a class="btn btn-primary" href="#join">I’m in</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="what-it-is">
+      <h2 class="section-title">What Bubble Walk is</h2>
+      <p class="section-copy">
+        Bubble Walk is a weekly social walk. That’s it. No networking scripts, no awkward formats,
+        no performance. Just people walking together and talking.
+      </p>
+      <div class="cards-3">
+        <article class="card"><div class="number">1</div><h3>Show up</h3><p>Come as you are. On your own, with a friend, chatty or quiet — all good.</p></article>
+        <article class="card"><div class="number">2</div><h3>Walk the Harbourside</h3><p>A relaxed walk, easy pace, designed for conversation rather than exercise.</p></article>
+        <article class="card"><div class="number">3</div><h3>Let it be simple</h3><p>No agenda. Just walk, talk, connect, and see who you meet this week.</p></article>
+      </div>
+    </section>
+
+    <section class="section split" id="three-bubbles">
+      <div>
+        <h2 class="section-title">What the three bubbles mean</h2>
+        <p class="section-copy">
+          The three dots stay from the original mark, but now they carry a clearer meaning: one for movement,
+          one for conversation, one for what remains after the walk.
+        </p>
+        <div class="meaning-grid">
+          <article class="card"><div class="meaning-dot b1"></div><h3>Walk</h3><p>Get outside. Change pace. Reset your head by moving through the city instead of staying stuck in it.</p></article>
+          <article class="card"><div class="meaning-dot b2"></div><h3>Talk</h3><p>Conversation is easier side by side. Less pressure, more flow, more real contact.</p></article>
+          <article class="card"><div class="meaning-dot b3"></div><h3>Share</h3><p>Stories, thoughts, energy, perspective. The small human exchange that gives the walk weight.</p></article>
+        </div>
+      </div>
+
+      <aside class="photo-card">
+        <h3 style="margin:0 0 12px; font-size:1.2rem; letter-spacing:-0.03em; color:var(--navy);">Harbourside photo</h3>
+        <div class="photo-frame">
+          <img id="harboursideImage" src="harbourside-bristol.jpg" alt="Bristol Harbourside with colorful houses and riverboat">
+        </div>
+        <p class="photo-note">
+          A real Bristol Harbourside photo makes the page feel local immediately.
+        </p>
+      </aside>
+    </section>
+
+    <section class="section split">
+      <div class="card" style="padding:22px;">
+        <h2 class="section-title" style="font-size:3.1rem; margin-bottom:14px;">Why people come</h2>
+        <div style="display:grid; gap:14px;">
+          <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>To meet people without the usual pressure</h3><p>Walking side by side makes conversation easier than sitting across a table.</p></div>
+          <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>To get outside for an hour</h3><p>A small weekly reset can do more than another night on the sofa.</p></div>
+          <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>To create something local and real</h3><p>Not another group chat. Not another plan that never happens. A real recurring thing.</p></div>
+        </div>
+      </div>
+
+      <div class="blue-card" id="join">
+        <div class="eyebrow-soft">Join the next one</div>
+        <h3>This week’s Bubble Walk is waiting.</h3>
+        <p>
+          For now, the easiest way to join is by email. You can use the button below or the short form.
+        </p>
+        <a class="email-pill" id="emailPill" href="#">Email hello@bubblewalk.org</a>
+        <div class="small-note">
+          Replace the email address in the code when your real inbox is ready.
+        </div>
+        <form id="joinForm">
+          <input class="input" id="name" type="text" placeholder="Your name" />
+          <input class="input" id="email" type="email" placeholder="Your email" />
+          <textarea class="textarea" id="message" placeholder="Optional message"></textarea>
+          <button class="btn btn-primary" type="submit" style="margin-top:4px;">Send email</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <h2 class="section-title">FAQ</h2>
+      <p class="section-copy">
+        Keep this simple. The goal is to remove hesitation, not overload people with detail.
+      </p>
+      <div class="faq-grid">
+        <article class="card"><h3>Do I need to know anyone?</h3><p>No. You can come on your own. That’s normal.</p></article>
+        <article class="card"><h3>Is it free?</h3><p>Yes. Just show up and join the walk.</p></article>
+        <article class="card"><h3>How long is it?</h3><p>Aim for around 60 to 90 minutes, depending on the route and the group.</p></article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div><strong>Bubble Walk</strong> — a weekly social walk in Bristol.</div>
+      <div id="footerEmail">hello@bubblewalk.org</div>
+    </footer>
+  </div>
+
+  <script>
+    const SITE = {
+      city: "Bristol",
+      day: "Thursday",
+      date: "27 March 2026",
+      time: "6:30pm",
+      meetingPoint: "Harbourside — exact meeting point shared before the walk",
+      mapsQuery: "Bristol Harbourside",
+      email: "hello@bubblewalk.org"
+    };
+
+    const mapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(SITE.mapsQuery);
+    const weeklyLine = `This week’s Bubble Walk — ${SITE.city}, ${SITE.day} at ${SITE.time}`;
+
+    document.getElementById("weeklyHeadline").textContent = weeklyLine;
+    document.getElementById("dayText").textContent = SITE.day;
+    document.getElementById("dateText").textContent = SITE.date;
+    document.getElementById("timeText").textContent = SITE.time;
+    document.getElementById("meetingText").textContent = SITE.meetingPoint;
+    document.getElementById("mapsBtnHero").href = mapsUrl;
+    document.getElementById("emailPill").href = `mailto:${SITE.email}?subject=${encodeURIComponent("Bubble Walk signup")}`;
+    document.getElementById("emailPill").textContent = `Email ${SITE.email}`;
+    document.getElementById("footerEmail").textContent = SITE.email;
+
+    document.getElementById("joinForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const subject = "Bubble Walk signup";
+      const body = [
+        "Hi Bubble Walk,",
+        "",
+        "I'd like to join this week's Bubble Walk.",
+        name ? `Name: ${name}` : "",
+        email ? `Email: ${email}` : "",
+        message ? `Message: ${message}` : "",
+        "",
+        "Thanks"
+      ].filter(Boolean).join("\n");
+
+      window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</body>
+</html>
