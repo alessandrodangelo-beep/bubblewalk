@@ -92,15 +92,19 @@
       max-width:13ch;color:var(--navy);
     }
     .week-copy{color:var(--muted);font-size:1rem;line-height:1.55;margin:0 0 22px}
-    .meta{display:grid;gap:0;margin-bottom:22px}
+    .meta{display:grid;gap:0;margin-bottom:10px}
     .meta-row{
-      display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:start;padding:14px 0;
+      display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:start;padding:10px 0;
       border-top:1px solid var(--line);color:var(--muted);font-size:1rem;
     }
     .meta-row:first-child{border-top:none}
     .meta-row strong{
       color:var(--detail);justify-self:end;text-align:right;line-height:1.35;font-size:1.04rem;font-weight:700;
     }
+    .meeting-link{display:inline-flex;align-items:center;gap:8px;color:var(--navy);font-weight:600}
+    .pin-icon{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;background:#fff;border:1px solid rgba(39,69,122,0.14);font-size:0.95rem;line-height:1;text-decoration:none}
+    .meta-row:last-child strong{display:inline-flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+
     .section{margin-top:46px}
     .section-title{
       margin:0 0 6px;font-size:clamp(2.2rem, 5vw, 3.5rem);line-height:0.95;letter-spacing:-0.06em;color:var(--navy);
@@ -146,6 +150,11 @@
     }
     .textarea{min-height:120px;resize:vertical}
     .faq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .route-why-section{grid-template-columns:1.06fr 0.94fr}
+    .route-card{
+      width:min(100%, 560px);background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
+      padding:22px;box-shadow:var(--shadow);
+    }
     .footer{
       display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:46px;padding-top:24px;border-top:1px solid rgba(39,69,122,0.10);color:var(--muted);font-size:0.98rem;
     }
@@ -193,9 +202,8 @@
         <div class="eyebrow">Weekly walk • Bristol Harbourside</div>
         <h1>Walk, talk, and get out of your own head.</h1>
         <p class="lead">
-          A simple weekly walk around Bristol Harbourside. No agenda. No pressure.
-          Just a chance to show up, move a bit, and meet good people.
-        </p>
+  A simple weekly walk around Bristol Harbourside. No agenda, no pressure — just a chance to step outside and reset. We follow the water along quiet pedestrian paths, away from traffic and screens. An hour to slow down, breathe, and clear your head.
+</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#join">Join this week’s walk</a>
           <a class="btn btn-secondary" id="mapsBtnHero" href="#" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
@@ -204,18 +212,18 @@
 
       <aside class="week-card" id="next-walk">
         <div>
-          <p class="week-label">This week’s Bubble Walk</p>
-          <h2 class="week-title" id="weeklyHeadline">This week’s Bubble Walk — Bristol, Thursday at 6pm</h2>
+          <p class="week-label">Bubble Walk this week</p>
+          <h2 class="week-title" id="weeklyHeadline">Bubble Walk this week — Bristol, Thursday at 6pm</h2>
           <p class="week-copy">The recurring phrase matters. Keep this block updated every week.</p>
           <div class="meta">
             <div class="meta-row"><span>Day</span><strong id="dayText">Thursday</strong></div>
             <div class="meta-row"><span>Date</span><strong id="dateText">9 April 2026</strong></div>
-            <div class="meta-row"><span>Time</span><strong id="timeText">6pm</strong></div>
-            <div class="meta-row"><span>Duration</span><strong id="durationText">1h</strong></div>
-            <div class="meta-row"><span>Meeting point</span><strong id="meetingText">Harbourside — exact meeting point shared before the walk</strong></div>
+            <div class="meta-row"><span>Start</span><strong id="timeText">6pm</strong></div>
+            <div class="meta-row"><span>Duration</span><strong id="durationText">about 1h</strong></div>
+            <div class="meta-row"><span>Meeting point</span><strong><a href="https://maps.app.goo.gl/Z5AighzAsEyhkKB48" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--detail);"><span id="meetingText">Cascade Steps - Anchor Rd, Bristol BS1 4XJ</span><span class="pin-icon" id="meetingMapLink" aria-label="Open meeting point in Google Maps" style="width:32px;height:32px;"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" fill="var(--navy-2)"></path><circle cx="12" cy="10" r="2.8" fill="white"></circle></svg></span></a></strong></div>
           </div>
         </div>
-        <div class="hero-actions" style="margin-top:8px;">
+        <div class="hero-actions" style="margin-top:4px;">
           <a class="btn btn-primary" href="#join">I’m in</a>
         </div>
       </aside>
@@ -257,7 +265,23 @@
       </aside>
     </section>
 
-    <section class="section split">
+    <section class="section split route-why-section">
+      <div class="route-card">
+        <h2 class="section-title" style="font-size:3rem; margin-bottom:10px;">The Route</h2>
+        <p class="section-copy" style="margin-bottom:16px; max-width:60ch;">
+          A simple loop around Bristol Harbourside — roughly 1 hour at an easy pace.
+        </p>
+        <div class="photo-frame" style="aspect-ratio:16 / 9;">
+          <img src="route-map.png" alt="Bubble Walk route around Bristol Harbourside">
+        </div>
+        <p class="photo-note">A relaxed circular walk around the harbourside.</p>
+        <div class="hero-actions" style="margin-top:14px;">
+          <a class="btn btn-secondary" href="https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&amp;g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
+            View full route on Google Maps
+          </a>
+        </div>
+      </div>
+
       <div class="card" style="padding:22px;">
         <h2 class="section-title" style="font-size:3.1rem; margin-bottom:14px;">Why people come</h2>
         <div style="display:grid; gap:14px;">
@@ -265,6 +289,23 @@
           <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>To get outside for an hour</h3><p>A small weekly reset can do more than another night on the sofa.</p></div>
           <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>To create something local and real</h3><p>Not another group chat. Not another plan that never happens. A real recurring thing.</p></div>
         </div>
+      </div>
+
+
+
+      <div class="card" style="padding:22px; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <h2 class="section-title" style="font-size:3.1rem; margin-bottom:14px;">How it works</h2>
+          <p class="section-copy" style="margin-bottom:16px; max-width:62ch;">
+            We meet, we walk, we talk, and we socialise. Sometimes that is the whole thing. Sometimes, if people feel like it, we stay for a pub beer at the end.
+          </p>
+          <div style="display:grid; gap:14px;">
+            <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>Just show up</h3><p>No fee, no membership, no formal sign-up to be part of it. Come as you are.</p></div>
+            <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>Walk and unwind</h3><p>The pace is easy, the conversation is natural, and there is no pressure to perform or be anything other than yourself.</p></div>
+            <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>Stay in the bubble a little longer</h3><p>At the end, whoever wants can stop for a pint and keep the evening going. If not, that is completely fine too.</p></div>
+          </div>
+        </div>
+        <p class="small-note" style="margin:18px 0 0;">Step into the bubble — walk, talk, and relax with us.</p>
       </div>
 
       <div class="blue-card" id="join">
@@ -306,13 +347,14 @@
       day: "Thursday",
       date: "9 April 2026",
       time: "6pm",
-      duration: "1h",
-      meetingPoint: "Harbourside — exact meeting point shared before the walk",
+      duration: "about 1h",
+      meetingPoint: "Cascade Steps - Anchor Rd, Bristol BS1 4XJ",
+      meetingMapsUrl: "https://maps.app.goo.gl/Z5AighzAsEyhkKB48",
       mapsQuery: "Bristol Harbourside"
     };
 
     const mapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(SITE.mapsQuery);
-    const weeklyLine = `This week’s Bubble Walk — ${SITE.city}, ${SITE.day} at ${SITE.time}`;
+    const weeklyLine = `Bubble Walk this week — ${SITE.city}, ${SITE.day} at ${SITE.time}`;
 
     document.getElementById("weeklyHeadline").textContent = weeklyLine;
     document.getElementById("dayText").textContent = SITE.day;
@@ -320,7 +362,8 @@
     document.getElementById("timeText").textContent = SITE.time;
     document.getElementById("durationText").textContent = SITE.duration;
     document.getElementById("meetingText").textContent = SITE.meetingPoint;
-    document.getElementById("mapsBtnHero").href = mapsUrl;
+    document.getElementById("meetingMapLink").href = SITE.meetingMapsUrl;
+    document.getElementById("mapsBtnHero").href = "https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D";
   </script>
 </body>
 </html>
