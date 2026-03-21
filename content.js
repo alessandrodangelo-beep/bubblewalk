@@ -41,19 +41,19 @@ window.BUBBLEWALK_CONTENT = {
       {
         src: "photos/Image8.jpeg",
         alt: "Bubble Walk moment",
-        title: "Before or after the walk",
+        title: "After the walk",
         text: " ",
         tall: false
       },
       {
-        src: "photos/Image9.jpeg",
+        src: "photos/Image5.jpeg",
         alt: "Bubble Walk route detail",
         title: "On the route",
         text: " ",
         tall: false
       },
       {
-        src: "photos/Image5.jpeg",
+        src: "photos/Image9.jpeg",
         alt: "Bubble Walk harbourside evening",
         title: "End of the evening",
         text: " ",
