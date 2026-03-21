@@ -195,6 +195,7 @@
         <a href="#what-it-is">What it is</a>
         <a href="#three-bubbles">Three bubbles</a>
         <a href="#faq">FAQ</a>
+        <a href="photos.html">Photos</a>
         <a class="join-pill" href="#join">Join</a>
       </div>
     </nav>
@@ -340,28 +341,24 @@
 
     <footer class="footer">
       <div><strong>Bubble Walk</strong> — a weekly social walk in Bristol.</div>
-      <div id="footerWeeklyText">This week: Thursday, 9 April at 6pm</div>
+      <div>This week: Thursday, 9 April at 6pm</div>
     </footer>
   </div>
 
-  <script src="content.js"></script>
   <script>
-    const content = window.BUBBLEWALK_CONTENT || {};
-    const SITE = content.nextWalk || {
+    const SITE = {
       city: "Bristol",
-      headline: "Bubble Walk this week — Bristol, Thursday at 6pm",
       day: "Thursday",
       date: "9 April 2026",
       time: "6pm",
       duration: "about 1h",
       meetingPoint: "Cascade Steps - Anchor Rd, Bristol BS1 4XJ",
       meetingMapsUrl: "https://maps.app.goo.gl/Z5AighzAsEyhkKB48",
-      routeMapsUrl: "https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D",
-      footerText: "This week: Thursday, 9 April at 6pm"
+      mapsQuery: "Bristol Harbourside"
     };
 
-    const weeklyLine = SITE.headline || `Bubble Walk this week — ${SITE.city}, ${SITE.day} at ${SITE.time}`;
-
+    const mapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(SITE.mapsQuery);
+    const weeklyLine = `Bubble Walk this week — ${SITE.city}, ${SITE.day} at ${SITE.time}`;
 
     document.getElementById("weeklyHeadline").textContent = weeklyLine;
     document.getElementById("dayText").textContent = SITE.day;
@@ -370,9 +367,7 @@
     document.getElementById("durationText").textContent = SITE.duration;
     document.getElementById("meetingText").textContent = SITE.meetingPoint;
     document.getElementById("meetingMapLink").href = SITE.meetingMapsUrl;
-    document.getElementById("mapsBtnHero").href = SITE.routeMapsUrl || "#";
-    const footerWeeklyText = document.getElementById("footerWeeklyText");
-    if (footerWeeklyText) footerWeeklyText.textContent = SITE.footerText || "";
+    document.getElementById("mapsBtnHero").href = "https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D";
 
   
     const joinForm = document.getElementById("joinForm");

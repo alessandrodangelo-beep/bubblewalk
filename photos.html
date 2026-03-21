@@ -176,7 +176,6 @@
         <a href="index.html">Home</a>
         <a href="index.html#what-it-is">What it is</a>
         <a href="index.html#faq">FAQ</a>
-        <a href="photos.html">Photos</a>
         <a class="join-pill" href="index.html#join">Join</a>
       </div>
     </nav>
@@ -194,8 +193,9 @@
       <article class="card">
         <h2 class="section-title">A page that stays simple</h2>
         <p class="section-copy">
-          This page is there to make Bubble Walk feel real. A few good photos help people picture the walk before they come,
-          without turning the site into a noisy gallery or social feed.
+          A few moments from past walks.
+          Nothing staged, just people showing up, walking, and talking.
+          If you're curious about Bubble Walk, this is what it feels like.
         </p>
         <div class="btn-row">
           <a class="btn btn-primary" href="index.html#join">Join the next walk</a>
@@ -231,16 +231,21 @@
     </footer>
   </div>
 
-  <script src="content.js"></script>
   <script>
-    const content = window.BUBBLEWALK_CONTENT || {};
-    const photosPage = content.photosPage || {};
-    const FEATURED = photosPage.featured || {
+    // Replace these image paths with real files when ready.
+    // Example structure:
+    // photos/
+    //   bubblewalk-feature.jpg
+    //   bubblewalk-01.jpg
+    //   bubblewalk-02.jpg
+    //   ...
+
+    const FEATURED = {
       src: 'photos/bubblewalk-feature.jpg',
       alt: 'Bubble Walk featured photo'
     };
 
-    const GALLERY = photosPage.gallery || [
+    const GALLERY = [
       {
         src: 'photos/bubblewalk-01.jpg',
         alt: 'Bubble Walk along Bristol Harbourside',
