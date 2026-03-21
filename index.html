@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bubble Walk — Bristol</title>
   <meta name="description" content="A weekly social walk in Bristol Harbourside. Walk, talk, share." />
+  <link rel="icon" type="image/png" href="favicon.png" />
   <style>
     :root{
       --bg:#eef3f8;
@@ -138,9 +139,6 @@
       margin:0 0 14px;font-size:clamp(2rem, 4vw, 3.4rem);line-height:0.96;letter-spacing:-0.06em;max-width:10ch;color:var(--navy);
     }
     .blue-card p{color:var(--muted);line-height:1.6;margin:0 0 20px;font-size:1rem}
-    .email-pill{
-      display:inline-flex;align-items:center;justify-content:center;padding:16px 20px;border-radius:999px;background:var(--navy);color:#fff;font-weight:700;margin-bottom:14px;
-    }
     .small-note{color:var(--muted);font-size:0.92rem;line-height:1.5}
     form{display:grid;gap:12px;margin-top:16px}
     .input, .textarea{
@@ -207,12 +205,13 @@
       <aside class="week-card" id="next-walk">
         <div>
           <p class="week-label">This week’s Bubble Walk</p>
-          <h2 class="week-title" id="weeklyHeadline">This week’s Bubble Walk — Bristol, Thursday at 6:30pm</h2>
+          <h2 class="week-title" id="weeklyHeadline">This week’s Bubble Walk — Bristol, Thursday at 6pm</h2>
           <p class="week-copy">The recurring phrase matters. Keep this block updated every week.</p>
           <div class="meta">
             <div class="meta-row"><span>Day</span><strong id="dayText">Thursday</strong></div>
-            <div class="meta-row"><span>Date</span><strong id="dateText">27 March 2026</strong></div>
-            <div class="meta-row"><span>Time</span><strong id="timeText">6:30pm</strong></div>
+            <div class="meta-row"><span>Date</span><strong id="dateText">9 April 2026</strong></div>
+            <div class="meta-row"><span>Time</span><strong id="timeText">6pm</strong></div>
+            <div class="meta-row"><span>Duration</span><strong id="durationText">1h</strong></div>
             <div class="meta-row"><span>Meeting point</span><strong id="meetingText">Harbourside — exact meeting point shared before the walk</strong></div>
           </div>
         </div>
@@ -254,9 +253,7 @@
         <div class="photo-frame">
           <img id="harboursideImage" src="harbourside-bristol.jpg" alt="Bristol Harbourside with colorful houses and riverboat">
         </div>
-        <p class="photo-note">
-          A real Bristol Harbourside photo makes the page feel local immediately.
-        </p>
+        <p class="photo-note">Bristol Harbourside</p>
       </aside>
     </section>
 
@@ -273,19 +270,15 @@
       <div class="blue-card" id="join">
         <div class="eyebrow-soft">Join the next one</div>
         <h3>This week’s Bubble Walk is waiting.</h3>
-        <p>
-          For now, the easiest way to join is by email. You can use the button below or the short form.
-        </p>
-        <a class="email-pill" id="emailPill" href="#">Email hello@bubblewalk.org</a>
-        <div class="small-note">
-          Replace the email address in the code when your real inbox is ready.
-        </div>
-        <form id="joinForm">
-          <input class="input" id="name" type="text" placeholder="Your name" />
-          <input class="input" id="email" type="email" placeholder="Your email" />
-          <textarea class="textarea" id="message" placeholder="Optional message"></textarea>
-          <button class="btn btn-primary" type="submit" style="margin-top:4px;">Send email</button>
+        <p>Do you want to join? Fill the form.</p>
+        <form id="joinForm" action="https://formspree.io/f/mzdjwobq" method="POST">
+          <input class="input" id="name" name="name" type="text" placeholder="Your name" />
+          <input class="input" id="email" name="email" type="email" placeholder="Your email" />
+          <textarea class="textarea" id="message" name="message" placeholder="Optional message"></textarea>
+          <input type="hidden" name="_subject" value="Bubble Walk signup" />
+          <button class="btn btn-primary" type="submit" style="margin-top:4px;">Send</button>
         </form>
+        <div class="small-note">We’ll email you back with the details.</div>
       </div>
     </section>
 
@@ -303,7 +296,7 @@
 
     <footer class="footer">
       <div><strong>Bubble Walk</strong> — a weekly social walk in Bristol.</div>
-      <div id="footerEmail">hello@bubblewalk.org</div>
+      <div>This week: Thursday, 9 April at 6pm</div>
     </footer>
   </div>
 
@@ -311,11 +304,11 @@
     const SITE = {
       city: "Bristol",
       day: "Thursday",
-      date: "27 March 2026",
-      time: "6:30pm",
+      date: "9 April 2026",
+      time: "6pm",
+      duration: "1h",
       meetingPoint: "Harbourside — exact meeting point shared before the walk",
-      mapsQuery: "Bristol Harbourside",
-      email: "hello@bubblewalk.org"
+      mapsQuery: "Bristol Harbourside"
     };
 
     const mapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(SITE.mapsQuery);
@@ -325,32 +318,9 @@
     document.getElementById("dayText").textContent = SITE.day;
     document.getElementById("dateText").textContent = SITE.date;
     document.getElementById("timeText").textContent = SITE.time;
+    document.getElementById("durationText").textContent = SITE.duration;
     document.getElementById("meetingText").textContent = SITE.meetingPoint;
     document.getElementById("mapsBtnHero").href = mapsUrl;
-    document.getElementById("emailPill").href = `mailto:${SITE.email}?subject=${encodeURIComponent("Bubble Walk signup")}`;
-    document.getElementById("emailPill").textContent = `Email ${SITE.email}`;
-    document.getElementById("footerEmail").textContent = SITE.email;
-
-    document.getElementById("joinForm").addEventListener("submit", function(e){
-      e.preventDefault();
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const message = document.getElementById("message").value.trim();
-
-      const subject = "Bubble Walk signup";
-      const body = [
-        "Hi Bubble Walk,",
-        "",
-        "I'd like to join this week's Bubble Walk.",
-        name ? `Name: ${name}` : "",
-        email ? `Email: ${email}` : "",
-        message ? `Message: ${message}` : "",
-        "",
-        "Thanks"
-      ].filter(Boolean).join("\n");
-
-      window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    });
   </script>
 </body>
 </html>
