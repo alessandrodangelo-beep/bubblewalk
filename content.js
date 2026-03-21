@@ -18,7 +18,7 @@ window.BUBBLEWALK_CONTENT = {
     },
     gallery: [
       {
-        src: "photos/bubblewalk-01.jpg",
+        src: "photos/Image1.jpeg",
         alt: "Bubble Walk along Bristol Harbourside",
         title: "Along the water",
         text: "A clean harbourside moment that gives a sense of the route.",
