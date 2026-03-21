@@ -13,7 +13,7 @@ window.BUBBLEWALK_CONTENT = {
   },
   photosPage: {
     featured: {
-      src: "photos/bubblewalk-feature.jpg",
+      src: "photos/Image6.jpeg",
       alt: "Bubble Walk featured photo"
     },
     gallery: [
@@ -25,35 +25,35 @@ window.BUBBLEWALK_CONTENT = {
         tall: false
       },
       {
-        src: "photos/bubblewalk-02.jpg",
+        src: "photos/Image3.jpeg",
         alt: "Bubble Walk people walking together",
         title: "Walking side by side",
         text: "Simple photos of people walking work better than staged group shots.",
         tall: true
       },
       {
-        src: "photos/bubblewalk-03.jpg",
+        src: "photos/Image4.jpeg",
         alt: "Bubble Walk Bristol view",
         title: "Bristol light",
         text: "A place shot that anchors the walk in the city.",
         tall: false
       },
       {
-        src: "photos/bubblewalk-04.jpg",
+        src: "photos/Image8.jpeg",
         alt: "Bubble Walk group moment",
         title: "Before or after the walk",
         text: "A natural social moment if you have one. Nothing too posed.",
         tall: false
       },
       {
-        src: "photos/bubblewalk-05.jpg",
+        src: "photos/Image9.jpeg",
         alt: "Bubble Walk route detail",
         title: "On the route",
         text: "Use details that make the walk feel calm, open, and real.",
         tall: false
       },
       {
-        src: "photos/bubblewalk-06.jpg",
+        src: "photos/Image5.jpeg",
         alt: "Bubble Walk harbourside evening",
         title: "End of the evening",
         text: "A closing image works well here: water, light, and a relaxed finish.",
