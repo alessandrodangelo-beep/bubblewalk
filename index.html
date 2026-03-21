@@ -367,6 +367,7 @@
     document.getElementById("meetingText").textContent = SITE.meetingPoint;
     document.getElementById("meetingMapLink").href = SITE.meetingMapsUrl;
     document.getElementById("mapsBtnHero").href = "https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D";
+
   
     const joinForm = document.getElementById("joinForm");
     const formStatus = document.getElementById("formStatus");
@@ -382,20 +383,35 @@
         joinSubmitBtn.textContent = "Sending...";
 
         try {
+          const formData = new FormData(joinForm);
+
           const response = await fetch(joinForm.action, {
             method: "POST",
-            body: new FormData(joinForm),
+            body: formData,
             headers: {
               "Accept": "application/json"
             }
           });
 
-          if (response.ok) {
+          let ok = response.ok;
+          let data = null;
+
+          try {
+            data = await response.json();
+          } catch (e) {
+            data = null;
+          }
+
+          if (ok) {
             joinForm.reset();
+            joinForm.style.display = "none";
             formStatus.textContent = "Thanks for confirming — see you at Bubble Walk.";
             formStatus.classList.add("is-visible");
           } else {
-            formStatus.textContent = "Something went wrong. Please try again.";
+            const message = data && data.errors && data.errors.length
+              ? data.errors.map(err => err.message).join(" ")
+              : "Something went wrong. Please try again.";
+            formStatus.textContent = message;
             formStatus.classList.add("is-visible");
           }
         } catch (error) {
