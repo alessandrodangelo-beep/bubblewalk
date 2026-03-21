@@ -191,7 +191,7 @@
 
     <section class="section feature-grid">
       <article class="card">
-        <h2 class="section-title">A page that stays simple</h2>
+        <h2 class="section-title">A few moments from the walk</h2>
         <p class="section-copy">
           A few moments from past walks.
           Nothing staged, just people showing up, walking, and talking.
@@ -231,21 +231,14 @@
     </footer>
   </div>
 
-  <script>
-    // Replace these image paths with real files when ready.
-    // Example structure:
-    // photos/
-    //   bubblewalk-feature.jpg
-    //   bubblewalk-01.jpg
-    //   bubblewalk-02.jpg
-    //   ...
 
-    const FEATURED = {
+  <script>
+    const DEFAULT_FEATURED = {
       src: 'photos/bubblewalk-feature.jpg',
       alt: 'Bubble Walk featured photo'
     };
 
-    const GALLERY = [
+    const DEFAULT_GALLERY = [
       {
         src: 'photos/bubblewalk-01.jpg',
         alt: 'Bubble Walk along Bristol Harbourside',
@@ -290,13 +283,81 @@
       }
     ];
 
-    function addFeaturedImage() {
+    function loadSharedContentScript() {
+      return new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = 'content.js';
+        script.onload = resolve;
+        script.onerror = resolve;
+        document.head.appendChild(script);
+      });
+    }
+
+    function normalizeFeatured(featured) {
+      if (!featured) return DEFAULT_FEATURED;
+      if (typeof featured === 'string') {
+        return {
+          src: featured,
+          alt: DEFAULT_FEATURED.alt
+        };
+      }
+      return {
+        src: featured.src || featured.image || DEFAULT_FEATURED.src,
+        alt: featured.alt || featured.title || DEFAULT_FEATURED.alt
+      };
+    }
+
+    function normalizeGalleryItem(item, index) {
+      if (typeof item === 'string') {
+        return {
+          src: item,
+          alt: 'Bubble Walk photo ' + (index + 1),
+          title: 'Bubble Walk',
+          text: '',
+          tall: false
+        };
+      }
+
+      const title = item.title || item.caption || item.label || 'Bubble Walk';
+      return {
+        src: item.src || item.image || '',
+        alt: item.alt || title,
+        title: title,
+        text: item.text || item.caption || '',
+        tall: Boolean(item.tall || item.layout === 'tall')
+      };
+    }
+
+    function getPhotosContent() {
+      const root = window.BUBBLEWALK_CONTENT || window.bubbleWalkContent || null;
+      const photos = root ? (root.photosPage || root.photos || root.photos_page || null) : null;
+
+      if (!photos) {
+        return {
+          featured: DEFAULT_FEATURED,
+          gallery: DEFAULT_GALLERY
+        };
+      }
+
+      const featured = normalizeFeatured(
+        photos.featured || photos.featuredImage || photos.hero || null
+      );
+
+      const rawGallery = Array.isArray(photos.gallery) ? photos.gallery : [];
+      const gallery = rawGallery.length
+        ? rawGallery.map(normalizeGalleryItem).filter(item => item.src)
+        : DEFAULT_GALLERY;
+
+      return { featured, gallery };
+    }
+
+    function addFeaturedImage(featured) {
       const frame = document.getElementById('featuredFrame');
-      if (!frame) return;
+      if (!frame || !featured || !featured.src) return;
 
       const img = new Image();
-      img.src = FEATURED.src;
-      img.alt = FEATURED.alt;
+      img.src = featured.src;
+      img.alt = featured.alt || DEFAULT_FEATURED.alt;
 
       img.onload = () => {
         frame.innerHTML = '';
@@ -304,11 +365,13 @@
       };
     }
 
-    function buildGallery() {
+    function buildGallery(gallery) {
       const grid = document.getElementById('galleryGrid');
       if (!grid) return;
 
-      GALLERY.forEach((item) => {
+      grid.innerHTML = '';
+
+      gallery.forEach((item) => {
         const card = document.createElement('article');
         card.className = 'photo-card';
 
@@ -317,11 +380,11 @@
 
         const img = new Image();
         img.src = item.src;
-        img.alt = item.alt;
+        img.alt = item.alt || item.title || 'Bubble Walk photo';
 
         const placeholder = document.createElement('div');
         placeholder.className = 'photo-placeholder';
-        placeholder.innerHTML = `<span>${item.title}</span>`;
+        placeholder.innerHTML = `<span>${item.title || 'Bubble Walk'}</span>`;
 
         img.onload = () => {
           media.innerHTML = '';
@@ -332,7 +395,7 @@
 
         const copy = document.createElement('div');
         copy.className = 'photo-copy';
-        copy.innerHTML = `<h3>${item.title}</h3><p>${item.text}</p>`;
+        copy.innerHTML = `<h3>${item.title || 'Bubble Walk'}</h3><p>${item.text || ''}</p>`;
 
         card.appendChild(media);
         card.appendChild(copy);
@@ -340,8 +403,14 @@
       });
     }
 
-    addFeaturedImage();
-    buildGallery();
+    async function initPhotosPage() {
+      await loadSharedContentScript();
+      const { featured, gallery } = getPhotosContent();
+      addFeaturedImage(featured);
+      buildGallery(gallery);
+    }
+
+    initPhotosPage();
   </script>
 </body>
 </html>
