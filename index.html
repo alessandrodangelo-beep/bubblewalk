@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="google-site-verification" content="dRveOBN6aIX3cf8pZLRPriNjC14KMn02QrIuhLvTKuA" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bubble Walk — Bristol</title>
-  <meta name="description" content="A weekly social walk in Bristol Harbourside. Walk, talk, share." />
+  <title>Bubble Walk — Weekly Social Walk in Bristol Harbourside</title>
+  <meta name="description" content="Bubble Walk is a weekly social walk in Bristol Harbourside. Free to join. No pressure. Just walk, talk, and meet people. See this week’s walk and join here." />
   <link rel="icon" type="image/png" href="favicon.png" />
   <style>
     :root{
@@ -153,11 +152,14 @@
     }
     .textarea{min-height:120px;resize:vertical}
     .faq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .route-why-section{grid-template-columns:1.06fr 0.94fr}
     .route-card{
-      width:min(100%, 560px);background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
+      width:100%;background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
       padding:22px;box-shadow:var(--shadow);
     }
+    .split > .card,
+    .split > .blue-card,
+    .split > .photo-card,
+    .split > .route-card{height:100%}
     .footer{
       display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:46px;padding-top:24px;border-top:1px solid rgba(39,69,122,0.10);color:var(--muted);font-size:0.98rem;
     }
@@ -194,7 +196,6 @@
       </div>
       <div class="nav-links">
         <a href="#what-it-is">What it is</a>
-        <a href="#three-bubbles">Three bubbles</a>
         <a href="#faq">FAQ</a>
         <a href="photos.html">Photos</a>
         <a class="join-pill" href="#join">Join</a>
@@ -203,10 +204,10 @@
 
     <section class="hero-shell">
       <div>
-        <div class="eyebrow">Weekly walk • Bristol Harbourside</div>
-        <h1>Walk, talk, and get out of your own head.</h1>
+        <div class="eyebrow">Weekly social walk • Bristol Harbourside</div>
+        <h1>A weekly social walk in Bristol Harbourside.</h1>
         <p class="lead">
-  A simple weekly walk around Bristol Harbourside. No agenda, no pressure — just a chance to step outside and just be out for a bit. We follow the water along quiet pedestrian paths, away from traffic and screens. An hour to walk, talk, and just be outside for a bit.
+  Bubble Walk is a simple weekly social walk in Bristol. Free to join. No pressure. Just walk, talk, and meet people on an easy Harbourside loop. An hour outside, away from traffic and screens.
 </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#join">Join this week’s walk</a>
@@ -218,7 +219,7 @@
         <div>
           <p class="week-label">Bubble Walk this week</p>
           <h2 class="week-title" id="weeklyHeadline">Bubble Walk this week — Bristol, Thursday at 6pm</h2>
-          <p class="week-copy">Take a bit of time — walk, talk, and share a simple hour with others.</p>
+          <p class="week-copy">Free to join. About 1 hour. A simple Bristol Harbourside walk with time to talk.</p>
           <div class="meta">
             <div class="meta-row"><span>Day</span><strong id="dayText">Thursday</strong></div>
             <div class="meta-row"><span>Date</span><strong id="dateText">9 April 2026</strong></div>
@@ -236,86 +237,65 @@
     <section class="section" id="what-it-is">
       <h2 class="section-title">What Bubble Walk is</h2>
       <p class="section-copy">
-        Bubble Walk is a weekly social walk. That’s it. No networking scripts, no awkward formats,
-        no performance. Just people walking together and having normal conversations.
+        Bubble Walk is a weekly social walk in Bristol Harbourside. It is free to join, easy to come to on your own, and built around simple conversation while walking. No awkward format. No pressure. Just people walking and talking together.
       </p>
       <div class="cards-3">
-        <article class="card"><div class="number">1</div><h3>Show up</h3><p>Come as you are. On your own, with a friend, chatty or quiet — all good.</p></article>
-        <article class="card"><div class="number">2</div><h3>Walk the Harbourside</h3><p>A relaxed walk, easy pace, designed for conversation rather than exercise.</p></article>
-        <article class="card"><div class="number">3</div><h3>Let it be simple</h3><p>No agenda. Just walk, talk, connect, and see who you meet this week.</p></article>
+        <article class="card"><div class="number">1</div><h3>Come on your own</h3><p>You can come on your own or with a friend. Both are normal.</p></article>
+        <article class="card"><div class="number">2</div><h3>Walk Bristol Harbourside</h3><p>An easy walk around Bristol Harbourside, designed for talking more than exercise.</p></article>
+        <article class="card"><div class="number">3</div><h3>Walk and talk</h3><p>No awkward structure. Just normal conversation, at an easy pace, for about an hour.</p></article>
+      </div>
+      <div class="card" style="margin-top:18px;">
+        <h3>Walk. Talk. Share.</h3>
+        <p>A simple rhythm: walk through Bristol Harbourside, talk side by side, and share a bit of time with other people.</p>
       </div>
     </section>
 
     <section class="section split" id="three-bubbles">
-      <div>
-        <h2 class="section-title">What the three bubbles mean</h2>
-        <p class="section-copy">
-          Bubble Walk is built around three simple things: getting outside, talking more easily side by side,
-          and sharing something real with other people along the way.
-        </p>
-        <div class="meaning-grid">
-          <article class="card"><div class="meaning-dot b1"></div><h3>Walk</h3><p>Get outside. Change pace. Reset your head by moving through the city instead of staying stuck in it.</p></article>
-          <article class="card"><div class="meaning-dot b2"></div><h3>Talk</h3><p>Conversation is easier side by side. Less pressure, more flow, more real contact.</p></article>
-          <article class="card"><div class="meaning-dot b3"></div><h3>Share</h3><p>Stories, thoughts, energy, perspective. The small human exchange that gives the walk weight.</p></article>
-        </div>
-      </div>
-
       <aside class="photo-card">
-        <h3 style="margin:0 0 12px; font-size:1.2rem; letter-spacing:-0.03em; color:var(--navy);">Harbourside photo</h3>
+        <h3 style="margin:0 0 12px; font-size:1.2rem; letter-spacing:-0.03em; color:var(--navy);">Bristol Harbourside</h3>
         <div class="photo-frame">
-          <img id="harboursideImage" src="harbourside-bristol.jpg" alt="Bristol Harbourside with colorful houses and riverboat">
+          <img id="harboursideImage" src="harbourside-bristol.jpg" alt="Bristol Harbourside during the Bubble Walk route">
         </div>
-        <p class="photo-note">Bristol Harbourside</p>
+        <p class="photo-note">The setting for Bubble Walk each week.</p>
       </aside>
-    </section>
 
-    <section class="section split route-why-section">
       <div class="route-card">
-        <h2 class="section-title" style="font-size:3rem; margin-bottom:10px;">The Route</h2>
+        <h2 class="section-title" style="font-size:3rem; margin-bottom:10px;">The Bubble Walk route</h2>
         <p class="section-copy" style="margin-bottom:16px; max-width:60ch;">
-          A simple loop around Bristol Harbourside — roughly 1 hour at an easy pace.
+          A simple walking route around Bristol Harbourside. About 1 hour at an easy pace, with space to walk and talk.
         </p>
         <div class="photo-frame" style="aspect-ratio:16 / 9;">
           <img src="route-map.png" alt="Bubble Walk route around Bristol Harbourside">
         </div>
-        <p class="photo-note">A relaxed circular walk around the harbourside.</p>
+        <p class="photo-note">A relaxed circular walk around Bristol Harbourside.</p>
         <div class="hero-actions" style="margin-top:14px;">
           <a class="btn btn-secondary" href="https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&amp;g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
-            View full route on Google Maps
+            View the Bubble Walk route on Google Maps
           </a>
         </div>
       </div>
+    </section>
 
-      <div class="card" style="padding:22px;">
-        <h2 class="section-title" style="font-size:3.1rem; margin-bottom:14px;">Why people come</h2>
-        <div style="display:grid; gap:14px;">
-          <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>To meet people in a simple, natural way</h3><p>Walking side by side makes conversation easier than sitting across a table.</p></div>
-          <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>To get outside for an hour</h3><p>A small weekly reset can do more than another night on the sofa.</p></div>
-          <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>To be part of something simple that happens every week</h3><p>Not another group chat. Not another plan that never happens. A real recurring thing.</p></div>
-        </div>
-      </div>
-
-
-
+    <section class="section split">
       <div class="card" style="padding:22px; display:flex; flex-direction:column; justify-content:space-between;">
         <div>
-          <h2 class="section-title" style="font-size:3.1rem; margin-bottom:14px;">How it works</h2>
+          <h2 class="section-title" style="font-size:3.1rem; margin-bottom:14px;">How Bubble Walk works</h2>
           <p class="section-copy" style="margin-bottom:16px; max-width:62ch;">
-            We meet, we walk, we talk, and we socialise. Sometimes that is the whole thing. Sometimes, if people feel like it, we stay for a pub beer at the end.
+            Join this week’s Bubble Walk, meet at Bristol Harbourside, walk for about an hour, and stay for a drink at the end if you feel like it.
           </p>
           <div style="display:grid; gap:14px;">
-            <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>Just show up</h3><p>No fee, no membership, no formal sign-up to be part of it. Come as you are.</p></div>
-            <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>Walk and unwind</h3><p>The pace is easy, the conversation is natural, and there is no pressure to perform or be anything other than yourself.</p></div>
-            <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>Stay in the bubble a little longer</h3><p>At the end, whoever wants can stop for a pint and keep the evening going. If not, that is completely fine too.</p></div>
+            <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>Come as you are</h3><p>Free to join. No membership. No formal sign-up to be part of it.</p></div>
+            <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>Easy pace</h3><p>This is a relaxed Bristol Harbourside walk built for conversation, not performance.</p></div>
+            <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>Stay for a drink if you want</h3><p>Some people head off after the walk. Some stay for a pint. Both are completely fine.</p></div>
           </div>
         </div>
-        <p class="small-note" style="margin:18px 0 0;">Step into the bubble — walk, talk, and relax with us.</p>
+        <p class="small-note" style="margin:18px 0 0;">A simple weekly social walk in Bristol Harbourside. Free to join.</p>
       </div>
 
       <div class="blue-card" id="join">
-        <div class="eyebrow-soft">Join the next one</div>
-        <h3>This week’s Bubble Walk is waiting.</h3>
-        <p>Want to join? Fill the form.</p>
+        <div class="eyebrow-soft">Join this week’s Bubble Walk</div>
+        <h3>Join the weekly social walk in Bristol</h3>
+        <p>Want to join? Fill the form. Free to join. We’ll email you back with the details.</p>
         <form id="joinForm" action="https://formspree.io/f/mzdjwobq" method="POST">
           <input class="input" id="name" name="name" type="text" placeholder="Your name" />
           <input class="input" id="email" name="email" type="email" placeholder="Your email" />
@@ -324,7 +304,6 @@
           <button class="btn btn-primary" id="joinSubmitBtn" type="submit" style="margin-top:4px;">Send</button>
         </form>
         <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
-        
       </div>
     </section>
 
@@ -335,13 +314,13 @@
       </p>
       <div class="faq-grid">
         <article class="card"><h3>Do I need to know anyone?</h3><p>No. You can come on your own. That’s normal.</p></article>
-        <article class="card"><h3>Is it free?</h3><p>Yes. Just show up and join the walk.</p></article>
-        <article class="card"><h3>How long is it?</h3><p>Aim for around 60 to 90 minutes, depending on the route and the group.</p></article>
+        <article class="card"><h3>Is it free?</h3><p>Yes. Bubble Walk is free to join.</p></article>
+        <article class="card"><h3>How long is it?</h3><p>About 1 hour at an easy pace.</p></article>
       </div>
     </section>
 
     <footer class="footer">
-      <div><strong>Bubble Walk</strong> — a weekly social walk in Bristol.</div>
+      <div><strong>Bubble Walk</strong> — a weekly social walk in Bristol Harbourside. Free to join.</div>
       <div>This week: Thursday, 9 April at 6pm</div>
     </footer>
   </div>
@@ -427,6 +406,5 @@
     }
 
   </script>
-  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "635c97338ec648d4872012debb7f92b8"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
