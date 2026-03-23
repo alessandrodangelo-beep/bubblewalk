@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bubble Walk — Weekly Social Walk in Bristol Harbourside</title>
-  <meta name="description" content="Bubble Walk is a weekly social walk in Bristol Harbourside. Free to join. No pressure. Just walk, talk, and meet people. See this week’s walk and join here." />
+  <title>Bubble Walk — Social Walk in Bristol Harbourside</title>
+  <meta name="description" content="Bubble Walk is a social walk in Bristol Harbourside. Free to join. No pressure. Just walk, talk, and meet people. See the next walk and join here." />
   <link rel="icon" type="image/png" href="favicon.png" />
   <style>
     :root{
@@ -204,21 +204,21 @@
 
     <section class="hero-shell">
       <div>
-        <div class="eyebrow">Weekly social walk • Bristol Harbourside</div>
-        <h1>A weekly social walk in Bristol Harbourside.</h1>
+        <div class="eyebrow">Social walk • Bristol Harbourside</div>
+        <h1>A social walk in Bristol Harbourside.</h1>
         <p class="lead">
-  Bubble Walk is a simple weekly social walk in Bristol. Free to join. No pressure. Just walk, talk, and meet people on an easy Harbourside loop. An hour outside, away from traffic and screens.
+  Bubble Walk is a simple social walk in Bristol. Free to join. No pressure. Just walk, talk, and meet people on an easy Harbourside loop. An hour outside, away from traffic and screens.
 </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#join">Join this week’s walk</a>
+          <a class="btn btn-primary" href="#join">Join the next walk</a>
           <a class="btn btn-secondary" id="mapsBtnHero" href="#" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
         </div>
       </div>
 
       <aside class="week-card" id="next-walk">
         <div>
-          <p class="week-label">Bubble Walk this week</p>
-          <h2 class="week-title" id="weeklyHeadline">Bubble Walk this week — Bristol, Thursday at 6pm</h2>
+          <p class="week-label">Next Bubble Walk</p>
+          <h2 class="week-title" id="weeklyHeadline">Bristol • Thursday 9 April • 6pm</h2>
           <p class="week-copy">Free to join. About 1 hour. A simple Bristol Harbourside walk with time to talk.</p>
           <div class="meta">
             <div class="meta-row"><span>Day</span><strong id="dayText">Thursday</strong></div>
@@ -237,7 +237,7 @@
     <section class="section" id="what-it-is">
       <h2 class="section-title">What Bubble Walk is</h2>
       <p class="section-copy">
-        Bubble Walk is a weekly social walk in Bristol Harbourside. It is free to join, easy to come to on your own, and built around simple conversation while walking. No awkward format. No pressure. Just people walking and talking together.
+        Bubble Walk is a social walk in Bristol Harbourside. It is free to join, easy to come to on your own, and built around simple conversation while walking. No awkward format. No pressure. Just people walking and talking together.
       </p>
       <div class="cards-3">
         <article class="card"><div class="number">1</div><h3>Come on your own</h3><p>You can come on your own or with a friend. Both are normal.</p></article>
@@ -256,7 +256,7 @@
         <div class="photo-frame">
           <img id="harboursideImage" src="harbourside-bristol.jpg" alt="Bristol Harbourside during the Bubble Walk route">
         </div>
-        <p class="photo-note">The setting for Bubble Walk each week.</p>
+        <p class="photo-note">The setting for Bubble Walk.</p>
       </aside>
 
       <div class="route-card">
@@ -281,7 +281,7 @@
         <div>
           <h2 class="section-title" style="font-size:3.1rem; margin-bottom:14px;">How Bubble Walk works</h2>
           <p class="section-copy" style="margin-bottom:16px; max-width:62ch;">
-            Join this week’s Bubble Walk, meet at Bristol Harbourside, walk for about an hour, and stay for a drink at the end if you feel like it.
+            Join the next Bubble Walk, meet at Bristol Harbourside, walk for about an hour, and stay for a drink at the end if you feel like it.
           </p>
           <div style="display:grid; gap:14px;">
             <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>Come as you are</h3><p>Free to join. No membership. No formal sign-up to be part of it.</p></div>
@@ -289,12 +289,12 @@
             <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>Stay for a drink if you want</h3><p>Some people head off after the walk. Some stay for a pint. Both are completely fine.</p></div>
           </div>
         </div>
-        <p class="small-note" style="margin:18px 0 0;">A simple weekly social walk in Bristol Harbourside. Free to join.</p>
+        <p class="small-note" style="margin:18px 0 0;">A simple social walk in Bristol Harbourside. Free to join.</p>
       </div>
 
       <div class="blue-card" id="join">
-        <div class="eyebrow-soft">Join this week’s Bubble Walk</div>
-        <h3>Join the weekly social walk in Bristol</h3>
+        <div class="eyebrow-soft">Join the next Bubble Walk</div>
+        <h3>Join Bubble Walk in Bristol</h3>
         <p>Want to join? Fill the form. Free to join. We’ll email you back with the details.</p>
         <form id="joinForm" action="https://formspree.io/f/mzdjwobq" method="POST">
           <input class="input" id="name" name="name" type="text" placeholder="Your name" />
@@ -320,8 +320,8 @@
     </section>
 
     <footer class="footer">
-      <div><strong>Bubble Walk</strong> — a weekly social walk in Bristol Harbourside. Free to join.</div>
-      <div>This week: Thursday, 9 April at 6pm</div>
+      <div><strong>Bubble Walk</strong> — a social walk in Bristol Harbourside. Free to join.</div>
+      <div>Next walk: Thursday, 9 April at 6pm</div>
     </footer>
   </div>
 
@@ -338,9 +338,9 @@
     };
 
     const mapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(SITE.mapsQuery);
-    const weeklyLine = `Bubble Walk this week — ${SITE.city}, ${SITE.day} at ${SITE.time}`;
+    const nextLine = `${SITE.city} • ${SITE.day} ${SITE.date} • ${SITE.time}`;
 
-    document.getElementById("weeklyHeadline").textContent = weeklyLine;
+    document.getElementById("weeklyHeadline").textContent = nextLine;
     document.getElementById("dayText").textContent = SITE.day;
     document.getElementById("dateText").textContent = SITE.date;
     document.getElementById("timeText").textContent = SITE.time;
