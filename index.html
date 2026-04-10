@@ -1,539 +1,1098 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bubble Walk — Social Walk in Bristol Harbourside</title>
-  <meta name="description" content="Bubble Walk is a social walk in Bristol Harbourside. Free to join. No pressure. Just walk, talk, and meet people. See the next walk and join here." />
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <style>
-    :root{
-      --bg:#eef3f8;
-      --card:#fbfdff;
-      --card-2:#f5f8fc;
-      --line:#d7e0ea;
-      --text:#151515;
-      --muted:#66758c;
-      --navy:#27457a;
-      --detail:#1f365f;
-      --navy-2:#87a6d4;
-      --navy-1:#dce8f6;
-      --pill:#e6eef7;
-      --radius-xl:34px;
-      --radius-lg:24px;
-      --shadow:0 12px 30px rgba(22,35,58,0.05);
-      --max:1140px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-    }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .page{max-width:var(--max);margin:0 auto;padding:28px 22px 80px}
-    .nav{
-      display:flex;justify-content:space-between;align-items:center;gap:20px;
-      padding-bottom:14px;border-bottom:1px solid rgba(39,69,122,0.10);margin-bottom:48px;
-    }
-    .brand{
-      display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.05rem;
-      letter-spacing:-0.02em;color:var(--navy);
-    }
-    .bubbles{display:flex;align-items:center;gap:4px}
-    .bubble{
-      width:14px;height:14px;border-radius:50%;
-      box-shadow:inset 0 1px 1px rgba(255,255,255,0.85);
-    }
-    .b1{background:linear-gradient(180deg, #f0f6fc 0%, var(--navy-1) 100%)}
-    .b2{background:linear-gradient(180deg, #9bb4db 0%, var(--navy-2) 100%)}
-    .b3{background:linear-gradient(180deg, #3c5f9f 0%, var(--navy) 100%)}
-    .nav-links{display:flex;align-items:center;gap:30px;color:var(--muted);font-size:0.98rem}
-    .join-pill{
-      padding:14px 24px;border:1px solid rgba(39,69,122,0.16);border-radius:999px;
-      color:var(--navy);background:#fff;font-weight:600;
-    }
-    .hero-shell{
-      background:#fff;border:1px solid rgba(39,69,122,0.05);border-radius:var(--radius-xl);
-      box-shadow:var(--shadow);padding:34px;display:grid;grid-template-columns:1.12fr 0.88fr;
-      gap:34px;margin-bottom:52px;
-    }
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:8px;background:var(--pill);color:var(--navy);
-      border-radius:999px;padding:10px 16px;font-size:0.98rem;font-weight:600;margin-bottom:20px;
-    }
-    h1{
-      margin:0 0 20px;font-size:clamp(3.1rem, 6vw, 5.4rem);line-height:0.94;
-      letter-spacing:-0.07em;max-width:8ch;color:var(--navy);
-    }
-    .lead{color:var(--muted);font-size:1.08rem;line-height:1.6;max-width:58ch;margin:0 0 24px}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:16px 26px;
-      font-weight:700;font-size:1rem;letter-spacing:-0.02em;border:none;cursor:pointer;transition:transform .15s ease;
-    }
-    .btn:hover{transform:translateY(-1px)}
-    .btn-primary{background:var(--navy);color:#fff}
-    .btn-secondary{background:#fff;color:var(--navy);border:1px solid rgba(39,69,122,0.18)}
-    .week-card{
-      border:1px solid var(--line);border-radius:28px;background:var(--card-2);padding:24px 24px 20px;
-      display:flex;flex-direction:column;justify-content:space-between;min-height:100%;
-    }
-    .week-label{
-      margin:0 0 14px;color:var(--muted);font-size:0.95rem;letter-spacing:0.12em;font-weight:700;text-transform:uppercase;
-    }
-    .week-title{
-      margin:0 0 10px;font-size:clamp(1.9rem, 3vw, 3rem);line-height:0.98;letter-spacing:-0.05em;
-      max-width:13ch;color:var(--navy);
-    }
-    .week-copy{color:var(--muted);font-size:1rem;line-height:1.55;margin:0 0 22px}
-    .meta{display:grid;gap:0;margin-bottom:10px}
-    .meta-row{
-      display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:start;padding:10px 0;
-      border-top:1px solid var(--line);color:var(--muted);font-size:1rem;
-    }
-    .meta-row:first-child{border-top:none}
-    .meta-row strong{
-      color:var(--detail);justify-self:end;text-align:right;line-height:1.35;font-size:1.04rem;font-weight:700;
-    }
-    .meeting-link{display:inline-flex;align-items:center;gap:8px;color:var(--navy);font-weight:600}
-    .pin-icon{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;background:#fff;border:1px solid rgba(39,69,122,0.14);font-size:0.95rem;line-height:1;text-decoration:none}
-    .meta-row:last-child strong{display:inline-flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bubble Walk — Social Walk in Bristol Harbourside</title>
+<meta name="description" content="Bubble Walk is a social walk in Bristol Harbourside. Free to join. No pressure. Just walk, talk, and meet people. See the next walk and join here.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }:root {
+    --terra: #C4623A;
+    --terra-light: #E8A98A;
+    --terra-dark: #8B3E1F;
+    --sage: #7A9E7E;
+    --sage-light: #B8D4BB;
+    --sage-dark: #3D6641;
+    --cream: #F5F0E6;
+    --cream-dark: #EDE4D2;
+    --forest: #2C3B2D;
+    --forest-mid: #4A5E4B;
+    --warm-gray: #8C8476;
+    --text: #2C3B2D;
+  }html { scroll-behavior: smooth; }body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }img { max-width: 100%; display: block; }nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(245, 240, 230, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(122,158,126,0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600;
+    color: var(--forest);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--terra); font-style: italic; }.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.875rem; font-weight: 400; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--forest-mid);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--terra); }
+  .nav-cta {
+    background: var(--terra); color: white;
+    border: none; padding: 0.65rem 1.6rem;
+    border-radius: 2rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem; font-weight: 500; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-cta:hover { background: var(--terra-dark); transform: translateY(-1px); }.hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 0;
+    padding-top: 80px;
+    position: relative; overflow: hidden;
+  }.hero-bg-shape {
+    position: absolute; right: -5%; top: 0;
+    width: 55%; height: 100%;
+    background: var(--sage-light);
+    clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
+    opacity: 0.35;
+  }.hero-left {
+    padding: 4rem 4rem 4rem 5rem;
+    position: relative; z-index: 2;
+  }.hero-tag {
+    display: inline-block;
+    font-size: calc(0.75rem + 0.1667rem); letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--terra); font-weight: 500;
+    border: 1px solid var(--terra-light);
+    padding: 0.35rem 1rem; border-radius: 2rem;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.7s ease both;
+  }.hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(clamp(3.2rem, 5vw, 5rem) + 0.1667rem);
+    font-weight: 300; line-height: 1.1;
+    color: var(--forest);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }.hero-title em {
+    font-style: italic; color: var(--terra);
+  }.hero-sub {
+    font-size: calc(1.05rem + 0.1667rem); line-height: 1.75;
+    color: var(--warm-gray); max-width: 42ch;
+    margin-bottom: 3rem; font-weight: 300;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }.hero-actions {
+    display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }.btn-primary {
+    background: var(--forest); color: var(--cream);
+    border: none; padding: 1rem 2.2rem;
+    border-radius: 3rem; font-family: 'DM Sans', sans-serif;
+    font-size: calc(0.95rem + 0.1667rem); font-weight: 500; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+  }.btn-primary:hover { background: var(--forest-mid); transform: translateY(-2px); }.btn-ghost {
+    color: var(--forest-mid); font-size: calc(0.9rem + 0.1667rem);
+    display: flex; align-items: center; gap: 0.5rem;
+    text-decoration: none; font-weight: 400;
+    transition: gap 0.2s, color 0.2s;
+  }.btn-ghost:hover { color: var(--terra); gap: 0.8rem; }.hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }.stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(2.4rem + 0.1667rem); font-weight: 600; color: var(--forest);
+    line-height: 1;
+  }.stat-label {
+    font-size: calc(0.78rem + 0.1667rem); color: var(--warm-gray);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-top: 0.3rem;
+  }.hero-right {
+    position: relative; z-index: 2; height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: visible;
+  }.hero-image-card {
+    width: 460px; position: relative; padding-bottom: 86px; overflow: visible;
+    transform: translateX(18px);
+  }.hero-main-img {
+    width: 100%; height: 640px;
+    border-radius: 1rem 1rem 8rem 1rem;
+    background: linear-gradient(160deg, #7A9E7E 0%, #3D6641 50%, #2C3B2D 100%);
+    display: flex; align-items: flex-end; padding: 2rem;
+    overflow: hidden; position: relative;
+  }.hero-main-img::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(44,59,45,0.22), rgba(44,59,45,0.03));
+    z-index: 1;
+  }.hero-main-img img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+  }.hero-img-caption {
+    position: absolute; left: 50%; bottom: -70px; transform: translateX(-50%);
+    z-index: 5;
+    background: rgba(245,240,230,0.96); backdrop-filter: blur(8px);
+    border-radius: 1.25rem; padding: 1.7rem 2rem;
+    width: min(86%, 700px);
+    box-shadow: 0 18px 42px rgba(44,59,45,0.14);
+  }.hero-img-caption strong {
+    display: block; font-size: calc(1.7rem + 0.1667rem); color: var(--forest); font-weight: 600; line-height: 1.25;
+  }.hero-img-caption span {
+    display:block; margin-top: 0.7rem; font-size: calc(1.1rem + 0.1667rem); color: var(--warm-gray); line-height: 1.4;
+  }.section { padding: 6rem 5rem; }.section-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3rem; gap: 1.5rem;
+  }.section-label {
+    font-size: calc(0.75rem + 0.1667rem); letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--terra);
+    font-weight: 500; margin-bottom: 0.75rem;
+  }.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(clamp(2rem, 3.5vw, 3rem) + 0.1667rem);
+    font-weight: 300; line-height: 1.2; color: var(--forest);
+  }.section-title em { font-style: italic; color: var(--terra); }.see-all {
+    color: var(--forest-mid); font-size: calc(0.875rem + 0.1667rem);
+    text-decoration: none; border-bottom: 1px solid var(--sage-light);
+    padding-bottom: 0.15rem; white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }.see-all:hover { color: var(--terra); border-color: var(--terra-light); }.events-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1.5rem;
+  }.event-card {
+    background: white; border-radius: 1.25rem;
+    overflow: hidden; position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: inherit;
+  }.event-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(44,59,45,0.12);
+  }.event-card-img {
+    height: 220px; position: relative; overflow: hidden;
+    background: linear-gradient(160deg, #4A7C59 0%, #2C5F3D 40%, #1A3D28 100%);
+  }.event-card.featured .event-card-img { height: 300px; }.event-card-img-bg {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s;
+  }.event-card:hover .event-card-img-bg { transform: scale(1.05); }.event-card-img .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(44,59,45,0.55), rgba(44,59,45,0.08));
+  }.event-date-badge {
+    position: absolute; top: 1rem; left: 1rem;
+    background: white; border-radius: 0.75rem;
+    padding: 0.5rem 0.75rem; text-align: center;
+    min-width: 58px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 2;
+  }.event-date-day {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(1.6rem + 0.1667rem); font-weight: 600; color: var(--terra);
+    line-height: 1;
+  }.event-date-month {
+    font-size: calc(0.65rem + 0.1667rem); text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--warm-gray);
+  }.event-difficulty {
+    position: absolute; top: 1rem; right: 1rem;
+    padding: 0.3rem 0.8rem; border-radius: 2rem;
+    font-size: calc(0.7rem + 0.1667rem); letter-spacing: 0.06em;
+    text-transform: uppercase; font-weight: 500;
+    backdrop-filter: blur(8px); z-index: 2;
+  }.diff-easy { background: rgba(184,212,187,0.92); color: var(--sage-dark); }.diff-medium { background: rgba(232,169,138,0.92); color: var(--terra-dark); }.event-card-body { padding: 1.25rem 1.5rem 1.5rem; }.event-location {
+    font-size: calc(0.75rem + 0.1667rem); text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--sage);
+    font-weight: 500; margin-bottom: 0.5rem;
+  }.event-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(1.35rem + 0.1667rem); font-weight: 400; color: var(--forest);
+    margin-bottom: 0.75rem; line-height: 1.3;
+  }.event-card.featured .event-name { font-size: calc(1.7rem + 0.1667rem); }.event-meta {
+    display: flex; gap: 1.1rem; flex-wrap: wrap;
+    font-size: calc(0.78rem + 0.1667rem); color: var(--warm-gray);
+    margin-bottom: 1.25rem;
+  }.event-meta-item { display: flex; align-items: center; gap: 0.35rem; }.event-participants {
+    display: flex; align-items: center; gap: 0.5rem;
+  }.avatars { display: flex; }.avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 2px solid white; margin-left: -8px;
+    font-size: calc(0.65rem + 0.1667rem); display: flex; align-items: center;
+    justify-content: center; font-weight: 500; color: white;
+  }.avatar:first-child { margin-left: 0; }.a1 { background: var(--terra); }.a2 { background: var(--sage-dark); }.a3 { background: var(--forest); }.participants-text {
+    font-size: calc(0.78rem + 0.1667rem); color: var(--warm-gray);
+  }.join-btn {
+    background: var(--cream); border: 1.5px solid var(--cream-dark);
+    color: var(--forest); padding: 0.6rem 1.4rem;
+    border-radius: 2rem; font-size: calc(0.85rem + 0.1667rem); font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif; text-decoration: none;
+    display: inline-flex; align-items: center; justify-content: center;
+  }.join-btn:hover { background: var(--forest); color: white; border-color: var(--forest); }
+  .poll-card { background: white; }
+  .poll-card-body { padding: 1.4rem 1.5rem 1.6rem; }
+  .poll-kicker {
+    display: inline-block;
+    font-size: calc(0.72rem + 0.1667rem);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 500;
+    margin-bottom: 0.7rem;
+  }
+  .poll-form {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 1rem;
+  }
+  .poll-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 1rem;
+    background: var(--cream);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    color: var(--forest);
+    font-size: calc(0.86rem + 0.1667rem);
+  }
+  .poll-option:hover {
+    border-color: var(--sage-light);
+    background: #fbf8f1;
+    transform: translateY(-1px);
+  }
+  .poll-option input {
+    accent-color: var(--forest);
+    flex-shrink: 0;
+  }
+  .poll-submit {
+    margin-top: 0.35rem;
+    width: 100%;
+  }
+  .poll-note {
+    font-size: calc(0.8rem + 0.1667rem);
+    color: var(--warm-gray);
+    margin-top: 0.9rem;
+    line-height: 1.6;
+  }
+  .poll-status {
+    display: none;
+    margin-top: 0.5rem;
+    padding: 0.85rem 0.95rem;
+    border-radius: 1rem;
+    background: var(--cream);
+    border: 1px solid var(--cream-dark);
+    color: var(--forest);
+    font-size: calc(0.82rem + 0.1667rem);
+    line-height: 1.5;
+  }
+  .poll-status.is-visible { display: block; }
+.how-section {
+    background: var(--forest); color: var(--cream);
+    padding: 6rem 5rem;
+    position: relative; overflow: hidden;
+  }.how-section::before {
+    content: '';
+    position: absolute; top: -40%; right: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(122,158,126,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }.how-section .section-label { color: var(--sage-light); }.how-section .section-title { color: var(--cream); }.how-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem;
+    margin-top: 4rem;
+  }.how-step { position: relative; }.how-step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(5rem + 0.1667rem); font-weight: 300; color: rgba(255,255,255,0.07);
+    line-height: 1; position: absolute; top: -1.5rem; left: -0.5rem;
+  }.how-icon {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(122,158,126,0.2); border: 1px solid rgba(122,158,126,0.4);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem; font-size: calc(1.4rem + 0.1667rem);
+  }.how-step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(1.4rem + 0.1667rem); font-weight: 400; color: var(--cream);
+    margin-bottom: 0.75rem;
+  }.how-step-desc {
+    font-size: calc(0.875rem + 0.1667rem); line-height: 1.75;
+    color: rgba(245,240,230,0.6); font-weight: 300;
+  }.how-connector {
+    position: absolute; top: 26px; left: calc(100% - 1.5rem);
+    width: 3rem; height: 1px;
+    background: linear-gradient(to right, rgba(122,158,126,0.4), rgba(122,158,126,0.1));
+  }.how-step:last-child .how-connector { display: none; }.community-section {
+    background: var(--cream-dark);
+    padding: 6rem 5rem;
+  }.community-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }.community-text .section-title { margin-bottom: 1.5rem; }.community-text p {
+    font-size: calc(1rem + 0.1667rem); line-height: 1.8; color: var(--warm-gray);
+    font-weight: 300; margin-bottom: 1.5rem;
+  }.community-values { list-style: none; margin: 2rem 0; }.community-values li {
+    display: flex; align-items: center; gap: 1rem;
+    font-size: calc(0.9rem + 0.1667rem); color: var(--forest-mid);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(122,158,126,0.2);
+  }.community-values li:last-child { border-bottom: none; }.value-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--terra); flex-shrink: 0;
+  }.testimonials-grid { display: flex; flex-direction: column; gap: 1.25rem; }.testimonial {
+    background: white; border-radius: 1rem;
+    padding: 1.5rem 1.75rem;
+    position: relative;
+    transition: transform 0.3s;
+  }.testimonial:hover { transform: translateX(6px); }.testimonial::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(4rem + 0.1667rem); line-height: 0.5;
+    color: var(--sage-light); position: absolute;
+    top: 1.25rem; left: 1.5rem;
+    pointer-events: none;
+  }.testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(1.1rem + 0.1667rem); font-style: italic;
+    color: var(--forest); line-height: 1.6;
+    margin-bottom: 0.25rem; position: relative; z-index: 1;
+    padding-left: 1.5rem;
+  }.testimonial-sub {
+    font-size: calc(0.84rem + 0.1667rem); color: var(--warm-gray);
+    margin-left: 1.5rem; line-height: 1.65;
+  }.cta-section {
+    padding: 8rem 5rem;
+    text-align: center;
+    background: var(--cream);
+    position: relative; overflow: hidden;
+  }.cta-section::before {
+    content: 'bubble walk';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(13rem + 0.1667rem); font-weight: 600;
+    color: rgba(122,158,126,0.06);
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap; pointer-events: none;
+    letter-spacing: -0.05em;
+  }.cta-section .section-label { display: block; margin-bottom: 1rem; }.cta-section .section-title { margin-bottom: 1.25rem; position: relative; z-index: 1; }.cta-section p {
+    color: var(--warm-gray); font-size: calc(1rem + 0.1667rem); font-weight: 300;
+    max-width: 48ch; margin: 0 auto 2.5rem;
+    line-height: 1.8; position: relative; z-index: 1;
+  }.cta-form {
+    position: relative; z-index: 1;
+    max-width: 720px; margin: 0 auto;
+    display: grid; gap: 0.9rem;
+  }.cta-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }.cta-input, .cta-textarea {
+    border: 1.5px solid var(--cream-dark); border-radius: 1.2rem;
+    background: white; padding: 1rem 1.2rem;
+    font-size: calc(0.95rem + 0.1667rem); font-family: 'DM Sans', sans-serif;
+    outline: none; color: var(--forest);
+    width: 100%;
+  }.cta-textarea { min-height: 130px; resize: vertical; }.cta-submit-row {
+    display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;
+  }.form-status {
+    display: none;
+    margin-top: 0.5rem;
+    padding: 0.9rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(122,158,126,0.25);
+    background: rgba(255,255,255,0.92);
+    color: var(--forest);
+    font-size: calc(0.9rem + 0.1667rem);
+  }.form-status.is-visible { display: block; }.helper-links {
+    display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap;
+    font-size: calc(0.85rem + 0.1667rem); position: relative; z-index: 1;
+  }.helper-links a {
+    color: var(--forest-mid); text-decoration: none; border-bottom: 1px solid rgba(122,158,126,0.3);
+  }.helper-links a:hover { color: var(--terra); border-color: var(--terra-light); }footer {
+    background: var(--forest); color: rgba(245,240,230,0.7);
+    padding: 3.5rem 5rem;
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+  .footer-brand .nav-logo { color: var(--cream); margin-bottom: 1rem; display: inline-block; }.footer-brand p { font-size: calc(0.85rem + 0.1667rem); line-height: 1.7; font-weight: 300; }footer h4 {
+    font-size: calc(0.75rem + 0.1667rem); text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--cream); margin-bottom: 1.25rem; font-weight: 500;
+  }footer ul { list-style: none; }footer ul li { margin-bottom: 0.6rem; }footer ul li a {
+    font-size: calc(0.875rem + 0.1667rem); color: rgba(245,240,230,0.6);
+    text-decoration: none; transition: color 0.2s;
+  }footer ul li a:hover { color: var(--terra-light); }.footer-bottom {
+    background: var(--forest); border-top: 1px solid rgba(245,240,230,0.08);
+    padding: 1.25rem 5rem;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  }.footer-bottom p { font-size: calc(0.78rem + 0.1667rem); color: rgba(245,240,230,0.35); }
 
-    .section{margin-top:46px}
-    .section-title{
-      margin:0 0 6px;font-size:clamp(2.2rem, 5vw, 3.5rem);line-height:0.95;letter-spacing:-0.06em;color:var(--navy);
-    }
-    .section-copy{margin:0 0 20px;color:var(--muted);font-size:1.05rem;line-height:1.55;max-width:72ch}
-    .cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{
-      background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px 22px 20px;box-shadow:var(--shadow);
-    }
-    .number{
-      width:36px;height:36px;border-radius:50%;background:var(--pill);color:var(--navy);display:flex;
-      align-items:center;justify-content:center;font-weight:700;margin-bottom:16px;
-    }
-    .card h3{margin:0 0 10px;font-size:1.15rem;letter-spacing:-0.03em;color:var(--navy)}
-    .card p{margin:0;color:var(--muted);line-height:1.55;font-size:0.98rem}
-    .split{display:grid;grid-template-columns:1.06fr 0.94fr;gap:18px;align-items:start;margin-top:18px}
-    .photo-card{
-      background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:18px;box-shadow:var(--shadow);
-    }
-    .photo-frame{
-      border-radius:18px;overflow:hidden;background:#e8eef7;border:1px solid rgba(39,69,122,0.12);aspect-ratio:16 / 10;
-      position:relative;display:flex;align-items:center;justify-content:center;
-    }
-    .photo-frame img{width:100%;height:100%;object-fit:cover}
-    #harboursideImage{object-position:center 56%;}
-    .photo-note{margin:12px 0 0;color:var(--muted);font-size:0.94rem;line-height:1.5}
-    .meaning-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .meaning-dot{width:24px;height:24px;border-radius:50%;margin-bottom:14px}
-    .blue-card{
-      background:var(--navy-1);color:var(--navy);border:1px solid rgba(39,69,122,0.12);border-radius:28px;padding:28px;box-shadow:var(--shadow);
-    }
-    .blue-card .eyebrow-soft{
-      display:inline-flex;padding:10px 16px;border-radius:999px;background:#ffffff;color:var(--navy);font-weight:700;
-      margin-bottom:18px;border:1px solid rgba(39,69,122,0.12);
-    }
-    .blue-card h3{
-      margin:0 0 14px;font-size:clamp(2rem, 4vw, 3.4rem);line-height:0.96;letter-spacing:-0.06em;max-width:10ch;color:var(--navy);
-    }
-    .blue-card p{color:var(--muted);line-height:1.6;margin:0 0 20px;font-size:1rem}
-    .small-note{color:var(--muted);font-size:0.92rem;line-height:1.5}
-    .form-status{display:none;margin-top:12px;padding:12px 14px;border-radius:14px;background:#ffffff;border:1px solid rgba(39,69,122,0.14);color:var(--navy);font-weight:600}
-    .form-status.is-visible{display:block}
-    form{display:grid;gap:12px;margin-top:16px}
-    .input, .textarea{
-      width:100%;border:1px solid rgba(39,69,122,0.14);background:#fff;border-radius:16px;padding:15px 16px;font:inherit;color:var(--text);outline:none;
-    }
-    .textarea{min-height:120px;resize:vertical}
-    .faq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .route-card{
-      width:100%;background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
-      padding:22px;box-shadow:var(--shadow);
-    }
-    .split > .card,
-    .split > .blue-card,
-    .split > .photo-card,
-    .split > .route-card{height:100%}
-    .footer{
-      display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:46px;padding-top:24px;border-top:1px solid rgba(39,69,122,0.10);color:var(--muted);font-size:0.98rem;
-    }
-    .footer strong{color:var(--navy)}
-    @media (max-width: 980px){
-      .hero-shell,.split,.cards-3,.meaning-grid,.faq-grid{grid-template-columns:1fr}
-      .nav{flex-direction:column;align-items:flex-start}
-      .nav-links{gap:18px;flex-wrap:wrap}
-      h1{max-width:none}
-      .week-title{max-width:none}
-    }
-    @media (max-width: 640px){
-      .page{padding:18px 14px 56px}
-      .hero-shell{padding:20px}
-      .card,.photo-card,.blue-card{padding:20px}
-      .hero-actions{flex-direction:column}
-      .btn{width:100%}
-      .meta-row{grid-template-columns:1fr;gap:6px}
-      .meta-row strong{justify-self:start;text-align:left}
-      .footer{flex-direction:column;align-items:flex-start}
-    }
-  </style>
+  @keyframes fadeUp {from { opacity: 0; transform: translateY(20px); }to { opacity: 1; transform: translateY(0); }
+  }to { transform: rotate(360deg); }
+  }
+
+  @media (max-width: 1100px) {.events-grid { grid-template-columns: 1fr; }.community-inner { grid-template-columns: 1fr; gap: 3rem; }footer { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 900px) {nav { padding: 1rem 1.5rem; }.nav-links { display: none; }.hero { grid-template-columns: 1fr; padding-top: 70px; }.hero-left { padding: 3rem 1.5rem 2rem; }.hero-right { display: none; }.section, .how-section, .community-section, .cta-section { padding: 4rem 1.5rem; }.how-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }.cta-row { grid-template-columns: 1fr; }footer { padding: 2.5rem 1.5rem; }.footer-bottom { padding: 1rem 1.5rem; flex-direction: column; align-items: flex-start; }.hero-stats { gap: 1.5rem; }
+  }
+
+  @media (max-width: 640px) {.hero-actions, .cta-submit-row { flex-direction: column; }
+    .btn-primary, .nav-cta { width: 100%; }.how-grid { grid-template-columns: 1fr; }footer { grid-template-columns: 1fr; }.section-header { flex-direction: column; align-items: flex-start; }.cta-section::before { font-size: calc(6rem + 0.1667rem); }
+  }
+</style>
 </head>
 <body>
-  <div class="page">
-    <nav class="nav">
-      <div class="brand">
-        <div class="bubbles" aria-hidden="true">
-          <span class="bubble b1"></span>
-          <span class="bubble b2"></span>
-          <span class="bubble b3"></span>
-        </div>
-        <span>Bubble Walk</span>
-      </div>
-      <div class="nav-links">
-        <a href="#what-it-is">What it is</a>
-        <a href="#faq">FAQ</a>
-        <a href="walks.html">Walks</a>
-        <a class="join-pill" href="#join">Join</a>
-      </div>
-    </nav>
 
-    <section class="hero-shell">
+<nav>
+  <a class="nav-logo" href="#top">Bubble <span>Walk</span></a>
+  <ul class="nav-links">
+    <li><a href="#events">Next walk</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#community">What it is</a></li>
+    <li><a href="walks.html">Walks</a></li>
+  </ul>
+  <a class="nav-cta" href="#join">Join free</a>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-bg-shape"></div>
+
+  <div class="hero-left">
+    <span class="hero-tag">Bristol Harbourside • Free social walk</span>
+    <h1 class="hero-title">
+      Walk.<br>
+      <em>Talk.</em><br>
+      Meet.
+    </h1>
+    <p class="hero-sub">
+      Bubble Walk is a simple social walk in Bristol. Free to join. No pressure. Just walk, talk, and meet people on an easy Harbourside loop. An hour outside, away from traffic and screens.
+    </p>
+    <div class="hero-actions">
+      <a href="#join" class="btn-primary">Join the next walk</a>
+      <a href="#events" class="btn-ghost">See the details →</a>
+      <a href="#" class="btn-ghost" id="mapsBtnHero">Open in Google Maps →</a>
+    </div>
+    <div class="hero-stats">
       <div>
-        <div class="eyebrow">Social walk • Bristol Harbourside</div>
-        <h1>A social walk in Bristol Harbourside.</h1>
-        <p class="lead">
-  Bubble Walk is a simple social walk in Bristol. Free to join. No pressure. Just walk, talk, and meet people on an easy Harbourside loop. An hour outside, away from traffic and screens.
-</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#join">Join the next walk</a>
-          <a class="btn btn-secondary" id="mapsBtnHero" href="#" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
-        </div>
+        <div class="stat-num">Free</div>
+        <div class="stat-label">To join</div>
       </div>
-
-      <aside class="week-card" id="next-walk">
-        <div>
-          <p class="week-label">Next Bubble Walk</p>
-          <h2 class="week-title" id="weeklyHeadline">Bristol • Friday 24 April • 6pm</h2>
-          <p class="week-copy">Free to join. About 1 hour. A simple Bristol Harbourside walk with time to talk.</p>
-          <div class="meta">
-            <div class="meta-row"><span>Day</span><strong id="dayText">Friday</strong></div>
-            <div class="meta-row"><span>Date</span><strong id="dateText">24 April 2026</strong></div>
-            <div class="meta-row"><span>Start</span><strong id="timeText">6pm</strong></div>
-            <div class="meta-row"><span>Duration</span><strong id="durationText">about 1h</strong></div>
-            <div class="meta-row"><span>Meeting point</span><strong><a href="https://maps.app.goo.gl/Z5AighzAsEyhkKB48" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--detail);"><span id="meetingText">Cascade Steps - Anchor Rd, Bristol BS1 4XJ</span><span class="pin-icon" id="meetingMapLink" aria-label="Open meeting point in Google Maps" style="width:32px;height:32px;"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" fill="var(--navy-2)"></path><circle cx="12" cy="10" r="2.8" fill="white"></circle></svg></span></a></strong></div>
-          </div>
-        </div>
-        <div class="hero-actions" style="margin-top:4px;">
-          <a class="btn btn-primary" href="#join">I’m in</a>
-        </div>
-      </aside>
-    </section>
-
-    <section class="section" id="what-it-is">
-      <h2 class="section-title">What Bubble Walk is</h2>
-      <p class="section-copy">
-        Bubble Walk is a social walk in Bristol Harbourside. It is free to join, easy to come to on your own, and built around simple conversation while walking. No awkward format. No pressure. Just people walking and talking together.
-      </p>
-      <div class="cards-3">
-        <article class="card"><div class="number">1</div><h3>Come on your own</h3><p>You can come on your own or with a friend. Both are normal.</p></article>
-        <article class="card"><div class="number">2</div><h3>Walk Bristol Harbourside</h3><p>An easy walk around Bristol Harbourside, designed for talking more than exercise.</p></article>
-        <article class="card"><div class="number">3</div><h3>Walk and talk</h3><p>No awkward structure. Just normal conversation, at an easy pace, for about an hour.</p></article>
+      <div>
+        <div class="stat-num">~1h</div>
+        <div class="stat-label">Easy pace</div>
       </div>
-      <div class="card" style="margin-top:18px;">
-        <h3>Walk. Talk. Share.</h3>
-        <p>A simple rhythm: walk through Bristol Harbourside, talk side by side, and share a bit of time with other people.</p>
+      <div>
+        <div class="stat-num">Bristol</div>
+        <div class="stat-label">Harbourside</div>
       </div>
-    </section>
-
-    <section class="section split" id="three-bubbles">
-      <aside class="photo-card">
-        <h3 id="latestWalkTitle" style="margin:0 0 12px; font-size:1.2rem; letter-spacing:-0.03em; color:var(--navy);">Bubble Walk #1</h3>
-        <div class="photo-frame" style="aspect-ratio:16 / 12.8;">
-          <img id="latestWalkImage" src="photos/bubblewalk-2026-04-09-feature.jpg" alt="Bubble Walk #1">
-        </div>
-        <p class="photo-note" id="latestWalkNote">9 April 2026 • Harbourside</p>
-      </aside>
-
-      <div class="route-card">
-        <h2 class="section-title" style="font-size:3rem; margin-bottom:10px;">The Bubble Walk route</h2>
-        <p class="section-copy" style="margin-bottom:16px; max-width:60ch;">
-          A simple walking route around Bristol Harbourside. About 1 hour at an easy pace, with space to walk and talk.
-        </p>
-        <div class="photo-frame" style="aspect-ratio:16 / 9;">
-          <img src="route-map.png" alt="Bubble Walk route around Bristol Harbourside" style="transform:scale(1.035); transform-origin:center center;">
-        </div>
-        <p class="photo-note">A relaxed circular walk around Bristol Harbourside.</p>
-        <div class="hero-actions" style="margin-top:14px;">
-          <a class="btn btn-secondary" href="https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&amp;g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
-            View the Bubble Walk route on Google Maps
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section split">
-      <div class="card" style="padding:22px; display:flex; flex-direction:column; justify-content:space-between;">
-        <div>
-          <h2 class="section-title" style="font-size:3.1rem; margin-bottom:14px;">How Bubble Walk works</h2>
-          <p class="section-copy" style="margin-bottom:16px; max-width:62ch;">
-            Join the next Bubble Walk, meet at Bristol Harbourside, walk for about an hour, and stay for a drink at the end if you feel like it.
-          </p>
-          <div style="display:grid; gap:14px;">
-            <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>Come as you are</h3><p>Free to join. No membership. No formal sign-up to be part of it.</p></div>
-            <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>Easy pace</h3><p>This is a relaxed Bristol Harbourside walk built for conversation, not performance.</p></div>
-            <div class="card" style="box-shadow:none; background:var(--card-2);"><h3>Stay for a drink if you want</h3><p>Some people head off after the walk. Some stay for a pint. Both are completely fine.</p></div>
-          </div>
-        </div>
-        <p class="small-note" style="margin:18px 0 0;">A simple social walk in Bristol Harbourside. Free to join.</p>
-      </div>
-
-      <div class="blue-card" id="join">
-        <div class="eyebrow-soft">Join the next Bubble Walk</div>
-        <h3>Join Bubble Walk in Bristol</h3>
-        <p>Want to join? Fill the form. Free to join. We’ll email you back with the details.</p>
-        <form id="joinForm" action="https://formspree.io/f/mzdjwobq" method="POST">
-          <input class="input" id="name" name="name" type="text" placeholder="Your name" />
-          <input class="input" id="email" name="email" type="email" placeholder="Your email" />
-          <textarea class="textarea" id="message" name="message" placeholder="Optional message"></textarea>
-          <input type="hidden" name="_subject" value="Bubble Walk signup" />
-          <button class="btn btn-primary" id="joinSubmitBtn" type="submit" style="margin-top:4px;">Send</button>
-        </form>
-        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section class="section" id="faq">
-      <h2 class="section-title">FAQ</h2>
-      <p class="section-copy">
-        
-      </p>
-      <div class="faq-grid">
-        <article class="card"><h3>Do I need to know anyone?</h3><p>No. You can come on your own. That’s normal.</p></article>
-        <article class="card"><h3>Is it free?</h3><p>Yes. Bubble Walk is free to join.</p></article>
-        <article class="card"><h3>How long is it?</h3><p>About 1 hour at an easy pace.</p></article>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div><strong>Bubble Walk</strong> — a social walk in Bristol Harbourside. Free to join.</div>
-      <div>Next walk: Friday, 24 April at 6pm</div>
-    </footer>
+    </div>
   </div>
 
-  <script>
-    const SITE = {
-      city: "Bristol",
-      day: "Friday",
-      date: "24 April 2026",
-      time: "6pm",
-      duration: "about 1h",
-      meetingPoint: "Cascade Steps - Anchor Rd, Bristol BS1 4XJ",
-      meetingMapsUrl: "https://maps.app.goo.gl/Z5AighzAsEyhkKB48",
-      mapsQuery: "Bristol Harbourside"
+  <div class="hero-right">
+    <div class="hero-image-card">
+      <div class="hero-main-img">
+        <img id="heroLatestImage" src="photos/bubblewalk-2026-04-09-feature.jpg" alt="Bubble Walk latest photo">
+      </div>
+      <div class="hero-img-caption">
+        <strong id="heroCardTitle">Next Bubble Walk • Friday 24 April 2026 • 6pm</strong>
+        <span id="heroCardMeta">Cascade Steps — Anchor Rd, Bristol BS1 4XJ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="events" style="padding-top: 8.5rem;">
+  <div class="section-header">
+    <div>
+      <p class="section-label">In programme</p>
+      <h2 class="section-title">Bubble Walk, <em>mapped out</em></h2>
+    </div>
+    <a href="walks.html" class="see-all">See all walks →</a>
+  </div>
+
+  <div class="events-grid">
+
+    <article class="event-card featured">
+      <div class="event-card-img">
+        <img class="event-card-img-bg" id="nextWalkImage" src="route-map.png" alt="Bubble Walk next walk">
+        <div class="overlay"></div>
+        <div class="event-date-badge">
+          <div class="event-date-day" id="eventDayNum">24</div>
+          <div class="event-date-month" id="eventMonth">Apr</div>
+        </div>
+        <span class="event-difficulty diff-easy">Free</span>
+      </div>
+      <div class="event-card-body">
+        <p class="event-location">📍 <span id="meetingLabel">Cascade Steps — Anchor Rd, Bristol BS1 4XJ</span></p>
+        <h3 class="event-name" id="nextWalkTitle">Next Bubble Walk</h3>
+        <div class="event-meta">
+          <span class="event-meta-item">🗓 <span id="eventDayLine">Friday</span></span>
+          <span class="event-meta-item">⏱ <span id="eventTimeLine">6pm</span></span>
+          <span class="event-meta-item">🚶 <span id="eventDurationLine">about 1h</span></span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;">
+          <div class="event-participants">
+            <div class="avatars" aria-hidden="true">
+              <div class="avatar a1">BW</div>
+              <div class="avatar a2">BR</div>
+              <div class="avatar a3">HW</div>
+            </div>
+            <span class="participants-text">Walk. Talk. Share.</span>
+          </div>
+          <a class="join-btn" href="#join">I'm in</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="event-card" id="latestWalkCardLinkWrapper">
+      <div class="event-card-img">
+        <img class="event-card-img-bg" id="latestWalkImageCard" src="photos/bubblewalk-2026-04-09-feature.jpg" alt="Latest Bubble Walk">
+        <div class="overlay"></div>
+        <div class="event-date-badge">
+          <div class="event-date-day" id="latestWalkDay">09</div>
+          <div class="event-date-month" id="latestWalkMonth">Apr</div>
+        </div>
+        <span class="event-difficulty diff-medium">Latest</span>
+      </div>
+      <div class="event-card-body">
+        <p class="event-location">📍 <span id="latestWalkPlace">Harbourside</span></p>
+        <h3 class="event-name" id="latestWalkName">Bubble Walk #1</h3>
+        <div class="event-meta">
+          <span class="event-meta-item">🖼 Photos from the latest walk</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;">
+          <span class="participants-text" id="latestWalkMeta">9 April 2026 • Harbourside</span>
+          <a class="join-btn" href="walks.html">See walks</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="event-card poll-card">
+      <div class="event-card-body poll-card-body">
+        <span class="poll-kicker">Quick poll</span>
+        <h3 class="event-name">What works best for you for the next Bubble Walk?</h3>
+        <div class="event-meta">
+          <span class="event-meta-item">A small check before we lock future times</span>
+        </div>
+        <form class="poll-form" id="pollForm" action="https://formspree.io/f/mzdjwobq" method="POST">
+          <input type="hidden" name="_subject" value="Bubble Walk poll">
+          <input type="hidden" name="poll_source" value="right_block">
+          <label class="poll-option">
+            <input type="radio" name="preferred_time" value="Weekday evening" checked>
+            <span>Weekday evening</span>
+          </label>
+          <label class="poll-option">
+            <input type="radio" name="preferred_time" value="Saturday morning">
+            <span>Saturday morning</span>
+          </label>
+          <label class="poll-option">
+            <input type="radio" name="preferred_time" value="Sunday afternoon">
+            <span>Sunday afternoon</span>
+          </label>
+          <label class="poll-option">
+            <input type="radio" name="preferred_time" value="I'm flexible">
+            <span>I'm flexible</span>
+          </label>
+          <button class="join-btn poll-submit" id="pollSubmitBtn" type="submit">Vote</button>
+          <div class="poll-status" id="pollStatus" role="status" aria-live="polite"></div>
+        </form>
+        <p class="poll-note">A quick way to shape the next walk without making the page heavier.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="how-section" id="how">
+  <p class="section-label">How it works</p>
+  <h2 class="section-title">Simple as <em>showing up</em></h2>
+
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="how-step-num">01</div>
+      <div class="how-icon">🗓</div>
+      <h3 class="how-step-title">See the next walk</h3>
+      <p class="how-step-desc">Check the next Bubble Walk on the page. You get the day, time, meeting point and the route in one place.</p>
+      <div class="how-connector"></div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">02</div>
+      <div class="how-icon">✋</div>
+      <h3 class="how-step-title">Say you are coming</h3>
+      <p class="how-step-desc">Fill the short form. No membership, no awkward process, no pressure to already know anyone.</p>
+      <div class="how-connector"></div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">03</div>
+      <div class="how-icon">🚶</div>
+      <h3 class="how-step-title">Walk and talk</h3>
+      <p class="how-step-desc">Meet at Bristol Harbourside, walk for about an hour at an easy pace, and let conversation happen naturally.</p>
+      <div class="how-connector"></div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">04</div>
+      <div class="how-icon">🍻</div>
+      <h3 class="how-step-title">Stay after if you want</h3>
+      <p class="how-step-desc">Some people head off. Some stay for a drink. Both are completely fine. The format stays simple on purpose.</p>
+    </div>
+  </div>
+</section>
+
+<section class="community-section" id="community">
+  <div class="community-inner">
+    <div class="community-text">
+      <p class="section-label">What Bubble Walk is</p>
+      <h2 class="section-title">A social walk, <em>not a performance</em></h2>
+      <p>
+        Bubble Walk is a social walk in Bristol Harbourside. It is free to join, easy to come to on your own, and built around simple conversation while walking.
+      </p>
+      <p>
+        No awkward format. No pressure. Just people walking and talking together. An easy route, an easy pace, and a bit of time outside with other people.
+      </p>
+      <ul class="community-values">
+        <li><span class="value-dot"></span>You can come on your own or with a friend. Both are normal.</li>
+        <li><span class="value-dot"></span>The walk is designed for talking more than exercise.</li>
+        <li><span class="value-dot"></span>Free to join. No membership. No formal sign-up to be part of it.</li>
+        <li><span class="value-dot"></span>About an hour outside, away from traffic and screens.</li>
+      </ul>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p class="testimonial-text">Come on your own.</p>
+        <p class="testimonial-sub">You do not need to know anyone before coming. That is a normal way to join Bubble Walk.</p>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">Walk Bristol Harbourside.</p>
+        <p class="testimonial-sub">An easy Harbourside loop with space to talk side by side rather than face to face.</p>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">Stay for a drink if you want.</p>
+        <p class="testimonial-sub">Some people stay after the walk, some do not. The point is to keep the whole thing light and easy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="join">
+  <p class="section-label">Join the next walk</p>
+  <h2 class="section-title">
+    Bubble Walk in Bristol,<br><em>without the friction</em>
+  </h2>
+  <p>
+    Want to join? Fill the form and we will email you back with the details. Free to join. Easy to come to on your own.
+  </p>
+
+  <form class="cta-form" id="joinForm" action="https://formspree.io/f/mzdjwobq" method="POST">
+    <div class="cta-row">
+      <input class="cta-input" id="name" name="name" type="text" placeholder="Your name">
+      <input class="cta-input" id="email" name="email" type="email" placeholder="Your email">
+    </div>
+    <textarea class="cta-textarea" id="message" name="message" placeholder="Optional message"></textarea>
+    <input type="hidden" name="_subject" value="Bubble Walk signup">
+    <div class="cta-submit-row">
+      <button class="btn-primary" id="joinSubmitBtn" type="submit">Send</button>
+      <a class="btn-ghost" href="walks.html">See past walks →</a>
+    </div>
+    <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+  </form>
+
+  <div class="helper-links">
+    <a href="https://maps.app.goo.gl/Z5AighzAsEyhkKB48" id="meetingPointLink" target="_blank" rel="noopener noreferrer">Meeting point</a>
+    <a href="#" id="routeFooterLink">Route on Google Maps</a>
+    <a href="walks.html">Walks archive</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <a class="nav-logo" href="#top">Bubble <span style="color:var(--terra-light); font-style:italic;">Walk</span></a>
+    <p>A simple social walk in Bristol Harbourside. Free to join. No pressure. Just walk, talk, and meet people.</p>
+  </div>
+  <div>
+    <h4>Walks</h4>
+    <ul>
+      <li><a href="#events">Next walk</a></li>
+      <li><a href="walks.html">Past walks</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a id="footerRouteLink" href="#">Route</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Join</h4>
+    <ul>
+      <li><a href="#join">Join the next walk</a></li>
+      <li><a id="footerMeetingLink" href="https://maps.app.goo.gl/Z5AighzAsEyhkKB48" target="_blank" rel="noopener noreferrer">Meeting point</a></li>
+      <li><a id="footerMapsLink" href="#">Google Maps</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Info</h4>
+    <ul>
+      <li><a href="#community">What it is</a></li>
+      <li><a href="#how">Easy pace</a></li>
+      <li><a href="#join">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>Bubble Walk — a social walk in Bristol Harbourside. Free to join.</p>
+  <p id="footerNextWalk">Next walk: Friday, 24 April at 6pm</p>
+</div>
+
+<script>
+  const SITE = {
+    city: "Bristol",
+    day: "Friday",
+    date: "24 April 2026",
+    time: "6pm",
+    duration: "about 1h",
+    meetingPoint: "Cascade Steps - Anchor Rd, Bristol BS1 4XJ",
+    meetingMapsUrl: "https://maps.app.goo.gl/Z5AighzAsEyhkKB48",
+    routeMapsUrl: "https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D",
+    mapsQuery: "Bristol Harbourside"
+  };
+
+  function parseSiteDateParts(dateText) {
+    const match = dateText.match(/(\d{1,2})\s+([A-Za-z]+)/);
+    if (!match) return { dayNum: "--", month: "" };
+    return { dayNum: match[1], month: match[2].slice(0, 3) };
+  }
+
+  function applySiteContent() {
+    const dateParts = parseSiteDateParts(SITE.date);
+    document.getElementById("mapsBtnHero").href = SITE.routeMapsUrl;
+    document.getElementById("routeMapBtn").href = SITE.routeMapsUrl;
+    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
+    document.getElementById("routeFooterLink").target = "_blank";
+    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
+    document.getElementById("routeFooterLink").setAttribute("target", "_blank");
+    document.getElementById("routeFooterLink").setAttribute("rel", "noopener noreferrer");
+    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
+    document.getElementById("routeFooterLink").target = "_blank";
+    document.getElementById("footerMapsLink").href = SITE.routeMapsUrl;
+    document.getElementById("footerMapsLink").target = "_blank";
+    document.getElementById("footerMapsLink").rel = "noopener noreferrer";
+    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
+    document.getElementById("routeFooterLink").target = "_blank";
+    document.getElementById("meetingPointLink").href = SITE.meetingMapsUrl;
+    document.getElementById("footerMeetingLink").href = SITE.meetingMapsUrl;
+    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
+    document.getElementById("routeFooterLink").target = "_blank";
+    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
+    document.getElementById("routeFooterLink").setAttribute("aria-label", "Open route in Google Maps");
+    document.getElementById("routeFooterLink").setAttribute("title", "Open route in Google Maps");
+    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
+    document.getElementById("routeFooterLink").target = "_blank";
+    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
+    document.getElementById("routeFooterLink").textContent = "Route";
+    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
+    document.getElementById("routeFooterLink").target = "_blank";
+    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
+    document.getElementById("routeFooterLink").dataset.ready = "true";
+    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
+    document.getElementById("routeFooterLink").target = "_blank";
+    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
+    document.getElementById("routeFooterLink").textContent = "Route";
+    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
+    document.getElementById("routeFooterLink").target = "_blank";
+    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
+    document.getElementById("routeFooterLink").setAttribute("title", "Open route in Google Maps");
+    document.getElementById("meetingLabel").textContent = SITE.meetingPoint;
+    document.getElementById("nextWalkTitle").textContent = `Next Bubble Walk • ${SITE.day} ${SITE.date} • ${SITE.time}`;
+    document.getElementById("eventDayNum").textContent = dateParts.dayNum;
+    document.getElementById("eventMonth").textContent = dateParts.month;
+    document.getElementById("eventDayLine").textContent = SITE.day;
+    document.getElementById("eventTimeLine").textContent = SITE.time;
+    document.getElementById("eventDurationLine").textContent = SITE.duration;
+    document.getElementById("heroCardTitle").textContent = `Next Bubble Walk • ${SITE.day} ${SITE.date} • ${SITE.time}`;
+    document.getElementById("heroCardMeta").textContent = SITE.meetingPoint;
+    document.getElementById("footerNextWalk").textContent = `Next walk: ${SITE.day}, ${SITE.date} at ${SITE.time}`;
+    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
+    document.getElementById("routeFooterLink").target = "_blank";
+    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
+    document.getElementById("routeFooterLink").textContent = "Route";
+    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
+    document.getElementById("routeFooterLink").target = "_blank";
+    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
+    document.getElementById("routeFooterLink").textContent = "Route";
+    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
+    document.getElementById("routeFooterLink").target = "_blank";
+    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
+  }
+
+  function loadSharedContentScript() {
+    return new Promise((resolve) => {
+      if (window.BUBBLEWALK_CONTENT || window.bubbleWalkContent) {
+        resolve();
+        return;
+      }
+      const existing = document.querySelector('script[data-bubblewalk-content="true"]');
+      if (existing) {
+        existing.addEventListener('load', resolve, { once: true });
+        existing.addEventListener('error', resolve, { once: true });
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = 'content.js';
+      script.dataset.bubblewalkContent = 'true';
+      script.onload = resolve;
+      script.onerror = resolve;
+      document.head.appendChild(script);
+    });
+  }
+
+  function getWalksFromSharedContent() {
+    const root = window.BUBBLEWALK_CONTENT || window.bubbleWalkContent || null;
+    if (!root) return [];
+    const raw = root.walksPage || root.walks || root.pastWalks || null;
+    return Array.isArray(raw) ? raw : [];
+  }
+
+  async function loadWalksFromPage() {
+    try {
+      await loadSharedContentScript();
+      const sharedWalks = getWalksFromSharedContent();
+      if (sharedWalks.length) return sharedWalks;
+
+      const response = await fetch('walks.html', { cache: 'no-store' });
+      if (!response.ok) throw new Error('Could not load walks.html');
+      const htmlText = await response.text();
+      const match = htmlText.match(/const DEFAULT_WALKS = \[([\s\S]*?)\];/);
+      if (!match) throw new Error('DEFAULT_WALKS not found');
+
+      const cleaned = match[1].replace(/\/\*[\s\S]*?\*\//g, '').trim();
+      const walks = new Function(`return [${cleaned}]`)();
+      return Array.isArray(walks) ? walks : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function getWalkImageList(walk) {
+    const images = [];
+    const pushIfValid = (value) => {
+      if (value && !images.includes(value)) images.push(value);
     };
 
-    const mapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(SITE.mapsQuery);
-    const nextLine = `${SITE.city} • ${SITE.day} ${SITE.date} • ${SITE.time}`;
-
-    document.getElementById("weeklyHeadline").textContent = nextLine;
-    document.getElementById("dayText").textContent = SITE.day;
-    document.getElementById("dateText").textContent = SITE.date;
-    document.getElementById("timeText").textContent = SITE.time;
-    document.getElementById("durationText").textContent = SITE.duration;
-    document.getElementById("meetingText").textContent = SITE.meetingPoint;
-    document.getElementById("meetingMapLink").href = SITE.meetingMapsUrl;
-    document.getElementById("mapsBtnHero").href = "https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D";
-
-
-
-function loadSharedContentScript() {
-  return new Promise((resolve) => {
-    if (window.BUBBLEWALK_CONTENT || window.bubbleWalkContent) {
-      resolve();
-      return;
+    if (walk && walk.featured) {
+      pushIfValid(typeof walk.featured === 'string' ? walk.featured : (walk.featured.src || walk.featured.image || ''));
     }
-    const existing = document.querySelector('script[data-bubblewalk-content="true"]');
-    if (existing) {
-      existing.addEventListener('load', resolve, { once: true });
-      existing.addEventListener('error', resolve, { once: true });
-      return;
-    }
-    const script = document.createElement('script');
-    script.src = 'content.js';
-    script.dataset.bubblewalkContent = 'true';
-    script.onload = resolve;
-    script.onerror = resolve;
-    document.head.appendChild(script);
-  });
-}
 
-function getWalksFromSharedContent() {
-  const root = window.BUBBLEWALK_CONTENT || window.bubbleWalkContent || null;
-  if (!root) return [];
-  const raw = root.walksPage || root.walks || root.pastWalks || null;
-  return Array.isArray(raw) ? raw : [];
-}
+    (walk && walk.photos ? walk.photos : []).forEach((photo) => {
+      pushIfValid(typeof photo === 'string' ? photo : (photo.src || photo.image || ''));
+    });
 
-async function loadWalksFromPage() {
-  try {
-    await loadSharedContentScript();
-    const sharedWalks = getWalksFromSharedContent();
-    if (sharedWalks.length) return sharedWalks;
-
-    const response = await fetch("walks.html", { cache: "no-store" });
-    if (!response.ok) throw new Error("Could not load walks.html");
-    const htmlText = await response.text();
-    const match = htmlText.match(/const DEFAULT_WALKS = \[([\s\S]*?)\];/);
-    if (!match) throw new Error("DEFAULT_WALKS not found");
-
-    const cleaned = match[1].replace(/\/\*[\s\S]*?\*\//g, "").trim();
-    const walks = new Function(`return [${cleaned}]`)();
-    return Array.isArray(walks) ? walks : [];
-  } catch (error) {
-    return [];
-  }
-}
-
-function getWalkImageList(walk) {
-  const images = [];
-  const pushIfValid = (value) => {
-    if (value && !images.includes(value)) images.push(value);
-  };
-
-  if (walk && walk.featured) {
-    pushIfValid(typeof walk.featured === "string" ? walk.featured : (walk.featured.src || walk.featured.image || ""));
+    return images;
   }
 
-  (walk.photos || []).forEach((photo) => {
-    pushIfValid(typeof photo === "string" ? photo : (photo.src || photo.image || ""));
-  });
-
-  return images;
-}
-
-function parseWalkTimestamp(dateText) {
-  const timestamp = Date.parse(dateText || "");
-  return Number.isNaN(timestamp) ? null : timestamp;
-}
-
-function getLatestBubbleWalk(walks) {
-  const bubbleWalks = walks.filter((walk) => {
-    return walk && typeof walk.label === "string" && walk.label.toLowerCase().includes("bubble walk");
-  });
-
-  if (!bubbleWalks.length) return null;
-
-  return bubbleWalks.sort((a, b) => {
-    const aTime = parseWalkTimestamp(a.date);
-    const bTime = parseWalkTimestamp(b.date);
-    if (aTime === null && bTime === null) return 0;
-    if (aTime === null) return 1;
-    if (bTime === null) return -1;
-    return bTime - aTime;
-  })[0];
-}
-
-function initLatestWalkCarousel(walk) {
-  if (!walk) return;
-
-  const titleEl = document.getElementById("latestWalkTitle");
-  const noteEl = document.getElementById("latestWalkNote");
-  const imageEl = document.getElementById("latestWalkImage");
-
-  if (!titleEl || !noteEl || !imageEl) return;
-
-  titleEl.textContent = walk.label || "Latest Bubble Walk";
-  noteEl.textContent = [walk.date, walk.place].filter(Boolean).join(" • ") || "A few moments from the latest walk.";
-
-  const images = getWalkImageList(walk);
-  if (!images.length) return;
-
-  let currentIndex = 0;
-
-  const showImage = (index) => {
-    imageEl.src = images[index];
-    imageEl.alt = walk.label || "Latest Bubble Walk photo";
-  };
-
-  showImage(currentIndex);
-
-  if (images.length > 1) {
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % images.length;
-      showImage(currentIndex);
-    }, 3200);
+  function parseWalkTimestamp(dateText) {
+    const timestamp = Date.parse(dateText || '');
+    return Number.isNaN(timestamp) ? null : timestamp;
   }
-}
 
-async function setupLatestWalkBlock() {
-  const walks = await loadWalksFromPage();
-  const latestWalk = getLatestBubbleWalk(walks);
-  if (latestWalk) initLatestWalkCarousel(latestWalk);
-}
+  function getLatestBubbleWalk(walks) {
+    const bubbleWalks = walks.filter((walk) => {
+      return walk && typeof walk.label === 'string' && walk.label.toLowerCase().includes('bubble walk');
+    });
 
-setupLatestWalkBlock();
+    if (!bubbleWalks.length) return null;
 
-    const joinForm = document.getElementById("joinForm");
-    const formStatus = document.getElementById("formStatus");
-    const joinSubmitBtn = document.getElementById("joinSubmitBtn");
+    return bubbleWalks.sort((a, b) => {
+      const aTime = parseWalkTimestamp(a.date);
+      const bTime = parseWalkTimestamp(b.date);
+      if (aTime === null && bTime === null) return 0;
+      if (aTime === null) return 1;
+      if (bTime === null) return -1;
+      return bTime - aTime;
+    })[0];
+  }
 
-    if (joinForm && formStatus && joinSubmitBtn) {
-      joinForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
+  function parseHumanDate(dateText) {
+    const d = new Date(dateText);
+    if (Number.isNaN(d.getTime())) return { dayNum: '--', month: '' };
+    return {
+      dayNum: String(d.getDate()).padStart(2, '0'),
+      month: d.toLocaleString('en-GB', { month: 'short' })
+    };
+  }
 
-        formStatus.classList.remove("is-visible");
-        formStatus.textContent = "";
-        joinSubmitBtn.disabled = true;
-        joinSubmitBtn.textContent = "Sending...";
+  function bindImageRotation(imageIds, images, altText) {
+    if (!images.length) return;
+    const targets = imageIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    if (!targets.length) return;
 
-        try {
-          const formData = new FormData(joinForm);
-
-          const response = await fetch(joinForm.action, {
-            method: "POST",
-            body: formData,
-            headers: {
-              "Accept": "application/json"
-            }
-          });
-
-          let ok = response.ok;
-          let data = null;
-
-          try {
-            data = await response.json();
-          } catch (e) {
-            data = null;
-          }
-
-          if (ok) {
-            joinForm.reset();
-            joinForm.style.display = "none";
-            formStatus.textContent = "Thanks for confirming — see you at Bubble Walk.";
-            formStatus.classList.add("is-visible");
-          } else {
-            const message = data && data.errors && data.errors.length
-              ? data.errors.map(err => err.message).join(" ")
-              : "Something went wrong. Please try again.";
-            formStatus.textContent = message;
-            formStatus.classList.add("is-visible");
-          }
-        } catch (error) {
-          formStatus.textContent = "Something went wrong. Please try again.";
-          formStatus.classList.add("is-visible");
-        } finally {
-          joinSubmitBtn.disabled = false;
-          joinSubmitBtn.textContent = "Send";
-        }
+    let currentIndex = 0;
+    const showImage = (index) => {
+      targets.forEach((img) => {
+        img.src = images[index];
+        img.alt = altText;
       });
-    }
+    };
 
-  </script>
+    showImage(currentIndex);
+
+    if (images.length > 1) {
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+      }, 3200);
+    }
+  }
+
+  async function setupLatestWalkBlocks() {
+    const walks = await loadWalksFromPage();
+    const latestWalk = getLatestBubbleWalk(walks);
+    if (!latestWalk) return;
+
+    const dateParts = parseHumanDate(latestWalk.date || '');
+    const images = getWalkImageList(latestWalk);
+    bindImageRotation(['heroLatestImage', 'latestWalkImageCard'], images, latestWalk.label || 'Latest Bubble Walk');
+
+    const latestWalkName = document.getElementById('latestWalkName');
+    const latestWalkMeta = document.getElementById('latestWalkMeta');
+    const latestWalkPlace = document.getElementById('latestWalkPlace');
+    const latestWalkDay = document.getElementById('latestWalkDay');
+    const latestWalkMonth = document.getElementById('latestWalkMonth');
+
+    if (latestWalkName) latestWalkName.textContent = latestWalk.label || 'Latest Bubble Walk';
+    if (latestWalkMeta) latestWalkMeta.textContent = [latestWalk.date, latestWalk.place].filter(Boolean).join(' • ') || 'A few moments from the latest walk.';
+    if (latestWalkPlace) latestWalkPlace.textContent = latestWalk.place || 'Harbourside';
+    if (latestWalkDay) latestWalkDay.textContent = dateParts.dayNum;
+    if (latestWalkMonth) latestWalkMonth.textContent = dateParts.month;
+  }
+
+
+  function setupPollForm() {
+    const pollForm = document.getElementById('pollForm');
+    const pollStatus = document.getElementById('pollStatus');
+    const pollSubmitBtn = document.getElementById('pollSubmitBtn');
+
+    if (!pollForm || !pollStatus || !pollSubmitBtn) return;
+
+    pollForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      pollStatus.classList.remove('is-visible');
+      pollStatus.textContent = '';
+      pollSubmitBtn.disabled = true;
+      pollSubmitBtn.textContent = 'Sending...';
+
+      try {
+        const formData = new FormData(pollForm);
+        const response = await fetch(pollForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        let data = null;
+        try {
+          data = await response.json();
+        } catch (e) {
+          data = null;
+        }
+
+        if (response.ok) {
+          pollStatus.textContent = 'Thanks — your preference has been recorded.';
+          pollStatus.classList.add('is-visible');
+        } else {
+          const message = data && data.errors && data.errors.length
+            ? data.errors.map(err => err.message).join(' ')
+            : 'Something went wrong. Please try again.';
+          pollStatus.textContent = message;
+          pollStatus.classList.add('is-visible');
+        }
+      } catch (error) {
+        pollStatus.textContent = 'Something went wrong. Please try again.';
+        pollStatus.classList.add('is-visible');
+      } finally {
+        pollSubmitBtn.disabled = false;
+        pollSubmitBtn.textContent = 'Vote';
+      }
+    });
+  }
+
+  function setupJoinForm() {
+    const joinForm = document.getElementById('joinForm');
+    const formStatus = document.getElementById('formStatus');
+    const joinSubmitBtn = document.getElementById('joinSubmitBtn');
+
+    if (!joinForm || !formStatus || !joinSubmitBtn) return;
+
+    joinForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      formStatus.classList.remove('is-visible');
+      formStatus.textContent = '';
+      joinSubmitBtn.disabled = true;
+      joinSubmitBtn.textContent = 'Sending...';
+
+      try {
+        const formData = new FormData(joinForm);
+        const response = await fetch(joinForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        let ok = response.ok;
+        let data = null;
+        try {
+          data = await response.json();
+        } catch (e) {
+          data = null;
+        }
+
+        if (ok) {
+          joinForm.reset();
+          formStatus.textContent = 'Thanks for confirming — see you at Bubble Walk.';
+          formStatus.classList.add('is-visible');
+        } else {
+          const message = data && data.errors && data.errors.length
+            ? data.errors.map(err => err.message).join(' ')
+            : 'Something went wrong. Please try again.';
+          formStatus.textContent = message;
+          formStatus.classList.add('is-visible');
+        }
+      } catch (error) {
+        formStatus.textContent = 'Something went wrong. Please try again.';
+        formStatus.classList.add('is-visible');
+      } finally {
+        joinSubmitBtn.disabled = false;
+        joinSubmitBtn.textContent = 'Send';
+      }
+    });
+  }
+
+  applySiteContent();
+  setupLatestWalkBlocks();
+  setupJoinForm();
+  setupPollForm();
+  document.getElementById('routeFooterLink').href = SITE.routeMapsUrl;
+  document.getElementById('routeFooterLink').target = '_blank';
+  document.getElementById('routeFooterLink').rel = 'noopener noreferrer';
+  document.getElementById('routeFooterLink').textContent = 'Route';
+  document.getElementById('routeFooterLink').href = SITE.routeMapsUrl;
+  document.getElementById('routeFooterLink').target = '_blank';
+  document.getElementById('routeFooterLink').rel = 'noopener noreferrer';
+  document.getElementById('routeFooterLink').textContent = 'Route';
+  document.getElementById('routeFooterLink').href = SITE.routeMapsUrl;
+  document.getElementById('routeFooterLink').target = '_blank';
+  document.getElementById('routeFooterLink').rel = 'noopener noreferrer';
+  document.getElementById('routeFooterLink').textContent = 'Route';
+  document.getElementById('routeFooterLink').href = SITE.routeMapsUrl;
+  document.getElementById('routeFooterLink').target = '_blank';
+  document.getElementById('routeFooterLink').rel = 'noopener noreferrer';
+  document.getElementById('routeFooterLink').textContent = 'Route';
+</script>
 </body>
 </html>
