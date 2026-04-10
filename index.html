@@ -198,7 +198,7 @@
       <div class="nav-links">
         <a href="#what-it-is">What it is</a>
         <a href="#faq">FAQ</a>
-        <a href="photos.html">Photos</a>
+        <a href="walks.html">Walks</a>
         <a class="join-pill" href="#join">Join</a>
       </div>
     </nav>
@@ -219,11 +219,11 @@
       <aside class="week-card" id="next-walk">
         <div>
           <p class="week-label">Next Bubble Walk</p>
-          <h2 class="week-title" id="weeklyHeadline">Bristol • Thursday 9 April • 6pm</h2>
+          <h2 class="week-title" id="weeklyHeadline">Bristol • Friday 24 April • 6pm</h2>
           <p class="week-copy">Free to join. About 1 hour. A simple Bristol Harbourside walk with time to talk.</p>
           <div class="meta">
-            <div class="meta-row"><span>Day</span><strong id="dayText">Thursday</strong></div>
-            <div class="meta-row"><span>Date</span><strong id="dateText">9 April 2026</strong></div>
+            <div class="meta-row"><span>Day</span><strong id="dayText">Friday</strong></div>
+            <div class="meta-row"><span>Date</span><strong id="dateText">24 April 2026</strong></div>
             <div class="meta-row"><span>Start</span><strong id="timeText">6pm</strong></div>
             <div class="meta-row"><span>Duration</span><strong id="durationText">about 1h</strong></div>
             <div class="meta-row"><span>Meeting point</span><strong><a href="https://maps.app.goo.gl/Z5AighzAsEyhkKB48" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--detail);"><span id="meetingText">Cascade Steps - Anchor Rd, Bristol BS1 4XJ</span><span class="pin-icon" id="meetingMapLink" aria-label="Open meeting point in Google Maps" style="width:32px;height:32px;"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" fill="var(--navy-2)"></path><circle cx="12" cy="10" r="2.8" fill="white"></circle></svg></span></a></strong></div>
@@ -253,11 +253,11 @@
 
     <section class="section split" id="three-bubbles">
       <aside class="photo-card">
-        <h3 style="margin:0 0 12px; font-size:1.2rem; letter-spacing:-0.03em; color:var(--navy);">Bristol Harbourside</h3>
+        <h3 id="latestWalkTitle" style="margin:0 0 12px; font-size:1.2rem; letter-spacing:-0.03em; color:var(--navy);">Bubble Walk #1</h3>
         <div class="photo-frame" style="aspect-ratio:16 / 12.8;">
-          <img id="harboursideImage" src="harbourside-bristol.jpg" alt="Bristol Harbourside during the Bubble Walk route">
+          <img id="latestWalkImage" src="photos/bubblewalk-2026-04-09-feature.jpg" alt="Bubble Walk #1">
         </div>
-        <p class="photo-note">The setting for Bubble Walk.</p>
+        <p class="photo-note" id="latestWalkNote">9 April 2026 • Harbourside</p>
       </aside>
 
       <div class="route-card">
@@ -322,15 +322,15 @@
 
     <footer class="footer">
       <div><strong>Bubble Walk</strong> — a social walk in Bristol Harbourside. Free to join.</div>
-      <div>Next walk: Thursday, 9 April at 6pm</div>
+      <div>Next walk: Friday, 24 April at 6pm</div>
     </footer>
   </div>
 
   <script>
     const SITE = {
       city: "Bristol",
-      day: "Thursday",
-      date: "9 April 2026",
+      day: "Friday",
+      date: "24 April 2026",
       time: "6pm",
       duration: "about 1h",
       meetingPoint: "Cascade Steps - Anchor Rd, Bristol BS1 4XJ",
@@ -350,7 +350,135 @@
     document.getElementById("meetingMapLink").href = SITE.meetingMapsUrl;
     document.getElementById("mapsBtnHero").href = "https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D";
 
-  
+
+
+function loadSharedContentScript() {
+  return new Promise((resolve) => {
+    if (window.BUBBLEWALK_CONTENT || window.bubbleWalkContent) {
+      resolve();
+      return;
+    }
+    const existing = document.querySelector('script[data-bubblewalk-content="true"]');
+    if (existing) {
+      existing.addEventListener('load', resolve, { once: true });
+      existing.addEventListener('error', resolve, { once: true });
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'content.js';
+    script.dataset.bubblewalkContent = 'true';
+    script.onload = resolve;
+    script.onerror = resolve;
+    document.head.appendChild(script);
+  });
+}
+
+function getWalksFromSharedContent() {
+  const root = window.BUBBLEWALK_CONTENT || window.bubbleWalkContent || null;
+  if (!root) return [];
+  const raw = root.walksPage || root.walks || root.pastWalks || null;
+  return Array.isArray(raw) ? raw : [];
+}
+
+async function loadWalksFromPage() {
+  try {
+    await loadSharedContentScript();
+    const sharedWalks = getWalksFromSharedContent();
+    if (sharedWalks.length) return sharedWalks;
+
+    const response = await fetch("walks.html", { cache: "no-store" });
+    if (!response.ok) throw new Error("Could not load walks.html");
+    const htmlText = await response.text();
+    const match = htmlText.match(/const DEFAULT_WALKS = \[([\s\S]*?)\];/);
+    if (!match) throw new Error("DEFAULT_WALKS not found");
+
+    const cleaned = match[1].replace(/\/\*[\s\S]*?\*\//g, "").trim();
+    const walks = new Function(`return [${cleaned}]`)();
+    return Array.isArray(walks) ? walks : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function getWalkImageList(walk) {
+  const images = [];
+  const pushIfValid = (value) => {
+    if (value && !images.includes(value)) images.push(value);
+  };
+
+  if (walk && walk.featured) {
+    pushIfValid(typeof walk.featured === "string" ? walk.featured : (walk.featured.src || walk.featured.image || ""));
+  }
+
+  (walk.photos || []).forEach((photo) => {
+    pushIfValid(typeof photo === "string" ? photo : (photo.src || photo.image || ""));
+  });
+
+  return images;
+}
+
+function parseWalkTimestamp(dateText) {
+  const timestamp = Date.parse(dateText || "");
+  return Number.isNaN(timestamp) ? null : timestamp;
+}
+
+function getLatestBubbleWalk(walks) {
+  const bubbleWalks = walks.filter((walk) => {
+    return walk && typeof walk.label === "string" && walk.label.toLowerCase().includes("bubble walk");
+  });
+
+  if (!bubbleWalks.length) return null;
+
+  return bubbleWalks.sort((a, b) => {
+    const aTime = parseWalkTimestamp(a.date);
+    const bTime = parseWalkTimestamp(b.date);
+    if (aTime === null && bTime === null) return 0;
+    if (aTime === null) return 1;
+    if (bTime === null) return -1;
+    return bTime - aTime;
+  })[0];
+}
+
+function initLatestWalkCarousel(walk) {
+  if (!walk) return;
+
+  const titleEl = document.getElementById("latestWalkTitle");
+  const noteEl = document.getElementById("latestWalkNote");
+  const imageEl = document.getElementById("latestWalkImage");
+
+  if (!titleEl || !noteEl || !imageEl) return;
+
+  titleEl.textContent = walk.label || "Latest Bubble Walk";
+  noteEl.textContent = [walk.date, walk.place].filter(Boolean).join(" • ") || "A few moments from the latest walk.";
+
+  const images = getWalkImageList(walk);
+  if (!images.length) return;
+
+  let currentIndex = 0;
+
+  const showImage = (index) => {
+    imageEl.src = images[index];
+    imageEl.alt = walk.label || "Latest Bubble Walk photo";
+  };
+
+  showImage(currentIndex);
+
+  if (images.length > 1) {
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    }, 3200);
+  }
+}
+
+async function setupLatestWalkBlock() {
+  const walks = await loadWalksFromPage();
+  const latestWalk = getLatestBubbleWalk(walks);
+  if (latestWalk) initLatestWalkCarousel(latestWalk);
+}
+
+setupLatestWalkBlock();
+
     const joinForm = document.getElementById("joinForm");
     const formStatus = document.getElementById("formStatus");
     const joinSubmitBtn = document.getElementById("joinSubmitBtn");
