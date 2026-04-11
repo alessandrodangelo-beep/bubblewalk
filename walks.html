@@ -70,29 +70,25 @@
       display: inline-flex; align-items: center; justify-content: center;
     }
     .nav-cta:hover { background: var(--terra-dark); transform: translateY(-1px); }
-
-    .mobile-quick-links {
-      display: none;
-      padding: 0.7rem 1rem 0;
-      gap: 0.75rem;
-      background: var(--cream);
-    }
-    .mobile-quick-links a {
-      flex: 1;
-      min-width: 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0.78rem 0.95rem;
-      border-radius: 999px;
-      border: 1px solid var(--cream-dark);
-      background: rgba(255,255,255,0.92);
+    .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-secondary {
+      background: rgba(122,158,126,0.14);
       color: var(--forest);
-      font-size: 0.84rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      border: 1px solid rgba(122,158,126,0.28);
+      padding: 0.65rem 1.25rem;
+      border-radius: 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
       text-decoration: none;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.15s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-secondary:hover {
+      background: rgba(122,158,126,0.22);
+      border-color: rgba(122,158,126,0.4);
+      transform: translateY(-1px);
     }
 
     .section { padding: 6rem 5rem; }
@@ -482,12 +478,8 @@
       .nav-logo { font-size: 1.35rem; }
       .nav-links { display: none; }
       .nav-cta { padding: 0.6rem 1.1rem; font-size: 0.82rem; }
-      .mobile-quick-links {
-        display: flex;
-        position: sticky;
-        top: 60px;
-        z-index: 95;
-      }
+      .nav-actions { gap: 0.55rem; }
+      .nav-secondary { padding: 0.6rem 1rem; font-size: 0.82rem; }
       .archive-hero {
         min-height: auto;
         grid-template-columns: 1fr;
@@ -580,7 +572,7 @@
       .archive-hero-actions .btn-ghost,
       .cta-actions .btn-primary,
       .cta-actions .btn-ghost { width: 100%; justify-content: center; }
-      .nav-cta { width: auto; }
+      .nav-cta, .nav-secondary { width: auto; }
       .archive-stats {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -622,14 +614,11 @@
     <li><a href="index.html#community">What it is</a></li>
     <li><a href="walks.html">Walks</a></li>
   </ul>
-  <a class="nav-cta" href="index.html#join">Join free</a>
+  <div class="nav-actions">
+    <a class="nav-secondary" href="index.html">Home</a>
+    <a class="nav-cta" href="index.html#join">Join free</a>
+  </div>
 </nav>
-
-<div class="mobile-quick-links" aria-label="Mobile navigation">
-  <a href="index.html">Home</a>
-  <a href="index.html#events">Next walk</a>
-  <a href="index.html#join">Join</a>
-</div>
 
 <section class="archive-hero" id="top">
   <div class="archive-hero-bg"></div>
