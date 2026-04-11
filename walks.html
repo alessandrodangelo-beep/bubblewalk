@@ -452,26 +452,128 @@
       footer { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 900px) {
-      nav { padding: 1rem 1.5rem; }
+      nav { padding: 0.95rem 1rem; }
+      .nav-logo { font-size: 1.35rem; }
       .nav-links { display: none; }
-      .archive-hero { grid-template-columns: 1fr; padding-top: 70px; }
-      .archive-hero-left { padding: 3rem 1.5rem 2rem; }
-      .archive-hero-right { min-height: auto; padding: 0 1.5rem 5.5rem; }
-      .archive-hero-card { width: 100%; max-width: 520px; transform: none; }
-      .archive-hero-media { height: 460px; }
-      .section { padding: 4rem 1.5rem; }
-      footer { padding: 2.5rem 1.5rem; }
-      .footer-bottom { padding: 1rem 1.5rem; flex-direction: column; align-items: flex-start; }
+      .nav-cta { padding: 0.6rem 1.1rem; font-size: 0.82rem; }
+      .archive-hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        padding-top: 72px;
+      }
+      .archive-hero-bg {
+        width: 100%;
+        height: 40%;
+        left: 0;
+        right: 0;
+        top: auto;
+        bottom: 0;
+        clip-path: none;
+        opacity: 0.22;
+      }
+      .archive-hero-left { padding: 2.5rem 1rem 1.5rem; }
+      .archive-hero-sub {
+        font-size: 1.02rem;
+        line-height: 1.65;
+        max-width: none;
+      }
+      .archive-hero-right {
+        min-height: auto;
+        display: block;
+        padding: 0 1rem 0;
+      }
+      .archive-hero-card {
+        width: 100%;
+        max-width: none;
+        transform: none;
+        padding-bottom: 0;
+      }
+      .archive-hero-media {
+        height: 340px;
+        border-radius: 1rem 1rem 2rem 1rem;
+      }
+      .archive-hero-caption {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        transform: none;
+        width: 100%;
+        margin-top: -1rem;
+        padding: 1.25rem 1.2rem;
+      }
+      .archive-shell {
+        display: flex;
+        flex-direction: column;
+      }
+      .archive-sidebar {
+        position: static;
+        order: -1;
+      }
+      .archive-card,
+      .archive-sidebar-card,
+      .cta-card { padding: 1.2rem; }
+      .walk-list {
+        display: flex;
+        gap: 0.9rem;
+        overflow-x: auto;
+        padding-bottom: 0.35rem;
+        scroll-snap-type: x proximity;
+      }
+      .walk-item {
+        min-width: 230px;
+        flex: 0 0 230px;
+        scroll-snap-align: start;
+      }
+      .section { padding: 4rem 1rem; }
+      footer { padding: 2.5rem 1rem; }
+      .footer-bottom { padding: 1rem; flex-direction: column; align-items: flex-start; }
       .gallery-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
-      .archive-hero-title { max-width: none; }
-      .archive-hero-actions, .cta-actions { flex-direction: column; }
-      .btn-primary, .nav-cta, .btn-ghost { width: 100%; justify-content: center; }
-      .archive-stats { gap: 1.5rem; }
-      .featured-frame, .featured-empty { min-height: 320px; }
-      .gallery-media { min-height: 220px; }
-      .cta-card { align-items: flex-start; }
+      .archive-hero-tag {
+        font-size: 0.76rem;
+        letter-spacing: 0.12em;
+        padding: 0.35rem 0.8rem;
+        margin-bottom: 1.35rem;
+      }
+      .archive-hero-title {
+        max-width: none;
+        font-size: clamp(2.6rem, 13vw, 3.8rem);
+        line-height: 0.98;
+      }
+      .archive-hero-actions,
+      .cta-actions { flex-direction: column; }
+      .archive-hero-actions .btn-primary,
+      .archive-hero-actions .btn-ghost,
+      .cta-actions .btn-primary,
+      .cta-actions .btn-ghost { width: 100%; justify-content: center; }
+      .nav-cta { width: auto; }
+      .archive-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        width: 100%;
+      }
+      .stat-num { font-size: 1.95rem; }
+      .stat-label { font-size: 0.72rem; }
+      .archive-hero-media { height: 280px; }
+      .archive-hero-caption strong { font-size: 1.35rem; }
+      .archive-hero-caption span { font-size: 0.94rem; }
+      .archive-summary h2 { font-size: 2.25rem; }
+      .meta-pill {
+        font-size: 0.82rem;
+        padding: 0.6rem 0.9rem;
+      }
+      .featured-frame, .featured-empty { min-height: 260px; }
+      .gallery-media { min-height: 200px; }
+      .walk-item {
+        min-width: 82vw;
+        flex-basis: 82vw;
+      }
+      .cta-card {
+        align-items: flex-start;
+        gap: 1rem;
+      }
       footer { grid-template-columns: 1fr; }
     }
   </style>
