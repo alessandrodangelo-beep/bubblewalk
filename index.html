@@ -456,6 +456,10 @@
     width: 100%;
   }.cta-textarea { min-height: 130px; resize: vertical; }.cta-submit-row {
     display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;
+    margin-top: 0.35rem;
+  }
+  .cta-submit-row .btn-primary {
+    min-width: 180px;
   }.form-status {
     display: none;
     margin-top: 0.5rem;
@@ -601,15 +605,21 @@
       line-height: 0.98;
       margin-bottom: 1rem;
     }
-    .hero-actions, .cta-submit-row { flex-direction: column; }
+    .hero-actions { flex-direction: column; }
     .hero-actions .btn-primary,
-    .hero-actions .btn-ghost,
-    .cta-submit-row .btn-primary,
-    .cta-submit-row .btn-ghost { width: 100%; justify-content: center; }
+    .hero-actions .btn-ghost { width: 100%; justify-content: center; }
     .nav-actions {
       flex-wrap: nowrap;
     }
     .nav-cta { width: auto; }
+    .cta-submit-row {
+      flex-direction: row;
+      justify-content: center;
+    }
+    .cta-submit-row .btn-primary {
+      width: auto;
+      min-width: 180px;
+    }
     .stat-num { font-size: 1.95rem; }
     .stat-label { font-size: 0.72rem; }
     .hero-main-img { height: 280px; }
@@ -890,16 +900,9 @@
     <input type="hidden" name="_subject" value="Bubble Walk signup">
     <div class="cta-submit-row">
       <button class="btn-primary" id="joinSubmitBtn" type="submit">Send</button>
-      <a class="btn-ghost" href="walks.html">See past walks →</a>
     </div>
     <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
   </form>
-
-  <div class="helper-links">
-    <a href="https://maps.app.goo.gl/Z5AighzAsEyhkKB48" id="meetingPointLink" target="_blank" rel="noopener noreferrer">Meeting point</a>
-    <a href="#" id="routeFooterLink">Route on Google Maps</a>
-    <a href="walks.html">Walks archive</a>
-  </div>
 </section>
 
 <footer>
