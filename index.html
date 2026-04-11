@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bubble Walk — Social Walk in Bristol Harbourside</title>
-<meta name="description" content="Bubble Walk is a social walk in Bristol Harbourside. Free to join. No pressure. Just walk, talk, and meet people. See the next walk and join here.">
+<meta name="description" content="Bubble Walk is a social walk in Bristol, South West England. Free to join. No pressure. Just walk, talk, and meet people. See the next walk and join here.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -385,7 +385,7 @@
     letter-spacing: -0.05em;
   }.cta-section .section-label { display: block; margin-bottom: 1rem; }.cta-section .section-title { margin-bottom: 1.25rem; position: relative; z-index: 1; }.cta-section p {
     color: var(--warm-gray); font-size: calc(1rem + 0.1667rem); font-weight: 300;
-    max-width: 48ch; margin: 0 auto 2.5rem;
+    max-width: 48ch; margin: 0 auto 1.35rem;
     line-height: 1.8; position: relative; z-index: 1;
   }.cta-form {
     position: relative; z-index: 1;
@@ -410,7 +410,26 @@
     background: rgba(255,255,255,0.92);
     color: var(--forest);
     font-size: calc(0.9rem + 0.1667rem);
-  }.form-status.is-visible { display: block; }.helper-links {
+  }.form-status.is-visible { display: block; }.cta-next-walk {
+    position: relative; z-index: 1;
+    max-width: 920px; margin: -0.3rem auto 1.4rem;
+    display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap;
+  }.cta-next-pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.72rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--cream-dark);
+    background: rgba(255,255,255,0.9);
+    color: var(--forest);
+    font-size: calc(0.82rem + 0.1667rem);
+    line-height: 1.25;
+    white-space: nowrap;
+  }.cta-next-pill.location-pill {
+    white-space: normal;
+    text-align: center;
+    max-width: min(100%, 680px);
+  }
+  .helper-links {
     display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap;
     font-size: calc(0.85rem + 0.1667rem); position: relative; z-index: 1;
   }.helper-links a {
@@ -537,6 +556,27 @@
     .event-meta { gap: 0.7rem; }
     .poll-card-body { padding: 1.1rem 1.1rem 1.2rem; }
     .poll-option { padding: 0.8rem 0.9rem; }
+    .cta-section { padding: 3.25rem 1rem; }
+    .cta-section p { margin-bottom: 1rem; }
+    .cta-next-walk {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.55rem;
+      margin: 0 auto 1rem;
+    }
+    .cta-next-pill {
+      width: 100%;
+      white-space: normal;
+      text-align: center;
+      padding: 0.7rem 0.9rem;
+      font-size: 0.92rem;
+    }
+    .cta-input, .cta-textarea {
+      padding: 0.9rem 1rem;
+      font-size: 0.92rem;
+    }
+    .cta-textarea { min-height: 110px; }
+    .helper-links { gap: 0.8rem 1rem; }
     .how-grid { grid-template-columns: 1fr; }
     footer { grid-template-columns: 1fr; }
     .cta-section::before { font-size: calc(6rem + 0.1667rem); }
@@ -560,14 +600,14 @@
   <div class="hero-bg-shape"></div>
 
   <div class="hero-left">
-    <span class="hero-tag">Bristol Harbourside • Free social walk</span>
+    <span class="hero-tag">Bristol, South West England • Free social walk</span>
     <h1 class="hero-title">
       Walk.<br>
       <em>Talk.</em><br>
       Meet.
     </h1>
     <p class="hero-sub">
-      Bubble Walk is a simple social walk in Bristol. Free to join. No pressure. Just walk, talk, and meet people on an easy Harbourside loop. An hour outside, away from traffic and screens.
+      Bubble Walk is a simple social walk in Bristol, South West England. Free to join. No pressure. Just walk, talk, and meet people. An hour outside, away from traffic and screens.
     </p>
     <div class="hero-actions">
       <a href="#join" class="btn-primary">Join the next walk</a>
@@ -746,7 +786,7 @@
       <p class="section-label">What Bubble Walk is</p>
       <h2 class="section-title">A social walk, <em>not a performance</em></h2>
       <p>
-        Bubble Walk is a social walk in Bristol Harbourside. It is free to join, easy to come to on your own, and built around simple conversation while walking.
+        Bubble Walk is a social walk in Bristol, South West England. It is free to join, easy to come to on your own, and built around simple conversation while walking.
       </p>
       <p>
         No awkward format. No pressure. Just people walking and talking together. An easy route, an easy pace, and a bit of time outside with other people.
@@ -764,8 +804,8 @@
         <p class="testimonial-sub">You do not need to know anyone before coming. That is a normal way to join Bubble Walk.</p>
       </div>
       <div class="testimonial">
-        <p class="testimonial-text">Walk Bristol Harbourside.</p>
-        <p class="testimonial-sub">An easy Harbourside loop with space to talk side by side rather than face to face.</p>
+        <p class="testimonial-text">Walk Bristol together.</p>
+        <p class="testimonial-sub">A simple route with space to talk side by side rather than face to face.</p>
       </div>
       <div class="testimonial">
         <p class="testimonial-text">Stay for a drink if you want.</p>
@@ -783,6 +823,12 @@
   <p>
     Want to join? Fill the form and we will email you back with the details. Free to join. Easy to come to on your own.
   </p>
+
+  <div class="cta-next-walk" aria-label="Next Bubble Walk details">
+    <span class="cta-next-pill" id="ctaDatePill">Friday 24 April 2026</span>
+    <span class="cta-next-pill" id="ctaTimePill">6pm</span>
+    <span class="cta-next-pill location-pill" id="ctaLocationPill">Cascade Steps — Anchor Rd, Bristol BS1 4XJ</span>
+  </div>
 
   <form class="cta-form" id="joinForm" action="https://formspree.io/f/mzdjwobq" method="POST">
     <div class="cta-row">
@@ -808,7 +854,7 @@
 <footer>
   <div class="footer-brand">
     <a class="nav-logo" href="#top">Bubble <span style="color:var(--terra-light); font-style:italic;">Walk</span></a>
-    <p>A simple social walk in Bristol Harbourside. Free to join. No pressure. Just walk, talk, and meet people.</p>
+    <p>A simple social walk in Bristol, South West England. Free to join. No pressure. Just walk, talk, and meet people.</p>
   </div>
   <div>
     <h4>Walks</h4>
@@ -837,7 +883,7 @@
   </div>
 </footer>
 <div class="footer-bottom">
-  <p>Bubble Walk — a social walk in Bristol Harbourside. Free to join.</p>
+  <p>Bubble Walk — a social walk in Bristol, South West England. Free to join.</p>
   <p id="footerNextWalk">Next walk: Friday, 24 April at 6pm</p>
 </div>
 
@@ -909,6 +955,9 @@
     document.getElementById("eventDurationLine").textContent = SITE.duration;
     document.getElementById("heroCardTitle").textContent = `Next Bubble Walk • ${SITE.day} ${SITE.date} • ${SITE.time}`;
     document.getElementById("heroCardMeta").textContent = SITE.meetingPoint;
+    document.getElementById("ctaDatePill").textContent = `${SITE.day} ${SITE.date}`;
+    document.getElementById("ctaTimePill").textContent = SITE.time;
+    document.getElementById("ctaLocationPill").textContent = SITE.meetingPoint;
     document.getElementById("footerNextWalk").textContent = `Next walk: ${SITE.day}, ${SITE.date} at ${SITE.time}`;
     document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
     document.getElementById("routeFooterLink").target = "_blank";
