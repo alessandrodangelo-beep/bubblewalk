@@ -301,6 +301,43 @@
     line-height: 1.5;
   }
   .poll-status.is-visible { display: block; }
+.routes-card { background: white; }
+.routes-card-body { padding: 1.4rem 1.5rem 1.6rem; }
+.routes-kicker {
+  display: inline-block;
+  font-size: calc(0.72rem + 0.1667rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sage);
+  font-weight: 500;
+  margin-bottom: 0.7rem;
+}
+.routes-list {
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+  margin: 1rem 0 1.1rem;
+}
+.routes-list li {
+  padding: 0.9rem 1rem;
+  border: 1.5px solid var(--cream-dark);
+  border-radius: 1rem;
+  background: var(--cream);
+  color: var(--forest);
+  font-size: calc(0.88rem + 0.1667rem);
+  line-height: 1.35;
+}
+.routes-card .join-btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.2rem;
+}
+.routes-note {
+  font-size: calc(0.8rem + 0.1667rem);
+  color: var(--warm-gray);
+  margin-top: 0.9rem;
+  line-height: 1.6;
+}
 .how-section {
     background: var(--forest); color: var(--cream);
     padding: 6rem 5rem;
@@ -708,36 +745,23 @@
       </div>
     </article>
 
-    <article class="event-card poll-card">
-      <div class="event-card-body poll-card-body">
-        <span class="poll-kicker">Quick poll</span>
-        <h3 class="event-name">What works best for you for the next Bubble Walk?</h3>
+    <article class="event-card routes-card">
+      <div class="event-card-body routes-card-body">
+        <span class="routes-kicker">Not always the same path.</span>
+        <h3 class="event-name">A few routes we may walk.</h3>
         <div class="event-meta">
-          <span class="event-meta-item">A small check before we lock future times</span>
+          <span class="event-meta-item">Different routes, same simple idea</span>
         </div>
-        <form class="poll-form" id="pollForm" action="https://formspree.io/f/mzdjwobq" method="POST">
-          <input type="hidden" name="_subject" value="Bubble Walk poll">
-          <input type="hidden" name="poll_source" value="right_block">
-          <label class="poll-option">
-            <input type="radio" name="preferred_time" value="Weekday evening" checked>
-            <span>Weekday evening</span>
-          </label>
-          <label class="poll-option">
-            <input type="radio" name="preferred_time" value="Saturday morning">
-            <span>Saturday morning</span>
-          </label>
-          <label class="poll-option">
-            <input type="radio" name="preferred_time" value="Sunday afternoon">
-            <span>Sunday afternoon</span>
-          </label>
-          <label class="poll-option">
-            <input type="radio" name="preferred_time" value="I'm flexible">
-            <span>I'm flexible</span>
-          </label>
-          <button class="join-btn poll-submit" id="pollSubmitBtn" type="submit">Vote</button>
-          <div class="poll-status" id="pollStatus" role="status" aria-live="polite"></div>
-        </form>
-        <p class="poll-note">A quick way to shape the next walk without making the page heavier.</p>
+        <ul class="routes-list">
+          <li>Clifton Bridge + Observatory</li>
+          <li>Ashton Court Estate</li>
+          <li>Leigh Woods + Avon Gorge</li>
+          <li>Bristol–Bath Railway</li>
+          <li>Snuff Mills + Oldbury</li>
+        </ul>
+        <div>
+          <a class="join-btn" href="#join">Join the next walk</a>
+        </div>
       </div>
     </article>
 
@@ -1110,8 +1134,6 @@
     if (latestWalkMonth) latestWalkMonth.textContent = dateParts.month;
   }
 
-
-
   function setupDesktopJoinScroll() {
     const joinLinks = Array.from(document.querySelectorAll('a[href="#join"]'));
     const joinSection = document.getElementById('join');
@@ -1141,37 +1163,6 @@
       });
     }
   }
-
-  function setupPollForm() {
-    const pollForm = document.getElementById('pollForm');
-    const pollStatus = document.getElementById('pollStatus');
-    const pollSubmitBtn = document.getElementById('pollSubmitBtn');
-
-    if (!pollForm || !pollStatus || !pollSubmitBtn) return;
-
-    pollForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      pollStatus.classList.remove('is-visible');
-      pollStatus.textContent = '';
-      pollSubmitBtn.disabled = true;
-      pollSubmitBtn.textContent = 'Sending...';
-
-      try {
-        const formData = new FormData(pollForm);
-        const response = await fetch(pollForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        let data = null;
-        try {
-          data = await response.json();
-        } catch (e) {
-          data = null;
-        }
-
         if (response.ok) {
           pollStatus.textContent = 'Thanks — your preference has been recorded.';
           pollStatus.classList.add('is-visible');
@@ -1248,7 +1239,6 @@
   setupLatestWalkBlocks();
   setupDesktopJoinScroll();
   setupJoinForm();
-  setupPollForm();
   document.getElementById('routeFooterLink').href = SITE.routeMapsUrl;
   document.getElementById('routeFooterLink').target = '_blank';
   document.getElementById('routeFooterLink').rel = 'noopener noreferrer';
