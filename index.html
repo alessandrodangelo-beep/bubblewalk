@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bubble Walk — Social Walk in Bristol Harbourside</title>
 <meta name="description" content="Bubble Walk is a social walk in Bristol, South West England. Free to join. No pressure. Just walk, talk, and meet people. See the next walk and join here.">
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }:root {
@@ -94,7 +96,7 @@
   }.hero-sub {
     font-size: calc(1rem + 0.12rem); line-height: 1.72;
     color: var(--warm-gray); max-width: 42ch;
-    margin-bottom: 2rem; font-weight: 300;
+    margin-bottom: 1.55rem; font-weight: 300;
     animation: fadeUp 0.7s 0.2s ease both;
   }.hero-actions {
     display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
@@ -144,16 +146,16 @@
     position: absolute; inset: 0;
     width: 100%; height: 100%; object-fit: cover;
   }.hero-img-caption {
-    position: absolute; left: 50%; bottom: 6px; transform: translateX(-50%);
+    position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%);
     z-index: 5;
     background: rgba(245,240,230,0.96); backdrop-filter: blur(8px);
-    border-radius: 1.25rem; padding: 1.12rem 1.35rem;
+    border-radius: 1.25rem; padding: 1rem 1.3rem 0.95rem;
     width: min(93%, 700px);
-    box-shadow: 0 18px 42px rgba(44,59,45,0.14);
+    box-shadow: 0 12px 28px rgba(44,59,45,0.10);
   }.hero-img-caption strong {
     display: block; font-size: 1.52rem; color: var(--forest); font-weight: 600; line-height: 1.08;
   }.hero-img-caption span {
-    display:block; margin-top: 0.34rem; font-size: 0.93rem; color: var(--warm-gray); line-height: 1.08; letter-spacing: -0.015em;
+    display:block; margin-top: 0.28rem; font-size: 0.92rem; color: var(--warm-gray); line-height: 1.04; letter-spacing: -0.015em;
   }.section { padding: 6rem 5rem; }.section-header {
     display: flex; justify-content: space-between; align-items: flex-end;
     margin-bottom: 3rem; gap: 1.5rem;
@@ -371,6 +373,7 @@
     margin-left: 1.5rem; line-height: 1.65;
   }.cta-section {
     padding: 8rem 5rem;
+    scroll-margin-top: 92px;
     text-align: center;
     background: var(--cream);
     position: relative; overflow: hidden;
@@ -553,7 +556,7 @@
     .event-meta { gap: 0.7rem; }
     .poll-card-body { padding: 1.1rem 1.1rem 1.2rem; }
     .poll-option { padding: 0.8rem 0.9rem; }
-    .cta-section { padding: 3.25rem 1rem; }
+    .cta-section { padding: 3.05rem 1rem; scroll-margin-top: 84px; }
     .cta-section p { margin-bottom: 0.9rem; }
     .cta-next-walk {
       display: flex;
@@ -597,14 +600,14 @@
   <div class="hero-bg-shape"></div>
 
   <div class="hero-left">
-    <span class="hero-tag">Bristol, South West England • Free social walk</span>
+    <span class="hero-tag">Free social walk • Bristol, South West England</span>
     <h1 class="hero-title">
       Walk.<br>
       <em>Talk.</em><br>
       Meet.
     </h1>
     <p class="hero-sub">
-      Bubble Walk is a simple social walk in Bristol, South West England. Free to join. No pressure. Just walk, talk, and meet people. An hour outside, away from traffic and screens.
+      Bubble Walk is a simple social walk in Bristol, South West England. Free to join. No pressure. Just walk, talk, and meet people outside for an hour.
     </p>
     <div class="hero-actions">
       <a href="#join" class="btn-primary">Join the next walk</a>
