@@ -60,10 +60,10 @@
     justify-content: center;
   }
   .nav-cta:hover { background: var(--terra-dark); transform: translateY(-1px); }.hero {
-    min-height: 100vh;
+    min-height: calc(100vh - 28px);
     display: grid; grid-template-columns: 1fr 1fr;
     align-items: center; gap: 0;
-    padding-top: 80px;
+    padding-top: 72px;
     position: relative; overflow: hidden;
   }.hero-bg-shape {
     position: absolute; right: -5%; top: 0;
@@ -72,7 +72,7 @@
     clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
     opacity: 0.35;
   }.hero-left {
-    padding: 4rem 4rem 4rem 5rem;
+    padding: 3rem 4rem 2.6rem 5rem;
     position: relative; z-index: 2;
   }.hero-tag {
     display: inline-block;
@@ -80,21 +80,21 @@
     color: var(--terra); font-weight: 500;
     border: 1px solid var(--terra-light);
     padding: 0.35rem 1rem; border-radius: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.4rem;
     animation: fadeUp 0.7s ease both;
   }.hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: calc(clamp(3.2rem, 5vw, 5rem) + 0.1667rem);
+    font-size: calc(clamp(3.05rem, 4.8vw, 4.82rem) + 0.08rem);
     font-weight: 300; line-height: 1.1;
     color: var(--forest);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     animation: fadeUp 0.7s 0.1s ease both;
   }.hero-title em {
     font-style: italic; color: var(--terra);
   }.hero-sub {
-    font-size: calc(1.05rem + 0.1667rem); line-height: 1.75;
+    font-size: calc(1rem + 0.12rem); line-height: 1.72;
     color: var(--warm-gray); max-width: 42ch;
-    margin-bottom: 3rem; font-weight: 300;
+    margin-bottom: 2rem; font-weight: 300;
     animation: fadeUp 0.7s 0.2s ease both;
   }.hero-actions {
     display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
@@ -112,25 +112,25 @@
     text-decoration: none; font-weight: 400;
     transition: gap 0.2s, color 0.2s;
   }.btn-ghost:hover { color: var(--terra); gap: 0.8rem; }.hero-stats {
-    display: flex; gap: 3rem; margin-top: 4rem;
+    display: flex; gap: 3rem; margin-top: 1.7rem;
     animation: fadeUp 0.7s 0.4s ease both;
   }.stat-num {
     font-family: 'Cormorant Garamond', serif;
-    font-size: calc(2.4rem + 0.1667rem); font-weight: 600; color: var(--forest);
+    font-size: 2.32rem; font-weight: 600; color: var(--forest);
     line-height: 1;
   }.stat-label {
-    font-size: calc(0.78rem + 0.1667rem); color: var(--warm-gray);
+    font-size: 0.72rem; color: var(--warm-gray);
     text-transform: uppercase; letter-spacing: 0.08em;
     margin-top: 0.3rem;
   }.hero-right {
-    position: relative; z-index: 2; height: 100vh;
+    position: relative; z-index: 2; height: auto;
     display: flex; align-items: center; justify-content: center;
     overflow: visible;
   }.hero-image-card {
-    width: 460px; position: relative; padding-bottom: 86px; overflow: visible;
+    width: 414px; position: relative; padding-bottom: 50px; overflow: visible;
     transform: translateX(18px);
   }.hero-main-img {
-    width: 100%; height: 640px;
+    width: 100%; height: 522px;
     border-radius: 1rem 1rem 8rem 1rem;
     background: linear-gradient(160deg, #7A9E7E 0%, #3D6641 50%, #2C3B2D 100%);
     display: flex; align-items: flex-end; padding: 2rem;
@@ -144,16 +144,16 @@
     position: absolute; inset: 0;
     width: 100%; height: 100%; object-fit: cover;
   }.hero-img-caption {
-    position: absolute; left: 50%; bottom: -70px; transform: translateX(-50%);
+    position: absolute; left: 50%; bottom: 6px; transform: translateX(-50%);
     z-index: 5;
     background: rgba(245,240,230,0.96); backdrop-filter: blur(8px);
-    border-radius: 1.25rem; padding: 1.7rem 2rem;
+    border-radius: 1.25rem; padding: 1.35rem 1.7rem;
     width: min(86%, 700px);
     box-shadow: 0 18px 42px rgba(44,59,45,0.14);
   }.hero-img-caption strong {
-    display: block; font-size: calc(1.7rem + 0.1667rem); color: var(--forest); font-weight: 600; line-height: 1.25;
+    display: block; font-size: calc(1.48rem + 0.12rem); color: var(--forest); font-weight: 600; line-height: 1.18;
   }.hero-img-caption span {
-    display:block; margin-top: 0.7rem; font-size: calc(1.1rem + 0.1667rem); color: var(--warm-gray); line-height: 1.4;
+    display:block; margin-top: 0.46rem; font-size: 1.01rem; color: var(--warm-gray); line-height: 1.24; letter-spacing: -0.01em;
   }.section { padding: 6rem 5rem; }.section-header {
     display: flex; justify-content: space-between; align-items: flex-end;
     margin-bottom: 3rem; gap: 1.5rem;
@@ -608,7 +608,6 @@
     </p>
     <div class="hero-actions">
       <a href="#join" class="btn-primary">Join the next walk</a>
-      <a href="#events" class="btn-ghost">See the details →</a>
       <a href="#" class="btn-ghost" id="mapsBtnHero">Open in Google Maps →</a>
     </div>
     <div class="hero-stats">
@@ -948,7 +947,7 @@
     document.getElementById("eventDayLine").textContent = SITE.day;
     document.getElementById("eventTimeLine").textContent = SITE.time;
     document.getElementById("eventDurationLine").textContent = SITE.duration;
-    document.getElementById("heroCardTitle").textContent = `Next Bubble Walk • ${SITE.day} ${SITE.date} • ${SITE.time}`;
+    document.getElementById("heroCardTitle").innerHTML = `Next Bubble Walk •<br>${SITE.day} ${SITE.date} • ${SITE.time}`;
     document.getElementById("heroCardMeta").textContent = SITE.meetingPoint;
     document.getElementById("ctaNextPill").textContent = `${SITE.day} ${SITE.date} • ${SITE.time} • BS1 4XJ`;
     document.getElementById("footerNextWalk").textContent = `Next walk: ${SITE.day}, ${SITE.date} at ${SITE.time}`;
@@ -1116,7 +1115,7 @@
     if (!joinLinks.length || !joinSection) return;
 
     const scrollToJoin = () => {
-      const desktopOffset = 120;
+      const desktopOffset = 42;
       const y = joinSection.getBoundingClientRect().top + window.pageYOffset + desktopOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
       if (history && history.replaceState) {
