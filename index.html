@@ -960,68 +960,69 @@
     return { dayNum: match[1], month: match[2].slice(0, 3) };
   }
 
+  
   function applySiteContent() {
     const dateParts = parseSiteDateParts(SITE.date);
-    document.getElementById("mapsBtnHero").href = SITE.routeMapsUrl;
+
+    const mapsBtnHero = document.getElementById("mapsBtnHero");
     const routeMapBtn = document.getElementById("routeMapBtn");
+    const routeFooterLink = document.getElementById("routeFooterLink");
+    const footerMapsLink = document.getElementById("footerMapsLink");
+    const meetingPointLink = document.getElementById("meetingPointLink");
+    const footerMeetingLink = document.getElementById("footerMeetingLink");
+    const meetingLabel = document.getElementById("meetingLabel");
+    const nextWalkTitle = document.getElementById("nextWalkTitle");
+    const eventDayNum = document.getElementById("eventDayNum");
+    const eventMonth = document.getElementById("eventMonth");
+    const eventDayLine = document.getElementById("eventDayLine");
+    const eventTimeLine = document.getElementById("eventTimeLine");
+    const eventDurationLine = document.getElementById("eventDurationLine");
+    const heroCardTitle = document.getElementById("heroCardTitle");
+    const heroCardMeta = document.getElementById("heroCardMeta");
+    const ctaNextPill = document.getElementById("ctaNextPill");
+    const footerNextWalk = document.getElementById("footerNextWalk");
+
+    if (mapsBtnHero) mapsBtnHero.href = SITE.routeMapsUrl;
     if (routeMapBtn) routeMapBtn.href = SITE.routeMapsUrl;
-    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
-    document.getElementById("routeFooterLink").target = "_blank";
-    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
-    document.getElementById("routeFooterLink").setAttribute("target", "_blank");
-    document.getElementById("routeFooterLink").setAttribute("rel", "noopener noreferrer");
-    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
-    document.getElementById("routeFooterLink").target = "_blank";
-    document.getElementById("footerMapsLink").href = SITE.routeMapsUrl;
-    document.getElementById("footerMapsLink").target = "_blank";
-    document.getElementById("footerMapsLink").rel = "noopener noreferrer";
-    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
-    document.getElementById("routeFooterLink").target = "_blank";
-    document.getElementById("meetingPointLink").href = SITE.meetingMapsUrl;
-    document.getElementById("footerMeetingLink").href = SITE.meetingMapsUrl;
-    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
-    document.getElementById("routeFooterLink").target = "_blank";
-    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
-    document.getElementById("routeFooterLink").setAttribute("aria-label", "Open route in Google Maps");
-    document.getElementById("routeFooterLink").setAttribute("title", "Open route in Google Maps");
-    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
-    document.getElementById("routeFooterLink").target = "_blank";
-    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
-    document.getElementById("routeFooterLink").textContent = "Route";
-    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
-    document.getElementById("routeFooterLink").target = "_blank";
-    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
-    document.getElementById("routeFooterLink").dataset.ready = "true";
-    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
-    document.getElementById("routeFooterLink").target = "_blank";
-    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
-    document.getElementById("routeFooterLink").textContent = "Route";
-    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
-    document.getElementById("routeFooterLink").target = "_blank";
-    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
-    document.getElementById("routeFooterLink").setAttribute("title", "Open route in Google Maps");
-    document.getElementById("meetingLabel").textContent = SITE.meetingPoint;
-    document.getElementById("nextWalkTitle").textContent = `Next Bubble Walk • ${SITE.day} ${SITE.date} • ${SITE.time}`;
-    document.getElementById("eventDayNum").textContent = dateParts.dayNum;
-    document.getElementById("eventMonth").textContent = dateParts.month;
-    document.getElementById("eventDayLine").textContent = SITE.day;
-    document.getElementById("eventTimeLine").textContent = SITE.time;
-    document.getElementById("eventDurationLine").textContent = SITE.duration;
-    document.getElementById("heroCardTitle").innerHTML = `Next Bubble Walk •<br>${SITE.day} ${SITE.date} • ${SITE.time}`;
-    document.getElementById("heroCardMeta").textContent = SITE.meetingPoint;
-    document.getElementById("ctaNextPill").textContent = `${SITE.day} ${SITE.date} • ${SITE.time} • BS1 4XJ`;
-    document.getElementById("footerNextWalk").textContent = `Next walk: ${SITE.day}, ${SITE.date} at ${SITE.time}`;
-    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
-    document.getElementById("routeFooterLink").target = "_blank";
-    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
-    document.getElementById("routeFooterLink").textContent = "Route";
-    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
-    document.getElementById("routeFooterLink").target = "_blank";
-    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
-    document.getElementById("routeFooterLink").textContent = "Route";
-    document.getElementById("routeFooterLink").href = SITE.routeMapsUrl;
-    document.getElementById("routeFooterLink").target = "_blank";
-    document.getElementById("routeFooterLink").rel = "noopener noreferrer";
+
+    if (routeFooterLink) {
+      routeFooterLink.href = SITE.routeMapsUrl;
+      routeFooterLink.target = "_blank";
+      routeFooterLink.rel = "noopener noreferrer";
+      routeFooterLink.textContent = "Route";
+      routeFooterLink.setAttribute("aria-label", "Open route in Google Maps");
+      routeFooterLink.setAttribute("title", "Open route in Google Maps");
+    }
+
+    if (footerMapsLink) {
+      footerMapsLink.href = SITE.routeMapsUrl;
+      footerMapsLink.target = "_blank";
+      footerMapsLink.rel = "noopener noreferrer";
+    }
+
+    if (meetingPointLink) {
+      meetingPointLink.href = SITE.meetingMapsUrl;
+      meetingPointLink.target = "_blank";
+      meetingPointLink.rel = "noopener noreferrer";
+    }
+
+    if (footerMeetingLink) {
+      footerMeetingLink.href = SITE.meetingMapsUrl;
+      footerMeetingLink.target = "_blank";
+      footerMeetingLink.rel = "noopener noreferrer";
+    }
+
+    if (meetingLabel) meetingLabel.textContent = SITE.meetingPoint;
+    if (nextWalkTitle) nextWalkTitle.textContent = `Next Bubble Walk • ${SITE.day} ${SITE.date} • ${SITE.time}`;
+    if (eventDayNum) eventDayNum.textContent = dateParts.dayNum;
+    if (eventMonth) eventMonth.textContent = dateParts.month;
+    if (eventDayLine) eventDayLine.textContent = SITE.day;
+    if (eventTimeLine) eventTimeLine.textContent = SITE.time;
+    if (eventDurationLine) eventDurationLine.textContent = SITE.duration;
+    if (heroCardTitle) heroCardTitle.innerHTML = `Next Bubble Walk •<br>${SITE.day} ${SITE.date} • ${SITE.time}`;
+    if (heroCardMeta) heroCardMeta.textContent = SITE.meetingPoint;
+    if (ctaNextPill) ctaNextPill.textContent = `${SITE.day} ${SITE.date} • ${SITE.time} • BS1 4XJ`;
+    if (footerNextWalk) footerNextWalk.textContent = `Next walk: ${SITE.day}, ${SITE.date} at ${SITE.time}`;
   }
 
   function loadSharedContentScript() {
@@ -1196,25 +1197,7 @@
       });
     }
   }
-        if (response.ok) {
-          pollStatus.textContent = 'Thanks — your preference has been recorded.';
-          pollStatus.classList.add('is-visible');
-        } else {
-          const message = data && data.errors && data.errors.length
-            ? data.errors.map(err => err.message).join(' ')
-            : 'Something went wrong. Please try again.';
-          pollStatus.textContent = message;
-          pollStatus.classList.add('is-visible');
-        }
-      } catch (error) {
-        pollStatus.textContent = 'Something went wrong. Please try again.';
-        pollStatus.classList.add('is-visible');
-      } finally {
-        pollSubmitBtn.disabled = false;
-        pollSubmitBtn.textContent = 'Vote';
-      }
-    });
-  }
+        
 
   function setupJoinForm() {
     const joinForm = document.getElementById('joinForm');
@@ -1268,26 +1251,11 @@
     });
   }
 
+
   applySiteContent();
   setupLatestWalkBlocks();
   setupDesktopJoinScroll();
   setupJoinForm();
-  document.getElementById('routeFooterLink').href = SITE.routeMapsUrl;
-  document.getElementById('routeFooterLink').target = '_blank';
-  document.getElementById('routeFooterLink').rel = 'noopener noreferrer';
-  document.getElementById('routeFooterLink').textContent = 'Route';
-  document.getElementById('routeFooterLink').href = SITE.routeMapsUrl;
-  document.getElementById('routeFooterLink').target = '_blank';
-  document.getElementById('routeFooterLink').rel = 'noopener noreferrer';
-  document.getElementById('routeFooterLink').textContent = 'Route';
-  document.getElementById('routeFooterLink').href = SITE.routeMapsUrl;
-  document.getElementById('routeFooterLink').target = '_blank';
-  document.getElementById('routeFooterLink').rel = 'noopener noreferrer';
-  document.getElementById('routeFooterLink').textContent = 'Route';
-  document.getElementById('routeFooterLink').href = SITE.routeMapsUrl;
-  document.getElementById('routeFooterLink').target = '_blank';
-  document.getElementById('routeFooterLink').rel = 'noopener noreferrer';
-  document.getElementById('routeFooterLink').textContent = 'Route';
 </script>
 </body>
 </html>
