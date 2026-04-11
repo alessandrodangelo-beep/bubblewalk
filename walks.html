@@ -513,16 +513,17 @@
       .archive-sidebar-card,
       .cta-card { padding: 1.2rem; }
       .walk-list {
-        display: flex;
+        display: grid;
         gap: 0.9rem;
-        overflow-x: auto;
-        padding-bottom: 0.35rem;
-        scroll-snap-type: x proximity;
+        overflow: visible;
+        padding-bottom: 0;
+        scroll-snap-type: none;
       }
       .walk-item {
-        min-width: 230px;
-        flex: 0 0 230px;
-        scroll-snap-align: start;
+        min-width: 0;
+        width: 100%;
+        flex: none;
+        scroll-snap-align: none;
       }
       .section { padding: 4rem 1rem; }
       footer { padding: 2.5rem 1rem; }
@@ -567,8 +568,9 @@
       .featured-frame, .featured-empty { min-height: 260px; }
       .gallery-media { min-height: 200px; }
       .walk-item {
-        min-width: 82vw;
-        flex-basis: 82vw;
+        min-width: 0;
+        flex-basis: auto;
+        width: 100%;
       }
       .cta-card {
         align-items: flex-start;
