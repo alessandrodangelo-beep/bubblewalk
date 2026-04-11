@@ -755,7 +755,7 @@
               <div class="avatar a2">BR</div>
               <div class="avatar a3">HW</div>
             </div>
-            <span class="participants-text">Walk. Talk. Share.</span>
+            <span class="participants-text">Free to join. No pressure.</span>
           </div>
           <a class="join-btn" href="#join">I'm in</a>
         </div>
@@ -884,7 +884,7 @@
     Bubble Walk in Bristol,<br><em>without the friction</em>
   </h2>
   <p>
-    Want to join? Fill the form and we will email you back with the details. Free to join. Easy to come to on your own.
+    Want to join? Fill the form and we’ll email you back to confirm and share any updates. Free to join. Easy to come to on your own.
   </p>
 
   <div class="cta-next-walk" aria-label="Next Bubble Walk details">
@@ -965,10 +965,8 @@
     const dateParts = parseSiteDateParts(SITE.date);
 
     const mapsBtnHero = document.getElementById("mapsBtnHero");
-    const routeMapBtn = document.getElementById("routeMapBtn");
     const routeFooterLink = document.getElementById("routeFooterLink");
     const footerMapsLink = document.getElementById("footerMapsLink");
-    const meetingPointLink = document.getElementById("meetingPointLink");
     const footerMeetingLink = document.getElementById("footerMeetingLink");
     const meetingLabel = document.getElementById("meetingLabel");
     const nextWalkTitle = document.getElementById("nextWalkTitle");
@@ -983,7 +981,6 @@
     const footerNextWalk = document.getElementById("footerNextWalk");
 
     if (mapsBtnHero) mapsBtnHero.href = SITE.routeMapsUrl;
-    if (routeMapBtn) routeMapBtn.href = SITE.routeMapsUrl;
 
     if (routeFooterLink) {
       routeFooterLink.href = SITE.routeMapsUrl;
@@ -998,12 +995,6 @@
       footerMapsLink.href = SITE.routeMapsUrl;
       footerMapsLink.target = "_blank";
       footerMapsLink.rel = "noopener noreferrer";
-    }
-
-    if (meetingPointLink) {
-      meetingPointLink.href = SITE.meetingMapsUrl;
-      meetingPointLink.target = "_blank";
-      meetingPointLink.rel = "noopener noreferrer";
     }
 
     if (footerMeetingLink) {

@@ -627,7 +627,7 @@
     <span class="archive-hero-tag">Walks archive • Bristol, South West England</span>
     <h1 class="archive-hero-title">Past <em>Walks.</em><br>Shared moments.</h1>
     <p class="archive-hero-sub">
-      A simple archive of Bubble Walks: the route, the atmosphere, and the people who showed up. Same spirit as the main page, but focused on what already happened.
+      A simple archive of the walks so far, with a few photos from each one. Nothing overdone. Just the walks, the place, and what happened.
     </p>
     <div class="archive-hero-actions">
       <a href="index.html#join" class="btn-primary">Join the next walk</a>
@@ -635,7 +635,7 @@
     </div>
     <div class="archive-stats">
       <div>
-        <div class="stat-num" id="heroStatWalks">2</div>
+        <div class="stat-num" id="heroStatWalks">1</div>
         <div class="stat-label">ARCHIVED WALKS</div>
       </div>
       <div>
@@ -872,6 +872,12 @@
     }));
   }
 
+  function countArchivedBubbleWalks(walks) {
+    return walks.filter((walk) => {
+      return walk && typeof walk.label === 'string' && walk.label.toLowerCase().includes('bubble walk');
+    }).length;
+  }
+
   function buildWalkList(walks) {
     const list = document.getElementById('walkList');
     list.innerHTML = '';
@@ -891,7 +897,7 @@
       btn.addEventListener('click', () => {
         document.querySelectorAll('.walk-item').forEach(item => item.classList.remove('is-active'));
         btn.classList.add('is-active');
-        renderWalk(walk, walks.length);
+        renderWalk(walk, walks);
       });
 
       list.appendChild(btn);
@@ -936,7 +942,7 @@
     };
   }
 
-  function renderHero(featured, walk, totalWalks) {
+  function renderHero(featured, walk, walks) {
     const heroFrame = document.getElementById('heroFeaturedFrame');
     const kicker = document.getElementById('heroCaptionKicker');
     const title = document.getElementById('heroCaptionTitle');
@@ -944,7 +950,7 @@
     const stat = document.getElementById('heroStatWalks');
     const resolved = resolveFeatured(featured, walk);
 
-    stat.textContent = String(totalWalks || 0);
+    stat.textContent = String(countArchivedBubbleWalks(Array.isArray(walks) ? walks : []) || 0);
     kicker.textContent = walk.date || 'Past walk';
     title.textContent = walk.label || 'Bubble Walk';
     meta.textContent = [walk.place, walk.duration].filter(Boolean).join(' • ') || 'A few moments from the archive.';
@@ -990,7 +996,7 @@
     });
   }
 
-  function renderWalk(walk, totalWalks) {
+  function renderWalk(walk, walks) {
     document.getElementById('walkTitle').textContent = walk.label || '';
     document.getElementById('walkIntro').textContent = walk.intro || '';
     document.getElementById('walkNote').textContent = walk.note || '';
@@ -998,7 +1004,7 @@
       ? `Showing: ${walk.label}${walk.date ? ' • ' + walk.date : ''}`
       : 'Archive updated with past walks and photos.';
     renderMeta(walk);
-    renderHero(walk.featured, walk, totalWalks);
+    renderHero(walk.featured, walk, walks);
     renderFeatured(walk.featured, walk);
     renderGallery(walk.photos || [], walk);
   }
@@ -1007,7 +1013,7 @@
     await loadSharedContentScript();
     const walks = getWalksContent();
     buildWalkList(walks);
-    renderWalk(walks[0], walks.length);
+    renderWalk(walks[0], walks);
   }
 
   initWalksPage();
