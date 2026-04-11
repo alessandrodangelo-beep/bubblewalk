@@ -61,7 +61,30 @@
     align-items: center;
     justify-content: center;
   }
-  .nav-cta:hover { background: var(--terra-dark); transform: translateY(-1px); }.hero {
+  .nav-cta:hover { background: var(--terra-dark); transform: translateY(-1px); }
+  .mobile-quick-links {
+    display: none;
+    padding: 0.7rem 1rem 0;
+    gap: 0.75rem;
+    background: var(--cream);
+  }
+  .mobile-quick-links a {
+    flex: 1;
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.78rem 0.95rem;
+    border-radius: 999px;
+    border: 1px solid var(--cream-dark);
+    background: rgba(255,255,255,0.92);
+    color: var(--forest);
+    font-size: 0.84rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }.hero {
     min-height: calc(100vh - 28px);
     display: grid; grid-template-columns: 1fr 1fr;
     align-items: center; gap: 0;
@@ -501,6 +524,12 @@
     .nav-logo { font-size: 1.35rem; }
     .nav-links { display: none; }
     .nav-cta { padding: 0.6rem 1.1rem; font-size: 0.82rem; }
+    .mobile-quick-links {
+      display: flex;
+      position: sticky;
+      top: 60px;
+      z-index: 95;
+    }
     .hero {
       min-height: auto;
       grid-template-columns: 1fr;
@@ -601,19 +630,33 @@
       margin: 0 auto 0.9rem;
     }
     .cta-next-pill {
-      width: auto;
+      width: 100%;
       max-width: 100%;
-      white-space: nowrap;
+      white-space: normal;
       text-align: center;
       padding: 0.68rem 0.9rem;
       font-size: 0.86rem;
+      overflow-wrap: anywhere;
+    }
+    .cta-form {
+      width: 100%;
+      max-width: 100%;
+    }
+    .cta-submit-row {
+      width: 100%;
+    }
+    .cta-submit-row > * {
+      width: 100%;
+      max-width: 100%;
     }
     .cta-input, .cta-textarea {
       padding: 0.9rem 1rem;
       font-size: 0.92rem;
+      max-width: 100%;
     }
     .cta-textarea { min-height: 110px; }
     .helper-links { gap: 0.8rem 1rem; }
+    .helper-links a { overflow-wrap: anywhere; text-align: center; }
     .how-grid { grid-template-columns: 1fr; }
     footer { grid-template-columns: 1fr; }
     .cta-section::before { font-size: calc(6rem + 0.1667rem); }
@@ -632,6 +675,12 @@
   </ul>
   <a class="nav-cta" href="#join">Join free</a>
 </nav>
+
+<div class="mobile-quick-links" aria-label="Mobile navigation">
+  <a href="walks.html">Walks</a>
+  <a href="#events">Next walk</a>
+  <a href="#join">Join</a>
+</div>
 
 <section class="hero" id="top">
   <div class="hero-bg-shape"></div>
