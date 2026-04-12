@@ -1291,6 +1291,30 @@ footer {
   }
         
 
+  async function sendJoinCopyToWebhook(formData) {
+    try {
+      const webhookPayload = {
+        name: String(formData.get('name') || '').trim(),
+        email: String(formData.get('email') || '').trim(),
+        message: String(formData.get('message') || '').trim(),
+        future_walk_updates: formData.get('future_walk_updates') ? 'yes' : ''
+      };
+
+      if (!webhookPayload.email) return;
+
+      await fetch('https://hook.eu1.make.com/bvddk1kyielp28nwgsm8evhzmwvyavb9', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(webhookPayload),
+        keepalive: true
+      });
+    } catch (error) {
+      // Keep the Formspree submission flow primary and unaffected.
+    }
+  }
+
   function setupJoinForm() {
     const joinForm = document.getElementById('joinForm');
     const formStatus = document.getElementById('formStatus');
@@ -1308,6 +1332,10 @@ footer {
 
       try {
         const formData = new FormData(joinForm);
+
+        // Send a parallel copy to Make without changing the primary Formspree flow.
+        sendJoinCopyToWebhook(formData);
+
         const response = await fetch(joinForm.action, {
           method: 'POST',
           body: formData,
