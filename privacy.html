@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bubble Walk — Privacy</title>
+<meta name="description" content="Privacy information for Bubble Walk.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260411b">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20260411b">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260411b">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --terra: #C4623A;
+  --terra-light: #E8A98A;
+  --terra-dark: #8B3E1F;
+  --sage: #7A9E7E;
+  --sage-light: #B8D4BB;
+  --sage-dark: #3D6641;
+  --cream: #F5F0E6;
+  --cream-dark: #EDE4D2;
+  --forest: #2C3B2D;
+  --forest-mid: #4A5E4B;
+  --warm-gray: #8C8476;
+  --text: #2C3B2D;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+}
+a { color: inherit; }
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 4rem;
+  background: rgba(245, 240, 230, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(122,158,126,0.2);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 600;
+  color: var(--forest);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+.nav-logo span { color: var(--terra); font-style: italic; }
+.nav-actions { display: flex; gap: 0.75rem; align-items: center; }
+.nav-cta {
+  background: var(--terra); color: white;
+  border: none; padding: 0.65rem 1.6rem;
+  border-radius: 2rem; font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem; font-weight: 500; cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  text-decoration: none;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.nav-cta:hover { background: var(--terra-dark); transform: translateY(-1px); }
+.nav-secondary {
+  background: var(--cream-dark);
+  color: var(--forest);
+  border: 1px solid rgba(122,158,126,0.32);
+}
+.nav-secondary:hover {
+  background: var(--sage-light);
+  color: var(--forest);
+  border-color: rgba(122,158,126,0.45);
+}
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 8.5rem 1rem 4.5rem;
+}
+.kicker {
+  display: inline-block;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra);
+  font-weight: 500;
+  border: 1px solid var(--terra-light);
+  padding: 0.35rem 1rem;
+  border-radius: 2rem;
+  margin-bottom: 1.4rem;
+}
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--forest);
+  margin-bottom: 0.9rem;
+}
+.intro {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--warm-gray);
+  max-width: 56ch;
+  margin-bottom: 2.2rem;
+}
+.card {
+  background: white;
+  border-radius: 1.4rem;
+  padding: 1.5rem 1.5rem 1.6rem;
+  box-shadow: 0 14px 40px rgba(44,59,45,0.06);
+  margin-bottom: 1rem;
+}
+.card h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--forest);
+  margin-bottom: 0.65rem;
+}
+.card p, .card li {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--forest-mid);
+}
+.card ul { padding-left: 1.15rem; margin-top: 0.3rem; }
+.card li + li { margin-top: 0.35rem; }
+.note {
+  font-size: 0.86rem;
+  line-height: 1.7;
+  color: var(--warm-gray);
+  margin-top: 1.2rem;
+}
+footer {
+  background: var(--forest);
+  color: rgba(245,240,230,0.7);
+  padding: 2.2rem 1rem;
+  margin-top: 2rem;
+}
+.footer-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.footer-inner a {
+  color: rgba(245,240,230,0.75);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(245,240,230,0.18);
+}
+.footer-inner a:hover {
+  color: var(--terra-light);
+  border-color: var(--terra-light);
+}
+@media (max-width: 900px) {
+  nav { padding: 0.95rem 1rem; }
+  .nav-logo { font-size: 1.35rem; }
+  .nav-cta { padding: 0.58rem 0.95rem; font-size: 0.8rem; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html#top">Bubble <span>Walk</span></a>
+  <div class="nav-actions">
+    <a class="nav-cta nav-secondary" href="unsubscribe.html">Unsubscribe</a>
+    <a class="nav-cta" href="index.html#join">Join free</a>
+  </div>
+</nav>
+<main class="page">
+  <span class="kicker">Privacy</span>
+  <h1>Simple and clear.</h1>
+  <p class="intro">Bubble Walk only asks for the information needed to reply about the walk and, if you choose, to email you about future Bubble Walks.</p>
+
+  <section class="card">
+    <h2>What we collect</h2>
+    <p>When you fill the form, Bubble Walk may collect your name, email address, your optional message, and whether you asked to hear about future Bubble Walks.</p>
+  </section>
+
+  <section class="card">
+    <h2>How we use it</h2>
+    <ul>
+      <li>To reply about the walk you signed up for.</li>
+      <li>To send occasional future Bubble Walk emails only if you ticked the opt-in box.</li>
+      <li>To keep a small private list of people who asked not to receive future Bubble Walk emails.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>How the form works</h2>
+    <p>The website uses Formspree to receive form submissions. This means the information you submit through the form is processed through Formspree rather than being stored on the public website itself.</p>
+  </section>
+
+  <section class="card">
+    <h2>Your choice</h2>
+    <p>You do not need to opt in to future Bubble Walk emails in order to join a walk. That choice is optional.</p>
+    <p>You can unsubscribe at any time using the link in a Bubble Walk email or by visiting the unsubscribe page on this site.</p>
+  </section>
+
+  <section class="card">
+    <h2>How long we keep it</h2>
+    <p>Bubble Walk keeps contact details only for as long as they are useful for running the walk and future updates, or until you ask to be removed.</p>
+  </section>
+
+  <section class="card">
+    <h2>Questions</h2>
+    <p>If you want to be removed from future Bubble Walk emails, use the unsubscribe page.</p>
+  </section>
+
+  <p class="note">This page is written to stay simple and readable. Bubble Walk is a small local social walk, and the aim is to explain plainly what happens to your information.</p>
+</main>
+<footer>
+  <div class="footer-inner">
+    <p>Bubble Walk — a simple social walk in Bristol.</p>
+    <p><a href="index.html">Home</a> · <a href="unsubscribe.html">Unsubscribe</a></p>
+  </div>
+</footer>
+</body>
+</html>

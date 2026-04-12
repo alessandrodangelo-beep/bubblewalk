@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bubble Walk — Unsubscribe</title>
+<meta name="description" content="Unsubscribe from future Bubble Walk emails.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260411b">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20260411b">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260411b">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --terra: #C4623A;
+  --terra-light: #E8A98A;
+  --terra-dark: #8B3E1F;
+  --sage: #7A9E7E;
+  --sage-light: #B8D4BB;
+  --sage-dark: #3D6641;
+  --cream: #F5F0E6;
+  --cream-dark: #EDE4D2;
+  --forest: #2C3B2D;
+  --forest-mid: #4A5E4B;
+  --warm-gray: #8C8476;
+  --text: #2C3B2D;
+}
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+}
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 4rem;
+  background: rgba(245, 240, 230, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(122,158,126,0.2);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 600;
+  color: var(--forest);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+.nav-logo span { color: var(--terra); font-style: italic; }
+.nav-actions { display: flex; gap: 0.75rem; align-items: center; }
+.nav-cta {
+  background: var(--terra); color: white;
+  border: none; padding: 0.65rem 1.6rem;
+  border-radius: 2rem; font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem; font-weight: 500; cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  text-decoration: none;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.nav-cta:hover { background: var(--terra-dark); transform: translateY(-1px); }
+.nav-secondary {
+  background: var(--cream-dark);
+  color: var(--forest);
+  border: 1px solid rgba(122,158,126,0.32);
+}
+.nav-secondary:hover {
+  background: var(--sage-light);
+  color: var(--forest);
+  border-color: rgba(122,158,126,0.45);
+}
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 7.5rem 1rem 3rem;
+}
+.panel {
+  width: min(100%, 640px);
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 18px 50px rgba(44,59,45,0.08);
+}
+.kicker {
+  display: inline-block;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra);
+  font-weight: 500;
+  border: 1px solid var(--terra-light);
+  padding: 0.35rem 1rem;
+  border-radius: 2rem;
+  margin-bottom: 1.2rem;
+}
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--forest);
+  margin-bottom: 0.85rem;
+}
+.panel p {
+  color: var(--warm-gray);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.form {
+  display: grid;
+  gap: 0.95rem;
+  margin-top: 1.5rem;
+}
+.input {
+  border: 1.5px solid var(--cream-dark);
+  border-radius: 1.1rem;
+  background: var(--cream);
+  padding: 1rem 1.1rem;
+  font-size: 0.98rem;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  color: var(--forest);
+  width: 100%;
+}
+.input:focus {
+  border-color: rgba(122,158,126,0.5);
+  background: white;
+}
+.btn {
+  background: var(--forest);
+  color: var(--cream);
+  border: none;
+  padding: 0.95rem 1.6rem;
+  border-radius: 3rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn:hover { background: var(--forest-mid); transform: translateY(-1px); }
+.small {
+  font-size: 0.84rem;
+  color: var(--warm-gray);
+  margin-top: 0.35rem;
+}
+.small a {
+  color: var(--forest-mid);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(122,158,126,0.3);
+}
+.small a:hover {
+  color: var(--terra);
+  border-color: var(--terra-light);
+}
+.status {
+  display: none;
+  margin-top: 0.25rem;
+  padding: 0.9rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(122,158,126,0.25);
+  background: rgba(245,240,230,0.9);
+  color: var(--forest);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.status.is-visible { display: block; }
+.footer-link {
+  margin-top: 1.2rem;
+  display: inline-block;
+  color: var(--forest-mid);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(122,158,126,0.3);
+}
+.footer-link:hover { color: var(--terra); border-color: var(--terra-light); }
+@media (max-width: 900px) {
+  nav { padding: 0.95rem 1rem; }
+  .nav-logo { font-size: 1.35rem; }
+  .nav-cta { padding: 0.58rem 0.95rem; font-size: 0.8rem; }
+  .panel { padding: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html#top">Bubble <span>Walk</span></a>
+  <div class="nav-actions">
+    <a class="nav-cta nav-secondary" href="privacy.html">Privacy</a>
+    <a class="nav-cta" href="index.html#join">Join free</a>
+  </div>
+</nav>
+<main class="page">
+  <section class="panel">
+    <span class="kicker">Unsubscribe</span>
+    <h1>No problem.</h1>
+    <p>Enter your email and I’ll remove you from future Bubble Walk emails.</p>
+
+    <form class="form" id="unsubscribeForm" action="https://formspree.io/f/xlgarrrl" method="POST">
+      <input class="input" id="unsubscribeEmail" name="email" type="email" placeholder="Your email" required>
+      <input type="hidden" name="request_type" value="unsubscribe">
+      <input type="hidden" name="_subject" value="Bubble Walk unsubscribe request">
+      <button class="btn" id="unsubscribeSubmitBtn" type="submit">Unsubscribe</button>
+      <div class="status" id="unsubscribeStatus" role="status" aria-live="polite"></div>
+    </form>
+
+    <p class="small">If you enter your email here, I’ll remove it from future Bubble Walk emails.</p>
+    <p class="small"><a href="privacy.html">Privacy</a></p>
+    <a class="footer-link" href="index.html">Back to Bubble Walk</a>
+  </section>
+</main>
+<script>
+function setupUnsubscribeForm() {
+  const form = document.getElementById('unsubscribeForm');
+  const status = document.getElementById('unsubscribeStatus');
+  const btn = document.getElementById('unsubscribeSubmitBtn');
+  if (!form || !status || !btn) return;
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    status.classList.remove('is-visible');
+    status.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    const action = form.getAttribute('action') || '';
+    if (action.includes('REPLACE_WITH_UNSUBSCRIBE_FORM_ID')) {
+      status.textContent = 'Replace the unsubscribe Formspree endpoint in this page first.';
+      status.classList.add('is-visible');
+      btn.disabled = false;
+      btn.textContent = 'Unsubscribe';
+      return;
+    }
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      let data = null;
+      try {
+        data = await response.json();
+      } catch (e) {
+        data = null;
+      }
+
+      if (response.ok) {
+        form.reset();
+        status.textContent = 'Thanks — your unsubscribe request has been sent.';
+      } else {
+        const message = data && data.errors && data.errors.length
+          ? data.errors.map(err => err.message).join(' ')
+          : 'Something went wrong. Please try again.';
+        status.textContent = message;
+      }
+      status.classList.add('is-visible');
+    } catch (error) {
+      status.textContent = 'Something went wrong. Please try again.';
+      status.classList.add('is-visible');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Unsubscribe';
+    }
+  });
+}
+setupUnsubscribeForm();
+</script>
+</body>
+</html>
