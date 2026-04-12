@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bubble Walk — Social Walk in Bristol Harbourside</title>
+<title>Bubble Walk — Walk. Talk. Meet.</title>
 <meta name="description" content="Bubble Walk is a social walk in Bristol, South West England. Free to join. No pressure. Just walk, talk, and meet people. See the next walk and join here.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260411b">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20260411b">
@@ -189,6 +189,21 @@
     transition: color 0.2s, border-color 0.2s;
   }.see-all:hover { color: var(--terra); border-color: var(--terra-light); }.events-grid {
     display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1.5rem;
+    align-items: stretch;
+  }
+  .events-stack {
+    display: grid;
+    gap: 1.5rem;
+    align-content: start;
+  }
+  .events-stack .event-card {
+    height: auto;
+  }
+  .summary-card {
+    min-height: 75px;
+  }
+  .routes-card {
+    min-height: 192px;
   }.event-card {
     background: white; border-radius: 1.25rem;
     overflow: hidden; position: relative;
@@ -316,8 +331,17 @@
     line-height: 1.5;
   }
   .poll-status.is-visible { display: block; }
-.routes-card { background: white; }
-.routes-card-body { padding: 1.4rem 1.5rem 1.6rem; }
+.summary-card {
+  background: white;
+}
+.summary-card-body {
+  height: 100%;
+  padding: 0.9rem 1.1rem 0.95rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.summary-kicker,
 .routes-kicker {
   display: inline-block;
   font-size: calc(0.72rem + 0.1667rem);
@@ -325,33 +349,71 @@
   text-transform: uppercase;
   color: var(--sage);
   font-weight: 500;
+}
+.summary-kicker {
+  margin-bottom: 0.12rem;
+}
+.summary-sub,
+.routes-sub {
+  display: block;
+  font-size: calc(0.72rem + 0.1667rem);
+  line-height: 1.3;
+  color: var(--warm-gray);
+  font-weight: 400;
+  margin-bottom: 0.45rem;
+}
+.routes-sub {
+  font-size: calc(0.8033rem + 0.1667rem);
+}
+.summary-metrics {
+  display: grid;
+  gap: 0.18rem;
+}
+.summary-metric {
+  font-size: calc(0.94rem + 0.1667rem);
+  line-height: 1.26;
+  color: var(--forest);
+  font-weight: 500;
+}
+.routes-card { background: white; }
+.routes-card-body {
+  height: 100%;
+  padding: 1rem 1.1rem 1.05rem;
+  display: flex;
+  flex-direction: column;
+}
+.routes-kicker {
+  margin-bottom: 0.45rem;
+}
+.routes-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: calc(1.26rem + 0.1667rem);
+  font-weight: 400;
+  line-height: 1.12;
+  color: var(--forest);
   margin-bottom: 0.7rem;
 }
 .routes-list {
   list-style: none;
   display: grid;
-  gap: 0.7rem;
-  margin: 1rem 0 1.1rem;
+  grid-template-columns: 1fr;
+  gap: 0.45rem;
+  margin: 0 0 0.8rem;
 }
 .routes-list li {
-  padding: 0.9rem 1rem;
+  padding: 0.58rem 0.7rem;
   border: 1.5px solid var(--cream-dark);
-  border-radius: 1rem;
+  border-radius: 0.95rem;
   background: var(--cream);
   color: var(--forest);
-  font-size: calc(0.88rem + 0.1667rem);
-  line-height: 1.35;
+  font-size: calc(0.72rem + 0.1667rem);
+  line-height: 1.24;
 }
 .routes-card .join-btn {
   width: 100%;
   justify-content: center;
-  margin-top: 0.2rem;
-}
-.routes-note {
-  font-size: calc(0.8rem + 0.1667rem);
-  color: var(--warm-gray);
-  margin-top: 0.9rem;
-  line-height: 1.6;
+  margin-top: auto;
+  padding: 0.56rem 1rem;
 }
 .how-section {
     background: var(--forest); color: var(--cream);
@@ -555,7 +617,7 @@ footer {
   }to { transform: rotate(360deg); }
   }
 
-  @media (max-width: 1100px) {.events-grid { grid-template-columns: 1fr; }.community-inner { grid-template-columns: 1fr; gap: 3rem; }footer { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 1100px) {.events-grid { grid-template-columns: 1fr; }.events-stack { align-content: stretch; }.summary-card, .routes-card { min-height: 0; }.community-inner { grid-template-columns: 1fr; gap: 3rem; }footer { grid-template-columns: 1fr 1fr; }
   }
 
   @media (max-width: 900px) {
@@ -621,6 +683,14 @@ footer {
     .section, .how-section, .community-section, .cta-section { padding: 4rem 1rem; }
     .section-header { flex-direction: column; align-items: flex-start; }
     .events-grid { grid-template-columns: 1fr; }
+    .events-stack {
+      grid-template-rows: auto auto;
+      height: auto;
+    }
+    .summary-card-body,
+    .routes-card-body {
+      padding: 1rem 1rem 1.05rem;
+    }
     .event-card.featured .event-card-img { height: 260px; }
     .how-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .community-inner { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -674,6 +744,23 @@ footer {
     .event-meta { gap: 0.7rem; }
     .poll-card-body { padding: 1.1rem 1.1rem 1.2rem; }
     .poll-option { padding: 0.8rem 0.9rem; }
+    .summary-card-body,
+    .routes-card-body {
+      padding: 0.95rem 1rem 1rem;
+    }
+    .routes-title {
+      font-size: calc(1.26rem + 0.1667rem);
+    }
+    .routes-list {
+      grid-template-columns: 1fr;
+      gap: 0.45rem;
+      margin-bottom: 0.85rem;
+    }
+    .routes-list li {
+      width: 100%;
+      border-radius: 0.95rem;
+      padding: 0.58rem 0.7rem;
+    }
     .cta-section {
       padding: 2.45rem 1rem 2.7rem;
       scroll-margin-top: 84px;
@@ -875,25 +962,33 @@ footer {
       </div>
     </article>
 
-    <article class="event-card routes-card">
-      <div class="event-card-body routes-card-body">
-        <span class="routes-kicker">Not always the same path.</span>
-        <h3 class="event-name">A few routes we may walk.</h3>
-        <div class="event-meta">
-          <span class="event-meta-item">Different routes, same simple idea</span>
+    <div class="events-stack" aria-label="Bubble Walk summary and routes">
+      <article class="event-card summary-card">
+        <div class="summary-card-body">
+          <span class="summary-kicker">So far</span>
+                    <div class="summary-metrics">
+            <p class="summary-metric">1 Bubble Walk</p>
+            <p class="summary-metric">10 attendances</p>
+            <p class="summary-metric">29 miles walked</p>
+          </div>
         </div>
-        <ul class="routes-list">
-          <li>Clifton Bridge + Observatory</li>
-          <li>Ashton Court Estate</li>
-          <li>Leigh Woods + Avon Gorge</li>
-          <li>Bristol–Bath Railway</li>
-          <li>Snuff Mills + Oldbury</li>
-        </ul>
-        <div>
+      </article>
+
+      <article class="event-card routes-card">
+        <div class="routes-card-body">
+          <span class="routes-kicker">Not always the same path.</span>
+          <span class="routes-sub">A few routes we may walk.</span>
+                    <ul class="routes-list" aria-label="Possible Bubble Walk routes">
+            <li>Clifton Bridge + Observatory</li>
+            <li>Ashton Court Estate</li>
+            <li>Leigh Woods + Avon Gorge</li>
+            <li>Bristol–Bath Railway</li>
+            <li>Snuff Mills + Oldbury</li>
+          </ul>
           <a class="join-btn" href="#join">Join the next walk</a>
         </div>
-      </div>
-    </article>
+      </article>
+    </div>
 
   </div>
 </section>
