@@ -1293,11 +1293,14 @@ footer {
 
   async function sendJoinCopyToWebhook(formData) {
     try {
+      const currentWalkEl = document.getElementById('ctaNextPill');
+
       const webhookPayload = {
         name: String(formData.get('name') || '').trim(),
         email: String(formData.get('email') || '').trim(),
         message: String(formData.get('message') || '').trim(),
-        future_walk_updates: formData.get('future_walk_updates') ? 'yes' : ''
+        future_walk_updates: formData.get('future_walk_updates') ? 'yes' : '',
+        current_walk: currentWalkEl ? currentWalkEl.textContent.trim() : ''
       };
 
       if (!webhookPayload.email) return;
