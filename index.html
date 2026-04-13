@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bubble Walk — Walk. Talk. Meet.</title>
-<meta name="description" content="Bubble Walk is a social walk in Bristol, South West England. Free to join. No pressure. Just walk, talk, and meet people. See the next walk and join here.">
+<meta name="description" content="Bubble Walk is a social walk in Bristol. Free to join. No pressure. Just walk, talk, and meet people. See the next walk and join here.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260411b">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20260411b">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260411b">
@@ -854,14 +854,14 @@ footer {
   <div class="hero-bg-shape"></div>
 
   <div class="hero-left">
-    <span class="hero-tag">Free social walk • Bristol, South West England</span>
+    <span class="hero-tag">Free social walk • Bristol</span>
     <h1 class="hero-title">
       Walk.<br>
       <em>Talk.</em><br>
       Meet.
     </h1>
     <p class="hero-sub">
-      Bubble Walk is a simple social walk in Bristol, South West England. Free to join. No pressure. Just walk, talk, and meet people outside for an hour.
+      Bubble Walk is a simple social walk in Bristol. Free to join. No pressure. Just walk, talk, and meet people outside for an hour.
     </p>
     <div class="hero-actions">
       <a href="#join" class="btn-primary">Join the next walk</a>
@@ -983,7 +983,7 @@ footer {
             <li>Ashton Court Estate</li>
             <li>Leigh Woods + Avon Gorge</li>
             <li>Bristol–Bath Railway</li>
-            <li>Snuff Mills + Oldbury</li>
+            <li>Snuff Mills + Oldbury Court</li>
           </ul>
           <a class="join-btn" href="#join">Join the next walk</a>
         </div>
@@ -1034,7 +1034,7 @@ footer {
       <p class="section-label">What Bubble Walk is</p>
       <h2 class="section-title">A social walk, <em>not a performance</em></h2>
       <p>
-        Bubble Walk is a social walk in Bristol, South West England. It is free to join, easy to come to on your own, and built around simple conversation while walking.
+        Bubble Walk is a social walk in Bristol. It is free to join, easy to come to on your own, and built around simple conversation while walking.
       </p>
       <p>
         No awkward format. No pressure. Just people walking and talking together. An easy route, an easy pace, and a bit of time outside with other people.
@@ -1074,7 +1074,7 @@ footer {
   </p>
 
   <div class="cta-next-walk" aria-label="Next Bubble Walk details">
-    <span class="cta-next-pill" id="ctaNextPill">Friday 24 April 2026 • 6pm • BS1 4XJ</span>
+    <span class="cta-next-pill" id="ctaNextPill">Friday 24 April 2026 • 6pm</span>
   </div>
 
   <form class="cta-form" id="joinForm" action="https://formspree.io/f/mzdjwobq" method="POST">
@@ -1102,7 +1102,7 @@ footer {
 <footer>
   <div class="footer-brand">
     <a class="nav-logo" href="#top">Bubble <span style="color:var(--terra-light); font-style:italic;">Walk</span></a>
-    <p>A simple social walk in Bristol, South West England. Free to join. No pressure. Just walk, talk, and meet people.</p>
+    <p>A simple social walk in Bristol. Free to join. No pressure. Just walk, talk, and meet people.</p>
   </div>
   <div>
     <h4>Walks</h4>
@@ -1133,7 +1133,7 @@ footer {
   </div>
 </footer>
 <div class="footer-bottom">
-  <p>Bubble Walk — a social walk in Bristol, South West England. Free to join.</p>
+  <p>Bubble Walk — a social walk in Bristol. Free to join.</p>
   <p id="footerNextWalk">Next walk: Friday, 24 April at 6pm</p>
 </div>
 
@@ -1159,6 +1159,8 @@ footer {
   
   function applySiteContent() {
     const dateParts = parseSiteDateParts(SITE.date);
+    const postcodeMatch = SITE.meetingPoint.match(/\b[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}\b/i);
+    const meetingPostcode = postcodeMatch ? postcodeMatch[0].toUpperCase() : "";
 
     const mapsBtnHero = document.getElementById("mapsBtnHero");
     const routeFooterLink = document.getElementById("routeFooterLink");
@@ -1208,7 +1210,7 @@ footer {
     if (eventDurationLine) eventDurationLine.textContent = SITE.duration;
     if (heroCardTitle) heroCardTitle.innerHTML = `Next Bubble Walk •<br>${SITE.day} ${SITE.date} • ${SITE.time}`;
     if (heroCardMeta) heroCardMeta.textContent = SITE.meetingPoint;
-    if (ctaNextPill) ctaNextPill.textContent = `${SITE.day} ${SITE.date} • ${SITE.time} • BS1 4XJ`;
+    if (ctaNextPill) ctaNextPill.textContent = [`${SITE.day} ${SITE.date}`, SITE.time, meetingPostcode].filter(Boolean).join(" • ");
     if (footerNextWalk) footerNextWalk.textContent = `Next walk: ${SITE.day}, ${SITE.date} at ${SITE.time}`;
   }
 
