@@ -1204,17 +1204,29 @@ footer {
   return `${year}-${month}-${day}T${String(hour).padStart(2, "0")}:${minute}`;
 }
 
+function buildEventEndDate(startIso) {
+  if (!startIso || !startIso.includes("T")) return "";
+  const match = startIso.match(/^(\d{4}-\d{2}-\d{2})T(\d{2}):(\d{2})$/);
+  if (!match) return "";
+  let hour = Number(match[2]);
+  const minute = match[3];
+  hour = (hour + 1) % 24;
+  return `${match[1]}T${String(hour).padStart(2, "0")}:${minute}`;
+}
+
 function injectEventSchema() {
   const script = document.getElementById("eventSchema");
   if (!script) return;
 
+  const startDate = buildIsoDateTime(SITE.date, SITE.time);
   const schema = {
     "@context": "https://schema.org",
     "@type": "Event",
     "name": "Bubble Walk",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "startDate": buildIsoDateTime(SITE.date, SITE.time),
+    "startDate": startDate,
+    "endDate": buildEventEndDate(startDate),
     "isAccessibleForFree": true,
     "url": "https://www.bubblewalk.org/",
     "image": ["https://www.bubblewalk.org/route-map.png"],
@@ -1229,6 +1241,10 @@ function injectEventSchema() {
         "postalCode": "BS1 4XJ",
         "addressCountry": "GB"
       }
+    },
+    "organizer": {
+      "@type": "Person",
+      "name": "Alessandro D'Angelo"
     },
     "offers": {
       "@type": "Offer",
