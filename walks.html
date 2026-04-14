@@ -3,12 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bubble Walk — Walks</title>
-  <meta name="description" content="Photos from past Bubble Walks in Bristol.">
+  <title>Bubble Walk — Past Social Walks in Bristol</title>
+  <meta name="description" content="Photos and notes from past Bubble Walks in Bristol. A simple archive of real walks, real places, and a few moments from each one.">
+  <link rel="canonical" href="https://www.bubblewalk.org/walks.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bubble Walk — Past Social Walks in Bristol">
+  <meta property="og:description" content="Photos and notes from past Bubble Walks in Bristol. A simple archive of real walks, real places, and a few moments from each one.">
+  <meta property="og:url" content="https://www.bubblewalk.org/walks.html">
+  <meta property="og:image" content="https://www.bubblewalk.org/photos/bubblewalk-2026-04-09-feature.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bubble Walk — Past Social Walks in Bristol">
+  <meta name="twitter:description" content="Photos and notes from past Bubble Walks in Bristol. A simple archive of real walks, real places, and a few moments from each one.">
+  <meta name="twitter:image" content="https://www.bubblewalk.org/photos/bubblewalk-2026-04-09-feature.jpg">
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260411b">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20260411b">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260411b">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Bubble Walk — Past Social Walks in Bristol",
+    "url": "https://www.bubblewalk.org/walks.html",
+    "description": "Photos and notes from past Bubble Walks in Bristol. A simple archive of real walks, real places, and a few moments from each one."
+  }
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -625,7 +644,7 @@
 
   <div class="archive-hero-left">
     <span class="archive-hero-tag">Walks archive • Bristol</span>
-    <h1 class="archive-hero-title">Past <em>Walks.</em><br>Shared moments.</h1>
+    <h1 class="archive-hero-title">Past <em>Bubble Walks.</em><br>Shared moments.</h1>
     <p class="archive-hero-sub">
       A simple archive of the walks so far, with a few photos from each one. Nothing overdone. Just the walks, the place, and what happened.
     </p>
@@ -753,67 +772,10 @@
 </div>
 
 <script>
-  const DEFAULT_WALKS = [
-    /* TEMPLATE — copy this block to add a new walk
-    {
-      id: "walk-XX",
-      label: "Bubble Walk #X",
-      place: "Harbourside",
-      date: "DD Month YYYY",
-      duration: "~1 hour",
-      intro: "Bubble Walk.",
-      note: "A few moments from the walk.",
-      featured: {
-        src: "photos/bubblewalk-YYYY-MM-DD-feature.jpg",
-        alt: "Bubble Walk on DD Month YYYY"
-      },
-      photos: [
-        { src: "photos/bubblewalk-YYYY-MM-DD-01.jpg", alt: "Bubble Walk on DD Month YYYY" },
-        { src: "photos/bubblewalk-YYYY-MM-DD-02.jpg", alt: "Bubble Walk on DD Month YYYY" },
-        { src: "photos/bubblewalk-YYYY-MM-DD-03.jpg", alt: "Bubble Walk on DD Month YYYY" },
-        { src: "photos/bubblewalk-YYYY-MM-DD-04.jpg", alt: "Bubble Walk on DD Month YYYY" }
-      ]
-    }
-    */
-    {
-      id: "walk-01",
-      label: "Bubble Walk #1",
-      place: "Harbourside",
-      date: "9 April 2026",
-      duration: "~1 hour",
-      intro: "The first Bubble Walk on the Harbourside.",
-      note: "We walked, talked, got to know each other a bit, and then had a beer together afterwards.",
-      featured: {
-        src: "photos/bubblewalk-2026-04-09-feature.jpg",
-        alt: "Bubble Walk featured photo"
-      },
-      photos: [
-        { src: "photos/bubblewalk-2026-04-09-01.jpg", alt: "Bubble Walk along Bristol Harbourside" },
-        { src: "photos/bubblewalk-2026-04-09-02.jpg", alt: "People walking together during Bubble Walk" },
-        { src: "photos/bubblewalk-2026-04-09-03.jpg", alt: "View from Bubble Walk in Bristol" },
-        { src: "photos/bubblewalk-2026-04-09-04.jpg", alt: "Bubble Walk social moment" }
-      ]
-    },
-    {
-      id: "harbourside",
-      label: "Harbourside",
-      place: "Bristol Harbourside",
-      date: "General",
-      duration: "",
-      intro: "A few Harbourside photos that reflect the setting of the walk.",
-      note: "Not tied to one specific Bubble Walk. Just the route, the water, and the atmosphere around it.",
-      featured: {
-        src: "photos/harbourside-feature.jpg",
-        alt: "Bristol Harbourside featured photo"
-      },
-      photos: [
-        { src: "photos/harbourside-01.jpg", alt: "Bristol Harbourside view" },
-        { src: "photos/harbourside-02.jpg", alt: "Bristol Harbourside path" },
-        { src: "photos/harbourside-03.jpg", alt: "Waterfront in Bristol" },
-        { src: "photos/harbourside-04.jpg", alt: "Harbourside evening light" }
-      ]
-    }
-  ];
+const DEFAULT_WALKS = [
+  // Source of truth: content.js
+  // Keep this empty unless you intentionally want a local fallback.
+];
 
   function loadSharedContentScript() {
     return new Promise((resolve) => {
@@ -835,6 +797,7 @@
   function normalizeWalk(input, index) {
     return {
       id: input.id || `walk-${index + 1}`,
+      type: input.type || input.kind || '',
       label: input.label || input.title || `Bubble Walk #${index + 1}`,
       place: input.place || input.location || 'Harbourside',
       date: input.date || '',
@@ -872,11 +835,13 @@
     }));
   }
 
-  function countArchivedBubbleWalks(walks) {
-    return walks.filter((walk) => {
-      return walk && typeof walk.label === 'string' && walk.label.toLowerCase().includes('bubble walk');
-    }).length;
-  }
+function countArchivedBubbleWalks(walks) {
+  return walks.filter((walk) => {
+    if (!walk) return false;
+    if (walk.type === 'bubble-walk') return true;
+    return typeof walk.label === 'string' && walk.label.toLowerCase().includes('bubble walk');
+  }).length;
+}
 
   function buildWalkList(walks) {
     const list = document.getElementById('walkList');
@@ -1012,6 +977,11 @@
   async function initWalksPage() {
     await loadSharedContentScript();
     const walks = getWalksContent();
+    if (!Array.isArray(walks) || !walks.length) {
+      const stat = document.getElementById('heroStatWalks');
+      if (stat) stat.textContent = '0';
+      return;
+    }
     buildWalkList(walks);
     renderWalk(walks[0], walks);
   }
