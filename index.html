@@ -1167,7 +1167,8 @@ footer {
     meetingPoint: "Cascade Steps - Anchor Rd, Bristol BS1 4XJ",
     meetingMapsUrl: "https://maps.app.goo.gl/Z5AighzAsEyhkKB48",
     routeMapsUrl: "https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D",
-    mapsQuery: "Bristol Harbourside"
+    mapsQuery: "Bristol Harbourside",
+    offerValidFrom: "2026-04-15T09:00:00+01:00"
   };
 
   function parseSiteDateParts(dateText) {
@@ -1244,13 +1245,20 @@ function injectEventSchema() {
     },
     "organizer": {
       "@type": "Person",
-      "name": "Alessandro D'Angelo"
+      "name": "Alessandro D'Angelo",
+      "url": "https://www.bubblewalk.org/"
+    },
+    "performer": {
+      "@type": "Organization",
+      "name": "Bubble Walk",
+      "url": "https://www.bubblewalk.org/"
     },
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "GBP",
       "availability": "https://schema.org/InStock",
+      "validFrom": SITE.offerValidFrom,
       "url": "https://www.bubblewalk.org/#join"
     }
   };
