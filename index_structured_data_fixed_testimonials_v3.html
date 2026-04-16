@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bubble Walk — Social Walk in Bristol | Walk. Talk. Meet.</title>
+<meta name="description" content="Bubble Walk is a free social walk in Bristol. No pressure. Come on your own or with a friend. See the next walk and join here.">
+<link rel="canonical" href="https://www.bubblewalk.org/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bubble Walk — Social Walk in Bristol | Walk. Talk. Meet.">
+<meta property="og:description" content="Bubble Walk is a free social walk in Bristol. No pressure. Come on your own or with a friend. See the next walk and join here.">
+<meta property="og:url" content="https://www.bubblewalk.org/">
+<meta property="og:image" content="https://www.bubblewalk.org/photos/bubblewalk-2026-04-09-feature.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bubble Walk — Social Walk in Bristol | Walk. Talk. Meet.">
+<meta name="twitter:description" content="Bubble Walk is a free social walk in Bristol. No pressure. Come on your own or with a friend. See the next walk and join here.">
+<meta name="twitter:image" content="https://www.bubblewalk.org/photos/bubblewalk-2026-04-09-feature.jpg">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260415b">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20260415b">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260415b">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Bubble Walk",
+  "url": "https://www.bubblewalk.org/",
+  "description": "A free social walk in Bristol. No pressure. Just walk, talk, and meet people."
+}
+</script>
+<script id="eventSchema" type="application/ld+json"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }:root {
+    --terra: #C4623A;
+    --terra-light: #E8A98A;
+    --terra-dark: #8B3E1F;
+    --sage: #7A9E7E;
+    --sage-light: #B8D4BB;
+    --sage-dark: #3D6641;
+    --cream: #F5F0E6;
+    --cream-dark: #EDE4D2;
+    --forest: #2C3B2D;
+    --forest-mid: #4A5E4B;
+    --warm-gray: #8C8476;
+    --text: #2C3B2D;
+  }html { scroll-behavior: smooth; }body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }img { max-width: 100%; display: block; }nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(245, 240, 230, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(122,158,126,0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600;
+    color: var(--forest);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--terra); font-style: italic; }.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .nav-links a {
+    font-size: 0.875rem; font-weight: 400; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--forest-mid);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--terra); }
+  .nav-cta {
+    background: var(--terra); color: white;
+    border: none; padding: 0.65rem 1.6rem;
+    border-radius: 2rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem; font-weight: 500; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-cta:hover { background: var(--terra-dark); transform: translateY(-1px); }
+  .nav-secondary {
+    background: var(--cream-dark);
+    color: var(--forest);
+    border: 1px solid rgba(122,158,126,0.32);
+  }
+  .nav-secondary:hover {
+    background: var(--sage-light);
+    color: var(--forest);
+    border-color: rgba(122,158,126,0.45);
+  }.hero {
+    min-height: calc(100vh - 28px);
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 0;
+    padding-top: 72px;
+    position: relative; overflow: hidden;
+  }.hero-bg-shape {
+    position: absolute; right: -5%; top: 0;
+    width: 55%; height: 100%;
+    background: var(--sage-light);
+    clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
+    opacity: 0.35;
+  }.hero-left {
+    padding: 3rem 4rem 2.6rem 5rem;
+    position: relative; z-index: 2;
+  }.hero-tag {
+    display: inline-block;
+    font-size: calc(0.75rem + 0.1667rem); letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--terra); font-weight: 500;
+    border: 1px solid var(--terra-light);
+    padding: 0.35rem 1rem; border-radius: 2rem;
+    margin-bottom: 1.4rem;
+    animation: fadeUp 0.7s ease both;
+  }.hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(clamp(3.05rem, 4.8vw, 4.82rem) + 0.08rem);
+    font-weight: 300; line-height: 1.1;
+    color: var(--forest);
+    margin-bottom: 1rem;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }.hero-title em {
+    font-style: italic; color: var(--terra);
+  }.hero-sub {
+    font-size: calc(1rem + 0.12rem); line-height: 1.72;
+    color: var(--warm-gray); max-width: 42ch;
+    margin-bottom: 1.55rem; font-weight: 300;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }.hero-actions {
+    display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }.btn-primary {
+    background: var(--forest); color: var(--cream);
+    border: none; padding: 1rem 2.2rem;
+    border-radius: 3rem; font-family: 'DM Sans', sans-serif;
+    font-size: calc(0.95rem + 0.1667rem); font-weight: 500; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+  }.btn-primary:hover { background: var(--forest-mid); transform: translateY(-2px); }.btn-ghost {
+    color: var(--forest-mid); font-size: calc(0.9rem + 0.1667rem);
+    display: flex; align-items: center; gap: 0.5rem;
+    text-decoration: none; font-weight: 400;
+    transition: gap 0.2s, color 0.2s;
+  }.btn-ghost:hover { color: var(--terra); gap: 0.8rem; }.hero-stats {
+    display: flex; gap: 3rem; margin-top: 1.7rem;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }.stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.32rem; font-weight: 600; color: var(--forest);
+    line-height: 1;
+  }.stat-label {
+    font-size: 0.72rem; color: var(--warm-gray);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-top: 0.3rem;
+  }.hero-right {
+    position: relative; z-index: 2; height: auto;
+    display: flex; align-items: center; justify-content: center;
+    overflow: visible;
+  }.hero-image-card {
+    width: 414px; position: relative; padding-bottom: 50px; overflow: visible;
+    transform: translate(18px, 14px);
+  }.hero-main-img {
+    width: 100%; height: 522px;
+    border-radius: 1rem 1rem 8rem 1rem;
+    background: linear-gradient(160deg, #7A9E7E 0%, #3D6641 50%, #2C3B2D 100%);
+    display: flex; align-items: flex-end; padding: 2rem;
+    overflow: hidden; position: relative;
+  }.hero-main-img::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(44,59,45,0.22), rgba(44,59,45,0.03));
+    z-index: 1;
+  }.hero-main-img img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+  }.hero-img-caption {
+    position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%);
+    z-index: 5;
+    background: rgba(245,240,230,0.96); backdrop-filter: blur(8px);
+    border-radius: 1.25rem; padding: 1rem 1.3rem 0.95rem;
+    width: min(93%, 700px);
+    box-shadow: 0 12px 28px rgba(44,59,45,0.10);
+  }.hero-img-caption strong {
+    display: block; font-size: 1.52rem; color: var(--forest); font-weight: 600; line-height: 1.08;
+  }.hero-img-caption span {
+    display:block; margin-top: 0.28rem; font-size: 0.92rem; color: var(--warm-gray); line-height: 1.04; letter-spacing: -0.015em;
+  }.section { padding: 6rem 5rem; }.section-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3rem; gap: 1.5rem;
+  }.section-label {
+    font-size: calc(0.75rem + 0.1667rem); letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--terra);
+    font-weight: 500; margin-bottom: 0.75rem;
+  }.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(clamp(2rem, 3.5vw, 3rem) + 0.1667rem);
+    font-weight: 300; line-height: 1.2; color: var(--forest);
+  }.section-title em { font-style: italic; color: var(--terra); }.see-all {
+    color: var(--forest-mid); font-size: calc(0.875rem + 0.1667rem);
+    text-decoration: none; border-bottom: 1px solid var(--sage-light);
+    padding-bottom: 0.15rem; white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }.see-all:hover { color: var(--terra); border-color: var(--terra-light); }.events-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1.5rem;
+    align-items: stretch;
+  }
+  .events-stack {
+    display: grid;
+    gap: 1.5rem;
+    align-content: start;
+  }
+  .events-stack .event-card {
+    height: auto;
+  }
+  .summary-card {
+    min-height: 75px;
+  }
+  .routes-card {
+    min-height: 192px;
+  }.event-card {
+    background: white; border-radius: 1.25rem;
+    overflow: hidden; position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: inherit;
+  }.event-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(44,59,45,0.12);
+  }.event-card-img {
+    height: 220px; position: relative; overflow: hidden;
+    background: linear-gradient(160deg, #4A7C59 0%, #2C5F3D 40%, #1A3D28 100%);
+  }.event-card.featured .event-card-img { height: 300px; }.event-card-img-bg {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s;
+  }.event-card:hover .event-card-img-bg { transform: scale(1.05); }.event-card-img .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(44,59,45,0.55), rgba(44,59,45,0.08));
+  }.event-date-badge {
+    position: absolute; top: 1rem; left: 1rem;
+    background: white; border-radius: 0.75rem;
+    padding: 0.5rem 0.75rem; text-align: center;
+    min-width: 58px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 2;
+  }.event-date-day {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(1.6rem + 0.1667rem); font-weight: 600; color: var(--terra);
+    line-height: 1;
+  }.event-date-month {
+    font-size: calc(0.65rem + 0.1667rem); text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--warm-gray);
+  }.event-difficulty {
+    position: absolute; top: 1rem; right: 1rem;
+    padding: 0.3rem 0.8rem; border-radius: 2rem;
+    font-size: calc(0.7rem + 0.1667rem); letter-spacing: 0.06em;
+    text-transform: uppercase; font-weight: 500;
+    backdrop-filter: blur(8px); z-index: 2;
+  }.diff-easy { background: rgba(184,212,187,0.92); color: var(--sage-dark); }.diff-medium { background: rgba(232,169,138,0.92); color: var(--terra-dark); }.event-card-body { padding: 1.25rem 1.5rem 1.5rem; }.event-location {
+    font-size: calc(0.75rem + 0.1667rem); text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--sage);
+    font-weight: 500; margin-bottom: 0.5rem;
+  }.event-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(1.35rem + 0.1667rem); font-weight: 400; color: var(--forest);
+    margin-bottom: 0.75rem; line-height: 1.3;
+  }.event-card.featured .event-name { font-size: calc(1.7rem + 0.1667rem); }.event-meta {
+    display: flex; gap: 1.1rem; flex-wrap: wrap;
+    font-size: calc(0.78rem + 0.1667rem); color: var(--warm-gray);
+    margin-bottom: 1.25rem;
+  }.event-meta-item { display: flex; align-items: center; gap: 0.35rem; }.event-participants {
+    display: flex; align-items: center; gap: 0.5rem;
+  }.avatars { display: flex; }.avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 2px solid white; margin-left: -8px;
+    font-size: calc(0.65rem + 0.1667rem); display: flex; align-items: center;
+    justify-content: center; font-weight: 500; color: white;
+  }.avatar:first-child { margin-left: 0; }.a1 { background: var(--terra); }.a2 { background: var(--sage-dark); }.a3 { background: var(--forest); }.participants-text {
+    font-size: calc(0.78rem + 0.1667rem); color: var(--warm-gray);
+  }.join-btn {
+    background: var(--cream); border: 1.5px solid var(--cream-dark);
+    color: var(--forest); padding: 0.6rem 1.4rem;
+    border-radius: 2rem; font-size: calc(0.85rem + 0.1667rem); font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif; text-decoration: none;
+    display: inline-flex; align-items: center; justify-content: center;
+  }.join-btn:hover { background: var(--forest); color: white; border-color: var(--forest); }
+  .poll-card { background: white; }
+  .poll-card-body { padding: 1.4rem 1.5rem 1.6rem; }
+  .poll-kicker {
+    display: inline-block;
+    font-size: calc(0.72rem + 0.1667rem);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 500;
+    margin-bottom: 0.7rem;
+  }
+  .poll-form {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 1rem;
+  }
+  .poll-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 1rem;
+    background: var(--cream);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    color: var(--forest);
+    font-size: calc(0.86rem + 0.1667rem);
+  }
+  .poll-option:hover {
+    border-color: var(--sage-light);
+    background: #fbf8f1;
+    transform: translateY(-1px);
+  }
+  .poll-option input {
+    accent-color: var(--forest);
+    flex-shrink: 0;
+  }
+  .poll-submit {
+    margin-top: 0.35rem;
+    width: 100%;
+  }
+  .poll-note {
+    font-size: calc(0.8rem + 0.1667rem);
+    color: var(--warm-gray);
+    margin-top: 0.9rem;
+    line-height: 1.6;
+  }
+  .poll-status {
+    display: none;
+    margin-top: 0.5rem;
+    padding: 0.85rem 0.95rem;
+    border-radius: 1rem;
+    background: var(--cream);
+    border: 1px solid var(--cream-dark);
+    color: var(--forest);
+    font-size: calc(0.82rem + 0.1667rem);
+    line-height: 1.5;
+  }
+  .poll-status.is-visible { display: block; }
+.summary-card {
+  background: white;
+}
+.summary-card-body {
+  height: 100%;
+  padding: 0.9rem 1.1rem 0.95rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.summary-kicker,
+.routes-kicker {
+  display: inline-block;
+  font-size: calc(0.72rem + 0.1667rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sage);
+  font-weight: 500;
+}
+.summary-kicker {
+  margin-bottom: 0.12rem;
+}
+.summary-sub,
+.routes-sub {
+  display: block;
+  font-size: calc(0.72rem + 0.1667rem);
+  line-height: 1.3;
+  color: var(--warm-gray);
+  font-weight: 400;
+  margin-bottom: 0.45rem;
+}
+.routes-sub {
+  font-size: calc(0.8033rem + 0.1667rem);
+}
+.summary-metrics {
+  display: grid;
+  gap: 0.18rem;
+}
+.summary-metric {
+  font-size: calc(0.94rem + 0.1667rem);
+  line-height: 1.26;
+  color: var(--forest);
+  font-weight: 500;
+}
+.routes-card { background: white; }
+.routes-card-body {
+  height: 100%;
+  padding: 1rem 1.1rem 1.05rem;
+  display: flex;
+  flex-direction: column;
+}
+.routes-kicker {
+  margin-bottom: 0.45rem;
+}
+.routes-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: calc(1.26rem + 0.1667rem);
+  font-weight: 400;
+  line-height: 1.12;
+  color: var(--forest);
+  margin-bottom: 0.7rem;
+}
+.routes-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.45rem;
+  margin: 0 0 0.8rem;
+}
+.routes-list li {
+  padding: 0.58rem 0.7rem;
+  border: 1.5px solid var(--cream-dark);
+  border-radius: 0.95rem;
+  background: var(--cream);
+  color: var(--forest);
+  font-size: calc(0.72rem + 0.1667rem);
+  line-height: 1.24;
+}
+.routes-card .join-btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: auto;
+  padding: 0.56rem 1rem;
+}
+.how-section {
+    background: var(--forest); color: var(--cream);
+    padding: 6rem 5rem;
+    position: relative; overflow: hidden;
+  }.how-section::before {
+    content: '';
+    position: absolute; top: -40%; right: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(122,158,126,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }.how-section .section-label { color: var(--sage-light); }.how-section .section-title { color: var(--cream); }.how-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem;
+    margin-top: 4rem;
+  }.how-step { position: relative; }.how-step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(5rem + 0.1667rem); font-weight: 300; color: rgba(255,255,255,0.07);
+    line-height: 1; position: absolute; top: -1.5rem; left: -0.5rem;
+  }.how-icon {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(122,158,126,0.2); border: 1px solid rgba(122,158,126,0.4);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem; font-size: calc(1.4rem + 0.1667rem);
+  }.how-step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(1.4rem + 0.1667rem); font-weight: 400; color: var(--cream);
+    margin-bottom: 0.75rem;
+  }.how-step-desc {
+    font-size: calc(0.875rem + 0.1667rem); line-height: 1.75;
+    color: rgba(245,240,230,0.6); font-weight: 300;
+  }.how-connector {
+    position: absolute; top: 26px; left: calc(100% - 1.5rem);
+    width: 3rem; height: 1px;
+    background: linear-gradient(to right, rgba(122,158,126,0.4), rgba(122,158,126,0.1));
+  }.how-step:last-child .how-connector { display: none; }.community-section {
+    background: var(--cream-dark);
+    padding: 6rem 5rem;
+  }.community-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }.community-text .section-title { margin-bottom: 1.5rem; }.community-text p {
+    font-size: calc(1rem + 0.1667rem); line-height: 1.8; color: var(--warm-gray);
+    font-weight: 300; margin-bottom: 1.5rem;
+  }.community-values { list-style: none; margin: 2rem 0; }.community-values li {
+    display: flex; align-items: center; gap: 1rem;
+    font-size: calc(0.9rem + 0.1667rem); color: var(--forest-mid);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(122,158,126,0.2);
+  }.community-values li:last-child { border-bottom: none; }.value-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--terra); flex-shrink: 0;
+  }.testimonials-grid { display: flex; flex-direction: column; gap: 1.25rem; }.testimonial {
+    background: white; border-radius: 1rem;
+    padding: 1.5rem 1.75rem;
+    position: relative;
+    transition: transform 0.3s;
+  }.testimonial:hover { transform: translateX(6px); }.testimonial::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(4rem + 0.1667rem); line-height: 0.5;
+    color: var(--sage-light); position: absolute;
+    top: 1.25rem; left: 1.5rem;
+    pointer-events: none;
+  }.testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(1.1rem + 0.1667rem); font-style: italic;
+    color: var(--forest); line-height: 1.6;
+    margin-bottom: 0.25rem; position: relative; z-index: 1;
+    padding-left: 1.5rem;
+  }.testimonial-sub {
+    font-size: calc(0.84rem + 0.1667rem); color: var(--warm-gray);
+    margin-left: 1.5rem; line-height: 1.65;
+  }.cta-section {
+    padding: 8rem 5rem;
+    scroll-margin-top: 92px;
+    text-align: center;
+    background: var(--cream);
+    position: relative; overflow: hidden;
+  }.cta-section::before {
+    content: 'bubble walk';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(13rem + 0.1667rem); font-weight: 600;
+    color: rgba(122,158,126,0.06);
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap; pointer-events: none;
+    letter-spacing: -0.05em;
+  }.cta-section .section-label { display: block; margin-bottom: 1rem; }.cta-section .section-title { margin-bottom: 1.25rem; position: relative; z-index: 1; }.cta-section p {
+    color: var(--warm-gray); font-size: calc(1rem + 0.1667rem); font-weight: 300;
+    max-width: 48ch; margin: 0 auto 1.35rem;
+    line-height: 1.8; position: relative; z-index: 1;
+  }.cta-form {
+    position: relative; z-index: 1;
+    max-width: 720px; margin: 0 auto;
+    display: grid; gap: 0.9rem;
+  }.cta-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }.cta-input, .cta-textarea {
+    border: 1.5px solid var(--cream-dark); border-radius: 1.2rem;
+    background: white; padding: 1rem 1.2rem;
+    font-size: calc(0.95rem + 0.1667rem); font-family: 'DM Sans', sans-serif;
+    outline: none; color: var(--forest);
+    width: 100%;
+  }.cta-textarea { min-height: 130px; resize: vertical; }.cta-submit-row {
+    display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;
+    margin-top: 0.35rem;
+  }
+  .updates-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    margin-top: 0.05rem;
+    color: var(--forest);
+    font-size: calc(0.9rem + 0.1667rem);
+    line-height: 1.55;
+    text-align: left;
+  }
+  .updates-consent input {
+    margin-top: 0.22rem;
+    accent-color: var(--forest);
+    flex-shrink: 0;
+  }
+  .privacy-note {
+    color: var(--warm-gray);
+    font-size: calc(0.78rem + 0.1667rem);
+    line-height: 1.65;
+    text-align: left;
+    margin-top: -0.1rem;
+  }
+  .privacy-note a {
+    color: var(--forest-mid);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(122,158,126,0.3);
+  }
+  .privacy-note a:hover {
+    color: var(--terra);
+    border-color: var(--terra-light);
+  }
+  .cta-submit-row .btn-primary {
+    min-width: 180px;
+  }.form-status {
+    display: none;
+    margin-top: 0.5rem;
+    padding: 0.9rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(122,158,126,0.25);
+    background: rgba(255,255,255,0.92);
+    color: var(--forest);
+    font-size: calc(0.9rem + 0.1667rem);
+  }.form-status.is-visible { display: block; }.cta-next-walk {
+    position: relative; z-index: 1;
+    max-width: 920px; margin: -0.15rem auto 1.15rem;
+    display: flex; justify-content: center;
+  }.cta-next-pill {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.72rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--cream-dark);
+    background: rgba(255,255,255,0.9);
+    color: var(--forest);
+    font-size: calc(0.82rem + 0.1667rem);
+    line-height: 1.25;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+  .helper-links {
+    display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap;
+    font-size: calc(0.85rem + 0.1667rem); position: relative; z-index: 1;
+  }.helper-links a {
+    color: var(--forest-mid); text-decoration: none; border-bottom: 1px solid rgba(122,158,126,0.3);
+  }.helper-links a:hover { color: var(--terra); border-color: var(--terra-light); }
+
+  .join-copy-desktop,
+  .privacy-note-desktop {
+    display: inline;
+  }
+
+  .join-copy-mobile,
+  .privacy-note-mobile {
+    display: none;
+  }
+
+footer {
+    background: var(--forest); color: rgba(245,240,230,0.7);
+    padding: 3.5rem 5rem;
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+  .footer-brand .nav-logo { color: var(--cream); margin-bottom: 1rem; display: inline-block; }.footer-brand p { font-size: calc(0.85rem + 0.1667rem); line-height: 1.7; font-weight: 300; }footer h4 {
+    font-size: calc(0.75rem + 0.1667rem); text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--cream); margin-bottom: 1.25rem; font-weight: 500;
+  }footer ul { list-style: none; }footer ul li { margin-bottom: 0.6rem; }footer ul li a {
+    font-size: calc(0.875rem + 0.1667rem); color: rgba(245,240,230,0.6);
+    text-decoration: none; transition: color 0.2s;
+  }footer ul li a:hover { color: var(--terra-light); }.footer-bottom {
+    background: var(--forest); border-top: 1px solid rgba(245,240,230,0.08);
+    padding: 1.25rem 5rem;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  }.footer-bottom p { font-size: calc(0.78rem + 0.1667rem); color: rgba(245,240,230,0.35); }
+
+  @keyframes fadeUp {from { opacity: 0; transform: translateY(20px); }to { opacity: 1; transform: translateY(0); }
+  }to { transform: rotate(360deg); }
+  }
+
+  @media (max-width: 1100px) {.events-grid { grid-template-columns: 1fr; }.events-stack { align-content: stretch; }.summary-card, .routes-card { min-height: 0; }.community-inner { grid-template-columns: 1fr; gap: 3rem; }footer { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 0.95rem 1rem; }
+    .nav-logo { font-size: 1.35rem; }
+    .nav-links { display: none; }
+    .nav-actions {
+      gap: 0.5rem;
+      margin-left: auto;
+    }
+    .nav-cta {
+      padding: 0.58rem 0.95rem;
+      font-size: 0.8rem;
+      min-width: 0;
+      white-space: nowrap;
+    }
+    .hero {
+      min-height: auto;
+      grid-template-columns: 1fr;
+      padding-top: 72px;
+    }
+    .hero-bg-shape {
+      width: 100%;
+      height: 42%;
+      left: 0;
+      right: 0;
+      top: auto;
+      bottom: 0;
+      clip-path: none;
+      opacity: 0.22;
+    }
+    .hero-left { padding: 2.5rem 1rem 1.5rem; }
+    .hero-sub {
+      max-width: none;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+    .hero-right {
+      display: block;
+      height: auto;
+      padding: 0 1rem 0;
+    }
+    .hero-image-card {
+      width: 100%;
+      max-width: none;
+      transform: none;
+      padding-bottom: 0;
+    }
+    .hero-main-img {
+      height: 340px;
+      border-radius: 1rem 1rem 2rem 1rem;
+    }
+    .hero-img-caption {
+      position: relative;
+      left: auto;
+      bottom: auto;
+      transform: none;
+      width: 100%;
+      margin-top: -1rem;
+      padding: 1.25rem 1.2rem;
+    }
+    .section, .how-section, .community-section, .cta-section { padding: 4rem 1rem; }
+    .section-header { flex-direction: column; align-items: flex-start; }
+    .events-grid { grid-template-columns: 1fr; }
+    .events-stack {
+      grid-template-rows: auto auto;
+      height: auto;
+    }
+    .summary-card-body,
+    .routes-card-body {
+      padding: 1rem 1rem 1.05rem;
+    }
+    .event-card.featured .event-card-img { height: 260px; }
+    .how-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .community-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .cta-row { grid-template-columns: 1fr; }
+    footer { padding: 2.5rem 1rem; grid-template-columns: 1fr 1fr; }
+    .footer-bottom { padding: 1rem; flex-direction: column; align-items: flex-start; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      width: 100%;
+      margin-top: 2rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-tag {
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      padding: 0.35rem 0.8rem;
+      margin-bottom: 1.35rem;
+    }
+    .hero-title {
+      font-size: clamp(2.6rem, 13vw, 3.8rem);
+      line-height: 0.98;
+      margin-bottom: 1rem;
+    }
+    .hero-actions { flex-direction: column; }
+    .hero-actions .btn-primary,
+    .hero-actions .btn-ghost { width: 100%; justify-content: center; }
+    .nav-actions {
+      flex-wrap: nowrap;
+    }
+    .nav-cta { width: auto; }
+    .cta-submit-row {
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 0.1rem;
+    }
+    .cta-submit-row .btn-primary {
+      width: auto;
+      min-width: 180px;
+    }
+    .stat-num { font-size: 1.95rem; }
+    .stat-label { font-size: 0.72rem; }
+    .hero-main-img { height: 280px; }
+    .hero-img-caption strong { font-size: 1.35rem; }
+    .hero-img-caption span { font-size: 0.94rem; }
+    .event-card.featured .event-card-img { height: 220px; }
+    .event-card-body { padding: 1.1rem 1.1rem 1.2rem; }
+    .event-meta { gap: 0.7rem; }
+    .poll-card-body { padding: 1.1rem 1.1rem 1.2rem; }
+    .poll-option { padding: 0.8rem 0.9rem; }
+    .summary-card-body,
+    .routes-card-body {
+      padding: 0.95rem 1rem 1rem;
+    }
+    .routes-title {
+      font-size: calc(1.26rem + 0.1667rem);
+    }
+    .routes-list {
+      grid-template-columns: 1fr;
+      gap: 0.45rem;
+      margin-bottom: 0.85rem;
+    }
+    .routes-list li {
+      width: 100%;
+      border-radius: 0.95rem;
+      padding: 0.58rem 0.7rem;
+    }
+    .cta-section {
+      padding: 2.45rem 1rem 2.7rem;
+      scroll-margin-top: 84px;
+    }
+    .cta-section .section-label {
+      margin-bottom: 0.65rem;
+    }
+    .cta-section .section-title {
+      margin-bottom: 0.9rem;
+      line-height: 1.06;
+    }
+    .cta-copy {
+      font-size: 1rem;
+      line-height: 1.58;
+      max-width: 19ch;
+      margin: 0 auto 0.7rem;
+    }
+    .join-copy-desktop,
+    .privacy-note-desktop {
+      display: none;
+    }
+    .join-copy-mobile,
+    .privacy-note-mobile {
+      display: inline;
+    }
+    .cta-form {
+      gap: 0.72rem;
+    }
+    .cta-next-walk {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto 0.72rem;
+    }
+    .cta-next-pill {
+      width: auto;
+      max-width: 100%;
+      white-space: nowrap;
+      text-align: center;
+      padding: 0.58rem 0.82rem;
+      font-size: 0.8rem;
+      line-height: 1.2;
+    }
+    .cta-input, .cta-textarea {
+      padding: 0.82rem 0.95rem;
+      font-size: 0.9rem;
+      border-radius: 1.05rem;
+    }
+    .cta-textarea {
+      min-height: 84px;
+    }
+    .updates-consent {
+      font-size: 0.9rem;
+      line-height: 1.42;
+      gap: 0.58rem;
+      margin-top: -0.05rem;
+    }
+    .updates-consent input {
+      width: 20px;
+      height: 20px;
+      margin-top: 0.08rem;
+    }
+    .privacy-note {
+      font-size: 0.78rem;
+      line-height: 1.45;
+      margin-top: -0.18rem;
+    }
+    .helper-links { gap: 0.8rem 1rem; }
+    .how-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; }
+    .cta-section::before { font-size: calc(5rem + 0.1667rem); }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#top">Bubble <span>Walk</span></a>
+  <ul class="nav-links">
+    <li><a href="#events">Next walk</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#community">What it is</a></li>
+    <li><a href="walks.html">Walks</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a class="nav-cta nav-secondary" href="walks.html">Walks</a>
+    <a class="nav-cta" href="#join">Join free</a>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-bg-shape"></div>
+
+  <div class="hero-left">
+    <span class="hero-tag">Free social walk • Bristol</span>
+    <h1 class="hero-title">
+      Walk.<br>
+      <em>Talk.</em><br>
+      Meet.
+    </h1>
+    <p class="hero-sub">
+      Bubble Walk is a simple social walk in Bristol. Free to join. No pressure. Just walk, talk, and meet people outside for an hour.
+    </p>
+    <div class="hero-actions">
+      <a href="#join" class="btn-primary">Join the next walk</a>
+      <a href="https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D" class="btn-ghost" id="mapsBtnHero" target="_blank" rel="noopener noreferrer">Open in Google Maps →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">Free</div>
+        <div class="stat-label">To join</div>
+      </div>
+      <div>
+        <div class="stat-num">~1h</div>
+        <div class="stat-label">Easy pace</div>
+      </div>
+      <div>
+        <div class="stat-num">Bristol</div>
+        <div class="stat-label">Harbourside</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-image-card">
+      <div class="hero-main-img">
+        <img id="heroLatestImage" src="photos/bubblewalk-2026-04-09-feature.jpg" alt="Featured photo from Bubble Walk #1 in Bristol Harbourside">
+      </div>
+      <div class="hero-img-caption">
+        <strong id="heroCardTitle">Next Bubble Walk • Friday 24 April 2026 • 6pm</strong>
+        <span id="heroCardMeta">Cascade Steps — Anchor Rd, Bristol BS1 4XJ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="events" style="padding-top: 8.5rem;">
+  <div class="section-header">
+    <div>
+      <p class="section-label">In programme</p>
+      <h2 class="section-title">Bubble Walk, <em>mapped out</em></h2>
+    </div>
+    <a href="walks.html" class="see-all">See all walks →</a>
+  </div>
+
+  <div class="events-grid">
+
+    <article class="event-card featured">
+      <div class="event-card-img">
+        <img class="event-card-img-bg" id="nextWalkImage" src="route-map.png" alt="Route map for the next Bubble Walk in Bristol">
+        <div class="overlay"></div>
+        <div class="event-date-badge">
+          <div class="event-date-day" id="eventDayNum">24</div>
+          <div class="event-date-month" id="eventMonth">Apr</div>
+        </div>
+        <span class="event-difficulty diff-easy">Free</span>
+      </div>
+      <div class="event-card-body">
+        <p class="event-location">📍 <span id="meetingLabel">Cascade Steps — Anchor Rd, Bristol BS1 4XJ</span></p>
+        <h3 class="event-name" id="nextWalkTitle">Next Bubble Walk</h3>
+        <div class="event-meta">
+          <span class="event-meta-item">🗓 <span id="eventDayLine">Friday</span></span>
+          <span class="event-meta-item">⏱ <span id="eventTimeLine">6pm</span></span>
+          <span class="event-meta-item">🚶 <span id="eventDurationLine">about 1h</span></span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;">
+          <div class="event-participants">
+            <div class="avatars" aria-hidden="true">
+              <div class="avatar a1">W</div>
+              <div class="avatar a2">T</div>
+              <div class="avatar a3">M</div>
+            </div>
+            <span class="participants-text">Free to join. No pressure.</span>
+          </div>
+          <a class="join-btn" href="#join">I'm in</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="event-card" id="latestWalkCardLinkWrapper">
+      <div class="event-card-img">
+        <img class="event-card-img-bg" id="latestWalkImageCard" src="photos/bubblewalk-2026-04-09-feature.jpg" alt="Featured photo from Bubble Walk #1 in Bristol Harbourside">
+        <div class="overlay"></div>
+        <div class="event-date-badge">
+          <div class="event-date-day" id="latestWalkDay">09</div>
+          <div class="event-date-month" id="latestWalkMonth">Apr</div>
+        </div>
+        <span class="event-difficulty diff-medium">Latest</span>
+      </div>
+      <div class="event-card-body">
+        <p class="event-location">📍 <span id="latestWalkPlace">Harbourside</span></p>
+        <h3 class="event-name" id="latestWalkName">Bubble Walk #1</h3>
+        <div class="event-meta">
+          <span class="event-meta-item">🖼 Photos from the latest walk</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;">
+          <span class="participants-text" id="latestWalkMeta">9 April 2026 • Harbourside</span>
+          <a class="join-btn" href="walks.html">See walks</a>
+        </div>
+      </div>
+    </article>
+
+    <div class="events-stack" aria-label="Bubble Walk summary and routes">
+      <article class="event-card summary-card">
+        <div class="summary-card-body">
+          <span class="summary-kicker">So far</span>
+                    <div class="summary-metrics">
+            <p class="summary-metric">1 Bubble Walk</p>
+            <p class="summary-metric">10 attendances</p>
+            <p class="summary-metric">29 miles walked</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="event-card routes-card">
+        <div class="routes-card-body">
+          <span class="routes-kicker">Not always the same path.</span>
+          <span class="routes-sub">A few routes we may walk.</span>
+                    <ul class="routes-list" aria-label="Possible Bubble Walk routes">
+            <li>Clifton Bridge + Observatory</li>
+            <li>Ashton Court Estate</li>
+            <li>Leigh Woods + Avon Gorge</li>
+            <li>Bristol–Bath Railway</li>
+            <li>Snuff Mills + Oldbury Court</li>
+          </ul>
+          <a class="join-btn" href="#join">Join the next walk</a>
+        </div>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="how-section" id="how">
+  <p class="section-label">How it works</p>
+  <h2 class="section-title">Simple as <em>showing up</em></h2>
+
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="how-step-num">01</div>
+      <div class="how-icon">🗓</div>
+      <h3 class="how-step-title">See the next walk</h3>
+      <p class="how-step-desc">Check the next Bubble Walk on the page. You get the day, time, meeting point and the route in one place.</p>
+      <div class="how-connector"></div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">02</div>
+      <div class="how-icon">✋</div>
+      <h3 class="how-step-title">Let us know you’re coming</h3>
+      <p class="how-step-desc">Fill the short form. No membership, no awkward process, no need to know anyone already.</p>
+      <div class="how-connector"></div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">03</div>
+      <div class="how-icon">🚶</div>
+      <h3 class="how-step-title">Walk and talk</h3>
+      <p class="how-step-desc">Meet at the meeting point, walk for about an hour at an easy pace, and let conversation happen naturally.</p>
+      <div class="how-connector"></div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">04</div>
+      <div class="how-icon">🍻</div>
+      <h3 class="how-step-title">Stay after if you want</h3>
+      <p class="how-step-desc">Some people leave.<br>Some stay for a drink.<br>It stays simple either way.</p>
+    </div>
+  </div>
+</section>
+
+<section class="community-section" id="community">
+  <div class="community-inner">
+    <div class="community-text">
+      <p class="section-label">What Bubble Walk is</p>
+      <h2 class="section-title">A social walk, <em>not a performance</em></h2>
+      <p>
+        Bubble Walk is a social walk in Bristol. It is free to join, easy to come to on your own, and built around simple conversation while walking.
+      </p>
+      <p>
+        No awkward format. No pressure. Just people walking and talking together. An easy route, an easy pace, and a bit of time outside with other people.
+      </p>
+      <ul class="community-values">
+        <li><span class="value-dot"></span>You can come on your own or with a friend. Both are normal.</li>
+        <li><span class="value-dot"></span>The walk is designed for talking more than exercise.</li>
+        <li><span class="value-dot"></span>Free to join. No membership. Just a simple form to stay updated.</li>
+        <li><span class="value-dot"></span>About an hour outside, away from traffic and screens.</li>
+      </ul>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p class="testimonial-text">I usually find it hard to join events where people already know each other, but I felt at ease straight away. I’d really recommend it, even if you’re a bit shy.</p>
+        <p class="testimonial-sub">Naomi</p>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">I got to meet some great people, and walking around the Harbourside at sunset was simply beautiful. Definitely one to do again.</p>
+        <p class="testimonial-sub">Giuseppe</p>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">Lovely way to enjoy Bristol views with really nice people. A great chance to get to know others.</p>
+        <p class="testimonial-sub">Gaja</p>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">I really enjoyed my time with the group. Everyone was nice and friendly. I’m sure more walks will follow.</p>
+        <p class="testimonial-sub">Rozana</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="join">
+  <p class="section-label">Join the next walk</p>
+  <h2 class="section-title">
+    Bubble Walk in Bristol,<br><em>without the friction</em>
+  </h2>
+  <p class="cta-copy">
+    <span class="join-copy-desktop">Want to join? Fill the form and we’ll email you about this walk.<br>Tick the box below for future walks.</span>
+    <span class="join-copy-mobile">Want to join? Fill the form and we’ll email you about this walk. Tick the box below for future walks.</span>
+  </p>
+
+  <div class="cta-next-walk" aria-label="Next Bubble Walk details">
+    <span class="cta-next-pill" id="ctaNextPill">Friday 24 April 2026 • 6pm</span>
+  </div>
+
+  <form class="cta-form" id="joinForm" action="https://formspree.io/f/mzdjwobq" method="POST">
+    <div class="cta-row">
+      <input class="cta-input" id="name" name="name" type="text" placeholder="Your name">
+      <input class="cta-input" id="email" name="email" type="email" placeholder="Your email">
+    </div>
+    <textarea class="cta-textarea" id="message" name="message" placeholder="Optional message"></textarea>
+    <input type="hidden" name="_subject" value="Bubble Walk signup">
+    <label class="updates-consent" for="updatesOptIn">
+      <input id="updatesOptIn" name="future_walk_updates" type="checkbox" value="yes">
+      <span>I’d like to hear about the next Bubble Walks.</span>
+    </label>
+    <p class="privacy-note">
+      <span class="privacy-note-desktop">We’ll use your email for this walk and, if you choose, to send you future updates. You can unsubscribe at any time. <a href="privacy.html">Privacy</a></span>
+      <span class="privacy-note-mobile">We’ll use your email for this walk and, if you choose, to send you future updates. You can unsubscribe at any time. <a href="privacy.html">Privacy</a></span>
+    </p>
+    <div class="cta-submit-row">
+      <button class="btn-primary" id="joinSubmitBtn" type="submit">Send</button>
+    </div>
+    <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+  </form>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <a class="nav-logo" href="#top">Bubble <span style="color:var(--terra-light); font-style:italic;">Walk</span></a>
+    <p>A simple social walk in Bristol. Free to join. No pressure. Just walk, talk, and meet people.</p>
+  </div>
+  <div>
+    <h4>Walks</h4>
+    <ul>
+      <li><a href="#events">Next walk</a></li>
+      <li><a href="walks.html">Past walks</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a id="footerRouteLink" href="https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Route</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Join</h4>
+    <ul>
+      <li><a href="#join">Join the next walk</a></li>
+      <li><a id="footerMeetingLink" href="https://maps.app.goo.gl/Z5AighzAsEyhkKB48" target="_blank" rel="noopener noreferrer">Meeting point</a></li>
+      <li><a id="footerMapsLink" href="https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Google Maps</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Info</h4>
+    <ul>
+      <li><a href="#community">What it is</a></li>
+      <li><a href="#how">Easy pace</a></li>
+      <li><a href="#join">Contact</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="unsubscribe.html">Unsubscribe</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>Bubble Walk — a social walk in Bristol. Free to join.</p>
+  <p id="footerNextWalk">Next walk: Friday, 24 April at 6pm</p>
+</div>
+
+<script>
+  const SITE = {
+    city: "Bristol",
+    day: "Friday",
+    date: "24 April 2026",
+    time: "6pm",
+    duration: "about 1h",
+    meetingPoint: "Cascade Steps - Anchor Rd, Bristol BS1 4XJ",
+    meetingMapsUrl: "https://maps.app.goo.gl/Z5AighzAsEyhkKB48",
+    routeMapsUrl: "https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D",
+    mapsQuery: "Bristol Harbourside",
+    offerValidFrom: "2026-04-15T09:00:00+01:00"
+  };
+
+  function parseSiteDateParts(dateText) {
+    const match = dateText.match(/(\d{1,2})\s+([A-Za-z]+)/);
+    if (!match) return { dayNum: "--", month: "" };
+    return { dayNum: match[1], month: match[2].slice(0, 3) };
+  }
+
+  function buildIsoDateTime(dateText, timeText) {
+  const dateMatch = String(dateText || '').match(/(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})/);
+  if (!dateMatch) return "";
+
+  const monthMap = {
+    january: "01", february: "02", march: "03", april: "04",
+    may: "05", june: "06", july: "07", august: "08",
+    september: "09", october: "10", november: "11", december: "12"
+  };
+
+  const day = String(dateMatch[1]).padStart(2, "0");
+  const month = monthMap[dateMatch[2].toLowerCase()] || "";
+  const year = dateMatch[3];
+  if (!month) return "";
+
+  const timeMatch = String(timeText || "").trim().match(/^(\d{1,2})(?::(\d{2}))?\s*(am|pm)$/i);
+  if (!timeMatch) return `${year}-${month}-${day}`;
+
+  let hour = Number(timeMatch[1]);
+  const minute = timeMatch[2] || "00";
+  const meridiem = timeMatch[3].toLowerCase();
+
+  if (meridiem === "pm" && hour < 12) hour += 12;
+  if (meridiem === "am" && hour === 12) hour = 0;
+
+  return `${year}-${month}-${day}T${String(hour).padStart(2, "0")}:${minute}`;
+}
+
+function buildEventEndDate(startIso) {
+  if (!startIso || !startIso.includes("T")) return "";
+  const match = startIso.match(/^(\d{4}-\d{2}-\d{2})T(\d{2}):(\d{2})$/);
+  if (!match) return "";
+  let hour = Number(match[2]);
+  const minute = match[3];
+  hour = (hour + 1) % 24;
+  return `${match[1]}T${String(hour).padStart(2, "0")}:${minute}`;
+}
+
+function injectEventSchema() {
+  const script = document.getElementById("eventSchema");
+  if (!script) return;
+
+  const startDate = buildIsoDateTime(SITE.date, SITE.time);
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Bubble Walk",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "startDate": startDate,
+    "endDate": buildEventEndDate(startDate),
+    "isAccessibleForFree": true,
+    "url": "https://www.bubblewalk.org/",
+    "image": ["https://www.bubblewalk.org/route-map.png"],
+    "description": "A free social walk in Bristol. No pressure. About an hour at an easy pace, with simple conversation while walking.",
+    "location": {
+      "@type": "Place",
+      "name": "Cascade Steps",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Anchor Rd",
+        "addressLocality": "Bristol",
+        "postalCode": "BS1 4XJ",
+        "addressCountry": "GB"
+      }
+    },
+    "organizer": {
+      "@type": "Person",
+      "name": "Alessandro D'Angelo",
+      "url": "https://www.bubblewalk.org/"
+    },
+    "performer": {
+      "@type": "Organization",
+      "name": "Bubble Walk",
+      "url": "https://www.bubblewalk.org/"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP",
+      "availability": "https://schema.org/InStock",
+      "validFrom": SITE.offerValidFrom,
+      "url": "https://www.bubblewalk.org/#join"
+    }
+  };
+
+  script.textContent = JSON.stringify(schema);
+}
+
+
+  function applySiteContent() {
+    const dateParts = parseSiteDateParts(SITE.date);
+    const postcodeMatch = SITE.meetingPoint.match(/\b[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}\b/i);
+    const meetingPostcode = postcodeMatch ? postcodeMatch[0].toUpperCase() : "";
+
+    const mapsBtnHero = document.getElementById("mapsBtnHero");
+    const routeFooterLink = document.getElementById("footerRouteLink");
+    const footerMapsLink = document.getElementById("footerMapsLink");
+    const footerMeetingLink = document.getElementById("footerMeetingLink");
+    const meetingLabel = document.getElementById("meetingLabel");
+    const nextWalkTitle = document.getElementById("nextWalkTitle");
+    const eventDayNum = document.getElementById("eventDayNum");
+    const eventMonth = document.getElementById("eventMonth");
+    const eventDayLine = document.getElementById("eventDayLine");
+    const eventTimeLine = document.getElementById("eventTimeLine");
+    const eventDurationLine = document.getElementById("eventDurationLine");
+    const heroCardTitle = document.getElementById("heroCardTitle");
+    const heroCardMeta = document.getElementById("heroCardMeta");
+    const ctaNextPill = document.getElementById("ctaNextPill");
+    const footerNextWalk = document.getElementById("footerNextWalk");
+
+    if (mapsBtnHero) mapsBtnHero.href = SITE.routeMapsUrl;
+
+    if (routeFooterLink) {
+      routeFooterLink.href = SITE.routeMapsUrl;
+      routeFooterLink.target = "_blank";
+      routeFooterLink.rel = "noopener noreferrer";
+      routeFooterLink.textContent = "Route";
+      routeFooterLink.setAttribute("aria-label", "Open route in Google Maps");
+      routeFooterLink.setAttribute("title", "Open route in Google Maps");
+    }
+
+    if (footerMapsLink) {
+      footerMapsLink.href = SITE.routeMapsUrl;
+      footerMapsLink.target = "_blank";
+      footerMapsLink.rel = "noopener noreferrer";
+    }
+
+    if (footerMeetingLink) {
+      footerMeetingLink.href = SITE.meetingMapsUrl;
+      footerMeetingLink.target = "_blank";
+      footerMeetingLink.rel = "noopener noreferrer";
+    }
+
+    if (meetingLabel) meetingLabel.textContent = SITE.meetingPoint;
+    if (nextWalkTitle) nextWalkTitle.textContent = `Next Bubble Walk • ${SITE.day} ${SITE.date} • ${SITE.time}`;
+    if (eventDayNum) eventDayNum.textContent = dateParts.dayNum;
+    if (eventMonth) eventMonth.textContent = dateParts.month;
+    if (eventDayLine) eventDayLine.textContent = SITE.day;
+    if (eventTimeLine) eventTimeLine.textContent = SITE.time;
+    if (eventDurationLine) eventDurationLine.textContent = SITE.duration;
+    if (heroCardTitle) heroCardTitle.innerHTML = `Next Bubble Walk •<br>${SITE.day} ${SITE.date} • ${SITE.time}`;
+    if (heroCardMeta) heroCardMeta.textContent = SITE.meetingPoint;
+    if (ctaNextPill) ctaNextPill.textContent = [`${SITE.day} ${SITE.date}`, SITE.time, meetingPostcode].filter(Boolean).join(" • ");
+    if (footerNextWalk) footerNextWalk.textContent = `Next walk: ${SITE.day}, ${SITE.date} at ${SITE.time}`;
+  }
+
+  function loadSharedContentScript() {
+    return new Promise((resolve) => {
+      if (window.BUBBLEWALK_CONTENT || window.bubbleWalkContent) {
+        resolve();
+        return;
+      }
+      const existing = document.querySelector('script[data-bubblewalk-content="true"]');
+      if (existing) {
+        existing.addEventListener('load', resolve, { once: true });
+        existing.addEventListener('error', resolve, { once: true });
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = 'content.js';
+      script.dataset.bubblewalkContent = 'true';
+      script.onload = resolve;
+      script.onerror = resolve;
+      document.head.appendChild(script);
+    });
+  }
+
+  function getWalksFromSharedContent() {
+    const root = window.BUBBLEWALK_CONTENT || window.bubbleWalkContent || null;
+    if (!root) return [];
+    const raw = root.walksPage || root.walks || root.pastWalks || null;
+    return Array.isArray(raw) ? raw : [];
+  }
+
+  async function loadWalksFromPage() {
+    try {
+      await loadSharedContentScript();
+      const sharedWalks = getWalksFromSharedContent();
+      if (sharedWalks.length) return sharedWalks;
+
+      const response = await fetch('walks.html', { cache: 'no-store' });
+      if (!response.ok) throw new Error('Could not load walks.html');
+      const htmlText = await response.text();
+      const match = htmlText.match(/const DEFAULT_WALKS = \[([\s\S]*?)\];/);
+      if (!match) throw new Error('DEFAULT_WALKS not found');
+
+      const cleaned = match[1].replace(/\/\*[\s\S]*?\*\//g, '').trim();
+      const walks = new Function(`return [${cleaned}]`)();
+      return Array.isArray(walks) ? walks : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+function getWalkImageList(walk) {
+  const images = [];
+  const seen = new Set();
+
+  const pushIfValid = (src, alt) => {
+    if (!src || seen.has(src)) return;
+    seen.add(src);
+    images.push({ src, alt: alt || '' });
+  };
+
+  if (walk && walk.featured) {
+    if (typeof walk.featured === 'string') {
+      pushIfValid(walk.featured, walk.label || 'Bubble Walk');
+    } else {
+      pushIfValid(walk.featured.src || walk.featured.image || '', walk.featured.alt || walk.label || 'Bubble Walk');
+    }
+  }
+
+  (walk && walk.photos ? walk.photos : []).forEach((photo) => {
+    if (typeof photo === 'string') {
+      pushIfValid(photo, walk.label || 'Bubble Walk');
+    } else {
+      pushIfValid(photo.src || photo.image || '', photo.alt || walk.label || 'Bubble Walk');
+    }
+  });
+
+  return images;
+}
+
+  function parseWalkTimestamp(dateText) {
+    const timestamp = Date.parse(dateText || '');
+    return Number.isNaN(timestamp) ? null : timestamp;
+  }
+
+function getLatestBubbleWalk(walks) {
+  const bubbleWalks = walks.filter((walk) => {
+    if (!walk) return false;
+    if (walk.type === 'bubble-walk') return true;
+    return typeof walk.label === 'string' && walk.label.toLowerCase().includes('bubble walk');
+  });
+
+    if (!bubbleWalks.length) return null;
+
+    return bubbleWalks.sort((a, b) => {
+      const aTime = parseWalkTimestamp(a.date);
+      const bTime = parseWalkTimestamp(b.date);
+      if (aTime === null && bTime === null) return 0;
+      if (aTime === null) return 1;
+      if (bTime === null) return -1;
+      return bTime - aTime;
+    })[0];
+  }
+
+  function parseHumanDate(dateText) {
+    const d = new Date(dateText);
+    if (Number.isNaN(d.getTime())) return { dayNum: '--', month: '' };
+    return {
+      dayNum: String(d.getDate()).padStart(2, '0'),
+      month: d.toLocaleString('en-GB', { month: 'short' })
+    };
+  }
+
+function bindImageRotation(imageIds, images, fallbackAlt) {
+  if (!images.length) return;
+  const targets = imageIds
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+  if (!targets.length) return;
+
+  let currentIndex = 0;
+  const showImage = (index) => {
+    const current = images[index] || {};
+    targets.forEach((img) => {
+      img.src = current.src || '';
+      img.alt = current.alt || fallbackAlt;
+    });
+  };
+
+  showImage(currentIndex);
+
+  if (images.length > 1) {
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    }, 3200);
+  }
+}
+
+  async function setupLatestWalkBlocks() {
+    const walks = await loadWalksFromPage();
+    const latestWalk = getLatestBubbleWalk(walks);
+    if (!latestWalk) return;
+
+    const dateParts = parseHumanDate(latestWalk.date || '');
+    const images = getWalkImageList(latestWalk);
+    bindImageRotation(['heroLatestImage', 'latestWalkImageCard'], images, latestWalk.label || 'Latest Bubble Walk');
+
+    const latestWalkName = document.getElementById('latestWalkName');
+    const latestWalkMeta = document.getElementById('latestWalkMeta');
+    const latestWalkPlace = document.getElementById('latestWalkPlace');
+    const latestWalkDay = document.getElementById('latestWalkDay');
+    const latestWalkMonth = document.getElementById('latestWalkMonth');
+
+    if (latestWalkName) latestWalkName.textContent = latestWalk.label || 'Latest Bubble Walk';
+    if (latestWalkMeta) latestWalkMeta.textContent = [latestWalk.date, latestWalk.place].filter(Boolean).join(' • ') || 'A few moments from the latest walk.';
+    if (latestWalkPlace) latestWalkPlace.textContent = latestWalk.place || 'Harbourside';
+    if (latestWalkDay) latestWalkDay.textContent = dateParts.dayNum;
+    if (latestWalkMonth) latestWalkMonth.textContent = dateParts.month;
+  }
+
+  function setupDesktopJoinScroll() {
+    const joinLinks = Array.from(document.querySelectorAll('a[href="#join"]'));
+    const joinSection = document.getElementById('join');
+    if (!joinLinks.length || !joinSection) return;
+
+    const scrollToJoin = () => {
+      const desktopOffset = 42;
+      const y = joinSection.getBoundingClientRect().top + window.pageYOffset + desktopOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      if (history && history.replaceState) {
+        history.replaceState(null, '', '#join');
+      }
+    };
+
+    joinLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        if (window.innerWidth <= 900) return;
+        event.preventDefault();
+        scrollToJoin();
+      });
+    });
+
+    if (window.innerWidth > 900 && window.location.hash === '#join') {
+      window.requestAnimationFrame(() => {
+        window.scrollTo(0, 0);
+        window.requestAnimationFrame(scrollToJoin);
+      });
+    }
+  }
+        
+
+  async function sendJoinCopyToWebhook(formData) {
+    try {
+      const currentWalkEl = document.getElementById('ctaNextPill');
+
+      const webhookPayload = {
+        name: String(formData.get('name') || '').trim(),
+        email: String(formData.get('email') || '').trim(),
+        message: String(formData.get('message') || '').trim(),
+        future_walk_updates: formData.get('future_walk_updates') ? 'yes' : '',
+        current_walk: currentWalkEl ? currentWalkEl.textContent.trim() : ''
+      };
+
+      if (!webhookPayload.email) return;
+
+      await fetch('https://hook.eu1.make.com/bvddk1kyielp28nwgsm8evhzmwvyavb9', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(webhookPayload),
+        keepalive: true
+      });
+    } catch (error) {
+      // Keep the Formspree submission flow primary and unaffected.
+    }
+  }
+
+  function setupJoinForm() {
+    const joinForm = document.getElementById('joinForm');
+    const formStatus = document.getElementById('formStatus');
+    const joinSubmitBtn = document.getElementById('joinSubmitBtn');
+
+    if (!joinForm || !formStatus || !joinSubmitBtn) return;
+
+    joinForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      formStatus.classList.remove('is-visible');
+      formStatus.textContent = '';
+      joinSubmitBtn.disabled = true;
+      joinSubmitBtn.textContent = 'Sending...';
+
+      try {
+        const formData = new FormData(joinForm);
+
+        // Send a parallel copy to Make without changing the primary Formspree flow.
+        sendJoinCopyToWebhook(formData);
+
+        const response = await fetch(joinForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        let ok = response.ok;
+        let data = null;
+        try {
+          data = await response.json();
+        } catch (e) {
+          data = null;
+        }
+
+        if (ok) {
+          joinForm.reset();
+          formStatus.textContent = 'Thanks for confirming — see you at Bubble Walk.';
+          formStatus.classList.add('is-visible');
+        } else {
+          const message = data && data.errors && data.errors.length
+            ? data.errors.map(err => err.message).join(' ')
+            : 'Something went wrong. Please try again.';
+          formStatus.textContent = message;
+          formStatus.classList.add('is-visible');
+        }
+      } catch (error) {
+        formStatus.textContent = 'Something went wrong. Please try again.';
+        formStatus.classList.add('is-visible');
+      } finally {
+        joinSubmitBtn.disabled = false;
+        joinSubmitBtn.textContent = 'Send';
+      }
+    });
+  }
+
+
+  injectEventSchema();
+  applySiteContent();
+  setupLatestWalkBlocks();
+  setupDesktopJoinScroll();
+  setupJoinForm();
+</script>
+</body>
+</html>
