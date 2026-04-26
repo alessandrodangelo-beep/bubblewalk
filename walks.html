@@ -635,7 +635,7 @@
     </div>
     <div class="archive-stats">
       <div>
-        <div class="stat-num" id="heroStatWalks">1</div>
+        <div class="stat-num" id="heroStatWalks">2</div>
         <div class="stat-label">ARCHIVED WALKS</div>
       </div>
       <div>
@@ -757,6 +757,7 @@
     /* TEMPLATE — copy this block to add a new walk
     {
       id: "walk-XX",
+      type: "bubble-walk",
       label: "Bubble Walk #X",
       place: "Harbourside",
       date: "DD Month YYYY",
@@ -776,7 +777,28 @@
     }
     */
     {
+      id: "walk-02",
+      type: "bubble-walk",
+      label: "Bubble Walk #2",
+      place: "Harbourside",
+      date: "24 April 2026",
+      duration: "~1 hour",
+      intro: "A Friday evening Bubble Walk around the Harbourside.",
+      note: "We walked around the Harbourside in the evening light. Simple pace, easy conversation, and a few photos from the route.",
+      featured: {
+        src: "photos/bubblewalk-2026-04-24-feature.jpg",
+        alt: "Bubble Walk around Bristol Harbourside on 24 April 2026"
+      },
+      photos: [
+        { src: "photos/bubblewalk-2026-04-24-01.jpg", alt: "Sailing boat on Bristol Harbourside during Bubble Walk" },
+        { src: "photos/bubblewalk-2026-04-24-02.jpg", alt: "People walking together along Bristol Harbourside during Bubble Walk" },
+        { src: "photos/bubblewalk-2026-04-24-03.jpg", alt: "Street art seen near Bristol Harbourside during Bubble Walk" },
+        { src: "photos/bubblewalk-2026-04-24-04.jpg", alt: "Evening view across Bristol Harbourside during Bubble Walk" }
+      ]
+    },
+    {
       id: "walk-01",
+      type: "bubble-walk",
       label: "Bubble Walk #1",
       place: "Harbourside",
       date: "9 April 2026",

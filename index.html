@@ -10,11 +10,11 @@
 <meta property="og:title" content="Bubble Walk — Social Walk in Bristol | Walk. Talk. Meet.">
 <meta property="og:description" content="Bubble Walk is a free social walk in Bristol. No pressure. Come on your own or with a friend. See the next walk and join here.">
 <meta property="og:url" content="https://www.bubblewalk.org/">
-<meta property="og:image" content="https://www.bubblewalk.org/photos/bubblewalk-2026-04-09-feature.jpg">
+<meta property="og:image" content="https://www.bubblewalk.org/photos/bubblewalk-2026-04-24-feature.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bubble Walk — Social Walk in Bristol | Walk. Talk. Meet.">
 <meta name="twitter:description" content="Bubble Walk is a free social walk in Bristol. No pressure. Come on your own or with a friend. See the next walk and join here.">
-<meta name="twitter:image" content="https://www.bubblewalk.org/photos/bubblewalk-2026-04-09-feature.jpg">
+<meta name="twitter:image" content="https://www.bubblewalk.org/photos/bubblewalk-2026-04-24-feature.jpg">
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260415b">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20260415b">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260415b">
@@ -84,7 +84,7 @@
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
   }
   .nav-cta:hover { background: var(--terra-dark); transform: translateY(-1px); }
   .nav-secondary {
@@ -239,7 +239,69 @@
   }.event-card.featured .event-card-img { height: 300px; }.event-card-img-bg {
     width: 100%; height: 100%; object-fit: cover;
     transition: transform 0.5s;
-  }.event-card:hover .event-card-img-bg { transform: scale(1.05); }.event-card-img .overlay {
+  }.event-card:hover .event-card-img-bg { transform: scale(1.05); }
+  .route-preview-card {
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 16% 18%, rgba(196,98,58,0.12), transparent 30%),
+      radial-gradient(circle at 84% 82%, rgba(122,158,126,0.22), transparent 34%),
+      linear-gradient(135deg, #F5F0E6 0%, #EDE4D2 100%);
+    border-bottom: 1px solid rgba(122,158,126,0.18);
+    display: flex;
+    align-items: stretch;
+    padding: 1rem;
+  }
+  .route-preview-inner {
+    width: 100%;
+    border: 1px solid rgba(122,158,126,0.24);
+    border-radius: 1rem;
+    background: rgba(255,255,255,0.72);
+    padding: 4.15rem 1.1rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .route-preview-kicker {
+    display: block;
+    color: var(--sage);
+    font-size: calc(0.68rem + 0.1667rem);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+  .route-preview-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: calc(1.24rem + 0.1667rem);
+    font-weight: 400;
+    line-height: 1.08;
+    color: var(--forest);
+    margin-bottom: 0.55rem;
+  }
+  .route-preview-text {
+    color: var(--warm-gray);
+    font-size: calc(0.66rem + 0.1667rem);
+    line-height: 1.34;
+  }
+  .route-preview-points {
+    list-style: none;
+    display: grid;
+    gap: 0.22rem;
+    margin-top: 0.52rem;
+  }
+  .route-preview-points li {
+    color: var(--forest-mid);
+    font-size: calc(0.7rem + 0.1667rem);
+    line-height: 1.25;
+  }
+  .route-preview-points li::before {
+    content: '•';
+    color: var(--terra);
+    margin-right: 0.38rem;
+  }
+  .event-card-img .overlay {
     position: absolute; inset: 0;
     background: linear-gradient(to top, rgba(44,59,45,0.55), rgba(44,59,45,0.08));
   }.event-date-badge {
@@ -712,6 +774,11 @@ footer {
       padding: 1rem 1rem 1.05rem;
     }
     .event-card.featured .event-card-img { height: 260px; }
+    .route-preview-card { height: 260px; padding: 0.9rem; }
+    .route-preview-inner { padding: 3.85rem 0.95rem 0.75rem; }
+    .route-preview-title { font-size: 1.42rem; }
+    .route-preview-text { font-size: 0.88rem; line-height: 1.36; }
+    .route-preview-points li { font-size: 0.84rem; }
     .how-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .community-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .cta-row { grid-template-columns: 1fr; }
@@ -760,6 +827,13 @@ footer {
     .hero-img-caption strong { font-size: 1.35rem; }
     .hero-img-caption span { font-size: 0.94rem; }
     .event-card.featured .event-card-img { height: 220px; }
+    .route-preview-card { height: 220px; padding: 0.75rem; }
+    .route-preview-inner { padding: 3.6rem 0.85rem 0.65rem; }
+    .route-preview-kicker { font-size: 0.72rem; margin-bottom: 0.28rem; }
+    .route-preview-title { font-size: 1.24rem; margin-bottom: 0.35rem; }
+    .route-preview-text { font-size: 0.78rem; line-height: 1.28; }
+    .route-preview-points { gap: 0.18rem; margin-top: 0.45rem; }
+    .route-preview-points li { font-size: 0.75rem; line-height: 1.16; }
     .event-card-body { padding: 1.1rem 1.1rem 1.2rem; }
     .event-meta { gap: 0.7rem; }
     .poll-card-body { padding: 1.1rem 1.1rem 1.2rem; }
@@ -885,7 +959,7 @@ footer {
     </p>
     <div class="hero-actions">
       <a href="#join" class="btn-primary">Join the next walk</a>
-      <a href="https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D" class="btn-ghost" id="mapsBtnHero" target="_blank" rel="noopener noreferrer">Open in Google Maps →</a>
+      <a href="https://www.google.com/maps/dir/Clifton+Observatory,+Litfield+Road,+Bristol+BS8+3LT/Clifton+Suspension+Bridge,+Bristol/Leigh+Woods,+Bristol/Clifton+Suspension+Bridge,+Bristol/Clifton+Observatory,+Litfield+Road,+Bristol+BS8+3LT" class="btn-ghost" id="mapsBtnHero" target="_blank" rel="noopener noreferrer">Open in Google Maps →</a>
     </div>
     <div class="hero-stats">
       <div>
@@ -898,7 +972,7 @@ footer {
       </div>
       <div>
         <div class="stat-num">Bristol</div>
-        <div class="stat-label">Harbourside</div>
+        <div class="stat-label">Clifton</div>
       </div>
     </div>
   </div>
@@ -906,11 +980,11 @@ footer {
   <div class="hero-right">
     <div class="hero-image-card">
       <div class="hero-main-img">
-        <img id="heroLatestImage" src="photos/bubblewalk-2026-04-09-feature.jpg" alt="Featured photo from Bubble Walk #1 in Bristol Harbourside">
+        <img id="heroLatestImage" src="photos/bubblewalk-2026-04-24-feature.jpg" alt="Featured photo from Bubble Walk #2 in Bristol Harbourside">
       </div>
       <div class="hero-img-caption">
-        <strong id="heroCardTitle">Next Bubble Walk • Friday 24 April 2026 • 6pm</strong>
-        <span id="heroCardMeta">Cascade Steps — Anchor Rd, Bristol BS1 4XJ</span>
+        <strong id="heroCardTitle">Next Bubble Walk • Sat 2 May 2026 • 5pm</strong>
+        <span id="heroCardMeta">Clifton Observatory – Litfield Rd, Bristol BS8 3LT</span>
       </div>
     </div>
   </div>
@@ -928,21 +1002,29 @@ footer {
   <div class="events-grid">
 
     <article class="event-card featured">
-      <div class="event-card-img">
-        <img class="event-card-img-bg" id="nextWalkImage" src="route-map.png" alt="Route map for the next Bubble Walk in Bristol">
-        <div class="overlay"></div>
+      <div class="route-preview-card" aria-label="Next Bubble Walk route preview">
+        <div class="route-preview-inner">
+          <span class="route-preview-kicker">Route preview</span>
+          <h3 class="route-preview-title">Clifton Observatory, Suspension Bridge &amp; Leigh Woods Walk</h3>
+          <p class="route-preview-text">A scenic circular walk starting and ending at Clifton Observatory, crossing the Clifton Suspension Bridge and taking in the Leigh Woods side of the Avon Gorge before returning to Clifton.</p>
+          <ul class="route-preview-points">
+            <li>Starts and ends at Clifton Observatory</li>
+            <li>Crosses Clifton Suspension Bridge</li>
+            <li>Includes Leigh Woods / Avon Gorge side</li>
+          </ul>
+        </div>
         <div class="event-date-badge">
-          <div class="event-date-day" id="eventDayNum">24</div>
-          <div class="event-date-month" id="eventMonth">Apr</div>
+          <div class="event-date-day" id="eventDayNum">2</div>
+          <div class="event-date-month" id="eventMonth">May</div>
         </div>
         <span class="event-difficulty diff-easy">Free</span>
       </div>
       <div class="event-card-body">
-        <p class="event-location">📍 <span id="meetingLabel">Cascade Steps — Anchor Rd, Bristol BS1 4XJ</span></p>
-        <h3 class="event-name" id="nextWalkTitle">Next Bubble Walk</h3>
+        <p class="event-location">📍 <span id="meetingLabel">Clifton Observatory – Litfield Rd, Bristol BS8 3LT</span></p>
+        <h3 class="event-name" id="nextWalkTitle">Next Bubble Walk • Sat 2 May 2026 • 5pm</h3>
         <div class="event-meta">
-          <span class="event-meta-item">🗓 <span id="eventDayLine">Friday</span></span>
-          <span class="event-meta-item">⏱ <span id="eventTimeLine">6pm</span></span>
+          <span class="event-meta-item">🗓 <span id="eventDayLine">Sat</span></span>
+          <span class="event-meta-item">⏱ <span id="eventTimeLine">5pm</span></span>
           <span class="event-meta-item">🚶 <span id="eventDurationLine">about 1h</span></span>
         </div>
         <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;">
@@ -961,22 +1043,22 @@ footer {
 
     <article class="event-card" id="latestWalkCardLinkWrapper">
       <div class="event-card-img">
-        <img class="event-card-img-bg" id="latestWalkImageCard" src="photos/bubblewalk-2026-04-09-feature.jpg" alt="Featured photo from Bubble Walk #1 in Bristol Harbourside">
+        <img class="event-card-img-bg" id="latestWalkImageCard" src="photos/bubblewalk-2026-04-24-feature.jpg" alt="Featured photo from Bubble Walk #2 in Bristol Harbourside">
         <div class="overlay"></div>
         <div class="event-date-badge">
-          <div class="event-date-day" id="latestWalkDay">09</div>
+          <div class="event-date-day" id="latestWalkDay">24</div>
           <div class="event-date-month" id="latestWalkMonth">Apr</div>
         </div>
         <span class="event-difficulty diff-medium">Latest</span>
       </div>
       <div class="event-card-body">
         <p class="event-location">📍 <span id="latestWalkPlace">Harbourside</span></p>
-        <h3 class="event-name" id="latestWalkName">Bubble Walk #1</h3>
+        <h3 class="event-name" id="latestWalkName">Bubble Walk #2</h3>
         <div class="event-meta">
           <span class="event-meta-item">🖼 Photos from the latest walk</span>
         </div>
         <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;">
-          <span class="participants-text" id="latestWalkMeta">9 April 2026 • Harbourside</span>
+          <span class="participants-text" id="latestWalkMeta">24 April 2026 • Harbourside</span>
           <a class="join-btn" href="walks.html">See walks</a>
         </div>
       </div>
@@ -987,9 +1069,9 @@ footer {
         <div class="summary-card-body">
           <span class="summary-kicker">So far</span>
                     <div class="summary-metrics">
-            <p class="summary-metric">1 Bubble Walk</p>
-            <p class="summary-metric">10 attendances</p>
-            <p class="summary-metric">29 miles walked</p>
+            <p class="summary-metric">2 Bubble Walks</p>
+            <p class="summary-metric">18 attendances</p>
+            <p class="summary-metric">74 miles walked</p>
           </div>
         </div>
       </article>
@@ -1076,12 +1158,8 @@ footer {
         <p class="testimonial-sub">Giuseppe</p>
       </div>
       <div class="testimonial">
-        <p class="testimonial-text">Lovely way to enjoy Bristol views with really nice people. A great chance to get to know others.</p>
+        <p class="testimonial-text">Lovely way to enjoy Bristol views with really nice people. A great chance to get to know others, and I’m looking forward to joining future walks.</p>
         <p class="testimonial-sub">Gaja</p>
-      </div>
-      <div class="testimonial">
-        <p class="testimonial-text">I really enjoyed my time with the group. Everyone was nice and friendly. I’m sure more walks will follow.</p>
-        <p class="testimonial-sub">Rozana</p>
       </div>
     </div>
   </div>
@@ -1093,12 +1171,12 @@ footer {
     Bubble Walk in Bristol,<br><em>without the friction</em>
   </h2>
   <p class="cta-copy">
-    <span class="join-copy-desktop">Want to join? Fill the form and we’ll email you about this walk.<br>Tick the box below for future walks.</span>
-    <span class="join-copy-mobile">Want to join? Fill the form and we’ll email you about this walk. Tick the box below for future walks.</span>
+    <span class="join-copy-desktop">Want to join? Fill the form and we’ll email you about the next walk.<br>Tick the box below for future walks.</span>
+    <span class="join-copy-mobile">Want to join? Fill the form and we’ll email you about the next walk. Tick the box below for future walks.</span>
   </p>
 
   <div class="cta-next-walk" aria-label="Next Bubble Walk details">
-    <span class="cta-next-pill" id="ctaNextPill">Friday 24 April 2026 • 6pm</span>
+    <span class="cta-next-pill" id="ctaNextPill">Sat • 2 May 2026 • 5pm</span>
   </div>
 
   <form class="cta-form" id="joinForm" action="https://formspree.io/f/mzdjwobq" method="POST">
@@ -1134,15 +1212,15 @@ footer {
       <li><a href="#events">Next walk</a></li>
       <li><a href="walks.html">Past walks</a></li>
       <li><a href="#how">How it works</a></li>
-      <li><a id="footerRouteLink" href="https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Route</a></li>
+      <li><a id="footerRouteLink" href="https://www.google.com/maps/dir/Clifton+Observatory,+Litfield+Road,+Bristol+BS8+3LT/Clifton+Suspension+Bridge,+Bristol/Leigh+Woods,+Bristol/Clifton+Suspension+Bridge,+Bristol/Clifton+Observatory,+Litfield+Road,+Bristol+BS8+3LT" target="_blank" rel="noopener noreferrer">Route</a></li>
     </ul>
   </div>
   <div>
     <h4>Join</h4>
     <ul>
       <li><a href="#join">Join the next walk</a></li>
-      <li><a id="footerMeetingLink" href="https://maps.app.goo.gl/Z5AighzAsEyhkKB48" target="_blank" rel="noopener noreferrer">Meeting point</a></li>
-      <li><a id="footerMapsLink" href="https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Google Maps</a></li>
+      <li><a id="footerMeetingLink" href="https://www.google.com/maps/search/?api=1&query=Clifton%20Observatory%2C%20Litfield%20Rd%2C%20Bristol%20BS8%203LT" target="_blank" rel="noopener noreferrer">Meeting point</a></li>
+      <li><a id="footerMapsLink" href="https://www.google.com/maps/dir/Clifton+Observatory,+Litfield+Road,+Bristol+BS8+3LT/Clifton+Suspension+Bridge,+Bristol/Leigh+Woods,+Bristol/Clifton+Suspension+Bridge,+Bristol/Clifton+Observatory,+Litfield+Road,+Bristol+BS8+3LT" target="_blank" rel="noopener noreferrer">Google Maps</a></li>
     </ul>
   </div>
   <div>
@@ -1158,26 +1236,26 @@ footer {
 </footer>
 <div class="footer-bottom">
   <p>Bubble Walk — a social walk in Bristol. Free to join.</p>
-  <p id="footerNextWalk">Next walk: Friday, 24 April at 6pm</p>
+  <p id="footerNextWalk">Next walk: Sat, 2 May 2026 at 5pm</p>
 </div>
 
 <script>
   const SITE = {
     city: "Bristol",
-    day: "Friday",
-    date: "24 April 2026",
-    time: "6pm",
+    day: "Sat",
+    date: "2 May 2026",
+    time: "5pm",
     duration: "about 1h",
-    meetingPoint: "Cascade Steps - Anchor Rd, Bristol BS1 4XJ",
-    meetingMapsUrl: "https://maps.app.goo.gl/Z5AighzAsEyhkKB48",
-    routeMapsUrl: "https://www.google.com/maps/dir/51.4524273,-2.5976076/51.4482459,-2.6030175/51.4501194,-2.6093046/51.4481833,-2.6181379/51.4471378,-2.6156564/51.4487077,-2.6067201/51.4471782,-2.6003556/51.452473,-2.5976014/@51.4517349,-2.6116697,14.86z/data=!4m2!4m1!3e2?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D",
-    mapsQuery: "Bristol Harbourside",
-    offerValidFrom: "2026-04-15T09:00:00+01:00"
+    meetingPoint: "Clifton Observatory – Litfield Rd, Bristol BS8 3LT",
+    meetingMapsUrl: "https://www.google.com/maps/search/?api=1&query=Clifton%20Observatory%2C%20Litfield%20Rd%2C%20Bristol%20BS8%203LT",
+    routeMapsUrl: "https://www.google.com/maps/dir/Clifton+Observatory,+Litfield+Road,+Bristol+BS8+3LT/Clifton+Suspension+Bridge,+Bristol/Leigh+Woods,+Bristol/Clifton+Suspension+Bridge,+Bristol/Clifton+Observatory,+Litfield+Road,+Bristol+BS8+3LT",
+    mapsQuery: "Clifton Observatory, Litfield Rd, Bristol BS8 3LT",
+    offerValidFrom: "2026-04-25T09:00:00+01:00"
   };
 
   function parseSiteDateParts(dateText) {
     const match = dateText.match(/(\d{1,2})\s+([A-Za-z]+)/);
-    if (!match) return { dayNum: "--", month: "" };
+    if (!match) return { dayNum: "Soon", month: "" };
     return { dayNum: match[1], month: match[2].slice(0, 3) };
   }
 
@@ -1224,6 +1302,10 @@ function injectEventSchema() {
   if (!script) return;
 
   const startDate = buildIsoDateTime(SITE.date, SITE.time);
+  if (!startDate || !startDate.includes("T")) {
+    script.textContent = "";
+    return;
+  }
   const schema = {
     "@context": "https://schema.org",
     "@type": "Event",
@@ -1234,16 +1316,16 @@ function injectEventSchema() {
     "endDate": buildEventEndDate(startDate),
     "isAccessibleForFree": true,
     "url": "https://www.bubblewalk.org/",
-    "image": ["https://www.bubblewalk.org/route-map.png"],
+    "image": ["https://www.bubblewalk.org/photos/bubblewalk-2026-04-24-feature.jpg"],
     "description": "A free social walk in Bristol. No pressure. About an hour at an easy pace, with simple conversation while walking.",
     "location": {
       "@type": "Place",
-      "name": "Cascade Steps",
+      "name": "Clifton Observatory",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Anchor Rd",
+        "streetAddress": "Litfield Rd",
         "addressLocality": "Bristol",
-        "postalCode": "BS1 4XJ",
+        "postalCode": "BS8 3LT",
         "addressCountry": "GB"
       }
     },
@@ -1270,6 +1352,20 @@ function injectEventSchema() {
   script.textContent = JSON.stringify(schema);
 }
 
+
+  function buildNextWalkText() {
+    const dateText = SITE.date || "2 May 2026";
+    const hasExactDate = /\d{1,2}\s+[A-Za-z]+\s+\d{4}/.test(dateText);
+    if (!hasExactDate) return "Next Bubble Walk • Sat 2 May 2026 • 5pm";
+    return ["Next Bubble Walk", SITE.day, SITE.date, SITE.time].filter(Boolean).join(" • ");
+  }
+
+  function buildNextWalkShortText() {
+    const dateText = SITE.date || "2 May 2026";
+    const hasExactDate = /\d{1,2}\s+[A-Za-z]+\s+\d{4}/.test(dateText);
+    if (!hasExactDate) return "Sat • 2 May 2026 • 5pm";
+    return [SITE.day, SITE.date, SITE.time].filter(Boolean).join(" • ");
+  }
 
   function applySiteContent() {
     const dateParts = parseSiteDateParts(SITE.date);
@@ -1316,16 +1412,16 @@ function injectEventSchema() {
     }
 
     if (meetingLabel) meetingLabel.textContent = SITE.meetingPoint;
-    if (nextWalkTitle) nextWalkTitle.textContent = `Next Bubble Walk • ${SITE.day} ${SITE.date} • ${SITE.time}`;
+    if (nextWalkTitle) nextWalkTitle.textContent = buildNextWalkText();
     if (eventDayNum) eventDayNum.textContent = dateParts.dayNum;
     if (eventMonth) eventMonth.textContent = dateParts.month;
-    if (eventDayLine) eventDayLine.textContent = SITE.day;
-    if (eventTimeLine) eventTimeLine.textContent = SITE.time;
+    if (eventDayLine) eventDayLine.textContent = SITE.day || "Sat";
+    if (eventTimeLine) eventTimeLine.textContent = SITE.time || "5pm";
     if (eventDurationLine) eventDurationLine.textContent = SITE.duration;
-    if (heroCardTitle) heroCardTitle.innerHTML = `Next Bubble Walk •<br>${SITE.day} ${SITE.date} • ${SITE.time}`;
+    if (heroCardTitle) heroCardTitle.innerHTML = buildNextWalkText().replace(" • ", " •<br>");
     if (heroCardMeta) heroCardMeta.textContent = SITE.meetingPoint;
-    if (ctaNextPill) ctaNextPill.textContent = [`${SITE.day} ${SITE.date}`, SITE.time, meetingPostcode].filter(Boolean).join(" • ");
-    if (footerNextWalk) footerNextWalk.textContent = `Next walk: ${SITE.day}, ${SITE.date} at ${SITE.time}`;
+    if (ctaNextPill) ctaNextPill.textContent = buildNextWalkShortText();
+    if (footerNextWalk) footerNextWalk.textContent = SITE.time ? `Next walk: ${SITE.day}, ${SITE.date} at ${SITE.time}` : "Next walk: Sat, 2 May 2026 at 5pm";
   }
 
   function loadSharedContentScript() {
@@ -1581,7 +1677,7 @@ function bindImageRotation(imageIds, images, fallbackAlt) {
 
         if (ok) {
           joinForm.reset();
-          formStatus.textContent = 'Thanks for confirming — see you at Bubble Walk.';
+          formStatus.textContent = 'Thanks — I’ll email you about the next Bubble Walk.';
           formStatus.classList.add('is-visible');
         } else {
           const message = data && data.errors && data.errors.length
