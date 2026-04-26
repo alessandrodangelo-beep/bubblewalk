@@ -5,13 +5,13 @@ window.BUBBLEWALK_CONTENT = {
       type: "bubble-walk",
       label: "Bubble Walk #2",
       place: "Harbourside",
-      date: "24 April 2026",
+      date: "25 April 2026",
       duration: "~1 hour",
-      intro: "A Friday evening Bubble Walk around the Harbourside.",
+      intro: "An evening Bubble Walk around the Harbourside.",
       note: "We walked around the Harbourside in the evening light. Simple pace, easy conversation, and a few photos from the route.",
       featured: {
         src: "photos/bubblewalk-2026-04-24-feature.jpg",
-        alt: "Bubble Walk around Bristol Harbourside on 24 April 2026"
+        alt: "Bubble Walk around Bristol Harbourside on 25 April 2026"
       },
       photos: [
         { src: "photos/bubblewalk-2026-04-24-01.jpg", alt: "Sailing boat on Bristol Harbourside during Bubble Walk" },
