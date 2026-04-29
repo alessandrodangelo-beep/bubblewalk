@@ -657,8 +657,9 @@
     color: var(--forest);
     font-size: calc(0.82rem + 0.1667rem);
     line-height: 1.25;
-    white-space: nowrap;
+    white-space: normal;
     max-width: 100%;
+    text-align: center;
   }
   .helper-links {
     display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap;
@@ -1176,7 +1177,7 @@ footer {
   </p>
 
   <div class="cta-next-walk" aria-label="Next Bubble Walk details">
-    <span class="cta-next-pill" id="ctaNextPill">Sat • 2 May 2026 • 5pm</span>
+    <span class="cta-next-pill" id="ctaNextPill">Sat • 2 May 2026 • 5pm • Clifton, Bristol, BS8 3NA</span>
   </div>
 
   <form class="cta-form" id="joinForm" action="https://formspree.io/f/mzdjwobq" method="POST">
@@ -1184,6 +1185,7 @@ footer {
       <input class="cta-input" id="name" name="name" type="text" placeholder="Your name">
       <input class="cta-input" id="email" name="email" type="email" placeholder="Your email">
     </div>
+    <input class="cta-input" id="phone" name="phone" type="tel" placeholder="Phone number, if you’d like to join the WhatsApp group">
     <textarea class="cta-textarea" id="message" name="message" placeholder="Optional message"></textarea>
     <input type="hidden" name="_subject" value="Bubble Walk signup">
     <label class="updates-consent" for="updatesOptIn">
@@ -1191,8 +1193,8 @@ footer {
       <span>I’d like to hear about the next Bubble Walks.</span>
     </label>
     <p class="privacy-note">
-      <span class="privacy-note-desktop">We’ll use your email for this walk and, if you choose, to send you future updates. You can unsubscribe at any time. <a href="privacy.html">Privacy</a></span>
-      <span class="privacy-note-mobile">We’ll use your email for this walk and, if you choose, to send you future updates. You can unsubscribe at any time. <a href="privacy.html">Privacy</a></span>
+      <span class="privacy-note-desktop">We’ll use your email for this walk and, if you choose, to send you future updates. If you leave your phone number, we’ll use it only to add you to the Bubble Walk WhatsApp group. You can unsubscribe at any time. <a href="privacy.html">Privacy</a></span>
+      <span class="privacy-note-mobile">We’ll use your email for this walk and, if you choose, to send you future updates. If you leave your phone number, we’ll use it only to add you to the Bubble Walk WhatsApp group. You can unsubscribe at any time. <a href="privacy.html">Privacy</a></span>
     </p>
     <div class="cta-submit-row">
       <button class="btn-primary" id="joinSubmitBtn" type="submit">Send</button>
@@ -1362,8 +1364,8 @@ function injectEventSchema() {
   function buildNextWalkShortText() {
     const dateText = SITE.date || "2 May 2026";
     const hasExactDate = /\d{1,2}\s+[A-Za-z]+\s+\d{4}/.test(dateText);
-    if (!hasExactDate) return "Sat • 2 May 2026 • 5pm";
-    return [SITE.day, SITE.date, SITE.time].filter(Boolean).join(" • ");
+    if (!hasExactDate) return "Sat • 2 May 2026 • 5pm • Clifton, Bristol, BS8 3NA";
+    return [SITE.day, SITE.date, SITE.time, SITE.meetingPoint].filter(Boolean).join(" • ");
   }
 
   function applySiteContent() {
@@ -1619,6 +1621,7 @@ function bindImageRotation(imageIds, images, fallbackAlt) {
       const webhookPayload = {
         name: String(formData.get('name') || '').trim(),
         email: String(formData.get('email') || '').trim(),
+        phone: String(formData.get('phone') || '').trim(),
         message: String(formData.get('message') || '').trim(),
         future_walk_updates: formData.get('future_walk_updates') ? 'yes' : '',
         current_walk: currentWalkEl ? currentWalkEl.textContent.trim() : ''
