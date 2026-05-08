@@ -635,7 +635,7 @@
     </div>
     <div class="archive-stats">
       <div>
-        <div class="stat-num" id="heroStatWalks">2</div>
+        <div class="stat-num" id="heroStatWalks">3</div>
         <div class="stat-label">ARCHIVED WALKS</div>
       </div>
       <div>
@@ -777,6 +777,26 @@
     }
     */
     {
+      id: "walk-03",
+      type: "bubble-walk",
+      label: "Bubble Walk #3",
+      place: "Clifton Observatory, Suspension Bridge & Leigh Woods",
+      date: "8 May 2026",
+      duration: "~1 hour",
+      intro: "A Friday evening Bubble Walk from Clifton Observatory, across the Suspension Bridge, and into Leigh Woods.",
+      note: "We met at Clifton Observatory, crossed the Suspension Bridge, and walked through Leigh Woods. A simple evening walk, with views, trees, and easy conversation along the way.",
+      featured: {
+        src: "photos/bubblewalk-2026-05-08-feature.jpg",
+        alt: "Bubble Walk crossing Clifton Suspension Bridge on 8 May 2026"
+      },
+      photos: [
+        { src: "photos/bubblewalk-2026-05-08-01.jpg", alt: "Clifton Suspension Bridge seen from the Observatory during Bubble Walk" },
+        { src: "photos/bubblewalk-2026-05-08-02.jpg", alt: "People walking through Leigh Woods during Bubble Walk" },
+        { src: "photos/bubblewalk-2026-05-08-03.jpg", alt: "Woodland path in Leigh Woods during Bubble Walk" },
+        { src: "photos/bubblewalk-2026-05-08-04.jpg", alt: "Clifton Observatory above the Avon Gorge during Bubble Walk" }
+      ]
+    },
+    {
       id: "walk-02",
       type: "bubble-walk",
       label: "Bubble Walk #2",
@@ -881,17 +901,25 @@
     };
   }
 
-  function getWalksContent() {
-    const root = window.BUBBLEWALK_CONTENT || window.bubbleWalkContent || null;
-    if (!root) return DEFAULT_WALKS;
-
-    const raw = root.walksPage || root.walks || root.pastWalks || null;
-    if (!Array.isArray(raw) || !raw.length) return DEFAULT_WALKS;
-
-    return raw.map(normalizeWalk).map((walk) => ({
+  function prepareWalks(rawWalks) {
+    return rawWalks.map(normalizeWalk).map((walk) => ({
       ...walk,
       photos: (walk.photos || []).map(normalizePhoto).filter(item => item.src)
     }));
+  }
+
+  function getWalksContent() {
+    const root = window.BUBBLEWALK_CONTENT || window.bubbleWalkContent || null;
+    const fallbackWalks = prepareWalks(DEFAULT_WALKS);
+    if (!root) return fallbackWalks;
+
+    const raw = root.walksPage || root.walks || root.pastWalks || null;
+    if (!Array.isArray(raw) || !raw.length) return fallbackWalks;
+
+    const sharedWalks = prepareWalks(raw);
+    return countArchivedBubbleWalks(sharedWalks) >= countArchivedBubbleWalks(fallbackWalks)
+      ? sharedWalks
+      : fallbackWalks;
   }
 
   function countArchivedBubbleWalks(walks) {
