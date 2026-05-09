@@ -64,6 +64,39 @@
     text-decoration: none;
   }
   .nav-logo span { color: var(--terra); font-style: italic; }.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-toggle { display: inline-flex; align-items: center; gap: 0.28rem; }
+  .nav-dropdown-menu {
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 0.9rem);
+    transform: translateX(-50%) translateY(6px);
+    min-width: 235px;
+    padding: 0.55rem;
+    border-radius: 1rem;
+    background: rgba(255,255,255,0.96);
+    border: 1px solid rgba(122,158,126,0.2);
+    box-shadow: 0 18px 45px rgba(44,59,45,0.12);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+  }
+  .nav-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -0.9rem;
+    height: 0.9rem;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
   .nav-actions {
     display: flex;
     align-items: center;
@@ -75,6 +108,21 @@
     text-decoration: none; transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--terra); }
+  .nav-links .nav-dropdown-menu a {
+    display: block;
+    padding: 0.68rem 0.85rem;
+    border-radius: 0.72rem;
+    color: var(--forest-mid);
+    font-size: 0.82rem;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    white-space: nowrap;
+  }
+  .nav-links .nav-dropdown-menu a:hover {
+    background: var(--cream);
+    color: var(--terra);
+  }
   .nav-cta {
     background: var(--terra); color: white;
     border: none; padding: 0.65rem 1.6rem;
@@ -937,7 +985,15 @@ footer {
     <li><a href="#events">Next walk</a></li>
     <li><a href="#how">How it works</a></li>
     <li><a href="#community">What it is</a></li>
-    <li><a href="walks.html">Walks</a></li>
+    <li class="nav-dropdown">
+      <a class="nav-dropdown-toggle" href="walks.html" aria-haspopup="true" aria-expanded="false">Walks <span aria-hidden="true">▾</span></a>
+      <div class="nav-dropdown-menu" aria-label="Past walks">
+        <a href="walks.html">All walks</a>
+        <a href="walks.html#walk-03">#3 Clifton Observatory</a>
+        <a href="walks.html#walk-02">#2 Harbourside</a>
+        <a href="walks.html#walk-01">#1 Harbourside</a>
+      </div>
+    </li>
   </ul>
   <div class="nav-actions">
     <a class="nav-cta nav-secondary" href="walks.html">Walks</a>
@@ -1430,6 +1486,24 @@ function injectEventSchema() {
   }
 
 
+  const HOME_ALL_WALKS_ROTATION_IMAGES = [
+    { src: "photos/bubblewalk-2026-05-08-01.jpg", alt: "Photo from Bubble Walk #3 on 8 May 2026" },
+    { src: "photos/bubblewalk-2026-05-08-02.jpg", alt: "Photo from Bubble Walk #3 on 8 May 2026" },
+    { src: "photos/bubblewalk-2026-05-08-03.jpg", alt: "Photo from Bubble Walk #3 on 8 May 2026" },
+    { src: "photos/bubblewalk-2026-05-08-04.jpg", alt: "Photo from Bubble Walk #3 on 8 May 2026" },
+    { src: "photos/bubblewalk-2026-05-08-feature.jpg", alt: "Featured photo from Bubble Walk #3 on 8 May 2026" },
+    { src: "photos/bubblewalk-2026-04-24-01.jpg", alt: "Photo from Bubble Walk #2 on 24 April 2026" },
+    { src: "photos/bubblewalk-2026-04-24-02.jpg", alt: "Photo from Bubble Walk #2 on 24 April 2026" },
+    { src: "photos/bubblewalk-2026-04-24-03.jpg", alt: "Photo from Bubble Walk #2 on 24 April 2026" },
+    { src: "photos/bubblewalk-2026-04-24-04.jpg", alt: "Photo from Bubble Walk #2 on 24 April 2026" },
+    { src: "photos/bubblewalk-2026-04-24-feature.jpg", alt: "Featured photo from Bubble Walk #2 on 24 April 2026" },
+    { src: "photos/bubblewalk-2026-04-09-01.jpg", alt: "Photo from Bubble Walk #1 on 9 April 2026" },
+    { src: "photos/bubblewalk-2026-04-09-02.jpg", alt: "Photo from Bubble Walk #1 on 9 April 2026" },
+    { src: "photos/bubblewalk-2026-04-09-03.jpg", alt: "Photo from Bubble Walk #1 on 9 April 2026" },
+    { src: "photos/bubblewalk-2026-04-09-04.jpg", alt: "Photo from Bubble Walk #1 on 9 April 2026" },
+    { src: "photos/bubblewalk-2026-04-09-feature.jpg", alt: "Featured photo from Bubble Walk #1 on 9 April 2026" }
+  ];
+
   const HOME_LATEST_WALK_FALLBACK = {
     id: "walk-03",
     type: "bubble-walk",
@@ -1598,8 +1672,11 @@ function bindImageRotation(imageIds, images, fallbackAlt) {
     if (!latestWalk) return;
 
     const dateParts = parseHumanDate(latestWalk.date || '');
-    const images = getWalkImageList(latestWalk);
-    bindImageRotation(['heroLatestImage', 'latestWalkImageCard'], images, latestWalk.label || 'Latest Bubble Walk');
+    const latestWalkImages = getWalkImageList(latestWalk);
+    const heroRotationImages = HOME_ALL_WALKS_ROTATION_IMAGES.length ? HOME_ALL_WALKS_ROTATION_IMAGES : latestWalkImages;
+
+    bindImageRotation(['heroLatestImage'], heroRotationImages, 'Bubble Walk photos from Bristol walks');
+    bindImageRotation(['latestWalkImageCard'], latestWalkImages, latestWalk.label || 'Latest Bubble Walk');
 
     const latestWalkName = document.getElementById('latestWalkName');
     const latestWalkMeta = document.getElementById('latestWalkMeta');
