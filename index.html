@@ -1,1817 +1,2559 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bubble Walk — Social Walk in Bristol | Walk. Talk. Meet.</title>
-<meta name="description" content="Bubble Walk is a free social walk in Bristol. No pressure. Come on your own or with a friend. See the next walk and join here.">
-<link rel="canonical" href="https://www.bubblewalk.org/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Bubble Walk — Social Walk in Bristol | Walk. Talk. Meet.">
-<meta property="og:description" content="Bubble Walk is a free social walk in Bristol. No pressure. Come on your own or with a friend. See the next walk and join here.">
-<meta property="og:url" content="https://www.bubblewalk.org/">
-<meta property="og:image" content="https://www.bubblewalk.org/photos/bubblewalk-2026-05-08-feature.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bubble Walk — Social Walk in Bristol | Walk. Talk. Meet.">
-<meta name="twitter:description" content="Bubble Walk is a free social walk in Bristol. No pressure. Come on your own or with a friend. See the next walk and join here.">
-<meta name="twitter:image" content="https://www.bubblewalk.org/photos/bubblewalk-2026-05-08-feature.jpg">
-<link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260415b">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20260415b">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260415b">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Bubble Walk",
-  "url": "https://www.bubblewalk.org/",
-  "description": "A free social walk in Bristol. No pressure. Just walk, talk, and meet people."
-}
-</script>
-<script id="eventSchema" type="application/ld+json"></script>
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }:root {
-    --terra: #C4623A;
-    --terra-light: #E8A98A;
-    --terra-dark: #8B3E1F;
-    --sage: #7A9E7E;
-    --sage-light: #B8D4BB;
-    --sage-dark: #3D6641;
-    --cream: #F5F0E6;
-    --cream-dark: #EDE4D2;
-    --forest: #2C3B2D;
-    --forest-mid: #4A5E4B;
-    --warm-gray: #8C8476;
-    --text: #2C3B2D;
-  }html { scroll-behavior: smooth; }body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    overflow-x: hidden;
-  }img { max-width: 100%; display: block; }nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.2rem 4rem;
-    background: rgba(245, 240, 230, 0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(122,158,126,0.2);
-  }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem; font-weight: 600;
-    color: var(--forest);
-    letter-spacing: 0.02em;
-    text-decoration: none;
-  }
-  .nav-logo span { color: var(--terra); font-style: italic; }.nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-dropdown { position: relative; }
-  .nav-dropdown-toggle { display: inline-flex; align-items: center; gap: 0.28rem; }
-  .nav-dropdown-menu {
-    position: absolute;
-    left: 50%;
-    top: calc(100% + 0.9rem);
-    transform: translateX(-50%) translateY(6px);
-    min-width: 235px;
-    padding: 0.55rem;
-    border-radius: 1rem;
-    background: rgba(255,255,255,0.96);
-    border: 1px solid rgba(122,158,126,0.2);
-    box-shadow: 0 18px 45px rgba(44,59,45,0.12);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
-  }
-  .nav-dropdown-menu::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -0.9rem;
-    height: 0.9rem;
-  }
-  .nav-dropdown:hover .nav-dropdown-menu,
-  .nav-dropdown:focus-within .nav-dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
-  }
-  .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .nav-links a {
-    font-size: 0.875rem; font-weight: 400; letter-spacing: 0.06em;
-    text-transform: uppercase; color: var(--forest-mid);
-    text-decoration: none; transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--terra); }
-  .nav-links .nav-dropdown-menu a {
-    display: block;
-    padding: 0.68rem 0.85rem;
-    border-radius: 0.72rem;
-    color: var(--forest-mid);
-    font-size: 0.82rem;
-    line-height: 1.2;
-    letter-spacing: 0.02em;
-    text-transform: none;
-    white-space: nowrap;
-  }
-  .nav-links .nav-dropdown-menu a:hover {
-    background: var(--cream);
-    color: var(--terra);
-  }
-  .nav-cta {
-    background: var(--terra); color: white;
-    border: none; padding: 0.65rem 1.6rem;
-    border-radius: 2rem; font-family: 'DM Sans', sans-serif;
-    font-size: 0.875rem; font-weight: 500; cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  .nav-cta:hover { background: var(--terra-dark); transform: translateY(-1px); }
-  .nav-secondary {
-    background: var(--cream-dark);
-    color: var(--forest);
-    border: 1px solid rgba(122,158,126,0.32);
-  }
-  .nav-secondary:hover {
-    background: var(--sage-light);
-    color: var(--forest);
-    border-color: rgba(122,158,126,0.45);
-  }.hero {
-    min-height: calc(100vh - 28px);
-    display: grid; grid-template-columns: 1fr 1fr;
-    align-items: center; gap: 0;
-    padding-top: 72px;
-    position: relative; overflow: hidden;
-  }.hero-bg-shape {
-    position: absolute; right: -5%; top: 0;
-    width: 55%; height: 100%;
-    background: var(--sage-light);
-    clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
-    opacity: 0.35;
-  }.hero-left {
-    padding: 3rem 4rem 2.6rem 5rem;
-    position: relative; z-index: 2;
-  }.hero-tag {
-    display: inline-block;
-    font-size: calc(0.75rem + 0.1667rem); letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--terra); font-weight: 500;
-    border: 1px solid var(--terra-light);
-    padding: 0.35rem 1rem; border-radius: 2rem;
-    margin-bottom: 1.4rem;
-    animation: fadeUp 0.7s ease both;
-  }.hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: calc(clamp(3.05rem, 4.8vw, 4.82rem) + 0.08rem);
-    font-weight: 300; line-height: 1.1;
-    color: var(--forest);
-    margin-bottom: 1rem;
-    animation: fadeUp 0.7s 0.1s ease both;
-  }.hero-title em {
-    font-style: italic; color: var(--terra);
-  }.hero-sub {
-    font-size: calc(1rem + 0.12rem); line-height: 1.72;
-    color: var(--warm-gray); max-width: 42ch;
-    margin-bottom: 1.55rem; font-weight: 300;
-    animation: fadeUp 0.7s 0.2s ease both;
-  }.hero-actions {
-    display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
-    animation: fadeUp 0.7s 0.3s ease both;
-  }.btn-primary {
-    background: var(--forest); color: var(--cream);
-    border: none; padding: 1rem 2.2rem;
-    border-radius: 3rem; font-family: 'DM Sans', sans-serif;
-    font-size: calc(0.95rem + 0.1667rem); font-weight: 500; cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
-  }.btn-primary:hover { background: var(--forest-mid); transform: translateY(-2px); }.btn-ghost {
-    color: var(--forest-mid); font-size: calc(0.9rem + 0.1667rem);
-    display: flex; align-items: center; gap: 0.5rem;
-    text-decoration: none; font-weight: 400;
-    transition: gap 0.2s, color 0.2s;
-  }.btn-ghost:hover { color: var(--terra); gap: 0.8rem; }.hero-stats {
-    display: flex; gap: 3rem; margin-top: 1.7rem;
-    animation: fadeUp 0.7s 0.4s ease both;
-  }.stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.32rem; font-weight: 600; color: var(--forest);
-    line-height: 1;
-  }.stat-label {
-    font-size: 0.72rem; color: var(--warm-gray);
-    text-transform: uppercase; letter-spacing: 0.08em;
-    margin-top: 0.3rem;
-  }.hero-right {
-    position: relative; z-index: 2; height: auto;
-    display: flex; align-items: center; justify-content: center;
-    overflow: visible;
-  }.hero-image-card {
-    width: 414px; position: relative; padding-bottom: 50px; overflow: visible;
-    transform: translate(18px, 14px);
-  }.hero-main-img {
-    width: 100%; height: 522px;
-    border-radius: 1rem 1rem 8rem 1rem;
-    background: linear-gradient(160deg, #7A9E7E 0%, #3D6641 50%, #2C3B2D 100%);
-    display: flex; align-items: flex-end; padding: 2rem;
-    overflow: hidden; position: relative;
-  }.hero-main-img::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(44,59,45,0.22), rgba(44,59,45,0.03));
-    z-index: 1;
-  }.hero-main-img img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%; object-fit: cover;
-  }.hero-img-caption {
-    position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%);
-    z-index: 5;
-    background: rgba(245,240,230,0.96); backdrop-filter: blur(8px);
-    border-radius: 1.25rem; padding: 1rem 1.3rem 0.95rem;
-    width: min(93%, 700px);
-    box-shadow: 0 12px 28px rgba(44,59,45,0.10);
-  }.hero-img-caption strong {
-    display: block; font-size: 1.52rem; color: var(--forest); font-weight: 600; line-height: 1.08;
-  }.hero-img-caption span {
-    display:block; margin-top: 0.28rem; font-size: 0.92rem; color: var(--warm-gray); line-height: 1.04; letter-spacing: -0.015em;
-  }.section { padding: 6rem 5rem; }.section-header {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    margin-bottom: 3rem; gap: 1.5rem;
-  }.section-label {
-    font-size: calc(0.75rem + 0.1667rem); letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--terra);
-    font-weight: 500; margin-bottom: 0.75rem;
-  }.section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: calc(clamp(2rem, 3.5vw, 3rem) + 0.1667rem);
-    font-weight: 300; line-height: 1.2; color: var(--forest);
-  }.section-title em { font-style: italic; color: var(--terra); }.see-all {
-    color: var(--forest-mid); font-size: calc(0.875rem + 0.1667rem);
-    text-decoration: none; border-bottom: 1px solid var(--sage-light);
-    padding-bottom: 0.15rem; white-space: nowrap;
-    transition: color 0.2s, border-color 0.2s;
-  }.see-all:hover { color: var(--terra); border-color: var(--terra-light); }.events-grid {
-    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1.5rem;
-    align-items: stretch;
-  }
-  .events-stack {
-    display: grid;
-    gap: 1.5rem;
-    align-content: start;
-  }
-  .events-stack .event-card {
-    height: auto;
-  }
-  .summary-card {
-    min-height: 75px;
-  }
-  .routes-card {
-    min-height: 192px;
-  }.event-card {
-    background: white; border-radius: 1.25rem;
-    overflow: hidden; position: relative;
-    transition: transform 0.3s, box-shadow 0.3s;
-    text-decoration: none;
-    color: inherit;
-  }.event-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 60px rgba(44,59,45,0.12);
-  }.event-card-img {
-    height: 220px; position: relative; overflow: hidden;
-    background: linear-gradient(160deg, #4A7C59 0%, #2C5F3D 40%, #1A3D28 100%);
-  }.event-card.featured .event-card-img { height: 300px; }.event-card-img-bg {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.5s;
-  }.event-card:hover .event-card-img-bg { transform: scale(1.05); }
-  .route-preview-card {
-    height: 300px;
-    position: relative;
-    overflow: hidden;
-    background:
-      radial-gradient(circle at 16% 18%, rgba(196,98,58,0.12), transparent 30%),
-      radial-gradient(circle at 84% 82%, rgba(122,158,126,0.22), transparent 34%),
-      linear-gradient(135deg, #F5F0E6 0%, #EDE4D2 100%);
-    border-bottom: 1px solid rgba(122,158,126,0.18);
-    display: flex;
-    align-items: stretch;
-    padding: 1rem;
-  }
-  .route-preview-inner {
-    width: 100%;
-    border: 1px solid rgba(122,158,126,0.24);
-    border-radius: 1rem;
-    background: rgba(255,255,255,0.72);
-    padding: 4.15rem 1.1rem 0.85rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .route-preview-kicker {
-    display: block;
-    color: var(--sage);
-    font-size: calc(0.68rem + 0.1667rem);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 500;
-    margin-bottom: 0.4rem;
-  }
-  .route-preview-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: calc(1.24rem + 0.1667rem);
-    font-weight: 400;
-    line-height: 1.08;
-    color: var(--forest);
-    margin-bottom: 0.55rem;
-  }
-  .route-preview-text {
-    color: var(--warm-gray);
-    font-size: calc(0.66rem + 0.1667rem);
-    line-height: 1.34;
-  }
-  .route-preview-points {
-    list-style: none;
-    display: grid;
-    gap: 0.22rem;
-    margin-top: 0.52rem;
-  }
-  .route-preview-points li {
-    color: var(--forest-mid);
-    font-size: calc(0.7rem + 0.1667rem);
-    line-height: 1.25;
-  }
-  .route-preview-points li::before {
-    content: '•';
-    color: var(--terra);
-    margin-right: 0.38rem;
-  }
-  .event-card-img .overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(44,59,45,0.55), rgba(44,59,45,0.08));
-  }.event-date-badge {
-    position: absolute; top: 1rem; left: 1rem;
-    background: white; border-radius: 0.75rem;
-    padding: 0.5rem 0.75rem; text-align: center;
-    min-width: 58px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    z-index: 2;
-  }.event-date-day {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: calc(1.6rem + 0.1667rem); font-weight: 600; color: var(--terra);
-    line-height: 1;
-  }.event-date-month {
-    font-size: calc(0.65rem + 0.1667rem); text-transform: uppercase;
-    letter-spacing: 0.08em; color: var(--warm-gray);
-  }.event-difficulty {
-    position: absolute; top: 1rem; right: 1rem;
-    padding: 0.3rem 0.8rem; border-radius: 2rem;
-    font-size: calc(0.7rem + 0.1667rem); letter-spacing: 0.06em;
-    text-transform: uppercase; font-weight: 500;
-    backdrop-filter: blur(8px); z-index: 2;
-  }.diff-easy { background: rgba(184,212,187,0.92); color: var(--sage-dark); }.diff-medium { background: rgba(232,169,138,0.92); color: var(--terra-dark); }.event-card-body { padding: 1.25rem 1.5rem 1.5rem; }.event-location {
-    font-size: calc(0.75rem + 0.1667rem); text-transform: uppercase;
-    letter-spacing: 0.1em; color: var(--sage);
-    font-weight: 500; margin-bottom: 0.5rem;
-  }.event-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: calc(1.35rem + 0.1667rem); font-weight: 400; color: var(--forest);
-    margin-bottom: 0.75rem; line-height: 1.3;
-  }.event-card.featured .event-name { font-size: calc(1.7rem + 0.1667rem); }.event-meta {
-    display: flex; gap: 1.1rem; flex-wrap: wrap;
-    font-size: calc(0.78rem + 0.1667rem); color: var(--warm-gray);
-    margin-bottom: 1.25rem;
-  }.event-meta-item { display: flex; align-items: center; gap: 0.35rem; }.event-participants {
-    display: flex; align-items: center; gap: 0.5rem;
-  }.avatars { display: flex; }.avatar {
-    width: 28px; height: 28px; border-radius: 50%;
-    border: 2px solid white; margin-left: -8px;
-    font-size: calc(0.65rem + 0.1667rem); display: flex; align-items: center;
-    justify-content: center; font-weight: 500; color: white;
-  }.avatar:first-child { margin-left: 0; }.a1 { background: var(--terra); }.a2 { background: var(--sage-dark); }.a3 { background: var(--forest); }.participants-text {
-    font-size: calc(0.78rem + 0.1667rem); color: var(--warm-gray);
-  }.join-btn {
-    background: var(--cream); border: 1.5px solid var(--cream-dark);
-    color: var(--forest); padding: 0.6rem 1.4rem;
-    border-radius: 2rem; font-size: calc(0.85rem + 0.1667rem); font-weight: 500;
-    cursor: pointer; transition: all 0.2s;
-    font-family: 'DM Sans', sans-serif; text-decoration: none;
-    display: inline-flex; align-items: center; justify-content: center;
-  }.join-btn:hover { background: var(--forest); color: white; border-color: var(--forest); }
-  .poll-card { background: white; }
-  .poll-card-body { padding: 1.4rem 1.5rem 1.6rem; }
-  .poll-kicker {
-    display: inline-block;
-    font-size: calc(0.72rem + 0.1667rem);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--sage);
-    font-weight: 500;
-    margin-bottom: 0.7rem;
-  }
-  .poll-form {
-    display: grid;
-    gap: 0.7rem;
-    margin-top: 1rem;
-  }
-  .poll-option {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.9rem 1rem;
-    border: 1.5px solid var(--cream-dark);
-    border-radius: 1rem;
-    background: var(--cream);
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s, transform 0.15s;
-    color: var(--forest);
-    font-size: calc(0.86rem + 0.1667rem);
-  }
-  .poll-option:hover {
-    border-color: var(--sage-light);
-    background: #fbf8f1;
-    transform: translateY(-1px);
-  }
-  .poll-option input {
-    accent-color: var(--forest);
-    flex-shrink: 0;
-  }
-  .poll-submit {
-    margin-top: 0.35rem;
-    width: 100%;
-  }
-  .poll-note {
-    font-size: calc(0.8rem + 0.1667rem);
-    color: var(--warm-gray);
-    margin-top: 0.9rem;
-    line-height: 1.6;
-  }
-  .poll-status {
-    display: none;
-    margin-top: 0.5rem;
-    padding: 0.85rem 0.95rem;
-    border-radius: 1rem;
-    background: var(--cream);
-    border: 1px solid var(--cream-dark);
-    color: var(--forest);
-    font-size: calc(0.82rem + 0.1667rem);
-    line-height: 1.5;
-  }
-  .poll-status.is-visible { display: block; }
-.summary-card {
-  background: white;
-}
-.summary-card-body {
-  height: 100%;
-  padding: 0.9rem 1.1rem 0.95rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-.summary-kicker,
-.routes-kicker {
-  display: inline-block;
-  font-size: calc(0.72rem + 0.1667rem);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--sage);
-  font-weight: 500;
-}
-.summary-kicker {
-  margin-bottom: 0.12rem;
-}
-.summary-sub,
-.routes-sub {
-  display: block;
-  font-size: calc(0.72rem + 0.1667rem);
-  line-height: 1.3;
-  color: var(--warm-gray);
-  font-weight: 400;
-  margin-bottom: 0.45rem;
-}
-.routes-sub {
-  font-size: calc(0.8033rem + 0.1667rem);
-}
-.summary-metrics {
-  display: grid;
-  gap: 0.18rem;
-}
-.summary-metric {
-  font-size: calc(0.94rem + 0.1667rem);
-  line-height: 1.26;
-  color: var(--forest);
-  font-weight: 500;
-}
-.routes-card { background: white; }
-.routes-card-body {
-  height: 100%;
-  padding: 1rem 1.1rem 1.05rem;
-  display: flex;
-  flex-direction: column;
-}
-.routes-kicker {
-  margin-bottom: 0.45rem;
-}
-.routes-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: calc(1.26rem + 0.1667rem);
-  font-weight: 400;
-  line-height: 1.12;
-  color: var(--forest);
-  margin-bottom: 0.7rem;
-}
-.routes-list {
-  list-style: none;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.45rem;
-  margin: 0 0 0.8rem;
-}
-.routes-list li {
-  padding: 0.58rem 0.7rem;
-  border: 1.5px solid var(--cream-dark);
-  border-radius: 0.95rem;
-  background: var(--cream);
-  color: var(--forest);
-  font-size: calc(0.72rem + 0.1667rem);
-  line-height: 1.24;
-}
-.routes-card .join-btn {
-  width: 100%;
-  justify-content: center;
-  margin-top: auto;
-  padding: 0.56rem 1rem;
-}
-.how-section {
-    background: var(--forest); color: var(--cream);
-    padding: 6rem 5rem;
-    position: relative; overflow: hidden;
-  }.how-section::before {
-    content: '';
-    position: absolute; top: -40%; right: -10%;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(122,158,126,0.15) 0%, transparent 70%);
-    pointer-events: none;
-  }.how-section .section-label { color: var(--sage-light); }.how-section .section-title { color: var(--cream); }.how-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem;
-    margin-top: 4rem;
-  }.how-step { position: relative; }.how-step-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: calc(5rem + 0.1667rem); font-weight: 300; color: rgba(255,255,255,0.07);
-    line-height: 1; position: absolute; top: -1.5rem; left: -0.5rem;
-  }.how-icon {
-    width: 52px; height: 52px; border-radius: 50%;
-    background: rgba(122,158,126,0.2); border: 1px solid rgba(122,158,126,0.4);
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 1.5rem; font-size: calc(1.4rem + 0.1667rem);
-  }.how-step-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: calc(1.4rem + 0.1667rem); font-weight: 400; color: var(--cream);
-    margin-bottom: 0.75rem;
-  }.how-step-desc {
-    font-size: calc(0.875rem + 0.1667rem); line-height: 1.75;
-    color: rgba(245,240,230,0.6); font-weight: 300;
-  }.how-connector {
-    position: absolute; top: 26px; left: calc(100% - 1.5rem);
-    width: 3rem; height: 1px;
-    background: linear-gradient(to right, rgba(122,158,126,0.4), rgba(122,158,126,0.1));
-  }.how-step:last-child .how-connector { display: none; }.community-section {
-    background: var(--cream-dark);
-    padding: 6rem 5rem;
-  }.community-inner {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
-  }.community-text .section-title { margin-bottom: 1.5rem; }.community-text p {
-    font-size: calc(1rem + 0.1667rem); line-height: 1.8; color: var(--warm-gray);
-    font-weight: 300; margin-bottom: 1.5rem;
-  }.community-values { list-style: none; margin: 2rem 0; }.community-values li {
-    display: flex; align-items: center; gap: 1rem;
-    font-size: calc(0.9rem + 0.1667rem); color: var(--forest-mid);
-    padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(122,158,126,0.2);
-  }.community-values li:last-child { border-bottom: none; }.value-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--terra); flex-shrink: 0;
-  }.testimonials-grid { display: flex; flex-direction: column; gap: 1.25rem; }.testimonial {
-    background: white; border-radius: 1rem;
-    padding: 1.5rem 1.75rem;
-    position: relative;
-    transition: transform 0.3s;
-  }.testimonial:hover { transform: translateX(6px); }.testimonial::before {
-    content: '"';
-    font-family: 'Cormorant Garamond', serif;
-    font-size: calc(4rem + 0.1667rem); line-height: 0.5;
-    color: var(--sage-light); position: absolute;
-    top: 1.25rem; left: 1.5rem;
-    pointer-events: none;
-  }.testimonial-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: calc(1.1rem + 0.1667rem); font-style: italic;
-    color: var(--forest); line-height: 1.6;
-    margin-bottom: 0.25rem; position: relative; z-index: 1;
-    padding-left: 1.5rem;
-  }.testimonial-sub {
-    font-size: calc(0.84rem + 0.1667rem); color: var(--warm-gray);
-    margin-left: 1.5rem; line-height: 1.65;
-  }.cta-section {
-    padding: 8rem 5rem;
-    scroll-margin-top: 92px;
-    text-align: center;
-    background: var(--cream);
-    position: relative; overflow: hidden;
-  }.cta-section::before {
-    content: 'bubble walk';
-    font-family: 'Cormorant Garamond', serif;
-    font-size: calc(13rem + 0.1667rem); font-weight: 600;
-    color: rgba(122,158,126,0.06);
-    position: absolute; left: 50%; top: 50%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap; pointer-events: none;
-    letter-spacing: -0.05em;
-  }.cta-section .section-label { display: block; margin-bottom: 1rem; }.cta-section .section-title { margin-bottom: 1.25rem; position: relative; z-index: 1; }.cta-section p {
-    color: var(--warm-gray); font-size: calc(1rem + 0.1667rem); font-weight: 300;
-    max-width: 48ch; margin: 0 auto 1.35rem;
-    line-height: 1.8; position: relative; z-index: 1;
-  }.cta-form {
-    position: relative; z-index: 1;
-    max-width: 720px; margin: 0 auto;
-    display: grid; gap: 0.9rem;
-  }.cta-row {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-  }.cta-input, .cta-textarea {
-    border: 1.5px solid var(--cream-dark); border-radius: 1.2rem;
-    background: white; padding: 1rem 1.2rem;
-    font-size: calc(0.95rem + 0.1667rem); font-family: 'DM Sans', sans-serif;
-    outline: none; color: var(--forest);
-    width: 100%;
-  }.cta-textarea { min-height: 130px; resize: vertical; }.cta-submit-row {
-    display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;
-    margin-top: 0.35rem;
-  }
-  .updates-consent {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.7rem;
-    margin-top: 0.05rem;
-    color: var(--forest);
-    font-size: calc(0.9rem + 0.1667rem);
-    line-height: 1.55;
-    text-align: left;
-  }
-  .updates-consent input {
-    margin-top: 0.22rem;
-    accent-color: var(--forest);
-    flex-shrink: 0;
-  }
-  .privacy-note {
-    color: var(--warm-gray);
-    font-size: calc(0.78rem + 0.1667rem);
-    line-height: 1.65;
-    text-align: left;
-    margin-top: -0.1rem;
-  }
-  .privacy-note a {
-    color: var(--forest-mid);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(122,158,126,0.3);
-  }
-  .privacy-note a:hover {
-    color: var(--terra);
-    border-color: var(--terra-light);
-  }
-  .cta-submit-row .btn-primary {
-    min-width: 180px;
-  }.form-status {
-    display: none;
-    margin-top: 0.5rem;
-    padding: 0.9rem 1rem;
-    border-radius: 1rem;
-    border: 1px solid rgba(122,158,126,0.25);
-    background: rgba(255,255,255,0.92);
-    color: var(--forest);
-    font-size: calc(0.9rem + 0.1667rem);
-  }.form-status.is-visible { display: block; }.cta-next-walk {
-    position: relative; z-index: 1;
-    max-width: 920px; margin: -0.15rem auto 1.15rem;
-    display: flex; justify-content: center;
-  }.cta-next-pill {
-    display: inline-flex; align-items: center; justify-content: center;
-    padding: 0.72rem 1rem;
-    border-radius: 999px;
-    border: 1px solid var(--cream-dark);
-    background: rgba(255,255,255,0.9);
-    color: var(--forest);
-    font-size: calc(0.82rem + 0.1667rem);
-    line-height: 1.25;
-    white-space: normal;
-    max-width: 100%;
-    text-align: center;
-  }
-  .helper-links {
-    display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap;
-    font-size: calc(0.85rem + 0.1667rem); position: relative; z-index: 1;
-  }.helper-links a {
-    color: var(--forest-mid); text-decoration: none; border-bottom: 1px solid rgba(122,158,126,0.3);
-  }.helper-links a:hover { color: var(--terra); border-color: var(--terra-light); }
-
-  .join-copy-desktop,
-  .privacy-note-desktop {
-    display: inline;
-  }
-
-  .join-copy-mobile,
-  .privacy-note-mobile {
-    display: none;
-  }
-
-footer {
-    background: var(--forest); color: rgba(245,240,230,0.7);
-    padding: 3.5rem 5rem;
-    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 3rem;
-  }
-  .footer-brand .nav-logo { color: var(--cream); margin-bottom: 1rem; display: inline-block; }.footer-brand p { font-size: calc(0.85rem + 0.1667rem); line-height: 1.7; font-weight: 300; }footer h4 {
-    font-size: calc(0.75rem + 0.1667rem); text-transform: uppercase; letter-spacing: 0.12em;
-    color: var(--cream); margin-bottom: 1.25rem; font-weight: 500;
-  }footer ul { list-style: none; }footer ul li { margin-bottom: 0.6rem; }footer ul li a {
-    font-size: calc(0.875rem + 0.1667rem); color: rgba(245,240,230,0.6);
-    text-decoration: none; transition: color 0.2s;
-  }footer ul li a:hover { color: var(--terra-light); }.footer-bottom {
-    background: var(--forest); border-top: 1px solid rgba(245,240,230,0.08);
-    padding: 1.25rem 5rem;
-    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-  }.footer-bottom p { font-size: calc(0.78rem + 0.1667rem); color: rgba(245,240,230,0.35); }
-
-  @keyframes fadeUp {from { opacity: 0; transform: translateY(20px); }to { opacity: 1; transform: translateY(0); }
-  }to { transform: rotate(360deg); }
-  }
-
-  @media (max-width: 1100px) {.events-grid { grid-template-columns: 1fr; }.events-stack { align-content: stretch; }.summary-card, .routes-card { min-height: 0; }.community-inner { grid-template-columns: 1fr; gap: 3rem; }footer { grid-template-columns: 1fr 1fr; }
-  }
-
-  @media (max-width: 900px) {
-    nav { padding: 0.95rem 1rem; }
-    .nav-logo { font-size: 1.35rem; }
-    .nav-links { display: none; }
-    .nav-actions {
-      gap: 0.5rem;
-      margin-left: auto;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AISTHESIS | Contemporary Heritage Design</title>
+  <meta name="description" content="AISTHESIS progetta spazi residenziali che uniscono memoria, materia, percezione e sensibilità contemporanea." />
+  <meta name="theme-color" content="#f0ece4" />
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" as="image" href="hero-picture.webp" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f0ece4;
+      --bg-soft: #f5f2ec;
+      --brown: #2b1a0e;
+      --brown-dark: #261200;
+      --brown-soft: #7a5c3a;
+      --accent-brown: #7a5c3a;
+      --line-light: rgba(240,238,233,0.18);
+      --line-dark: rgba(43,26,14,0.14);
+      --text: #2b1a0e;
+      --text-soft: rgba(43,26,14,0.72);
+      --text-cream: #f5f2ec;
+      --max: 1440px;
+      --gutter: clamp(24px, 3vw, 56px);
+      --hero-font: "Cormorant Garamond", "Didot", Georgia, serif; /* Brown Sugar fallback */
+      --didone: "Antic Didone", "Didot", Georgia, serif;
+      --serif: "Cormorant Garamond", "Didot", Georgia, serif;
+      --sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+      --module-h: 520px;
     }
-    .nav-cta {
-      padding: 0.58rem 0.95rem;
-      font-size: 0.8rem;
-      min-width: 0;
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { display: block; width: 100%; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    p { margin: 0; }
+
+    .wrap {
+      width: min(calc(100% - 2 * var(--gutter)), var(--max));
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: clamp(0.68rem, 0.7vw, 0.82rem);
+      font-weight: 400;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--accent-brown);
+    }
+
+    .section-label--light {
+      color: rgba(245,242,236,0.58);
+    }
+
+    .section-bar {
+      width: 46px;
+      height: 2px;
+      background: currentColor;
+      margin-top: 18px;
+    }
+
+    .site-header {
+      position: absolute;
+      inset: 0 0 auto 0;
+      z-index: 20;
+      padding-top: 28px;
+      color: rgba(246,242,235,0.86);
+    }
+
+    .header-inner {
+      width: min(calc(100% - 2 * var(--gutter)), var(--max));
+      margin: 0 auto;
+      border-bottom: 1px solid rgba(246,242,235,0.56);
+      padding-bottom: 14px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 3vw, 52px);
+      font-family: var(--sans);
+      font-size: clamp(0.68rem, 0.82vw, 0.82rem);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      background:
+        linear-gradient(0deg, rgba(18,10,6,0.18), rgba(18,10,6,0.18)),
+        url('hero-picture.webp') center center / cover no-repeat;
+      display: block;
+      color: var(--bg);
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(17,10,6,0.12) 55%, rgba(17,10,6,0.18) 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(calc(100% - 2 * var(--gutter)), var(--max));
+      min-height: 100svh;
+      margin: 0 auto;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-title {
+      margin: 0;
+      width: 100%;
+      max-width: 1180px;
+      text-align: center;
+      font-family: var(--hero-font);
+      font-size: clamp(5.4rem, 14.8vw, 13.6rem);
+      font-weight: 500;
+      line-height: 0.88;
+      letter-spacing: -0.058em;
+      text-transform: uppercase;
+      color: rgba(246,242,235,0.96);
+    }
+
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .hero-wordmark-img {
+      width: min(79.2vw, 1323px);
+      max-width: calc(100vw - 64px);
+      height: auto;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+      opacity: 1;
+      filter: none;
+      pointer-events: none;
+      user-select: none;
+    }
+
+.experience {
+      min-height: 528px;
+      padding: 0;
+      background: var(--bg);
+      border-bottom: 0;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .experience .wrap {
+      width: calc(100% - clamp(48px, 7.32vw, 150px));
+      max-width: none;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .experience-head {
+      position: absolute;
+      top: clamp(96px, 12.6vh, 123px);
+      right: clamp(48px, 3.66vw, 75px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 0;
+      color: var(--accent-brown);
+      z-index: 2;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 50%) minmax(0, 50%);
+      gap: 0;
+      align-items: center;
+      min-height: 344px;
+    }
+
+    .experience-quote {
+      margin: 0;
+      max-width: 980px;
+      font-family: var(--font-display, var(--serif));
+      font-size: clamp(4.36rem, 4.56vw, 5.98rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.043em;
+      color: var(--text);
+    }
+
+    .experience-quote span {
+      display: block;
       white-space: nowrap;
     }
-    .hero {
-      min-height: auto;
-      grid-template-columns: 1fr;
-      padding-top: 72px;
-    }
-    .hero-bg-shape {
-      width: 100%;
-      height: 42%;
-      left: 0;
-      right: 0;
-      top: auto;
-      bottom: 0;
-      clip-path: none;
-      opacity: 0.22;
-    }
-    .hero-left { padding: 2.5rem 1rem 1.5rem; }
-    .hero-sub {
-      max-width: none;
-      font-size: 1.02rem;
-      line-height: 1.65;
-      margin-bottom: 2rem;
-    }
-    .hero-right {
-      display: block;
-      height: auto;
-      padding: 0 1rem 0;
-    }
-    .hero-image-card {
-      width: 100%;
-      max-width: none;
-      transform: none;
-      padding-bottom: 0;
-    }
-    .hero-main-img {
-      height: 340px;
-      border-radius: 1rem 1rem 2rem 1rem;
-    }
-    .hero-img-caption {
-      position: relative;
-      left: auto;
-      bottom: auto;
-      transform: none;
-      width: 100%;
-      margin-top: -1rem;
-      padding: 1.25rem 1.2rem;
-    }
-    .section, .how-section, .community-section, .cta-section { padding: 4rem 1rem; }
-    .section-header { flex-direction: column; align-items: flex-start; }
-    .events-grid { grid-template-columns: 1fr; }
-    .events-stack {
-      grid-template-rows: auto auto;
-      height: auto;
-    }
-    .summary-card-body,
-    .routes-card-body {
-      padding: 1rem 1rem 1.05rem;
-    }
-    .event-card.featured .event-card-img { height: 260px; }
-    .route-preview-card { height: 260px; padding: 0.9rem; }
-    .route-preview-inner { padding: 3.85rem 0.95rem 0.75rem; }
-    .route-preview-title { font-size: 1.42rem; }
-    .route-preview-text { font-size: 0.88rem; line-height: 1.36; }
-    .route-preview-points li { font-size: 0.84rem; }
-    .how-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .community-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .cta-row { grid-template-columns: 1fr; }
-    footer { padding: 2.5rem 1rem; grid-template-columns: 1fr 1fr; }
-    .footer-bottom { padding: 1rem; flex-direction: column; align-items: flex-start; }
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-      width: 100%;
-      margin-top: 2rem;
-    }
-  }
 
-  @media (max-width: 640px) {
-    .hero-tag {
-      font-size: 0.76rem;
-      letter-spacing: 0.12em;
-      padding: 0.35rem 0.8rem;
-      margin-bottom: 1.35rem;
+    .experience-quote em {
+      font-style: italic;
     }
-    .hero-title {
-      font-size: clamp(2.6rem, 13vw, 3.8rem);
-      line-height: 0.98;
-      margin-bottom: 1rem;
-    }
-    .hero-actions { flex-direction: column; }
-    .hero-actions .btn-primary,
-    .hero-actions .btn-ghost { width: 100%; justify-content: center; }
-    .nav-actions {
-      flex-wrap: nowrap;
-    }
-    .nav-cta { width: auto; }
-    .cta-submit-row {
-      flex-direction: row;
-      justify-content: center;
-      margin-top: 0.1rem;
-    }
-    .cta-submit-row .btn-primary {
-      width: auto;
-      min-width: 180px;
-    }
-    .stat-num { font-size: 1.95rem; }
-    .stat-label { font-size: 0.72rem; }
-    .hero-main-img { height: 280px; }
-    .hero-img-caption strong { font-size: 1.35rem; }
-    .hero-img-caption span { font-size: 0.94rem; }
-    .event-card.featured .event-card-img { height: 220px; }
-    .route-preview-card { height: 220px; padding: 0.75rem; }
-    .route-preview-inner { padding: 3.6rem 0.85rem 0.65rem; }
-    .route-preview-kicker { font-size: 0.72rem; margin-bottom: 0.28rem; }
-    .route-preview-title { font-size: 1.24rem; margin-bottom: 0.35rem; }
-    .route-preview-text { font-size: 0.78rem; line-height: 1.28; }
-    .route-preview-points { gap: 0.18rem; margin-top: 0.45rem; }
-    .route-preview-points li { font-size: 0.75rem; line-height: 1.16; }
-    .event-card-body { padding: 1.1rem 1.1rem 1.2rem; }
-    .event-meta { gap: 0.7rem; }
-    .poll-card-body { padding: 1.1rem 1.1rem 1.2rem; }
-    .poll-option { padding: 0.8rem 0.9rem; }
-    .summary-card-body,
-    .routes-card-body {
-      padding: 0.95rem 1rem 1rem;
-    }
-    .routes-title {
-      font-size: calc(1.26rem + 0.1667rem);
-    }
-    .routes-list {
-      grid-template-columns: 1fr;
-      gap: 0.45rem;
-      margin-bottom: 0.85rem;
-    }
-    .routes-list li {
+
+    .experience-copy {
       width: 100%;
-      border-radius: 0.95rem;
-      padding: 0.58rem 0.7rem;
+      max-width: none;
+      padding-top: 20px;
+      padding-left: clamp(0px, 1.1vw, 24px);
+      font-family: var(--sans);
+      font-size: clamp(0.9rem, 0.86vw, 1.02rem);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.82;
+      color: var(--text);
     }
-    .cta-section {
-      padding: 2.45rem 1rem 2.7rem;
-      scroll-margin-top: 84px;
+
+    .essence {
+      background: var(--brown);
+      color: var(--text-cream);
     }
-    .cta-section .section-label {
-      margin-bottom: 0.65rem;
+
+    .essence-grid {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.95fr) minmax(520px, 1.15fr) minmax(260px, 0.95fr);
+      height: var(--module-h);
+      min-height: var(--module-h);
+      background: var(--brown);
+      overflow: hidden;
     }
-    .cta-section .section-title {
-      margin-bottom: 0.9rem;
-      line-height: 1.06;
+
+    .essence-image {
+      min-height: 100%;
+      background-size: cover;
+      background-position: center;
     }
-    .cta-copy {
-      font-size: 1rem;
-      line-height: 1.58;
-      max-width: 19ch;
-      margin: 0 auto 0.7rem;
+
+    .essence-image--left {
+      background-image: url('essence-left.webp');
+      background-position: center left;
     }
-    .join-copy-desktop,
-    .privacy-note-desktop {
+
+    .essence-image--right {
+      background-image: url('essence-right.webp');
+      background-position: center center;
+    }
+
+    .essence-core {
+      padding: 54px clamp(42px, 4.4vw, 68px) 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--brown);
+    }
+
+    .essence-top {
+      max-width: 100%;
+    }
+
+    .essence-top .section-bar {
+      color: rgba(255,255,255,0.92);
+    }
+
+    .essence-line {
+      width: 100%;
+      height: 1px;
+      background: rgba(215,206,196,0.24);
+      margin-top: 38px;
+    }
+
+    .essence-copy {
+      max-width: 640px;
+      margin: 0;
+      font-family: var(--sans);
+      font-size: clamp(0.88rem, 0.96vw, 1.04rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      line-height: 1.82;
+      text-align: left;
+      color: rgba(245,242,236,0.72);
+    }
+
+    .essence-foot {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 18px;
+      font-family: var(--sans);
+      font-size: clamp(0.72rem, 0.76vw, 0.88rem);
+      text-transform: uppercase;
+      letter-spacing: 0.32em;
+      color: rgba(245,242,236,0.58);
+    }
+
+    .essence-arrow {
+      width: 102px;
+      height: 1px;
+      background: rgba(245,242,236,0.62);
+      position: relative;
+    }
+
+    .essence-arrow::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: -3px;
+      width: 8px;
+      height: 8px;
+      border-top: 1px solid rgba(245,242,236,0.62);
+      border-right: 1px solid rgba(245,242,236,0.62);
+      transform: rotate(45deg);
+    }
+
+    .founder {
+      display: grid;
+      grid-template-columns: minmax(340px, 0.9fr) minmax(360px, 0.72fr) minmax(520px, 1.18fr);
+      min-height: 760px;
+      position: relative;
+      background: var(--brown);
+      color: var(--text-cream);
+      border-top: 1px solid rgba(245,242,236,0.16);
+      border-bottom: 0;
+    }
+
+    .founder-photo {
+      background:
+        linear-gradient(0deg, rgba(246,242,235,0.04), rgba(246,242,235,0.04)),
+        url('founder-photo.webp') center center / cover no-repeat;
+      min-height: 100%;
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .founder-copy {
+      background: var(--brown);
+      color: rgba(245,242,236,0.72);
+      padding: clamp(86px, 8vw, 132px) clamp(62px, 7vw, 118px) clamp(78px, 7vw, 118px);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    .founder-text {
+      width: min(100%, 720px);
+      font-family: var(--sans);
+      font-size: clamp(0.95rem, 1vw, 1.13rem);
+      font-weight: 400;
+      letter-spacing: 0.015em;
+      line-height: 1.92;
+      color: rgba(245,242,236,0.72);
+    }
+
+
+    .founder-text p + p {
+      margin-top: 1.42em;
+    }
+
+    .founder-title {
+      position: static;
+      transform: none;
+      font-family: var(--didone);
+      font-size: clamp(4.2rem, 6.2vw, 8rem);
+      font-weight: 400;
+      line-height: 0.88;
+      letter-spacing: -0.035em;
+      color: var(--text-cream);
+      pointer-events: none;
+      z-index: 2;
+      max-width: 440px;
+      text-shadow: none;
+      grid-column: 2;
+      grid-row: 1;
+      align-self: center;
+      justify-self: center;
+      text-align: center;
+    }
+
+    .values {
+      min-height: 760px;
+      padding: 0;
+      background: var(--brown);
+      color: var(--text-cream);
+      display: block;
+      overflow: hidden;
+    }
+
+    .values-grid {
+      width: 100%;
+      min-height: 760px;
+      margin: 0;
+      display: grid;
+      grid-template-columns: minmax(620px, 1.12fr) minmax(520px, 0.88fr);
+      gap: 0;
+      align-items: stretch;
+    }
+
+    .values-copy {
+      padding: clamp(82px, 7vw, 118px) clamp(58px, 7vw, 122px);
+      max-width: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .values-title {
+      margin: 54px 0 42px;
+      font-family: var(--didone);
+      font-size: clamp(3.7rem, 5.2vw, 6.35rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      max-width: 830px;
+      color: var(--text-cream);
+    }
+
+    .values-title em {
+      font-style: italic;
+    }
+
+    .values-body {
+      max-width: 780px;
+      padding-top: 42px;
+      border-top: 1px solid rgba(215,206,196,0.22);
+      font-family: var(--sans);
+      font-size: clamp(0.92rem, 0.95vw, 1.08rem);
+      font-weight: 400;
+      letter-spacing: 0.015em;
+      line-height: 2.05;
+      color: rgba(245,242,236,0.72);
+    }
+
+    .values-image {
+      height: 100%;
+      min-height: 760px;
+      width: 100%;
+      background: url('valori.webp') center center / cover no-repeat;
+      opacity: 0.88;
+    }
+
+    .values-divider {
       display: none;
     }
-    .join-copy-mobile,
-    .privacy-note-mobile {
-      display: inline;
+
+    .portfolio {
+      min-height: auto;
+      padding: clamp(107px, 15.18vh, 150px) 0 clamp(107px, 14.98vh, 148px);
+      background: var(--bg);
+      border-bottom: 0;
+      display: block;
+      overflow: visible;
     }
-    .cta-form {
-      gap: 0.72rem;
+
+    .portfolio-inner {
+      width: calc(100% - clamp(48px, 7.32vw, 150px));
+      max-width: none;
+      margin: 0 auto;
     }
-    .cta-next-walk {
+
+    .portfolio-head {
+      margin-bottom: clamp(42px, 5.2vh, 51px);
+    }
+
+    .portfolio-head .section-bar {
+      color: var(--accent-brown);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(22px, 1.66vw, 34px);
+      align-items: start;
+    }
+
+    .project-card {
+      background: transparent;
       display: flex;
-      justify-content: center;
-      margin: 0 auto 0.72rem;
+      flex-direction: column;
+      min-width: 0;
     }
-    .cta-next-pill {
-      width: auto;
-      max-width: 100%;
+
+    .project-image {
+      height: clamp(316px, 21.39vw, 438px);
+      aspect-ratio: auto;
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    .project-meta {
+      background: var(--brown);
+      color: var(--text-cream);
+      height: clamp(88px, 5.32vw, 109px);
+      min-height: 0;
+      padding: clamp(17px, 1.29vw, 27px) clamp(20px, 1.37vw, 28px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: clamp(5px, 0.52vw, 10px);
+      flex: 0 0 auto;
+    }
+
+    .project-meta small {
+      font-family: var(--sans);
+      font-size: clamp(0.62rem, 0.66vw, 0.76rem);
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(245,242,236,0.58);
+    }
+
+    .project-meta h3 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(1.12rem, 1.16vw, 1.46rem);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--text-cream);
+    }
+
+    .contact {
+      min-height: 532px;
+      padding: 0;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      border-bottom: 0;
+    }
+
+    .contact-grid {
+      width: min(calc(100% - 2 * var(--gutter)), 1740px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(520px, 0.95fr) minmax(760px, 1.05fr);
+      gap: clamp(72px, 8vw, 150px);
+      align-items: center;
+    }
+
+    .contact-title {
+      margin: 42px 0 24px;
+      font-family: var(--font-display, var(--serif));
+      font-size: clamp(3.75rem, 4.45vw, 5.45rem);
+      font-weight: 300;
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      color: var(--text);
+    }
+
+    .contact-copy {
+      max-width: 520px;
+      font-family: var(--sans);
+      font-size: clamp(0.92rem, 0.88vw, 1.02rem);
+      font-weight: 300;
+      letter-spacing: 0.005em;
+      line-height: 1.72;
+      color: rgba(43,26,14,0.82);
+    }
+
+    .contact-details {
+      margin-top: 34px;
+      font-family: var(--sans);
+      font-size: clamp(0.88rem, 0.84vw, 0.98rem);
+      font-weight: 300;
+      letter-spacing: 0;
+      line-height: 1.9;
+      color: rgba(43,26,14,0.82);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+      padding-top: 4px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(34px, 3.4vw, 64px);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid rgba(43,26,14,0.30);
+      background: transparent;
+      padding: 0 0 11px;
+      color: rgba(43,26,14,0.92);
+      font-family: var(--sans);
+      font-size: clamp(0.95rem, 0.92vw, 1.06rem);
+      font-weight: 300;
+      letter-spacing: 0.055em;
+      border-radius: 0;
+      outline: none;
+      appearance: none;
+      box-shadow: none;
+    }
+
+    textarea {
+      min-height: 112px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(43,26,14,0.46);
+      background: transparent;
+      box-shadow: none;
+    }
+
+
+input::placeholder,
+    textarea::placeholder {
+      color: rgba(43,26,14,0.54);
+      opacity: 1;
+      font-weight: 300;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 58px;
+      padding: 16px 28px;
+      background: var(--brown);
+      color: var(--text-cream);
+      border: 1px solid var(--brown);
+      font-family: var(--sans);
+      font-size: clamp(0.72rem, 0.72vw, 0.84rem);
+      font-weight: 400;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 0;
+      margin-top: 2px;
+    }
+
+    .footer {
+      min-height: 180px;
+      padding: 0;
+      background: var(--brown);
+      border-top: 1px solid rgba(245,242,236,0.10);
+      color: rgba(245,242,236,0.58);
+      font-family: var(--sans);
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-inner {
+      width: min(calc(100% - 2 * var(--gutter)), var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+
+    .portfolio,
+    .values,
+    .founder,
+    .contact {
+      scroll-margin-top: 72px;
+    }
+
+    @media (min-width: 1181px) {
+      .portfolio-grid {
+        align-items: start;
+      }
+
+      .values-grid,
+      .contact-grid {
+        align-items: center;
+      }
+    }
+
+
+    /* reference alignment pass */
+    @media (min-width: 1181px) {
+      .portfolio,
+      .values,
+      .founder,
+      .essence {
+        scroll-margin-top: 0;
+      }
+
+      .values .section-bar {
+        color: var(--accent-brown);
+      }
+
+      .values .section-label {
+        color: rgba(245,242,236,0.58);
+      }
+
+      .founder-title br {
+        display: block;
+      }
+    }
+
+
+
+    @media (max-width: 1180px) {
+
+      .experience,
+      .portfolio,
+      .values,
+      .founder,
+      .contact {
+        min-height: auto;
+      }
+
+      .project-image {
+        height: auto;
+      }
+
+      .values-divider {
+        display: block;
+        width: min(calc(100% - 2 * var(--gutter)), 1280px);
+        margin: 32px auto 0;
+      }
+
+      .experience-grid,
+      .values-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .essence-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .essence-image {
+        min-height: 320px;
+      }
+
+      .essence-core {
+        min-height: auto;
+        gap: 40px;
+      }
+
+      .founder {
+        grid-template-columns: 1fr;
+      }
+
+      .founder-photo {
+        min-height: 392px;
+      }
+
+      .founder-title {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        background: var(--bg);
+        color: rgba(43,26,14,0.84);
+        padding: 28px 28px 0;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-image {
+        aspect-ratio: 1.08 / 1;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .site-header {
+        padding-top: 18px;
+      }
+
+      .header-inner {
+        justify-content: center;
+        padding-bottom: 12px;
+      }
+
+      .nav {
+        gap: 18px;
+        font-size: 0.84rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero-content {
+        padding: 0;
+        min-height: 100svh;
+      }
+
+      .hero-title {
+        font-size: clamp(3.8rem, 17vw, 6.2rem);
+        letter-spacing: -0.052em;
+      }
+
+      .experience {
+        padding-top: 58px;
+      }
+
+      .experience-head {
+        margin-bottom: 42px;
+      }
+
+      .experience-quote {
+        font-size: clamp(2.5rem, 11vw, 4.1rem);
+      }
+
+      .values-title,
+      .contact-title {
+        margin-top: 28px;
+      }
+
+      .values-image {
+        min-height: 288px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  
+    @media (max-width: 1180px) {
+      .portfolio {
+        min-height: auto;
+        padding: 72px 0 78px;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-image {
+        height: auto;
+        aspect-ratio: 1.12 / 1;
+      }
+
+      .essence-grid,
+      .values-grid,
+      .founder {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .essence-core,
+      .values-copy,
+      .founder-copy {
+        padding: 58px 28px;
+      }
+
+      .values {
+        min-height: auto;
+      }
+
+      .values-grid {
+        width: 100%;
+      }
+
+      .values-title {
+        font-size: clamp(3.15rem, 11vw, 5rem);
+      }
+
+      .values-image {
+        min-height: 380px;
+        height: 420px;
+      }
+
+      .founder-photo {
+        min-height: 520px;
+      }
+
+      .founder-title {
+        grid-column: auto;
+        grid-row: auto;
+        padding: 54px 28px 18px;
+        font-size: clamp(4.2rem, 18vw, 6.7rem);
+      }
+
+      .founder-copy {
+        grid-column: auto;
+        grid-row: auto;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .portfolio-inner,
+      .wrap {
+        width: min(calc(100% - 48px), var(--max));
+      }
+
+      .section-label {
+        letter-spacing: 0.24em;
+      }
+
+      .portfolio {
+        padding: 60px 0 68px;
+      }
+
+      .portfolio-head {
+        margin-bottom: 34px;
+      }
+
+      .project-meta {
+        padding: 22px 20px;
+      }
+
+      .values-copy {
+        padding: 58px 24px 64px;
+      }
+
+      .values-title {
+        margin: 42px 0 34px;
+      }
+
+      .values-body {
+        padding-top: 34px;
+        line-height: 1.82;
+      }
+
+      .founder-text {
+        line-height: 1.72;
+      }
+    }
+
+  
+
+  
+
+  
+
+  
+    /* experience forensic screenshot alignment */
+    .experience .section-label {
+      color: var(--accent-brown);
+      font-size: clamp(0.68rem, 0.74vw, 0.9rem);
+      letter-spacing: 0.42em;
+      font-weight: 500;
+    }
+
+    .experience .section-bar {
+      width: 46px;
+      height: 2px;
+      margin-top: 18px;
+      background: currentColor;
+    }
+
+    @media (min-width: 1181px) {
+      .experience {
+        min-height: 528px;
+      }
+    }
+
+    @media (max-width: 1180px) {
+      .experience {
+        min-height: auto;
+        padding: 84px 0 92px;
+        display: block;
+      }
+
+      .experience .wrap {
+        width: min(calc(100% - 48px), var(--max));
+      }
+
+      .experience-head {
+        position: static;
+        align-items: flex-start;
+        margin-bottom: 46px;
+      }
+
+      .experience-grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+        min-height: auto;
+      }
+
+      .experience-quote {
+        font-size: clamp(3.7rem, 12vw, 6rem);
+      }
+
+      .experience-copy {
+        max-width: 100%;
+        padding-top: 0;
+        line-height: 1.75;
+      }
+    }
+
+  
+    @media (max-width: 1180px) {
+      .experience-quote span {
+        white-space: normal;
+      }
+    }
+
+  
+    /* experience centre-start copy refinement */
+    @media (min-width: 1181px) {
+      .experience-grid {
+        grid-template-columns: minmax(0, 50%) minmax(0, 50%);
+        gap: 0;
+      }
+
+      .experience-copy {
+        justify-self: stretch;
+        align-self: center;
+      }
+    }
+
+  
+    @media (max-width: 1180px) {
+      .experience-grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .experience-copy {
+        padding-left: 0;
+      }
+    }
+
+  
+    /* experience forensic typography alignment */
+    .experience .section-label {
+      font-family: var(--font-body);
+      font-size: clamp(0.68rem, 0.74vw, 0.9rem);
+      font-weight: 500;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--accent-brown);
+    }
+
+    .experience .section-bar {
+      width: 46px;
+      height: 2px;
+      margin-top: 18px;
+      background: currentColor;
+    }
+
+    .experience-copy strong {
+      font-weight: 500;
+      color: rgba(43,26,14,0.78);
+    }
+
+  
+    /* Base44 visual-system alignment, surgical override */
+    :root {
+      --font-display: "Cormorant Garamond", "Didot", Georgia, serif;
+      --font-didone: "Antic Didone", "Didot", Georgia, serif;
+      --font-body: "Jost", "Helvetica Neue", Arial, sans-serif;
+      --pampas: #f0ece4;
+      --pampas-soft: #f5f2ec;
+      --kilimanjaro: #2b1a0e;
+      --brown-dark: #261200;
+      --accent-brown: #7a5c3a;
+      --ink-soft: rgba(43,26,14,0.72);
+    }
+
+    .experience .section-label,
+    .portfolio .section-label,
+    .contact .section-label,
+    .values .section-label,
+    .essence .section-label,
+    .founder .section-label {
+      font-family: var(--font-body);
+      font-weight: 400;
+      letter-spacing: 0.38em;
+    }
+
+    .experience-copy,
+    .essence-copy,
+    .values-body,
+    .founder-text,
+    .contact-copy,
+    .contact-details,
+    .project-meta small,
+    input,
+    textarea,
+    .btn,
+    .footer {
+      font-family: var(--font-body);
+    }
+
+    .experience-quote,
+    .values-title,
+    .contact-title,
+    .project-meta h3 {
+      font-family: var(--font-display);
+    }
+
+    .founder-title {
+      font-family: var(--font-didone);
+    }
+
+    .hero-wordmark {
+      font-family: var(--font-display);
+      font-weight: 400;
+    }
+
+  
+    /* experience height -20% refinement */
+    @media (min-width: 1181px) {
+      .experience {
+        min-height: 528px;
+      }
+
+      .experience-grid {
+        min-height: 344px;
+      }
+
+      .experience-head {
+        top: clamp(96px, 12.6vh, 123px);
+      }
+    }
+
+  
+
+  
+    /* portfolio height +4% refinement from shortened state */
+    @media (min-width: 1181px) {
+      .portfolio {
+        padding-top: clamp(107px, 15.18vh, 150px);
+        padding-bottom: clamp(107px, 14.98vh, 148px);
+      }
+
+      .project-image {
+        height: clamp(316px, 21.39vw, 438px);
+      }
+
+      .project-meta {
+        height: clamp(88px, 5.32vw, 109px);
+      }
+    }
+
+    @media (max-width: 1180px) {
+      .portfolio {
+        min-height: auto;
+        height: auto;
+        padding: 69px 0 75px;
+      }
+
+      .project-image {
+        height: auto;
+        aspect-ratio: 1.18 / 1;
+      }
+
+      .project-meta {
+        height: auto;
+        min-height: 92px;
+      }
+    }
+
+  
+    /* divider between values and founder */
+    .founder {
+      border-top: 1px solid rgba(245,242,236,0.16);
+    }
+
+  
+
+    /* founder photo linked asset */
+    .founder-photo {
+      background:
+        linear-gradient(0deg, rgba(246,242,235,0.04), rgba(246,242,235,0.04)),
+        url('founder-photo.webp') center center / cover no-repeat;
+    }
+
+  
+    /* contact screenshot refinement */
+    .contact input,
+    .contact textarea {
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(43,26,14,0.22);
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .contact input:focus,
+    .contact textarea:focus {
+      background: transparent;
+      border-bottom-color: rgba(43,26,14,0.46);
+      box-shadow: none;
+    }
+
+    .contact-title {
+      font-weight: 300;
+    }
+
+    @media (max-width: 1180px) {
+      .contact {
+        min-height: auto;
+        padding: 82px 0 90px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 56px;
+        width: min(calc(100% - 48px), var(--max));
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .contact-title {
+        font-size: clamp(3.5rem, 11.5vw, 5.4rem);
+      }
+    }
+
+  
+    /* contact right-form compact refinement */
+    .contact-form {
+      gap: 24px;
+      padding-top: 8px;
+    }
+
+    .contact input,
+    .contact textarea {
+      padding-bottom: 14px;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(43,26,14,0.22);
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .contact textarea {
+      min-height: 108px;
+      padding-top: 6px;
+    }
+
+    .contact .btn {
+      min-height: 62px;
+      padding-top: 18px;
+      padding-bottom: 18px;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 1180px) {
+      .contact-form {
+        gap: 26px;
+      }
+
+      .contact textarea {
+        min-height: 118px;
+      }
+    }
+
+  
+    /* contact module height -30% refinement */
+    @media (min-width: 1181px) {
+      .contact {
+        min-height: 532px;
+        padding: 0;
+      }
+
+      .contact-title {
+        margin-top: 42px;
+        margin-bottom: 24px;
+        font-size: clamp(3.75rem, 4.45vw, 5.45rem);
+      }
+
+      .contact-copy {
+        line-height: 1.72;
+      }
+
+      .contact-details {
+        margin-top: 34px;
+        line-height: 1.9;
+      }
+
+      .contact-form {
+        gap: 20px;
+        padding-top: 4px;
+      }
+
+      .contact textarea {
+        min-height: 92px;
+      }
+
+      .contact .btn {
+        min-height: 58px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        margin-top: 2px;
+      }
+    }
+
+    @media (max-width: 1180px) {
+      .contact {
+        min-height: auto;
+        padding: 72px 0 78px;
+      }
+    }
+
+  
+    /* contact form field spacing -20%, module height unchanged */
+    .contact-form {
+      gap: 16px;
+      padding-top: 4px;
+    }
+
+    .contact input,
+    .contact textarea {
+      padding-bottom: 12px;
+    }
+
+    @media (max-width: 1180px) {
+      .contact-form {
+        gap: 21px;
+      }
+    }
+
+  
+    /* contact form spacing -15% additional + contrast refinement, module height unchanged */
+    .contact-form {
+      gap: 14px;
+      padding-top: 4px;
+    }
+
+    .contact input,
+    .contact textarea {
+      padding-bottom: 11px;
+      color: rgba(43,26,14,0.92);
+      border-bottom-color: rgba(43,26,14,0.30);
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .contact input::placeholder,
+    .contact textarea::placeholder {
+      color: rgba(43,26,14,0.54);
+      opacity: 1;
+    }
+
+    .contact input:focus,
+    .contact textarea:focus {
+      color: var(--text);
+      border-bottom-color: rgba(43,26,14,0.56);
+    }
+
+    .contact-copy,
+    .contact-details {
+      color: rgba(43,26,14,0.82);
+    }
+
+    @media (max-width: 1180px) {
+      .contact-form {
+        gap: 18px;
+      }
+    }
+
+  
+    .footer-inner {
+      width: min(calc(100% - 2 * var(--gutter)), 1880px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: start;
+      column-gap: clamp(56px, 7vw, 150px);
+    }
+
+    .footer-left {
+      justify-self: start;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display, var(--serif));
+      font-size: clamp(1.28rem, 1.38vw, 1.72rem);
+      font-weight: 400;
+      letter-spacing: 0.34em;
+      line-height: 1;
+      color: var(--text-cream);
+    }
+
+    .footer-tagline {
+      font-family: var(--sans);
+      font-size: clamp(0.8rem, 0.86vw, 1rem);
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      line-height: 1.35;
+      color: rgba(245,242,236,0.50);
+    }
+
+    .footer-center {
+      justify-self: center;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-family: var(--sans);
+      font-size: clamp(0.86rem, 0.94vw, 1.06rem);
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      line-height: 1.35;
+      color: rgba(245,242,236,0.50);
+    }
+
+    .footer-right {
+      justify-self: end;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-family: var(--sans);
+      font-size: clamp(0.86rem, 0.94vw, 1.06rem);
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      line-height: 1.35;
+      color: rgba(245,242,236,0.50);
+    }
+
+    @media (max-width: 900px) {
+      .footer {
+        min-height: auto;
+        padding: 40px 0;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-center,
+      .footer-right {
+        justify-self: start;
+        text-align: left;
+      }
+    }
+
+  
+    /* footer screenshot exact refinement */
+    .footer {
+      min-height: 180px;
+      padding: 0;
+      background: var(--brown);
+      border-top: 1px solid rgba(245,242,236,0.10);
+      display: flex;
+      align-items: center;
+    }
+
+
+  
+
+  
+    /* CLEAN HERO META — single source of truth */
+
+    /* CLEAN HERO META — single source of truth */
+
+    /* CLEAN HERO META POSITION — bottom centered */
+
+    /* HERO META — forensic bottom-center lock */
+    .hero > .hero-meta {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 2.5rem;
+      transform: none;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 0 24px;
+      z-index: 12;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fcfbfa;
+      pointer-events: none;
+    }
+
+    .hero > .hero-meta .hero-tagline {
+      margin: 0;
+      font-family: var(--font-display, var(--serif));
+      font-style: italic;
+      font-size: clamp(1.37rem, 1.97vw, 1.77rem);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      line-height: 1.1;
+      color: #fcfbfa;
       white-space: nowrap;
       text-align: center;
-      padding: 0.58rem 0.82rem;
-      font-size: 0.8rem;
+    }
+
+    .hero > .hero-meta .hero-founder {
+      margin: 0.25rem 0 0;
+      font-family: var(--sans);
+      font-size: 0.86rem;
+      font-weight: 300;
+      letter-spacing: 0.22em;
       line-height: 1.2;
+      text-transform: uppercase;
+      color: rgba(252,251,250,0.95);
+      white-space: nowrap;
+      text-align: center;
     }
-    .cta-input, .cta-textarea {
-      padding: 0.82rem 0.95rem;
-      font-size: 0.9rem;
-      border-radius: 1.05rem;
+
+    @media (max-width: 700px) {
+      .hero > .hero-meta {
+        bottom: 2rem;
+        padding: 0 18px;
+      }
+
+      .hero > .hero-meta .hero-tagline {
+        font-size: 1.22rem;
+        white-space: normal;
+      }
+
+      .hero > .hero-meta .hero-founder {
+        font-size: 0.78rem;
+        letter-spacing: 0.20em;
+      }
     }
-    .cta-textarea {
-      min-height: 84px;
+
+  
+    /* FINAL HERO POSITION FIX — non-destructive override */
+    .hero {
+      min-height: 90svh !important;
     }
-    .updates-consent {
-      font-size: 0.9rem;
-      line-height: 1.42;
-      gap: 0.58rem;
-      margin-top: -0.05rem;
+
+    .hero-content {
+      min-height: 90svh !important;
     }
-    .updates-consent input {
-      width: 20px;
-      height: 20px;
-      margin-top: 0.08rem;
+
+    .hero > .hero-meta {
+      position: absolute !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 20px !important;
+      transform: none !important;
+      width: 100% !important;
+      max-width: none !important;
+      margin: 0 !important;
+      padding: 0 24px !important;
+      z-index: 12 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      color: #fcfbfa !important;
+      pointer-events: none !important;
     }
-    .privacy-note {
-      font-size: 0.78rem;
-      line-height: 1.45;
-      margin-top: -0.18rem;
+
+    .hero > .hero-meta .hero-tagline {
+      margin: 0 !important;
+      text-align: center !important;
+      white-space: nowrap;
     }
-    .helper-links { gap: 0.8rem 1rem; }
-    .how-grid { grid-template-columns: 1fr; }
-    footer { grid-template-columns: 1fr; }
-    .cta-section::before { font-size: calc(5rem + 0.1667rem); }
-  }
-</style>
+
+    .hero > .hero-meta .hero-founder {
+      margin: 0.25rem 0 0 !important;
+      text-align: center !important;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 700px) {
+      .hero,
+      .hero-content {
+        min-height: 90svh !important;
+      }
+
+      .hero > .hero-meta {
+        bottom: 20px !important;
+        padding: 0 18px !important;
+      }
+    }
+
+  
+    /* FINAL HERO HEIGHT additional +4% — non-destructive override */
+    .hero {
+      min-height: 100.15svh !important;
+    }
+
+    .hero-content {
+      min-height: 100.15svh !important;
+    }
+
+    @media (max-width: 700px) {
+      .hero,
+      .hero-content {
+        min-height: 100.15svh !important;
+      }
+    }
+
+  
+    /* FINAL RESPONSIVE WIDTH FIX — horizontal overflow */
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: clip;
+    }
+
+    .site-header,
+    .hero,
+    section,
+    footer {
+      max-width: 100%;
+      overflow-x: clip;
+    }
+
+    .wrap,
+    .header-inner,
+    .contact-grid,
+    .portfolio-grid,
+    .footer-inner {
+      max-width: calc(100vw - 2 * var(--gutter));
+    }
+
+    .contact-grid {
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr) !important;
+      gap: clamp(48px, 5.5vw, 96px) !important;
+      overflow: hidden;
+    }
+
+    .contact-grid > *,
+    .contact-form,
+    .form-row,
+    .contact-copy,
+    .contact-details {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .hero-title,
+    .contact-title,
+    .section-title,
+    .footer-logo {
+      max-width: 100%;
+      overflow-wrap: normal;
+    }
+
+    .hero > .hero-meta {
+      max-width: 100% !important;
+      padding-left: 24px !important;
+      padding-right: 24px !important;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 1180px) {
+      .contact-grid {
+        grid-template-columns: 1fr !important;
+        max-width: calc(100vw - 48px);
+        gap: 56px !important;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .wrap,
+      .header-inner,
+      .contact-grid,
+      .portfolio-grid,
+      .footer-inner {
+        max-width: calc(100vw - 32px);
+      }
+
+      .hero-title {
+        max-width: calc(100vw - 32px);
+      }
+
+      .hero > .hero-meta {
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+      }
+    }
+
+  
+    /* FINAL HERO META SIZE -2PT + RAISE 10PX */
+    .hero > .hero-meta {
+      bottom: 30px !important;
+    }
+
+    .hero > .hero-meta .hero-tagline {
+      font-size: clamp(1.203rem, 1.80vw, 1.603rem) !important;
+    }
+
+    .hero > .hero-meta .hero-founder {
+      font-size: 0.693rem !important;
+    }
+
+    @media (max-width: 700px) {
+      .hero > .hero-meta {
+        bottom: 30px !important;
+      }
+
+      .hero > .hero-meta .hero-tagline {
+        font-size: 1.053rem !important;
+      }
+
+      .hero > .hero-meta .hero-founder {
+        font-size: 0.613rem !important;
+      }
+    }
+
+  
+    /* FINAL HERO TITLE +20PT + LETTER SPACING */
+    .hero-title {
+      font-size: clamp(7.9rem, 17.2vw, 18.1rem) !important;
+      letter-spacing: 0.08em !important;
+    }
+
+    @media (max-width: 700px) {
+      .hero-title {
+        font-size: clamp(4.9rem, 18vw, 8.2rem) !important;
+        letter-spacing: 0.055em !important;
+      }
+    }
+
+  
+    /* FINAL HERO TITLE -5PT + TIGHTER LETTER SPACING */
+    .hero-title {
+      font-size: clamp(7.483rem, 16.8vw, 17.683rem) !important;
+      letter-spacing: 0.065em !important;
+    }
+
+    @media (max-width: 700px) {
+      .hero-title {
+        font-size: clamp(4.483rem, 17.4vw, 7.783rem) !important;
+        letter-spacing: 0.045em !important;
+      }
+    }
+
+  
+    /* FINAL HERO TITLE -5PT + THINNER + TIGHTER LETTER SPACING */
+    .hero-title {
+      font-size: clamp(7.066rem, 16.4vw, 17.266rem) !important;
+      letter-spacing: 0.045em !important;
+      font-weight: 300 !important;
+      text-shadow: none !important;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @media (max-width: 700px) {
+      .hero-title {
+        font-size: clamp(4.066rem, 16.9vw, 7.366rem) !important;
+        letter-spacing: 0.032em !important;
+        font-weight: 300 !important;
+      }
+    }
+
+  
+    /* FINAL HERO TITLE -3PT + META +5PX + FOOTER -20% */
+    .hero-title {
+      font-size: clamp(6.816rem, 16.15vw, 17.016rem) !important;
+    }
+
+    .hero > .hero-meta {
+      bottom: 35px !important;
+    }
+
+    .footer {
+      min-height: 130px !important;
+    }
+
+    @media (max-width: 700px) {
+      .hero-title {
+        font-size: clamp(3.816rem, 16.65vw, 7.116rem) !important;
+      }
+
+      .hero > .hero-meta {
+        bottom: 35px !important;
+      }
+
+      .footer {
+        padding-top: 32px !important;
+        padding-bottom: 32px !important;
+      }
+    }
+
+  
+    /* FINAL HERO HEADER FULL-WIDTH LINE + WHITE TEXT */
+    .site-header {
+      color: #fcfbfa !important;
+    }
+
+    .header-inner {
+      width: 100% !important;
+      max-width: none !important;
+      margin: 0 !important;
+      padding-left: var(--gutter) !important;
+      padding-right: var(--gutter) !important;
+      border-bottom-color: rgba(240,236,228,0.48) !important;
+    }
+
+    .nav,
+    .nav a {
+      color: #fcfbfa !important;
+    }
+
+    .hero-title {
+      color: #fcfbfa !important;
+    }
+
+
+    /* ── hero scroll-line tra MELANIA e MOLISSE ── */
+    .hero > .hero-meta .hero-founder {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 14px !important;
+    }
+
+    .hero-scroll-line {
+      display: block;
+      width: 1px;
+      height: 30px;
+      position: relative;
+      overflow: hidden;
+      background: rgba(240,236,228,0.18);
+      flex-shrink: 0;
+    }
+
+    .hero-scroll-line::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(240,236,228,0.9) 50%,
+        transparent 100%
+      );
+      animation: scrollLineDown 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollLineDown {
+      0%   { transform: translateY(-100%); opacity: 0; }
+      15%  { opacity: 1; }
+      85%  { opacity: 1; }
+      100% { transform: translateY(200%); opacity: 0; }
+    }
+
+
+    /* FORENSIC MOBILE FIX — 2026-05-03
+       Scope: mobile/tablet layout only. No text/content/palette/desktop structural changes. */
+    @media (max-width: 780px) {
+      :root {
+        --gutter: 18px;
+      }
+
+      html,
+      body {
+        width: 100%;
+        overflow-x: hidden !important;
+      }
+
+      .site-header {
+        padding-top: 18px !important;
+      }
+
+      .header-inner {
+        width: 100% !important;
+        max-width: none !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        padding-bottom: 12px !important;
+        justify-content: center !important;
+      }
+
+      .nav {
+        width: 100%;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        gap: 0 !important;
+        font-size: clamp(0.58rem, 2.55vw, 0.70rem) !important;
+        letter-spacing: 0.105em !important;
+        white-space: nowrap !important;
+      }
+
+      .hero,
+      .hero-content {
+        min-height: 100svh !important;
+      }
+
+      .hero-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      .hero-title {
+        width: 100% !important;
+        max-width: calc(100vw - 32px) !important;
+        font-size: clamp(2.88rem, 13.7vw, 4.18rem) !important;
+        line-height: 0.92 !important;
+        letter-spacing: 0.018em !important;
+        font-weight: 300 !important;
+        text-align: center !important;
+        overflow-wrap: normal !important;
+        word-break: normal !important;
+      }
+
+      .hero > .hero-meta {
+        bottom: max(24px, env(safe-area-inset-bottom)) !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      .hero > .hero-meta .hero-tagline {
+        font-size: clamp(0.94rem, 4.05vw, 1.08rem) !important;
+        line-height: 1.15 !important;
+        letter-spacing: 0.045em !important;
+        white-space: nowrap !important;
+      }
+
+      .hero > .hero-meta .hero-founder {
+        margin-top: 0.38rem !important;
+        font-size: clamp(0.56rem, 2.35vw, 0.64rem) !important;
+        letter-spacing: 0.18em !important;
+        gap: 11px !important;
+        white-space: nowrap !important;
+      }
+
+      .hero-scroll-line {
+        height: 24px !important;
+      }
+
+      .wrap,
+      .portfolio-inner,
+      .header-inner,
+      .contact-grid,
+      .portfolio-grid,
+      .footer-inner {
+        width: calc(100% - 32px) !important;
+        max-width: calc(100vw - 32px) !important;
+      }
+
+      .experience {
+        padding: 64px 0 72px !important;
+      }
+
+      .experience-head {
+        margin-bottom: 34px !important;
+      }
+
+      .experience-quote {
+        font-size: clamp(2.18rem, 10.4vw, 3.36rem) !important;
+        line-height: 1.02 !important;
+        letter-spacing: -0.045em !important;
+      }
+
+      .experience-copy,
+      .essence-copy,
+      .values-body,
+      .founder-text,
+      .contact-copy,
+      .contact-details {
+        font-size: 0.98rem !important;
+        line-height: 1.72 !important;
+      }
+
+      .essence-core,
+      .values-copy,
+      .founder-copy,
+      .contact {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+      }
+
+      .essence-image,
+      .values-image,
+      .founder-photo {
+        min-height: 300px !important;
+        height: 300px !important;
+      }
+
+      .portfolio {
+        padding: 58px 0 66px !important;
+      }
+
+      .portfolio-grid {
+        gap: 26px !important;
+      }
+
+      .project-image {
+        aspect-ratio: 1 / 1.04 !important;
+      }
+
+      .values-title,
+      .contact-title {
+        font-size: clamp(2.72rem, 12.2vw, 4.12rem) !important;
+        line-height: 1.06 !important;
+        letter-spacing: -0.045em !important;
+      }
+
+      .founder-title {
+        padding: 46px 24px 10px !important;
+        font-size: clamp(3.55rem, 17vw, 5.25rem) !important;
+        line-height: 0.86 !important;
+      }
+
+      .contact-grid {
+        gap: 42px !important;
+      }
+
+      .contact-form {
+        gap: 24px !important;
+      }
+
+      input,
+      textarea {
+        font-size: 1rem !important;
+      }
+
+      .footer {
+        min-height: 118px !important;
+        padding-top: 26px !important;
+        padding-bottom: 26px !important;
+      }
+
+      .footer-inner {
+        gap: 10px !important;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .hero-title {
+        font-size: clamp(2.62rem, 13.25vw, 3.55rem) !important;
+        letter-spacing: 0.012em !important;
+      }
+
+      .nav {
+        font-size: clamp(0.54rem, 2.45vw, 0.64rem) !important;
+        letter-spacing: 0.08em !important;
+      }
+
+      .hero > .hero-meta .hero-tagline {
+        font-size: clamp(0.86rem, 3.85vw, 0.98rem) !important;
+      }
+    }
+
+    /* mobile forensic patch: ESSENZA flow + founder title contrast */
+    @media (max-width: 780px) {
+      .essence,
+      .essence-grid,
+      .essence-core {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+      }
+
+      .essence-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        grid-auto-rows: auto !important;
+        background: var(--brown) !important;
+      }
+
+      .essence-image {
+        display: block !important;
+        width: 100% !important;
+        min-height: 300px !important;
+        height: 300px !important;
+        position: relative !important;
+        inset: auto !important;
+        background-size: cover !important;
+      }
+
+      .essence-image--left {
+        order: 1 !important;
+      }
+
+      .essence-core {
+        order: 2 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        gap: 34px !important;
+        padding: 54px 24px 58px !important;
+        background: var(--brown) !important;
+      }
+
+      .essence-copy {
+        display: block !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        color: rgba(245,242,236,0.72) !important;
+        font-size: 0.98rem !important;
+        line-height: 1.72 !important;
+      }
+
+      .essence-foot {
+        margin-top: 4px !important;
+      }
+
+      .essence-image--right {
+        order: 3 !important;
+        display: block !important;
+        visibility: visible !important;
+      }
+
+      .portfolio {
+        position: relative !important;
+        z-index: 1 !important;
+      }
+
+      .founder {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        background: var(--brown) !important;
+        color: var(--text-cream) !important;
+      }
+
+      .founder-photo {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+        display: block !important;
+        min-height: 300px !important;
+        height: 300px !important;
+      }
+
+      .founder-title {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+        position: static !important;
+        transform: none !important;
+        justify-self: stretch !important;
+        align-self: auto !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 54px 24px 20px !important;
+        background: transparent !important;
+        color: var(--text-cream) !important;
+        text-align: left !important;
+        font-size: clamp(3.55rem, 17vw, 5.25rem) !important;
+        line-height: 0.86 !important;
+        letter-spacing: -0.045em !important;
+      }
+
+      .founder-copy {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+        background: var(--brown) !important;
+        padding: 30px 24px 68px !important;
+      }
+
+      .founder-text {
+        color: rgba(245,242,236,0.72) !important;
+      }
+    }
+
+
+    /* HERO IMAGE WORDMARK — replaces live text with transparent PNG */
+    @media (max-width: 780px) {
+      .hero-wordmark-img {
+        width: min(86.4vw, calc(100vw - 32px)) !important;
+        max-width: calc(100vw - 32px) !important;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .hero-wordmark-img {
+        width: min(88.2vw, calc(100vw - 24px)) !important;
+        max-width: calc(100vw - 24px) !important;
+      }
+    }
+
+
+
+    /* FOUNDER MODULE — composite visual image + existing bio text */
+    @media (min-width: 1181px) {
+      .founder {
+        grid-template-columns: minmax(0, 70%) minmax(0, 30%) !important;
+        min-height: 620px !important;
+        position: relative !important;
+        background: var(--brown) !important;
+      }
+
+      .founder-photo {
+        background:
+          url('founder-photo.webp') center center / cover no-repeat !important;
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+        min-height: 100% !important;
+        height: 100% !important;
+      }
+
+      .founder-title,
+      .founder-title-clean,
+      .founder-title-split {
+        display: none !important;
+      }
+
+      .founder-copy {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+        background: var(--brown) !important;
+        padding: clamp(64px, 6vw, 96px) clamp(34px, 3.6vw, 62px) clamp(64px, 6vw, 96px) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+      }
+
+      .founder-text {
+        width: min(100%, 500px) !important;
+        font-size: clamp(0.82rem, 0.78vw, 0.96rem) !important;
+        line-height: 1.58 !important;
+        color: rgba(245,242,236,0.72) !important;
+      }
+    }
+
+    @media (max-width: 1180px) {
+      .founder-title,
+      .founder-title-clean,
+      .founder-title-split {
+        display: none !important;
+      }
+
+      .founder-photo {
+        background:
+          url('founder-photo.webp') center center / cover no-repeat !important;
+      }
+    }
+
+
+    /* VALUES MODULE — local root image + section bar colour alignment */
+    .values .section-bar {
+      color: rgba(255,255,255,0.92) !important;
+      background: currentColor !important;
+    }
+
+    .values-image {
+      background: url('valori.webp') center center / cover no-repeat !important;
+    }
+
+
+    /* BROWN MODULE DIVIDER — shorter centred line, asymmetric spacing */
+    .brown-module-divider {
+      background: var(--brown);
+      padding-top: clamp(22px, 2vw, 32px);
+      padding-bottom: clamp(44px, 4vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .brown-module-divider span {
+      display: block;
+      width: min(calc(100% - 2 * var(--gutter)), var(--max));
+      height: 1px;
+      background: rgba(245,242,236,0.16);
+    }
+
+    .brown-module-divider + .founder {
+      border-top: 0 !important;
+    }
+
+    @media (max-width: 780px) {
+      .brown-module-divider {
+        padding-top: 18px;
+        padding-bottom: 36px;
+      }
+
+      .brown-module-divider span {
+        width: calc(100% - 48px);
+      }
+    }
+
+
+    /* FOUNDER MODULE — show full composite image, no vertical crop */
+    @media (min-width: 1181px) {
+      .founder {
+        min-height: auto !important;
+        align-items: stretch !important;
+      }
+
+      .founder-photo {
+        aspect-ratio: 860 / 768 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        background: url('founder-photo.webp') center center / 100% 100% no-repeat !important;
+      }
+    }
+
+    @media (max-width: 1180px) {
+      .founder-photo {
+        aspect-ratio: 860 / 768 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        background: url('founder-photo.webp') center center / 100% 100% no-repeat !important;
+      }
+    }
+
+
+    /* MODULE DESCRIPTION TYPOGRAPHY — Essence / Values / Founder descriptions only */
+    .essence-copy,
+    .values-body,
+    .founder-text {
+      font-family: var(--font-display, var(--serif)) !important;
+      font-style: italic !important;
+      font-weight: 300 !important;
+      letter-spacing: 0.012em !important;
+      color: rgba(245,242,236,0.76) !important;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .essence-copy {
+      max-width: 670px !important;
+      font-size: clamp(1.26rem, 1.42vw, 1.68rem) !important;
+      line-height: 1.38 !important;
+    }
+
+    .values-body {
+      max-width: 760px !important;
+      font-size: clamp(1.16rem, 1.22vw, 1.46rem) !important;
+      line-height: 1.46 !important;
+    }
+
+    .founder-text {
+      font-size: clamp(0.98rem, 0.98vw, 1.18rem) !important;
+      line-height: 1.42 !important;
+    }
+
+    @media (min-width: 1181px) {
+      .founder-text {
+        width: min(100%, 520px) !important;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .essence-copy,
+      .values-body,
+      .founder-text {
+        font-size: clamp(1.14rem, 5vw, 1.34rem) !important;
+        line-height: 1.44 !important;
+      }
+    }
+
+  </style>
 </head>
 <body>
-
-<nav>
-  <a class="nav-logo" href="#top">Bubble <span>Walk</span></a>
-  <ul class="nav-links">
-    <li><a href="#events">Next walk</a></li>
-    <li><a href="#how">How it works</a></li>
-    <li><a href="#community">What it is</a></li>
-    <li class="nav-dropdown">
-      <a class="nav-dropdown-toggle" href="walks.html" aria-haspopup="true" aria-expanded="false">Walks <span aria-hidden="true">▾</span></a>
-      <div class="nav-dropdown-menu" aria-label="Past walks">
-        <a href="walks.html">All walks</a>
-        <a href="walks.html#walk-03">#3 Clifton Observatory</a>
-        <a href="walks.html#walk-02">#2 Harbourside</a>
-        <a href="walks.html#walk-01">#1 Harbourside</a>
-      </div>
-    </li>
-  </ul>
-  <div class="nav-actions">
-    <a class="nav-cta nav-secondary" href="walks.html">Walks</a>
-    <a class="nav-cta" href="#join">Join free</a>
-  </div>
-</nav>
-
-<section class="hero" id="top">
-  <div class="hero-bg-shape"></div>
-
-  <div class="hero-left">
-    <span class="hero-tag">Free social walk • Bristol</span>
-    <h1 class="hero-title">
-      Walk.<br>
-      <em>Talk.</em><br>
-      Meet.
-    </h1>
-    <p class="hero-sub">
-      Bubble Walk is a simple social walk in Bristol. Free to join. No pressure. Just walk, talk, and meet people outside for an hour.
-    </p>
-    <div class="hero-actions">
-      <a href="#join" class="btn-primary">Join the next walk</a>
-      <a href="https://www.google.com/maps/dir/Oldbury+Ct+Rd,+Fishponds,+Bristol+BS16+2JH/Snuff+Mills,+Bristol/Frenchay,+Bristol/Oldbury+Ct+Rd,+Fishponds,+Bristol+BS16+2JH" class="btn-ghost" id="mapsBtnHero" target="_blank" rel="noopener noreferrer">Open in Google Maps →</a>
+  <header class="site-header" aria-label="Navigazione principale">
+    <div class="header-inner">
+      <nav class="nav" aria-label="Menu principale">
+        <a href="#top">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#portfolio">PORTFOLIO</a>
+        <a href="#contatti">CONTATTI</a>
+      </nav>
     </div>
-    <div class="hero-stats">
-      <div>
-        <div class="stat-num">Free</div>
-        <div class="stat-label">To join</div>
-      </div>
-      <div>
-        <div class="stat-num">~1h</div>
-        <div class="stat-label">Easy pace</div>
-      </div>
-      <div>
-        <div class="stat-num">Bristol</div>
-        <div class="stat-label">Fishponds</div>
-      </div>
-    </div>
-  </div>
+  </header>
 
-  <div class="hero-right">
-    <div class="hero-image-card">
-      <div class="hero-main-img">
-        <img id="heroLatestImage" src="photos/bubblewalk-2026-05-08-feature.jpg" alt="Featured photo from Bubble Walk #3 at Clifton Observatory, Suspension Bridge and Leigh Woods">
+  <main id="top">
+    <section class="hero" aria-label="Hero AISTHESIS">
+      <div class="hero-content">
+        <h1 class="sr-only">AISTHESIS</h1>
+        <img class="hero-wordmark-img" src="aisthesis-wordmark-transparent.png" alt="AISTHESIS" />
       </div>
-      <div class="hero-img-caption">
-        <strong id="heroCardTitle">Next Bubble Walk • Sun 7 June 2026 • 11am</strong>
-        <span id="heroCardMeta">Oldbury Ct Rd, Fishponds, Bristol BS16 2JH</span>
+      <div class="hero-meta">
+        <div class="hero-tagline">Contemporary Heritage Design</div>
+        <div class="hero-founder"><span>MELANIA</span><span class="hero-scroll-line" aria-hidden="true"></span><span>MOLISSE</span></div>
       </div>
-    </div>
-  </div>
 </section>
 
-<section class="section" id="events" style="padding-top: 8.5rem;">
-  <div class="section-header">
-    <div>
-      <p class="section-label">In programme</p>
-      <h2 class="section-title">Bubble Walk, <em>mapped out</em></h2>
-    </div>
-    <a href="walks.html" class="see-all">See all walks →</a>
-  </div>
-
-  <div class="events-grid">
-
-    <article class="event-card featured">
-      <div class="route-preview-card" aria-label="Next Bubble Walk route preview">
-        <div class="route-preview-inner">
-          <span class="route-preview-kicker">Route preview</span>
-          <h3 class="route-preview-title">Oldbury Court, Snuff Mills &amp; Frenchay Walk</h3>
-          <p class="route-preview-text">A green Sunday walk starting from Oldbury Court Road, taking in Oldbury Court, Snuff Mills and the Frenchay side before returning at an easy pace.</p>
-          <ul class="route-preview-points">
-            <li>Starts from Oldbury Court Road</li>
-            <li>Walks through Oldbury Court and Snuff Mills</li>
-            <li>Includes the Frenchay side</li>
-          </ul>
+    <section class="experience" id="about" aria-label="Experience">
+      <div class="wrap">
+        <div class="experience-head">
+          <div class="section-label">Experience</div>
+          <div class="section-bar"></div>
         </div>
-        <div class="event-date-badge">
-          <div class="event-date-day" id="eventDayNum">7</div>
-          <div class="event-date-month" id="eventMonth">Jun</div>
+        <div class="experience-grid">
+          <div class="experience-quote"><span>Ogni spazio racconta</span><span>una storia, ogni luogo</span><span><em>custodisce memoria.</em></span></div>
+          <div class="experience-copy">AISTHESIS nasce dall'unione tra arte, estetica e sensorialità. Dal greco – <strong>αἴσθησις</strong> – percezione. Un approccio al design che mira a coinvolgere i sensi e suscitare emozioni profonde attraverso lo spazio.</div>
         </div>
-        <span class="event-difficulty diff-easy">Free</span>
       </div>
-      <div class="event-card-body">
-        <p class="event-location">📍 <span id="meetingLabel">Oldbury Ct Rd, Fishponds, Bristol BS16 2JH</span></p>
-        <h3 class="event-name" id="nextWalkTitle">Next Bubble Walk • Sun 7 June 2026 • 11am</h3>
-        <div class="event-meta">
-          <span class="event-meta-item">🗓 <span id="eventDayLine">Sun</span></span>
-          <span class="event-meta-item">⏱ <span id="eventTimeLine">11am</span></span>
-          <span class="event-meta-item">🚶 <span id="eventDurationLine">about 1h</span></span>
+    </section>
+
+    <section class="essence" aria-label="Essenza">
+      <div class="essence-grid">
+        <div class="essence-image essence-image--left" aria-hidden="true"></div>
+        <div class="essence-core">
+          <div class="essence-top">
+            <div class="section-label section-label--light">Essenza</div>
+            <div class="section-bar"></div>
+            <div class="essence-line"></div>
+          </div>
+          <div class="essence-copy">AISTHESIS è un'esperienza sensoriale e culturale. Nasce per disegnare luoghi che resistono al tempo – spazi in cui memoria e presente trovano un equilibrio autentico, dove ogni progetto si traduce in forma, atmosfera e armonia viva.</div>
+          <div class="essence-foot">
+            <span>Meet the founder</span>
+            <span class="essence-arrow" aria-hidden="true"></span>
+          </div>
         </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;">
-          <div class="event-participants">
-            <div class="avatars" aria-hidden="true">
-              <div class="avatar a1">W</div>
-              <div class="avatar a2">T</div>
-              <div class="avatar a3">M</div>
+        <div class="essence-image essence-image--right" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="portfolio" id="portfolio" aria-label="Progetti selezionati">
+      <div class="portfolio-inner">
+        <div class="portfolio-head">
+          <div class="section-label">Progetti selezionati</div>
+          <div class="section-bar"></div>
+        </div>
+        <div class="portfolio-grid">
+          <article class="project-card">
+            <div class="project-image"><img src="progetti-left.webp" alt="Appartamento d'epoca a Milano" /></div>
+            <div class="project-meta">
+              <small>Milano · Residenziale · 2024</small>
+              <h3>Appartamento d'Epoca, Brera</h3>
             </div>
-            <span class="participants-text">Free to join. No pressure.</span>
+          </article>
+          <article class="project-card">
+            <div class="project-image"><img src="progetti-center.webp" alt="Residenza d'epoca a Torino" /></div>
+            <div class="project-meta">
+              <small>Torino · Residenziale · 2024</small>
+              <h3>Residenza d'Epoca</h3>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-image"><img src="progetti-right.webp" alt="Casa Liberty a Monza" /></div>
+            <div class="project-meta">
+              <small>Monza · Residenziale · 2023</small>
+              <h3>Casa Liberty</h3>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="values" aria-label="Valori">
+      <div class="values-grid">
+        <div class="values-copy">
+          <div class="section-label section-label--light">Valori</div>
+          <div class="section-bar"></div>
+          <h2 class="values-title">Essenzialità, emozione<br>e memoria <em>guidano</em><br><em>ogni progetto.</em></h2>
+          <div class="values-body">Materiali autentici come fondamento, un'estetica che nasce dal significato: questa è la visione di AISTHESIS. Spazi con un'anima, una direzione, un perché chiaro, pensati per essere vissuti, sentiti e, nel tempo, ricordati. Ogni luogo custodisce una storia. Le persone che lo abiteranno, anche. Il design diventa un incontro per dare continuità tra ciò che era e ciò che vuole diventare. Tra modernità e memoria, estetica e funzione, ciò che si vede e ciò che si percepisce. È in questo dialogo tra opposti che ogni progetto trova la sua forma autentica.</div>
+        </div>
+        <div class="values-image" aria-hidden="true"></div>
+      </div>
+      <div class="values-divider"></div>
+    </section>
+
+    <div class="brown-module-divider" aria-hidden="true"><span></span></div>
+
+    <section class="founder" aria-label="Founder">
+      <div class="founder-photo" aria-hidden="true"></div>
+      <div class="founder-copy">
+        <div class="founder-text">
+          <p>Sono Melania, designer e founder di AISTHESIS.</p>
+          <p>La mia è una storia di contaminazioni.</p>
+          <p>Napoli, la città in cui sono cresciuta, dove la bellezza non si cerca, è ovunque, stratificata, impossibile da ignorare.</p>
+          <p>Milano, la città che mi ha accolta, il design come disciplina, il rigore della forma.</p>
+          <p>Singapore, la città che ha cambiato il mio sguardo, dove ho compreso che identità diverse possono coesistere senza dissolversi, che la contaminazione non indebolisce, ma rivela qualcosa di più profondo di ciò che esisteva prima.</p>
+          <p>Questi tre luoghi abitano ancora il mio sguardo. AISTHESIS è nato da lì.</p>
+          <p>Quando inizio un progetto, ascolto. Non solo le esigenze, la sensibilità, il gusto, la cultura, il ritmo interiore di chi ho davanti. Ogni persona porta con sé un mondo. Il mio lavoro è imparare a leggerlo e tradurlo in spazio, forma, materia, atmosfera.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contatti" aria-label="Contatti">
+      <div class="contact-grid">
+        <div>
+          <div class="section-label">Contatti</div>
+          <div class="section-bar"></div>
+          <h2 class="contact-title">Parliamo del tuo spazio</h2>
+          <div class="contact-copy">Se desideri raccontare un progetto, una casa o un luogo da reinterpretare, puoi iniziare da qui.</div>
+          <div class="contact-details">Email: <a href="mailto:hello@aisthesisstudio.com">hello@aisthesisstudio.com</a><br>Instagram: <a href="https://www.instagram.com/aisthesis.studio" target="_blank" rel="noopener">@aisthesis.studio</a><br>Milano · Monza · Nord Italia · Clienti internazionali</div>
+        </div>
+        <form class="contact-form" action="https://formspree.io/f/xgodpbdr" method="POST">
+          <div class="form-row">
+            <input type="text" name="nome" placeholder="Nome" autocomplete="name" required />
+            <input type="email" name="email" placeholder="Email" autocomplete="email" required />
           </div>
-          <a class="join-btn" href="#join">I'm in</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="event-card" id="latestWalkCardLinkWrapper">
-      <div class="event-card-img">
-        <img class="event-card-img-bg" id="latestWalkImageCard" src="photos/bubblewalk-2026-05-08-feature.jpg" alt="Featured photo from Bubble Walk #3 at Clifton Observatory, Suspension Bridge and Leigh Woods">
-        <div class="overlay"></div>
-        <div class="event-date-badge">
-          <div class="event-date-day" id="latestWalkDay">8</div>
-          <div class="event-date-month" id="latestWalkMonth">May</div>
-        </div>
-        <span class="event-difficulty diff-medium">Latest</span>
-      </div>
-      <div class="event-card-body">
-        <p class="event-location">📍 <span id="latestWalkPlace">Clifton Observatory, Suspension Bridge & Leigh Woods</span></p>
-        <h3 class="event-name" id="latestWalkName">Bubble Walk #3</h3>
-        <div class="event-meta">
-          <span class="event-meta-item">🖼 Photos from the latest walk</span>
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;">
-          <span class="participants-text" id="latestWalkMeta">8 May 2026 • Clifton Observatory, Suspension Bridge & Leigh Woods</span>
-          <a class="join-btn" href="walks.html">See walks</a>
-        </div>
-      </div>
-    </article>
-
-    <div class="events-stack" aria-label="Bubble Walk summary and routes">
-      <article class="event-card summary-card">
-        <div class="summary-card-body">
-          <span class="summary-kicker">So far</span>
-                    <div class="summary-metrics">
-            <p class="summary-metric">3 Bubble Walks</p>
-            <p class="summary-metric">31 attendances</p>
-            <p class="summary-metric">119 miles walked</p>
+          <div class="form-row">
+            <input type="tel" name="telefono" placeholder="Telefono" autocomplete="tel" />
+            <input type="text" name="localita" placeholder="Località" />
           </div>
-        </div>
-      </article>
-
-      <article class="event-card routes-card">
-        <div class="routes-card-body">
-          <span class="routes-kicker">Not always the same path.</span>
-          <span class="routes-sub">A few routes we may walk.</span>
-                    <ul class="routes-list" aria-label="Possible Bubble Walk routes">
-            <li>Clifton Bridge + Observatory</li>
-            <li>Ashton Court Estate</li>
-            <li>Leigh Woods + Avon Gorge</li>
-            <li>Bristol–Bath Railway</li>
-            <li>Snuff Mills + Oldbury Court</li>
-          </ul>
-          <a class="join-btn" href="#join">Join the next walk</a>
-        </div>
-      </article>
-    </div>
-
-  </div>
-</section>
-
-<section class="how-section" id="how">
-  <p class="section-label">How it works</p>
-  <h2 class="section-title">Simple as <em>showing up</em></h2>
-
-  <div class="how-grid">
-    <div class="how-step">
-      <div class="how-step-num">01</div>
-      <div class="how-icon">🗓</div>
-      <h3 class="how-step-title">See the next walk</h3>
-      <p class="how-step-desc">Check the next Bubble Walk on the page. You get the day, time, meeting point and the route in one place.</p>
-      <div class="how-connector"></div>
-    </div>
-    <div class="how-step">
-      <div class="how-step-num">02</div>
-      <div class="how-icon">✋</div>
-      <h3 class="how-step-title">Let us know you’re coming</h3>
-      <p class="how-step-desc">Fill the short form. No membership, no awkward process, no need to know anyone already.</p>
-      <div class="how-connector"></div>
-    </div>
-    <div class="how-step">
-      <div class="how-step-num">03</div>
-      <div class="how-icon">🚶</div>
-      <h3 class="how-step-title">Walk and talk</h3>
-      <p class="how-step-desc">Meet at the meeting point, walk for about an hour at an easy pace, and let conversation happen naturally.</p>
-      <div class="how-connector"></div>
-    </div>
-    <div class="how-step">
-      <div class="how-step-num">04</div>
-      <div class="how-icon">🍻</div>
-      <h3 class="how-step-title">Stay after if you want</h3>
-      <p class="how-step-desc">Some people leave.<br>Some stay for a drink.<br>It stays simple either way.</p>
-    </div>
-  </div>
-</section>
-
-<section class="community-section" id="community">
-  <div class="community-inner">
-    <div class="community-text">
-      <p class="section-label">What Bubble Walk is</p>
-      <h2 class="section-title">A social walk, <em>not a performance</em></h2>
-      <p>
-        Bubble Walk is a social walk in Bristol. It is free to join, easy to come to on your own, and built around simple conversation while walking.
-      </p>
-      <p>
-        No awkward format. No pressure. Just people walking and talking together. An easy route, an easy pace, and a bit of time outside with other people.
-      </p>
-      <ul class="community-values">
-        <li><span class="value-dot"></span>You can come on your own or with a friend. Both are normal.</li>
-        <li><span class="value-dot"></span>The walk is designed for talking more than exercise.</li>
-        <li><span class="value-dot"></span>Free to join. No membership. Just a simple form to stay updated.</li>
-        <li><span class="value-dot"></span>About an hour outside, away from traffic and screens.</li>
-      </ul>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial">
-        <p class="testimonial-text">I usually find it hard to join events where people already know each other, but I felt at ease straight away. I’d really recommend it, even if you’re a bit shy.</p>
-        <p class="testimonial-sub">Naomi</p>
+          <textarea name="progetto" placeholder="Descrizione del progetto" required></textarea>
+          <button class="btn" type="submit">Richiedi una consulenza</button>
+        </form>
       </div>
-      <div class="testimonial">
-        <p class="testimonial-text">I got to meet some great people, and walking around the Harbourside at sunset was simply beautiful. Definitely one to do again.</p>
-        <p class="testimonial-sub">Giuseppe</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-logo">AISTHESIS</div>
+        <div class="footer-tagline">Contemporary Heritage Design</div>
       </div>
-      <div class="testimonial">
-        <p class="testimonial-text">Lovely way to enjoy Bristol views with really nice people. A chance to get to know others, and I’m looking forward to joining future walks.</p>
-        <p class="testimonial-sub">Gaja</p>
+
+      <div class="footer-center">
+        <div>hello@aisthesisstudio.com</div>
+        <div>@aisthesis.studio</div>
       </div>
-      <div class="testimonial">
-        <p class="testimonial-text">I really enjoyed my time with the group. Everyone was kind and friendly, and it was a lovely way to spend time together outside.</p>
-        <p class="testimonial-sub">Rozana</p>
+
+      <div class="footer-right">
+        <div>Milano · Monza · Nord Italia</div>
+        <div>Clienti internazionali</div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="cta-section" id="join">
-  <p class="section-label">Join the next walk</p>
-  <h2 class="section-title">
-    Bubble Walk in Bristol,<br><em>without the friction</em>
-  </h2>
-  <p class="cta-copy">
-    <span class="join-copy-desktop">Want to join? Fill the form and we’ll email you about the next walk.<br>Tick the box below for future walks.</span>
-    <span class="join-copy-mobile">Want to join? Fill the form and we’ll email you about the next walk. Tick the box below for future walks.</span>
-  </p>
-
-  <div class="cta-next-walk" aria-label="Next Bubble Walk details">
-    <span class="cta-next-pill" id="ctaNextPill">Sun • 7 June 2026 • 11am • Oldbury Ct Rd, Fishponds, Bristol BS16 2JH</span>
-  </div>
-
-  <form class="cta-form" id="joinForm" action="https://formspree.io/f/mzdjwobq" method="POST">
-    <div class="cta-row">
-      <input class="cta-input" id="name" name="name" type="text" placeholder="Your name" required>
-      <input class="cta-input" id="email" name="email" type="email" placeholder="Your email" required>
-    </div>
-    <input class="cta-input" id="phone" name="phone" type="tel" placeholder="Phone number, if you’d like to join the WhatsApp group">
-    <textarea class="cta-textarea" id="message" name="message" placeholder="Optional message"></textarea>
-    <input type="hidden" name="_subject" value="Bubble Walk signup">
-    <label class="updates-consent" for="updatesOptIn">
-      <input id="updatesOptIn" name="future_walk_updates" type="checkbox" value="yes">
-      <span>I’d like to hear about the next Bubble Walks.</span>
-    </label>
-    <p class="privacy-note">
-      <span class="privacy-note-desktop">We’ll use your email for this walk and, if you choose, to send you future updates. If you leave your phone number, we’ll use it only to add you to the Bubble Walk WhatsApp group. You can unsubscribe at any time. <a href="privacy.html">Privacy</a></span>
-      <span class="privacy-note-mobile">We’ll use your email for this walk and, if you choose, to send you future updates. If you leave your phone number, we’ll use it only to add you to the Bubble Walk WhatsApp group. You can unsubscribe at any time. <a href="privacy.html">Privacy</a></span>
-    </p>
-    <div class="cta-submit-row">
-      <button class="btn-primary" id="joinSubmitBtn" type="submit">Send</button>
-    </div>
-    <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
-  </form>
-</section>
-
-<footer>
-  <div class="footer-brand">
-    <a class="nav-logo" href="#top">Bubble <span style="color:var(--terra-light); font-style:italic;">Walk</span></a>
-    <p>A simple social walk in Bristol. Free to join. No pressure. Just walk, talk, and meet people.</p>
-  </div>
-  <div>
-    <h4>Walks</h4>
-    <ul>
-      <li><a href="#events">Next walk</a></li>
-      <li><a href="walks.html">Past walks</a></li>
-      <li><a href="#how">How it works</a></li>
-      <li><a id="footerRouteLink" href="https://www.google.com/maps/dir/Oldbury+Ct+Rd,+Fishponds,+Bristol+BS16+2JH/Snuff+Mills,+Bristol/Frenchay,+Bristol/Oldbury+Ct+Rd,+Fishponds,+Bristol+BS16+2JH" target="_blank" rel="noopener noreferrer">Route</a></li>
-    </ul>
-  </div>
-  <div>
-    <h4>Join</h4>
-    <ul>
-      <li><a href="#join">Join the next walk</a></li>
-      <li><a id="footerMeetingLink" href="https://www.google.com/maps/search/?api=1&query=Oldbury%20Ct%20Rd%2C%20Fishponds%2C%20Bristol%20BS16%202JH" target="_blank" rel="noopener noreferrer">Meeting point</a></li>
-      <li><a id="footerMapsLink" href="https://www.google.com/maps/dir/Oldbury+Ct+Rd,+Fishponds,+Bristol+BS16+2JH/Snuff+Mills,+Bristol/Frenchay,+Bristol/Oldbury+Ct+Rd,+Fishponds,+Bristol+BS16+2JH" target="_blank" rel="noopener noreferrer">Google Maps</a></li>
-    </ul>
-  </div>
-  <div>
-    <h4>Info</h4>
-    <ul>
-      <li><a href="#community">What it is</a></li>
-      <li><a href="#how">Easy pace</a></li>
-      <li><a href="#join">Contact</a></li>
-      <li><a href="privacy.html">Privacy</a></li>
-      <li><a href="unsubscribe.html">Unsubscribe</a></li>
-    </ul>
-  </div>
-</footer>
-<div class="footer-bottom">
-  <p>Bubble Walk — a social walk in Bristol. Free to join.</p>
-  <p id="footerNextWalk">Next walk: Sun, 7 June 2026 at 11am</p>
-</div>
-
-<script>
-  const SITE = {
-    city: "Bristol",
-    day: "Sun",
-    date: "7 June 2026",
-    time: "11am",
-    duration: "about 1h",
-    meetingPoint: "Oldbury Ct Rd, Fishponds, Bristol BS16 2JH",
-    meetingMapsUrl: "https://www.google.com/maps/search/?api=1&query=Oldbury%20Ct%20Rd%2C%20Fishponds%2C%20Bristol%20BS16%202JH",
-    routeMapsUrl: "https://www.google.com/maps/dir/Oldbury+Ct+Rd,+Fishponds,+Bristol+BS16+2JH/Snuff+Mills,+Bristol/Frenchay,+Bristol/Oldbury+Ct+Rd,+Fishponds,+Bristol+BS16+2JH",
-    mapsQuery: "Oldbury Ct Rd, Fishponds, Bristol BS16 2JH",
-    offerValidFrom: "2026-05-09T09:00:00+01:00"
-  };
-
-  function parseSiteDateParts(dateText) {
-    const match = dateText.match(/(\d{1,2})\s+([A-Za-z]+)/);
-    if (!match) return { dayNum: "Soon", month: "" };
-    return { dayNum: match[1], month: match[2].slice(0, 3) };
-  }
-
-  function buildIsoDateTime(dateText, timeText) {
-  const dateMatch = String(dateText || '').match(/(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})/);
-  if (!dateMatch) return "";
-
-  const monthMap = {
-    january: "01", february: "02", march: "03", april: "04",
-    may: "05", june: "06", july: "07", august: "08",
-    september: "09", october: "10", november: "11", december: "12"
-  };
-
-  const day = String(dateMatch[1]).padStart(2, "0");
-  const month = monthMap[dateMatch[2].toLowerCase()] || "";
-  const year = dateMatch[3];
-  if (!month) return "";
-
-  const timeMatch = String(timeText || "").trim().match(/^(\d{1,2})(?::(\d{2}))?\s*(am|pm)$/i);
-  if (!timeMatch) return `${year}-${month}-${day}`;
-
-  let hour = Number(timeMatch[1]);
-  const minute = timeMatch[2] || "00";
-  const meridiem = timeMatch[3].toLowerCase();
-
-  if (meridiem === "pm" && hour < 12) hour += 12;
-  if (meridiem === "am" && hour === 12) hour = 0;
-
-  return `${year}-${month}-${day}T${String(hour).padStart(2, "0")}:${minute}`;
-}
-
-function buildEventEndDate(startIso) {
-  if (!startIso || !startIso.includes("T")) return "";
-  const match = startIso.match(/^(\d{4}-\d{2}-\d{2})T(\d{2}):(\d{2})$/);
-  if (!match) return "";
-  let hour = Number(match[2]);
-  const minute = match[3];
-  hour = (hour + 1) % 24;
-  return `${match[1]}T${String(hour).padStart(2, "0")}:${minute}`;
-}
-
-function injectEventSchema() {
-  const script = document.getElementById("eventSchema");
-  if (!script) return;
-
-  const startDate = buildIsoDateTime(SITE.date, SITE.time);
-  if (!startDate || !startDate.includes("T")) {
-    script.textContent = "";
-    return;
-  }
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "name": "Bubble Walk",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "startDate": startDate,
-    "endDate": buildEventEndDate(startDate),
-    "isAccessibleForFree": true,
-    "url": "https://www.bubblewalk.org/",
-    "image": ["https://www.bubblewalk.org/photos/bubblewalk-2026-05-08-feature.jpg"],
-    "description": "A free social walk in Bristol. No pressure. About an hour at an easy pace, with simple conversation while walking.",
-    "location": {
-      "@type": "Place",
-      "name": "Oldbury Court Road",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Bristol",
-        "postalCode": "BS16 2JH",
-        "addressCountry": "GB"
-      }
-    },
-    "organizer": {
-      "@type": "Person",
-      "name": "Alessandro D'Angelo",
-      "url": "https://www.bubblewalk.org/"
-    },
-    "performer": {
-      "@type": "Organization",
-      "name": "Bubble Walk",
-      "url": "https://www.bubblewalk.org/"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "GBP",
-      "availability": "https://schema.org/InStock",
-      "validFrom": SITE.offerValidFrom,
-      "url": "https://www.bubblewalk.org/#join"
-    }
-  };
-
-  script.textContent = JSON.stringify(schema);
-}
-
-
-  function buildNextWalkText() {
-    const dateText = SITE.date || "7 June 2026";
-    const hasExactDate = /\d{1,2}\s+[A-Za-z]+\s+\d{4}/.test(dateText);
-    if (!hasExactDate) return "Next Bubble Walk • Sun 7 June 2026 • 11am";
-    return ["Next Bubble Walk", SITE.day, SITE.date, SITE.time].filter(Boolean).join(" • ");
-  }
-
-  function buildNextWalkShortText() {
-    const dateText = SITE.date || "7 June 2026";
-    const hasExactDate = /\d{1,2}\s+[A-Za-z]+\s+\d{4}/.test(dateText);
-    if (!hasExactDate) return "Sun • 7 June 2026 • 11am • Oldbury Ct Rd, Fishponds, Bristol BS16 2JH";
-    return [SITE.day, SITE.date, SITE.time, SITE.meetingPoint].filter(Boolean).join(" • ");
-  }
-
-  function applySiteContent() {
-    const dateParts = parseSiteDateParts(SITE.date);
-    const postcodeMatch = SITE.meetingPoint.match(/\b[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}\b/i);
-    const meetingPostcode = postcodeMatch ? postcodeMatch[0].toUpperCase() : "";
-
-    const mapsBtnHero = document.getElementById("mapsBtnHero");
-    const routeFooterLink = document.getElementById("footerRouteLink");
-    const footerMapsLink = document.getElementById("footerMapsLink");
-    const footerMeetingLink = document.getElementById("footerMeetingLink");
-    const meetingLabel = document.getElementById("meetingLabel");
-    const nextWalkTitle = document.getElementById("nextWalkTitle");
-    const eventDayNum = document.getElementById("eventDayNum");
-    const eventMonth = document.getElementById("eventMonth");
-    const eventDayLine = document.getElementById("eventDayLine");
-    const eventTimeLine = document.getElementById("eventTimeLine");
-    const eventDurationLine = document.getElementById("eventDurationLine");
-    const heroCardTitle = document.getElementById("heroCardTitle");
-    const heroCardMeta = document.getElementById("heroCardMeta");
-    const ctaNextPill = document.getElementById("ctaNextPill");
-    const footerNextWalk = document.getElementById("footerNextWalk");
-
-    if (mapsBtnHero) mapsBtnHero.href = SITE.routeMapsUrl;
-
-    if (routeFooterLink) {
-      routeFooterLink.href = SITE.routeMapsUrl;
-      routeFooterLink.target = "_blank";
-      routeFooterLink.rel = "noopener noreferrer";
-      routeFooterLink.textContent = "Route";
-      routeFooterLink.setAttribute("aria-label", "Open route in Google Maps");
-      routeFooterLink.setAttribute("title", "Open route in Google Maps");
-    }
-
-    if (footerMapsLink) {
-      footerMapsLink.href = SITE.routeMapsUrl;
-      footerMapsLink.target = "_blank";
-      footerMapsLink.rel = "noopener noreferrer";
-    }
-
-    if (footerMeetingLink) {
-      footerMeetingLink.href = SITE.meetingMapsUrl;
-      footerMeetingLink.target = "_blank";
-      footerMeetingLink.rel = "noopener noreferrer";
-    }
-
-    if (meetingLabel) meetingLabel.textContent = SITE.meetingPoint;
-    if (nextWalkTitle) nextWalkTitle.textContent = buildNextWalkText();
-    if (eventDayNum) eventDayNum.textContent = dateParts.dayNum;
-    if (eventMonth) eventMonth.textContent = dateParts.month;
-    if (eventDayLine) eventDayLine.textContent = SITE.day || "Sun";
-    if (eventTimeLine) eventTimeLine.textContent = SITE.time || "11am";
-    if (eventDurationLine) eventDurationLine.textContent = SITE.duration;
-    if (heroCardTitle) heroCardTitle.innerHTML = buildNextWalkText().replace(" • ", " •<br>");
-    if (heroCardMeta) heroCardMeta.textContent = SITE.meetingPoint;
-    if (ctaNextPill) ctaNextPill.textContent = buildNextWalkShortText();
-    if (footerNextWalk) footerNextWalk.textContent = SITE.time ? `Next walk: ${SITE.day}, ${SITE.date} at ${SITE.time}` : "Next walk: Sun, 7 June 2026 at 11am";
-  }
-
-
-  const HOME_ALL_WALKS_ROTATION_IMAGES = [
-    { src: "photos/bubblewalk-2026-05-08-01.jpg", alt: "Photo from Bubble Walk #3 on 8 May 2026" },
-    { src: "photos/bubblewalk-2026-05-08-02.jpg", alt: "Photo from Bubble Walk #3 on 8 May 2026" },
-    { src: "photos/bubblewalk-2026-05-08-03.jpg", alt: "Photo from Bubble Walk #3 on 8 May 2026" },
-    { src: "photos/bubblewalk-2026-05-08-04.jpg", alt: "Photo from Bubble Walk #3 on 8 May 2026" },
-    { src: "photos/bubblewalk-2026-05-08-feature.jpg", alt: "Featured photo from Bubble Walk #3 on 8 May 2026" },
-    { src: "photos/bubblewalk-2026-04-24-01.jpg", alt: "Photo from Bubble Walk #2 on 24 April 2026" },
-    { src: "photos/bubblewalk-2026-04-24-02.jpg", alt: "Photo from Bubble Walk #2 on 24 April 2026" },
-    { src: "photos/bubblewalk-2026-04-24-03.jpg", alt: "Photo from Bubble Walk #2 on 24 April 2026" },
-    { src: "photos/bubblewalk-2026-04-24-04.jpg", alt: "Photo from Bubble Walk #2 on 24 April 2026" },
-    { src: "photos/bubblewalk-2026-04-24-feature.jpg", alt: "Featured photo from Bubble Walk #2 on 24 April 2026" },
-    { src: "photos/bubblewalk-2026-04-09-01.jpg", alt: "Photo from Bubble Walk #1 on 9 April 2026" },
-    { src: "photos/bubblewalk-2026-04-09-02.jpg", alt: "Photo from Bubble Walk #1 on 9 April 2026" },
-    { src: "photos/bubblewalk-2026-04-09-03.jpg", alt: "Photo from Bubble Walk #1 on 9 April 2026" },
-    { src: "photos/bubblewalk-2026-04-09-04.jpg", alt: "Photo from Bubble Walk #1 on 9 April 2026" },
-    { src: "photos/bubblewalk-2026-04-09-feature.jpg", alt: "Featured photo from Bubble Walk #1 on 9 April 2026" }
-  ];
-
-  const HOME_LATEST_WALK_FALLBACK = {
-    id: "walk-03",
-    type: "bubble-walk",
-    label: "Bubble Walk #3",
-    place: "Clifton Observatory, Suspension Bridge & Leigh Woods",
-    date: "8 May 2026",
-    duration: "~1 hour",
-    intro: "A Friday evening Bubble Walk from Clifton Observatory, across the Suspension Bridge and into Leigh Woods.",
-    note: "We walked from Clifton Observatory, crossed the Suspension Bridge, moved through Leigh Woods, and came back with a few photos from the route.",
-    featured: {
-      src: "photos/bubblewalk-2026-05-08-feature.jpg",
-      alt: "Bubble Walk #3 crossing Clifton Suspension Bridge on 8 May 2026"
-    },
-    photos: [
-      { src: "photos/bubblewalk-2026-05-08-01.jpg", alt: "Clifton Suspension Bridge during Bubble Walk #3" },
-      { src: "photos/bubblewalk-2026-05-08-02.jpg", alt: "People walking through Leigh Woods during Bubble Walk #3" },
-      { src: "photos/bubblewalk-2026-05-08-03.jpg", alt: "Woodland path in Leigh Woods during Bubble Walk #3" },
-      { src: "photos/bubblewalk-2026-05-08-04.jpg", alt: "Clifton Observatory and Avon Gorge during Bubble Walk #3" }
-    ]
-  };
-
-  function loadSharedContentScript() {
-    return new Promise((resolve) => {
-      if (window.BUBBLEWALK_CONTENT || window.bubbleWalkContent) {
-        resolve();
-        return;
-      }
-      const existing = document.querySelector('script[data-bubblewalk-content="true"]');
-      if (existing) {
-        existing.addEventListener('load', resolve, { once: true });
-        existing.addEventListener('error', resolve, { once: true });
-        return;
-      }
-      const script = document.createElement('script');
-      script.src = 'content.js';
-      script.dataset.bubblewalkContent = 'true';
-      script.onload = resolve;
-      script.onerror = resolve;
-      document.head.appendChild(script);
-    });
-  }
-
-  function getWalksFromSharedContent() {
-    const root = window.BUBBLEWALK_CONTENT || window.bubbleWalkContent || null;
-    if (!root) return [];
-    const raw = root.walksPage || root.walks || root.pastWalks || null;
-    return Array.isArray(raw) ? raw : [];
-  }
-
-  async function loadWalksFromPage() {
-    try {
-      await loadSharedContentScript();
-      const sharedWalks = getWalksFromSharedContent();
-      if (sharedWalks.length) {
-        const hasWalkThree = sharedWalks.some((walk) => walk && walk.id === HOME_LATEST_WALK_FALLBACK.id);
-        return hasWalkThree ? sharedWalks : [HOME_LATEST_WALK_FALLBACK, ...sharedWalks];
-      }
-
-      const response = await fetch('walks.html', { cache: 'no-store' });
-      if (!response.ok) throw new Error('Could not load walks.html');
-      const htmlText = await response.text();
-      const match = htmlText.match(/const DEFAULT_WALKS = \[([\s\S]*?)\];/);
-      if (!match) throw new Error('DEFAULT_WALKS not found');
-
-      const cleaned = match[1].replace(/\/\*[\s\S]*?\*\//g, '').trim();
-      const walks = new Function(`return [${cleaned}]`)();
-      if (!Array.isArray(walks) || !walks.length) return [HOME_LATEST_WALK_FALLBACK];
-      const hasWalkThree = walks.some((walk) => walk && walk.id === HOME_LATEST_WALK_FALLBACK.id);
-      return hasWalkThree ? walks : [HOME_LATEST_WALK_FALLBACK, ...walks];
-    } catch (error) {
-      return [HOME_LATEST_WALK_FALLBACK];
-    }
-  }
-
-function getWalkImageList(walk) {
-  const images = [];
-  const seen = new Set();
-
-  const pushIfValid = (src, alt) => {
-    if (!src || seen.has(src)) return;
-    seen.add(src);
-    images.push({ src, alt: alt || '' });
-  };
-
-  if (walk && walk.featured) {
-    if (typeof walk.featured === 'string') {
-      pushIfValid(walk.featured, walk.label || 'Bubble Walk');
-    } else {
-      pushIfValid(walk.featured.src || walk.featured.image || '', walk.featured.alt || walk.label || 'Bubble Walk');
-    }
-  }
-
-  (walk && walk.photos ? walk.photos : []).forEach((photo) => {
-    if (typeof photo === 'string') {
-      pushIfValid(photo, walk.label || 'Bubble Walk');
-    } else {
-      pushIfValid(photo.src || photo.image || '', photo.alt || walk.label || 'Bubble Walk');
-    }
-  });
-
-  return images;
-}
-
-  function parseWalkTimestamp(dateText) {
-    const timestamp = Date.parse(dateText || '');
-    return Number.isNaN(timestamp) ? null : timestamp;
-  }
-
-function getLatestBubbleWalk(walks) {
-  const bubbleWalks = walks.filter((walk) => {
-    if (!walk) return false;
-    if (walk.type === 'bubble-walk') return true;
-    return typeof walk.label === 'string' && walk.label.toLowerCase().includes('bubble walk');
-  });
-
-    if (!bubbleWalks.length) return null;
-
-    return bubbleWalks.sort((a, b) => {
-      const aTime = parseWalkTimestamp(a.date);
-      const bTime = parseWalkTimestamp(b.date);
-      if (aTime === null && bTime === null) return 0;
-      if (aTime === null) return 1;
-      if (bTime === null) return -1;
-      return bTime - aTime;
-    })[0];
-  }
-
-  function parseHumanDate(dateText) {
-    const d = new Date(dateText);
-    if (Number.isNaN(d.getTime())) return { dayNum: '--', month: '' };
-    return {
-      dayNum: String(d.getDate()).padStart(2, '0'),
-      month: d.toLocaleString('en-GB', { month: 'short' })
-    };
-  }
-
-function bindImageRotation(imageIds, images, fallbackAlt) {
-  if (!images.length) return;
-  const targets = imageIds
-    .map((id) => document.getElementById(id))
-    .filter(Boolean);
-  if (!targets.length) return;
-
-  let currentIndex = 0;
-  const showImage = (index) => {
-    const current = images[index] || {};
-    targets.forEach((img) => {
-      img.src = current.src || '';
-      img.alt = current.alt || fallbackAlt;
-    });
-  };
-
-  showImage(currentIndex);
-
-  if (images.length > 1) {
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % images.length;
-      showImage(currentIndex);
-    }, 3200);
-  }
-}
-
-  async function setupLatestWalkBlocks() {
-    const walks = await loadWalksFromPage();
-    const latestWalk = getLatestBubbleWalk(walks);
-    if (!latestWalk) return;
-
-    const dateParts = parseHumanDate(latestWalk.date || '');
-    const latestWalkImages = getWalkImageList(latestWalk);
-    const heroRotationImages = HOME_ALL_WALKS_ROTATION_IMAGES.length ? HOME_ALL_WALKS_ROTATION_IMAGES : latestWalkImages;
-
-    bindImageRotation(['heroLatestImage'], heroRotationImages, 'Bubble Walk photos from Bristol walks');
-    bindImageRotation(['latestWalkImageCard'], latestWalkImages, latestWalk.label || 'Latest Bubble Walk');
-
-    const latestWalkName = document.getElementById('latestWalkName');
-    const latestWalkMeta = document.getElementById('latestWalkMeta');
-    const latestWalkPlace = document.getElementById('latestWalkPlace');
-    const latestWalkDay = document.getElementById('latestWalkDay');
-    const latestWalkMonth = document.getElementById('latestWalkMonth');
-
-    if (latestWalkName) latestWalkName.textContent = latestWalk.label || 'Latest Bubble Walk';
-    if (latestWalkMeta) latestWalkMeta.textContent = [latestWalk.date, latestWalk.place].filter(Boolean).join(' • ') || 'A few moments from the latest walk.';
-    if (latestWalkPlace) latestWalkPlace.textContent = latestWalk.place || 'Harbourside';
-    if (latestWalkDay) latestWalkDay.textContent = dateParts.dayNum;
-    if (latestWalkMonth) latestWalkMonth.textContent = dateParts.month;
-  }
-
-  function setupDesktopJoinScroll() {
-    const joinLinks = Array.from(document.querySelectorAll('a[href="#join"]'));
-    const joinSection = document.getElementById('join');
-    if (!joinLinks.length || !joinSection) return;
-
-    const scrollToJoin = () => {
-      const desktopOffset = 42;
-      const y = joinSection.getBoundingClientRect().top + window.pageYOffset + desktopOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-      if (history && history.replaceState) {
-        history.replaceState(null, '', '#join');
-      }
-    };
-
-    joinLinks.forEach((link) => {
-      link.addEventListener('click', (event) => {
-        if (window.innerWidth <= 900) return;
-        event.preventDefault();
-        scrollToJoin();
-      });
-    });
-
-    if (window.innerWidth > 900 && window.location.hash === '#join') {
-      window.requestAnimationFrame(() => {
-        window.scrollTo(0, 0);
-        window.requestAnimationFrame(scrollToJoin);
-      });
-    }
-  }
-        
-
-  async function sendJoinCopyToWebhook(formData) {
-    try {
-      const currentWalkEl = document.getElementById('ctaNextPill');
-
-      const webhookPayload = {
-        name: String(formData.get('name') || '').trim(),
-        email: String(formData.get('email') || '').trim(),
-        phone: String(formData.get('phone') || '').trim(),
-        message: String(formData.get('message') || '').trim(),
-        future_walk_updates: formData.get('future_walk_updates') ? 'yes' : '',
-        current_walk: currentWalkEl ? currentWalkEl.textContent.trim() : ''
-      };
-
-      if (!webhookPayload.email) return;
-
-      await fetch('https://hook.eu1.make.com/bvddk1kyielp28nwgsm8evhzmwvyavb9', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(webhookPayload),
-        keepalive: true
-      });
-    } catch (error) {
-      // Keep the Formspree submission flow primary and unaffected.
-    }
-  }
-
-  function setupJoinForm() {
-    const joinForm = document.getElementById('joinForm');
-    const formStatus = document.getElementById('formStatus');
-    const joinSubmitBtn = document.getElementById('joinSubmitBtn');
-
-    if (!joinForm || !formStatus || !joinSubmitBtn) return;
-
-    joinForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      formStatus.classList.remove('is-visible');
-      formStatus.textContent = '';
-      joinSubmitBtn.disabled = true;
-      joinSubmitBtn.textContent = 'Sending...';
-
-      try {
-        const formData = new FormData(joinForm);
-
-        // Send a parallel copy to Make without changing the primary Formspree flow.
-        sendJoinCopyToWebhook(formData);
-
-        const response = await fetch(joinForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        let ok = response.ok;
-        let data = null;
-        try {
-          data = await response.json();
-        } catch (e) {
-          data = null;
-        }
-
-        if (ok) {
-          joinForm.reset();
-          formStatus.textContent = 'Thanks — I’ll email you about the next Bubble Walk.';
-          formStatus.classList.add('is-visible');
-        } else {
-          const message = data && data.errors && data.errors.length
-            ? data.errors.map(err => err.message).join(' ')
-            : 'Something went wrong. Please try again.';
-          formStatus.textContent = message;
-          formStatus.classList.add('is-visible');
-        }
-      } catch (error) {
-        formStatus.textContent = 'Something went wrong. Please try again.';
-        formStatus.classList.add('is-visible');
-      } finally {
-        joinSubmitBtn.disabled = false;
-        joinSubmitBtn.textContent = 'Send';
-      }
-    });
-  }
-
-
-  injectEventSchema();
-  applySiteContent();
-  setupLatestWalkBlocks();
-  setupDesktopJoinScroll();
-  setupJoinForm();
-</script>
+  </footer>
 </body>
 </html>
